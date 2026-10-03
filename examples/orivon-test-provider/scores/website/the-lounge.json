@@ -1,0 +1,21 @@
+{
+  "subject": "website",
+  "ids": [
+    "sha256:b6761c9738dab8dae6c3ac00c9d048e26992ebbd5f095601f1b8e4782ee24cb2",
+    "cid:bafybeieqer67ojhi6q3eiatmrcu3r3mqjehn7hwit2satqjfnljo65fb4q"
+  ],
+  "name": "The Lounge",
+  "version": "4.5.2",
+  "evaluated": "2026-10-03",
+  "trustlessity": { "level": 3, "privacy": false },
+  "summary": "A self-hosted IRC client whose server runs inside Orivon on this computer. Its code is open source and it runs only what it ships, which is Level 3. It is not Level 4: each IRC network is run by its operators, who can read, alter or drop what passes through their servers.",
+  "operations": [
+    { "name": "Send and receive IRC messages", "trustlessity": { "level": 2, "privacy": false }, "note": "The client is open source and does what it promises, but every message passes through servers the network's operators control." },
+    { "name": "Keep chat history and settings", "trustlessity": { "level": 4, "privacy": true }, "note": "Stored only in this app's own files on this computer." }
+  ],
+  "connections": [
+    { "name": "IRC networks", "trustlessity": { "level": 1, "privacy": false }, "note": "Centralised servers. TLS protects the link to a server, not the messages from its operators, who also see your IP address." },
+    { "name": "Link previews", "trustlessity": { "level": 1, "privacy": false }, "note": "When turned on, links posted in a channel are fetched from this computer, which tells each linked site your IP address." }
+  ],
+  "evidence": ["https://github.com/thelounge/thelounge", "https://thelounge.chat/docs"]
+}

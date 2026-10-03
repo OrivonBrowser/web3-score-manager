@@ -1,0 +1,16 @@
+{
+  "name": "web3-score-manager",
+  "version": "0.1.0",
+  "description": "Create a Web3 Score provider and compile it into a static site",
+  "type": "module",
+  "license": "AGPL-3.0-only",
+  "engines": { "node": ">=22.18" },
+  "bin": { "web3-score": "src/cli.ts" },
+  "scripts": {
+    "test": "node --test",
+    "typecheck": "tsc --noEmit",
+    "start": "node src/cli.ts serve --dir examples/orivon-test-provider"
+  },
+  "dependencies": { "multiformats": "^13.3.0" },
+  "devDependencies": { "@types/node": "^22.10.0", "typescript": "^5.9.0" }
+}
