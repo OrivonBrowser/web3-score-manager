@@ -171,6 +171,8 @@ evaluation, 256 bucket files of 1 MiB hold about 250,000 evaluations.
 app from `orivon-ports` that is published on IPFS. Its address is
 `ipns://k51qzi5uqu5dli7gc98gxy6jlbarijipfrw1x8z2wfyre3rvhssxvzeummkaff/score`. After a change,
 Orivon's IPFS node pins the new build and moves that name to it, so the address stays the same.
+How Attila judges a website, and the worked examples to follow, are in
+[provider/README.md](provider/README.md): read it before adding or changing an evaluation.
 The commands above read `provider/` by default. To run a provider of your own, pass `--dir` with
 another directory.
 

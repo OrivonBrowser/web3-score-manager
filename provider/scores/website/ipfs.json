@@ -1,0 +1,25 @@
+{
+  "subject": "website",
+  "ids": [
+    "cid:bafybeiddamod5xk4uipjz52xodu4z62ul5xk6lzo3qaiz32yc3t6vd7xqa"
+  ],
+  "name": "IPFS",
+  "evaluated": "2026-10-05",
+  "trustlessity": {
+    "level": 2,
+    "privacy": false
+  },
+  "summary": "An old build of the ipfs.io website, from the archived open-source repository (MIT); the IPFS project's current site is ipfs.tech. It is not Level 3: when it opens it loads Google Analytics and a script from camp.ipfs.io.",
+  "connections": [
+    {
+      "name": "Google Analytics and camp.ipfs.io script",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Loaded when the page opens, without asking."
+    }
+  ],
+  "evidence": [
+    "https://github.com/ipfs-inactive/website"
+  ]
+}

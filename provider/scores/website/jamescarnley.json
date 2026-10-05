@@ -1,0 +1,25 @@
+{
+  "subject": "website",
+  "ids": [
+    "cid:bafybeiahrsvfblmcdvurapna2mapbl774utjpfyg6bxe2cqpijxjcpzop4"
+  ],
+  "name": "James Carnley",
+  "evaluated": "2026-10-05",
+  "trustlessity": {
+    "level": 4,
+    "privacy": false
+  },
+  "summary": "James Carnley's homepage, open source (MIT). It loads only its own files. Its videos are the one connection elsewhere, and the page says so: pressing play loads the video from YouTube, and until then nothing on the page talks to Google.",
+  "connections": [
+    {
+      "name": "YouTube videos",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Loaded only when the reader presses play, which the page explains beside each video."
+    }
+  ],
+  "evidence": [
+    "https://github.com/JamesCarnley/JamesCarnley.eth"
+  ]
+}

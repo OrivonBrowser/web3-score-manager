@@ -1,0 +1,32 @@
+{
+  "subject": "website",
+  "ids": [
+    "cid:bafybeidelyzmwrfeciizo7txtleditercivgjnzi6oiypxcugzi74a3sum"
+  ],
+  "name": "Steve Simkins",
+  "evaluated": "2026-10-05",
+  "trustlessity": {
+    "level": 2,
+    "privacy": false
+  },
+  "summary": "Steve Simkins' personal site, open source (MIT). It is not Level 3: when it opens it loads Umami's analytics script. It also fetches icons from the Iconify API.",
+  "connections": [
+    {
+      "name": "Umami analytics (cloud.umami.is)",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Loaded when the page opens, without asking."
+    },
+    {
+      "name": "Iconify API and files.stevedylan.dev",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Fetched when the page opens."
+    }
+  ],
+  "evidence": [
+    "https://github.com/stevedylandev/stevedylan.dev"
+  ]
+}

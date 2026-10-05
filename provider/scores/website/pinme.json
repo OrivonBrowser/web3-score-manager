@@ -1,0 +1,32 @@
+{
+  "subject": "website",
+  "ids": [
+    "cid:bafybeih732i62xph3ul4zrorx6xv7mbqgahdjuifzgvrncmlxfc5zodx4a"
+  ],
+  "name": "PinMe",
+  "evaluated": "2026-10-05",
+  "trustlessity": {
+    "level": 2,
+    "privacy": false
+  },
+  "summary": "PinMe's website. Its public repository is the PinMe command-line tool, not this site, which is a minified bundle with no public source, so it stays at Level 2. When it opens it calls PinMe's servers and GitHub's API, and loads Google Fonts.",
+  "connections": [
+    {
+      "name": "PinMe's servers (pinme.dev, pindata.dev) and GitHub's API",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Contacted when the page opens."
+    },
+    {
+      "name": "Google Fonts",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Fetched when the page opens; tells Google the visit."
+    }
+  ],
+  "evidence": [
+    "https://github.com/glitternetwork/pinme"
+  ]
+}

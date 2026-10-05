@@ -1,0 +1,25 @@
+{
+  "subject": "website",
+  "ids": [
+    "cid:bafybeifay6gaxeha3fv2xpdjzlsbtkigu6xvio6koehi6hklabiel66aka"
+  ],
+  "name": "Banny's Network",
+  "evaluated": "2026-10-05",
+  "trustlessity": {
+    "level": 3,
+    "privacy": false
+  },
+  "summary": "Banny's Network, a page built with Planet's Croptop template, whose source is public (no licence file). It runs no third-party code, which is Level 3. It is not Level 4: when it opens it asks pinnable.xyz for the peers of its IPNS name.",
+  "connections": [
+    {
+      "name": "Pinnable API (www.pinnable.xyz)",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Contacted when the page opens."
+    }
+  ],
+  "evidence": [
+    "https://github.com/Planetable/SiteTemplateCroptop"
+  ]
+}

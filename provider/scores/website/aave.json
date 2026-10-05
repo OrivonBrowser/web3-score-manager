@@ -1,0 +1,41 @@
+{
+  "subject": "website",
+  "ids": [
+    "cid:bafybeig2qwvk3zseuwbnm76hs66nzgueb74eqvnc5fnx5lbtzco6m3fl44"
+  ],
+  "name": "Aave",
+  "version": "release-2026-10-05_04-19",
+  "evaluated": "2026-10-05",
+  "trustlessity": {
+    "level": 2,
+    "privacy": false
+  },
+  "summary": "Aave's official IPFS release of its app, open source. It is not Level 3: when it opens it loads dozens of scripts from app.family.co, Cloudflare's insights beacon and challenge scripts, and sends data to Sentry and Datadog. Markets and balances come from Aave's API and a Tenderly RPC endpoint.",
+  "connections": [
+    {
+      "name": "Third-party scripts (app.family.co, Cloudflare insights and challenge)",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Loaded when the page opens, without asking."
+    },
+    {
+      "name": "Error and usage reporting (Sentry, Datadog)",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Sent when the page opens."
+    },
+    {
+      "name": "Aave's API (api.v3.aave.com) and RPC (mainnet.gateway.tenderly.co)",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Market data, trusted as given."
+    }
+  ],
+  "evidence": [
+    "https://github.com/aave/interface",
+    "https://github.com/aave/interface/releases/tag/release-2026-10-05_04-19"
+  ]
+}

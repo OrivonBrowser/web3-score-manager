@@ -1,0 +1,32 @@
+{
+  "subject": "website",
+  "ids": [
+    "cid:bafybeihlcmsi6l4i7g5brdr2wet4j6wic77mnmoldgnk3p3pt5g2lugrii"
+  ],
+  "name": "Aerodrome",
+  "evaluated": "2026-10-05",
+  "trustlessity": {
+    "level": 2,
+    "privacy": false
+  },
+  "summary": "Aerodrome's trading app on Base. No public source was found for the frontend (the project publishes contracts, SDKs and docs), so it stays at Level 2. When it opens it reads chain data from Alchemy and dRPC endpoints and contacts WalletConnect's servers.",
+  "connections": [
+    {
+      "name": "RPC endpoints (Alchemy, lb.drpc.live)",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Read without a light client."
+    },
+    {
+      "name": "WalletConnect's servers (pulse.walletconnect.org, api.web3modal.org)",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Contacted when the page opens, before any wallet is connected."
+    }
+  ],
+  "evidence": [
+    "https://github.com/aerodrome-finance"
+  ]
+}

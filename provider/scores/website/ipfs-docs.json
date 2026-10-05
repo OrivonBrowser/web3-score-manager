@@ -1,0 +1,25 @@
+{
+  "subject": "website",
+  "ids": [
+    "cid:bafybeiara3xdqrrxfqvzlyuf7x42u64c7pnfatjuvvzadhiwhmltsfu4ee"
+  ],
+  "name": "IPFS documentation",
+  "evaluated": "2026-10-05",
+  "trustlessity": {
+    "level": 2,
+    "privacy": false
+  },
+  "summary": "A build of the IPFS documentation, open source (MIT for code). It is not Level 3: when it opens it loads Google Analytics and SpeedCurve's performance monitoring script.",
+  "connections": [
+    {
+      "name": "Google Analytics and SpeedCurve (cdn.speedcurve.com)",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Loaded when the page opens, without asking."
+    }
+  ],
+  "evidence": [
+    "https://github.com/ipfs/ipfs-docs"
+  ]
+}

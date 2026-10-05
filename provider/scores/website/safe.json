@@ -1,0 +1,41 @@
+{
+  "subject": "website",
+  "ids": [
+    "cid:bafybeifutotmr72fttru6r4hsrhr44q4qit3vovb7brv4dy5754y4cl6zq"
+  ],
+  "name": "Safe",
+  "version": "web-v1.99.2",
+  "evaluated": "2026-10-05",
+  "trustlessity": {
+    "level": 2,
+    "privacy": false
+  },
+  "summary": "Safe{Wallet}'s official IPFS build, open source. It is not Level 3: when it opens it loads Google Tag Manager and Google Analytics. Accounts and transactions are read from Safe's client gateway (safe-client.safe.global), a server Safe runs.",
+  "connections": [
+    {
+      "name": "Google Tag Manager and Google Analytics",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Loaded when the page opens, without asking."
+    },
+    {
+      "name": "Safe's client gateway (safe-client.safe.global)",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Accounts, balances and queued transactions, trusted as given."
+    },
+    {
+      "name": "WalletConnect's servers (pulse.walletconnect.org)",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Contacted when the page opens."
+    }
+  ],
+  "evidence": [
+    "https://github.com/safe-global/safe-wallet-monorepo",
+    "https://github.com/5afe/safe-wallet-ipfs/releases"
+  ]
+}

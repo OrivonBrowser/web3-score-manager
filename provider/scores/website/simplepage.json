@@ -1,0 +1,32 @@
+{
+  "subject": "website",
+  "ids": [
+    "cid:bafybeih35kufar7qoh437usra2fhtqbhroczngcjlvf77tznbcjkzkuba4"
+  ],
+  "name": "Simple Page",
+  "evaluated": "2026-10-05",
+  "trustlessity": {
+    "level": 3,
+    "privacy": false
+  },
+  "summary": "Simple Page, a tool to publish a Markdown site at an ENS name, open source (GPL-3.0). It runs no third-party code, which is Level 3. It is not Level 4: when it opens, its own code reports the visit to Plausible and reads from a Tenderly RPC endpoint and the project's servers.",
+  "connections": [
+    {
+      "name": "Plausible (plausible.io/api/event)",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Visit reported by the page's own code when it opens."
+    },
+    {
+      "name": "RPC and services (mainnet.gateway.tenderly.co, simplepg.org, euc.li)",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Read when the page opens, without proof."
+    }
+  ],
+  "evidence": [
+    "https://github.com/stigmergic-org/simplepage"
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "subject": "website",
+  "ids": [
+    "cid:bafybeih3vnjutnueboxrq5qvgfzmiu6uczbglgbhurhwdyt5tzuxwkcblm"
+  ],
+  "name": "FOCIL",
+  "evaluated": "2026-10-05",
+  "trustlessity": {
+    "level": 2,
+    "privacy": false
+  },
+  "summary": "An explainer for FOCIL (fork-choice enforced inclusion lists), open source (MIT). It is not Level 3: when it opens it loads MathJax from jsDelivr with no integrity hash and a floating version, code the CDN can change at any time. Its Bootstrap and Popper scripts are pinned by integrity hashes, which is fine.",
+  "connections": [
+    {
+      "name": "MathJax (cdn.jsdelivr.net)",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "A script loaded when the page opens, without an integrity hash."
+    },
+    {
+      "name": "Bootstrap, Popper, Font Awesome and Google Fonts from CDNs",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Fetched when the page opens."
+    }
+  ],
+  "evidence": [
+    "https://github.com/jihoonsong/meet-focil"
+  ]
+}

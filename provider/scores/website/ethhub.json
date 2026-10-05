@@ -1,0 +1,32 @@
+{
+  "subject": "website",
+  "ids": [
+    "cid:bafybeibiksiuod2y2hjuywoobfojmkddfhyzqrw4fgilha2nxnyzzisliq"
+  ],
+  "name": "EthHub",
+  "evaluated": "2026-10-05",
+  "trustlessity": {
+    "level": 2,
+    "privacy": false
+  },
+  "summary": "An old build of EthHub's community documentation, whose content is public (CC BY-SA 4.0). It is not Level 3: when it opens it loads Google Tag Manager and Google Analytics.",
+  "connections": [
+    {
+      "name": "Google Tag Manager and Google Analytics",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Loaded when the page opens, without asking."
+    },
+    {
+      "name": "Google Fonts",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Fetched when the page opens; tells Google the visit."
+    }
+  ],
+  "evidence": [
+    "https://github.com/ethhub-io/ethhub"
+  ]
+}

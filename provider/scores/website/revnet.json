@@ -1,0 +1,39 @@
+{
+  "subject": "website",
+  "ids": [
+    "cid:bafybeihf7nllybo3e2fb5c5etwc2dxvt5ydxbolnpjvfxo74sjtqi4n6ju"
+  ],
+  "name": "Revnet",
+  "evaluated": "2026-10-05",
+  "trustlessity": {
+    "level": 2,
+    "privacy": false
+  },
+  "summary": "Revnet's site, a page built with Planet's Croptop template, whose source is public (no licence file). It is not Level 3: when it opens it loads Plausible's analytics script. It also reads from public RPC endpoints and a testnet indexer.",
+  "connections": [
+    {
+      "name": "Plausible analytics (plausible.io)",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Loaded when the page opens, without asking."
+    },
+    {
+      "name": "RPC endpoints (eth.llamarpc.com, ethereum-sepolia-rpc.publicnode.com)",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Read without a light client."
+    },
+    {
+      "name": "Indexer (testnet.bendystraw.xyz)",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "One centralised source."
+    }
+  ],
+  "evidence": [
+    "https://github.com/Planetable/SiteTemplateCroptop"
+  ]
+}

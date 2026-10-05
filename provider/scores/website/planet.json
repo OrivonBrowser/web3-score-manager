@@ -1,0 +1,26 @@
+{
+  "subject": "website",
+  "ids": [
+    "cid:bafybeiaq7c7dnu3f5w5vrt5hblowwa5jaefz7tk2e72awx5f3q7gwsjska"
+  ],
+  "name": "Planet",
+  "evaluated": "2026-10-05",
+  "trustlessity": {
+    "level": 2,
+    "privacy": false
+  },
+  "summary": "A Planet-generated site published at planetable.eth, built with Planet's Plain template, whose source is public (no licence file). It is not Level 3: when it opens it loads Plausible's analytics script.",
+  "connections": [
+    {
+      "name": "Plausible analytics (plausible.io)",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Loaded when the page opens, without asking."
+    }
+  ],
+  "evidence": [
+    "https://github.com/Planetable/SiteTemplatePlain",
+    "https://github.com/Planetable/Planet"
+  ]
+}

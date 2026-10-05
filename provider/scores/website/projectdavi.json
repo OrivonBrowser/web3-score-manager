@@ -1,0 +1,25 @@
+{
+  "subject": "website",
+  "ids": [
+    "cid:bafybeibddbldzdbkzt3nudrnioalohygluxz432l3ganicivkaxkzzdiq4"
+  ],
+  "name": "Project DAVI",
+  "evaluated": "2026-10-05",
+  "trustlessity": {
+    "level": 3,
+    "privacy": false
+  },
+  "summary": "Project DAVI's landing page. Its source is public (no licence file) and it runs no third-party code, which is Level 3. It is not Level 4: when it opens it loads Bootstrap's stylesheet from jsDelivr and Google Fonts.",
+  "connections": [
+    {
+      "name": "Bootstrap stylesheet (cdn.jsdelivr.net) and Google Fonts",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Fetched when the page opens."
+    }
+  ],
+  "evidence": [
+    "https://github.com/DXgovernance/davi-landing-nextjs"
+  ]
+}

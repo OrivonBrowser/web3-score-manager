@@ -1,0 +1,25 @@
+{
+  "subject": "website",
+  "ids": [
+    "cid:bafybeih5gihptqlszwq2mdfuih3mllbwhu4a3gsvp57ywtmiexbjlemsvy"
+  ],
+  "name": "Gnosis VPN documentation",
+  "evaluated": "2026-10-05",
+  "trustlessity": {
+    "level": 3,
+    "privacy": false
+  },
+  "summary": "The Gnosis VPN documentation. Its source is public (no licence file) and it runs no third-party code, which is Level 3. It is not Level 4: when it opens it loads an icon font from jsDelivr.",
+  "connections": [
+    {
+      "name": "Tabler icon font (cdn.jsdelivr.net)",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Fetched when the page opens."
+    }
+  ],
+  "evidence": [
+    "https://github.com/gnosis/gnosis_vpn-docs"
+  ]
+}

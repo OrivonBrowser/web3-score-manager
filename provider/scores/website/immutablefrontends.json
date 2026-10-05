@@ -1,0 +1,39 @@
+{
+  "subject": "website",
+  "ids": [
+    "cid:bafybeic5icomycnns3layg3ihdeejxrdtgv2aixra4qf24wwgqwcqqw27y"
+  ],
+  "name": "Immutable Frontends",
+  "evaluated": "2026-10-05",
+  "trustlessity": {
+    "level": 2,
+    "privacy": false
+  },
+  "summary": "Immutable Frontends, a registry of verified decentralised frontends. Its source is public (no licence file). It is not Level 3: when it opens it loads a script from cdn.gpteng.co, the Lovable site builder's, which the user is not told about. Its registry data comes from The Graph's gateway.",
+  "connections": [
+    {
+      "name": "Lovable script (cdn.gpteng.co)",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Loaded when the page opens, without asking."
+    },
+    {
+      "name": "The Graph's gateway (gateway.thegraph.com)",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Registry data, read without proof."
+    },
+    {
+      "name": "Google Fonts",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Fetched when the page opens; tells Google the visit."
+    }
+  ],
+  "evidence": [
+    "https://github.com/gmkung/immutable-frontends"
+  ]
+}

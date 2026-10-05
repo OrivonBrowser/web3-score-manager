@@ -1,0 +1,25 @@
+{
+  "subject": "website",
+  "ids": [
+    "cid:bafybeig45aqpm4lzjmxkafiujwma6kpniiseuzec65em7hvbumsnsuc2eu"
+  ],
+  "name": "WebHash",
+  "evaluated": "2026-10-05",
+  "trustlessity": {
+    "level": 3,
+    "privacy": false
+  },
+  "summary": "WebHash's website. Its source is public (no licence file) and it runs no third-party code, which is Level 3. It is not Level 4: when it opens it loads Google Fonts and fetches a testimonials widget's settings from Senja.",
+  "connections": [
+    {
+      "name": "Google Fonts and wapi.senja.io",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Fetched when the page opens."
+    }
+  ],
+  "evidence": [
+    "https://github.com/WebHash-eth/website"
+  ]
+}

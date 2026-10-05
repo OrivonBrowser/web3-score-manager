@@ -1,0 +1,46 @@
+{
+  "subject": "website",
+  "ids": [
+    "cid:bafybeianiyelez5ncziqssvciyndefwp5fjeh6bmutu7gq3lf6coif4tle"
+  ],
+  "name": "Remix IDE",
+  "evaluated": "2026-10-05",
+  "trustlessity": {
+    "level": 2,
+    "privacy": false
+  },
+  "summary": "Remix IDE, open source (Apache-2.0). It is not Level 3: when it opens it loads Font Awesome's kit script from kit.fontawesome.com, third-party code with no integrity hash that the provider can change at any time. It also embeds an X timeline, and fetches compiler lists and plugin data from several hosts.",
+  "connections": [
+    {
+      "name": "Font Awesome kit (kit.fontawesome.com)",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "A script loaded when the page opens, without an integrity hash."
+    },
+    {
+      "name": "X timeline embed (platform.twitter.com)",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "A visible embed on the home tab."
+    },
+    {
+      "name": "Solidity compilers (binaries.soliditylang.org)",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Compiler list fetched when the page opens; a compiler is downloaded when one is used."
+    },
+    {
+      "name": "Plugin and news hosts (raw.githubusercontent.com, rss.remixproject.org)",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Fetched when the page opens."
+    }
+  ],
+  "evidence": [
+    "https://github.com/remix-project-org/remix-project"
+  ]
+}

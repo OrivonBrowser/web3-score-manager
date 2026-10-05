@@ -1,0 +1,32 @@
+{
+  "subject": "website",
+  "ids": [
+    "cid:bafybeihad3i5ia6l7rkjiucrlde2jakpluujhwd2n366ppy723uzun6qne"
+  ],
+  "name": "Fileverse Walkaway",
+  "evaluated": "2026-10-05",
+  "trustlessity": {
+    "level": 3,
+    "privacy": false
+  },
+  "summary": "Fileverse Walkaway, which recovers dDocs and dSheets when Fileverse's own apps are offline, open source (AGPL-3.0). It makes no request when it opens and runs no third-party code, which is Level 3. It is not Level 4: recovering documents reads the chain through public RPC endpoints (Gnosis Chain, Alchemy) and files through IPFS gateways.",
+  "connections": [
+    {
+      "name": "RPC endpoints (rpc.gnosischain.com, Alchemy)",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Used during recovery, without a light client."
+    },
+    {
+      "name": "IPFS gateways (gateway.ipfs.io, ipfs.io)",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Used during recovery."
+    }
+  ],
+  "evidence": [
+    "https://github.com/fileverse/walk-away"
+  ]
+}

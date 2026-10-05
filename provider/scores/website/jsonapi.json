@@ -1,0 +1,25 @@
+{
+  "subject": "website",
+  "ids": [
+    "cid:bafybeicn7yegbpc4l2lcazaa3czed6p6nnldsluizam6nrfphu6rujs37m"
+  ],
+  "name": "JSONAPI.ETH",
+  "evaluated": "2026-10-05",
+  "trustlessity": {
+    "level": 3,
+    "privacy": false
+  },
+  "summary": "The page of JSONAPI.ETH, an ENS resolver that answers onchain queries as JSON. Its source is public (no licence file) and it runs no third-party code, which is Level 3. It is not Level 4: a query runs through an RPC endpoint and the resolver's off-chain gateway, run by its authors, whose answers the page does not check.",
+  "connections": [
+    {
+      "name": "RPC endpoint and the resolver's gateway",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Used when a query is submitted."
+    }
+  ],
+  "evidence": [
+    "https://github.com/namesys-eth/jsonapi.eth"
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "subject": "website",
+  "ids": [
+    "cid:bafybeigd6em26itq3v6kz2gvwjnng6eygeb36ih7wrb32bh4mxdibcacwy"
+  ],
+  "name": "SmokeSignal",
+  "evaluated": "2026-10-05",
+  "trustlessity": {
+    "level": 2,
+    "privacy": false
+  },
+  "summary": "SmokeSignal, a forum whose posts are Ethereum transactions. Its source is public (no licence file). It is not Level 3: when it opens it loads Google Tag Manager and Facebook's tracking script. Posts are read from Infura and a Gnosis Chain RPC endpoint.",
+  "connections": [
+    {
+      "name": "Google Tag Manager and Facebook pixel",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Loaded when the page opens, without asking."
+    },
+    {
+      "name": "RPC endpoints (mainnet.infura.io, rpc.gnosischain.com)",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Read without a light client."
+    }
+  ],
+  "evidence": [
+    "https://github.com/team-toast/SmokeSignal"
+  ]
+}

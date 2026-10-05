@@ -1,0 +1,46 @@
+{
+  "subject": "website",
+  "ids": [
+    "cid:bafybeib77kqm53u6qpfczltq56iqbswwtgxqi435e4redd3cdgydkvtbui"
+  ],
+  "name": "CoW Swap",
+  "evaluated": "2026-10-05",
+  "trustlessity": {
+    "level": 2,
+    "privacy": false
+  },
+  "summary": "CoW Swap's trading app, open source (GPL-3.0). It is not Level 3: when it opens it loads third-party code nobody is told about: Google Tag Manager, Microsoft Clarity session replay, Reddit, X and Adform ad pixels, Sentry error reporting and LaunchDarkly feature flags. Quotes, orders and balances come from CoW Protocol's own servers and an Infura endpoint.",
+  "connections": [
+    {
+      "name": "Analytics, session replay and ad pixels (Google, Clarity, Reddit, X, Adform)",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Loaded when the page opens, without asking."
+    },
+    {
+      "name": "Error reporting and feature flags (Sentry, LaunchDarkly)",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Loaded when the page opens, without asking."
+    },
+    {
+      "name": "CoW Protocol APIs (api.cow.fi, bff.barn.cow.fi, cms.cow.fi)",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Quotes, orders and token data from the team's servers, trusted as given."
+    },
+    {
+      "name": "Ethereum RPC (mainnet.infura.io)",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Read without a light client."
+    }
+  ],
+  "evidence": [
+    "https://github.com/cowprotocol/cowswap"
+  ]
+}

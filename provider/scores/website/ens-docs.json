@@ -1,0 +1,32 @@
+{
+  "subject": "website",
+  "ids": [
+    "cid:bafybeibmcu52uovuzmmy3yugwcc77jkbbdl7q5yrq2a4yupmefjpnq2rva"
+  ],
+  "name": "ENS documentation",
+  "evaluated": "2026-10-05",
+  "trustlessity": {
+    "level": 2,
+    "privacy": false
+  },
+  "summary": "The ENS documentation, open source (CC0). It is not Level 3: when it opens it loads a documentation chatbot script from jsDelivr (@cookbookdev/docsbot) with no integrity hash, third-party code the user has not asked for. It also fetches the Solidity compiler list and loads Google Fonts.",
+  "connections": [
+    {
+      "name": "Docs chatbot script (cdn.jsdelivr.net, playgr.app)",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Loaded when the page opens, without an integrity hash."
+    },
+    {
+      "name": "Google Fonts and binaries.soliditylang.org",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Fetched when the page opens."
+    }
+  ],
+  "evidence": [
+    "https://github.com/ensdomains/docs"
+  ]
+}

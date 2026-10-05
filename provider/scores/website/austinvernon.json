@@ -1,0 +1,25 @@
+{
+  "subject": "website",
+  "ids": [
+    "cid:bafybeiddzfrkx5z7jifevmkbivd65kjm36l5g3zgn5qc23munkq3z7wxoe"
+  ],
+  "name": "Austin Vernon's blog",
+  "evaluated": "2026-10-05",
+  "trustlessity": {
+    "level": 3,
+    "privacy": false
+  },
+  "summary": "Austin Vernon's blog: plain HTML served as written, so its source is public, and it runs no script, which is Level 3. It is not Level 4: when it opens it loads images from Imgur.",
+  "connections": [
+    {
+      "name": "Imgur (i.imgur.com)",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Images fetched when the page opens."
+    }
+  ],
+  "evidence": [
+    "https://austinvernon.eth.limo/"
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "subject": "website",
+  "ids": [
+    "cid:bafybeigqyo555suvqi3scc2izft3mozskktbtkzs2xghoe2rpxetxbbdiq"
+  ],
+  "name": "Vitalik Buterin's blog",
+  "evaluated": "2026-10-05",
+  "trustlessity": {
+    "level": 3,
+    "privacy": false
+  },
+  "summary": "Vitalik Buterin's blog. Its source is public (the README dedicates the posts to the public under the WTFPL) and it runs no third-party code, which is Level 3. The home page makes no request of its own. It is not Level 4: some posts load images from other hosts (vitalik.ca, Medium's image server, Imgur, Wikimedia and others) when they are read.",
+  "connections": [
+    {
+      "name": "Images in some posts (vitalik.ca, Medium, Imgur, Wikimedia and others)",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Fetched when a post that uses them is opened."
+    }
+  ],
+  "evidence": [
+    "https://github.com/vbuterin/blog"
+  ]
+}

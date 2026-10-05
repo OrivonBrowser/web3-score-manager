@@ -1,0 +1,39 @@
+{
+  "subject": "website",
+  "ids": [
+    "cid:bafybeibzhmtxvo2bmi4e4apjuueb5ri7g5f2xn3wiyfrhjdm6vrpdksw4u"
+  ],
+  "name": "API3 DAO",
+  "evaluated": "2026-10-05",
+  "trustlessity": {
+    "level": 2,
+    "privacy": false
+  },
+  "summary": "The API3 DAO staking and voting dashboard. Its source is public (no licence file). It is not Level 3: when it opens, its wallet library loads WalletConnect's hidden verify frame, third-party code the user has not asked for. It also embeds a YouTube video and loads Google Fonts.",
+  "connections": [
+    {
+      "name": "WalletConnect verify frame and wallet list",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Loaded when the page opens, before any wallet is connected."
+    },
+    {
+      "name": "YouTube embed (youtube-nocookie.com)",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "A visible player on the page."
+    },
+    {
+      "name": "Google Fonts",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Fetched when the page opens; tells Google the visit."
+    }
+  ],
+  "evidence": [
+    "https://github.com/api3dao/api3-dao-dashboard"
+  ]
+}
