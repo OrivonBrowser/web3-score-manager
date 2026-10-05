@@ -1,0 +1,32 @@
+{
+  "subject": "website",
+  "ids": [
+    "cid:bafybeib35za7f5wgavowqj5upcfsuvurfso3gkoddrvmx5obxwi4dbltvy"
+  ],
+  "name": "AirSwap",
+  "evaluated": "2026-10-05",
+  "trustlessity": {
+    "level": 2,
+    "privacy": false
+  },
+  "summary": "AirSwap's web app, open source (MIT). It is not Level 3: when it opens it loads Google Tag Manager and Google Analytics, and fonts from Adobe Typekit. Trades settle on chain, but the app reads through hosted endpoints and makers' own servers.",
+  "connections": [
+    {
+      "name": "Google Tag Manager and Google Analytics",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Loaded when the page opens, without asking."
+    },
+    {
+      "name": "Adobe Typekit fonts (use.typekit.net)",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Fetched when the page opens; tells Adobe the visit."
+    }
+  ],
+  "evidence": [
+    "https://github.com/airswap/airswap-web"
+  ]
+}

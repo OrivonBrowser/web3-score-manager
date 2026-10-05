@@ -1,0 +1,29 @@
+{
+  "subject": "website",
+  "ids": [
+    "cid:bafybeihtdfdy5if4sebuvszhhmanq4obmqpeg2qptdwuv5vsdmmat43ory"
+  ],
+  "name": "Rekt",
+  "evaluated": "2026-10-05",
+  "trustlessity": {
+    "level": 2,
+    "privacy": false
+  },
+  "summary": "Rekt News. No public source was found for this site, and when it opens it loads Google Tag Manager, so it stays at Level 2.",
+  "connections": [
+    {
+      "name": "Google Tag Manager and Google Analytics",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Loaded when the page opens, without asking."
+    },
+    {
+      "name": "Google Fonts and images from raw.githubusercontent.com",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Fetched when the page opens."
+    }
+  ]
+}

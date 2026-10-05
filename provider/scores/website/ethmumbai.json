@@ -1,0 +1,22 @@
+{
+  "subject": "website",
+  "ids": [
+    "cid:bafybeieylhlp2msd7q2xs2kl5q4wal5ymkr6lyjonnogexuvhbx43huram"
+  ],
+  "name": "ETHMumbai",
+  "evaluated": "2026-10-05",
+  "trustlessity": {
+    "level": 2,
+    "privacy": false
+  },
+  "summary": "ETHMumbai's page for its March 2026 event. No public source matches this build, so it stays at Level 2. When it opens it loads Google Fonts and calls www.ethmumbai.in.",
+  "connections": [
+    {
+      "name": "Google Fonts and www.ethmumbai.in",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Fetched when the page opens."
+    }
+  ]
+}

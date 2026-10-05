@@ -1,0 +1,39 @@
+{
+  "subject": "website",
+  "ids": [
+    "cid:bafybeifkpmerpae2nxb7gfhceyg722rdtyjybmb3fi3ucc75uxqwaxbtga"
+  ],
+  "name": "Hop",
+  "evaluated": "2026-10-05",
+  "trustlessity": {
+    "level": 2,
+    "privacy": false
+  },
+  "summary": "Hop's bridge app, open source (MIT). It is not Level 3: when it opens it loads Google Tag Manager and Google Analytics. Chain state comes from public RPC endpoints (Ankr, 1RPC) and bridge data from Hop's subgraph, unchecked. hop.eth points to a DNSLink record on app.hop.exchange, so what the name serves follows whoever controls that domain's DNS.",
+  "connections": [
+    {
+      "name": "Google Tag Manager and Google Analytics",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Loaded when the page opens, without asking."
+    },
+    {
+      "name": "Public RPC endpoints (rpc.ankr.com, 1rpc.io)",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Read without a light client."
+    },
+    {
+      "name": "Google Fonts",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Fetched when the page opens; tells Google the visit."
+    }
+  ],
+  "evidence": [
+    "https://github.com/hop-protocol/hop"
+  ]
+}

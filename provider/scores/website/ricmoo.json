@@ -1,0 +1,26 @@
+{
+  "subject": "website",
+  "ids": [
+    "cid:bafybeihatfz6rspdshfqmo6wmvbvnzsobtwo26cyukniyanrmxrquxvvxy"
+  ],
+  "name": "RicMoo",
+  "evaluated": "2026-10-05",
+  "trustlessity": {
+    "level": 4,
+    "privacy": false
+  },
+  "summary": "Pac-Txt, a Pac-Man and Zork mash-up by RicMoo: one self-contained page served as written, so its source is readable in what it serves (an in-file notice licenses it CC BY-NC 3.0). It runs only its own code and makes no network request, opened or played.",
+  "operations": [
+    {
+      "name": "Play the game",
+      "trustlessity": {
+        "level": 4,
+        "privacy": true
+      },
+      "note": "Runs entirely on this computer."
+    }
+  ],
+  "evidence": [
+    "https://ricmoo.eth.limo/"
+  ]
+}

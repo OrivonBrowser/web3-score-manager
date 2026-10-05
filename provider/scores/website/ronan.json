@@ -1,0 +1,16 @@
+{
+  "subject": "website",
+  "ids": [
+    "cid:bafybeicdp4k4ygepdb3se65nc3dccpi3kj5wsjf22f23z56qfi3untvnma"
+  ],
+  "name": "Ronan Sandford",
+  "evaluated": "2026-10-05",
+  "trustlessity": {
+    "level": 4,
+    "privacy": false
+  },
+  "summary": "Ronan Sandford's personal site. Its source is public (no licence file) and it loads only its own files, on every page, so it makes no request beyond the site itself.",
+  "evidence": [
+    "https://github.com/wighawag/ronan-eth"
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "subject": "website",
+  "ids": [
+    "cid:bafybeiejnahivksp7lksmpfbl4anfsywx2zlqx2xlfch5xq5226iw3dvnq"
+  ],
+  "name": "IPLD",
+  "evaluated": "2026-10-05",
+  "trustlessity": {
+    "level": 3,
+    "privacy": false
+  },
+  "summary": "The IPLD website, open source (Apache-2.0 or MIT). Its only third-party code is a YouTube player visible on the page, which is Level 3. It is not Level 4: the player and Google Fonts load from Google when the page opens.",
+  "connections": [
+    {
+      "name": "YouTube embed (www.youtube.com)",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "A visible player on the page, loaded when it opens."
+    },
+    {
+      "name": "Google Fonts",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Fetched when the page opens; tells Google the visit."
+    }
+  ],
+  "evidence": [
+    "https://github.com/ipld/ipld"
+  ]
+}

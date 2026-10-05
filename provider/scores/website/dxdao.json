@@ -1,0 +1,22 @@
+{
+  "subject": "website",
+  "ids": [
+    "cid:bafybeidqll2xrx2o6e5zzvlifxvzpy7aopqjxojiccgvtpnl5frxalphvy"
+  ],
+  "name": "DXdao",
+  "evaluated": "2026-10-05",
+  "trustlessity": {
+    "level": 2,
+    "privacy": false
+  },
+  "summary": "DXdao's website and contributor hub. No public source was found for this site (a Gatsby build; DXdao's public repositories hold its other products), so it stays at Level 2. When it opens it reads figures from DefiLlama's API.",
+  "connections": [
+    {
+      "name": "DefiLlama API (api.llama.fi)",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "One centralised source, read when the page opens."
+    }
+  ]
+}

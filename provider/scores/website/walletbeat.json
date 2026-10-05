@@ -1,0 +1,26 @@
+{
+  "subject": "website",
+  "ids": [
+    "cid:bafybeiecddp4agiwwqbya5qji7tzlfnp3jksf4tbw4jeabrvitzluzljgm"
+  ],
+  "name": "Walletbeat",
+  "evaluated": "2026-10-05",
+  "trustlessity": {
+    "level": 4,
+    "privacy": false
+  },
+  "summary": "Walletbeat, ratings of Ethereum wallets for security and privacy, open source (MIT). Its data ships inside the site: across 80 of its pages it loads only its own files, runs no third-party code and makes no request beyond the site itself.",
+  "operations": [
+    {
+      "name": "Browse and compare wallet ratings",
+      "trustlessity": {
+        "level": 4,
+        "privacy": true
+      },
+      "note": "Runs on this computer; nothing is sent while browsing."
+    }
+  ],
+  "evidence": [
+    "https://github.com/walletbeat/walletbeat"
+  ]
+}

@@ -7,8 +7,8 @@
   "name": "FreeTube",
   "version": "0.25.3",
   "evaluated": "2026-10-05",
-  "trustlessity": { "level": 2, "privacy": false },
-  "summary": "A YouTube client without ads or an account, built from upstream's open source at a pinned commit. It is not Level 3: to play a video it runs YouTube's own code, the player's signature functions in a sandboxed frame with no network or storage, and Google's BotGuard in a youtube.com context, without asking each time. Every video, comment and channel comes from YouTube or an Invidious instance.",
+  "trustlessity": { "level": 3, "privacy": false },
+  "summary": "A YouTube client without ads or an account, built from upstream's open source at a pinned commit. To play a video it runs YouTube's own code: the player's signature functions in a sandboxed frame with no network or storage, and Google's BotGuard in a youtube.com context. The user knows this from Orivon's grant dialog, and using YouTube is why they open the app, so the consent is informed: Level 3. It is not Level 4: every video, comment and channel comes from YouTube or an Invidious instance.",
   "operations": [
     { "name": "Watch, search and read comments", "trustlessity": { "level": 2, "privacy": false }, "note": "The code does what it promises, but YouTube or the chosen Invidious instance decides what is served, and sees your IP address and what you watch." },
     { "name": "Keep subscriptions, history and playlists", "trustlessity": { "level": 4, "privacy": true }, "note": "Stored only in this app's own files on this computer, with no account." },

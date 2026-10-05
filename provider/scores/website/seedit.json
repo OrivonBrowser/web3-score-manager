@@ -1,0 +1,25 @@
+{
+  "subject": "website",
+  "ids": [
+    "cid:bafybeihsu5pjlof2xjrnfc7onqrsf4zjb4tgelcx44qo52uncelgeojeky"
+  ],
+  "name": "Seedit",
+  "evaluated": "2026-10-05",
+  "trustlessity": {
+    "level": 3,
+    "privacy": false
+  },
+  "summary": "Seedit, a peer-to-peer alternative to Reddit on the Plebbit protocol, open source (GPL-3.0). It runs no third-party code, which is Level 3. It is not Level 4: when it opens it reads its default community list from raw.githubusercontent.com, a file GitHub serves and nothing checks.",
+  "connections": [
+    {
+      "name": "Default community list (raw.githubusercontent.com)",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Fetched when the page opens."
+    }
+  ],
+  "evidence": [
+    "https://github.com/bitsocialnet/seedit"
+  ]
+}

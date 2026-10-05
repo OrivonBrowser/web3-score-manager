@@ -1,0 +1,16 @@
+{
+  "subject": "website",
+  "ids": [
+    "cid:bafybeifaacimfxna75ngyssypimjlegd4bduif7cnkbt3qv6re5g66pknm"
+  ],
+  "name": "v1rtl",
+  "evaluated": "2026-10-05",
+  "trustlessity": {
+    "level": 2,
+    "privacy": false
+  },
+  "summary": "v1rtl's blog. It makes no request beyond its own files, but its scripts are a minified build, and the source it links on Radicle could not be fetched from any seed on 2026-10-05, so public source is not established and it stays at Level 2.",
+  "evidence": [
+    "https://app.radicle.xyz/nodes/seed.radicle.garden/rad:z3iUqXqcRxvJLmfrj4VroqeS57ine"
+  ]
+}

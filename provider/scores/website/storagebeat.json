@@ -1,0 +1,25 @@
+{
+  "subject": "website",
+  "ids": [
+    "cid:bafybeiftl6ixglhmrh32nj4irw473t65vewmcupw72sx7ditzectuevv7i"
+  ],
+  "name": "StorageBeat",
+  "evaluated": "2026-10-05",
+  "trustlessity": {
+    "level": 3,
+    "privacy": false
+  },
+  "summary": "StorageBeat, a comparison of decentralised storage services, open source (MIT). It runs no third-party code, which is Level 3. It is not Level 4: when it opens it loads KaTeX's stylesheet from jsDelivr.",
+  "connections": [
+    {
+      "name": "KaTeX stylesheet (cdn.jsdelivr.net)",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Fetched when the page opens."
+    }
+  ],
+  "evidence": [
+    "https://github.com/uncloud-registry/StorageBeat"
+  ]
+}

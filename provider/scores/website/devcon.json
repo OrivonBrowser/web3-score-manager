@@ -1,0 +1,32 @@
+{
+  "subject": "website",
+  "ids": [
+    "cid:bafybeibj3porjg5eat6qayz7sn25a6rzfaqb3umg45sqlzpppshyrm22nq"
+  ],
+  "name": "Devcon",
+  "evaluated": "2026-10-05",
+  "trustlessity": {
+    "level": 3,
+    "privacy": false
+  },
+  "summary": "Devcon's link page at devcon.eth, open source (GPL-3.0). It runs no third-party code, which is Level 3. It is not Level 4: when it opens it reads links from devcon.org's API, images from Supabase and records from a public RPC endpoint.",
+  "connections": [
+    {
+      "name": "Devcon's API (devcon.org) and Supabase",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Content from servers the team runs, read when the page opens."
+    },
+    {
+      "name": "RPC endpoint (ethereum-rpc.publicnode.com) and euc.li",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Read without a light client."
+    }
+  ],
+  "evidence": [
+    "https://github.com/efdevcon/monorepo"
+  ]
+}

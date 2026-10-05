@@ -1,0 +1,25 @@
+{
+  "subject": "website",
+  "ids": [
+    "cid:bafybeihqxu6v2zzmmgl5gqlzpozu2ss6gh53idcdp7vnq5lccnjcxf3o3e"
+  ],
+  "name": "Greg Skriloff",
+  "evaluated": "2026-10-05",
+  "trustlessity": {
+    "level": 3,
+    "privacy": false
+  },
+  "summary": "Greg Skriloff's profile card: one hand-written page served as written, so its source is public, and it runs no third-party code, which is Level 3. It is not Level 4: when it opens it loads the profile picture from GitHub's avatar server.",
+  "connections": [
+    {
+      "name": "GitHub avatars (avatars.githubusercontent.com)",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Image fetched when the page opens."
+    }
+  ],
+  "evidence": [
+    "https://gregskril.eth.limo/"
+  ]
+}

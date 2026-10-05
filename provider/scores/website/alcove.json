@@ -1,0 +1,32 @@
+{
+  "subject": "website",
+  "ids": [
+    "cid:bafybeiae5xzocfz6zabhnozqiagexvcfj3qljcwgrzgnblzm3sfsmdmepu"
+  ],
+  "name": "Alcove",
+  "evaluated": "2026-10-05",
+  "trustlessity": {
+    "level": 3,
+    "privacy": false
+  },
+  "summary": "Alcove, an RSS reader, open source (MIT). It runs no third-party code, which is Level 3. It is not Level 4: when it opens it connects to its author's sync relays (relay.alcove.tools), and feeds are fetched through its author's proxies (proxy.alcove.tools), which see what you read.",
+  "connections": [
+    {
+      "name": "Sync relays (wss://relay.alcove.tools, wss://relay2.alcove.tools)",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Connected when the page opens."
+    },
+    {
+      "name": "Feed proxies (proxy.alcove.tools, proxy2.alcove.tools)",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Every feed is fetched through them."
+    }
+  ],
+  "evidence": [
+    "https://github.com/stevedylandev/alcove"
+  ]
+}

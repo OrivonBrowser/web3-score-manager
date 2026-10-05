@@ -1,0 +1,39 @@
+{
+  "subject": "website",
+  "ids": [
+    "cid:bafybeieiwbszcjx5j6z3373krzbxmzacbagathnsljtokpx62n5rfcqmr4"
+  ],
+  "name": "Swapr",
+  "evaluated": "2026-10-05",
+  "trustlessity": {
+    "level": 2,
+    "privacy": false
+  },
+  "summary": "Swapr's exchange app, open source (GPL-3.0); its README names swapr.eth as where releases are published. It is not Level 3: when it opens it loads Fathom's analytics script. It also reads from many endpoints at once: Infura and other RPCs, LI.FI, The Graph, Etherscan, token lists and an unpkg script host.",
+  "connections": [
+    {
+      "name": "Fathom analytics (cdn.usefathom.com)",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Loaded when the page opens, without asking."
+    },
+    {
+      "name": "RPC endpoints (Infura, Arbitrum, Gnosis Chain, MEV Blocker)",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Read without a light client."
+    },
+    {
+      "name": "Data services (li.quest, The Graph gateway, api.etherscan.io, token lists)",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Quotes, routes and token data, trusted as given."
+    }
+  ],
+  "evidence": [
+    "https://github.com/SwaprHQ/swapr-dapp"
+  ]
+}

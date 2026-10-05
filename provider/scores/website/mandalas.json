@@ -1,0 +1,25 @@
+{
+  "subject": "website",
+  "ids": [
+    "cid:bafybeigcm37dmt23dcsyd4akr22fbqj67g4zaaiez5jpgrvuqy2onwamga"
+  ],
+  "name": "Mandalas",
+  "evaluated": "2026-10-05",
+  "trustlessity": {
+    "level": 3,
+    "privacy": false
+  },
+  "summary": "Mandalas, onchain generative NFTs, open source (AGPL-3.0). It runs no third-party code, which is Level 3. It is not Level 4: when it opens it reads the chain through ethereum.etherplay.io, an RPC endpoint run by the author, without a light client.",
+  "connections": [
+    {
+      "name": "RPC endpoint (ethereum.etherplay.io)",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Read without a light client."
+    }
+  ],
+  "evidence": [
+    "https://github.com/wighawag/mandalas"
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "subject": "website",
+  "ids": [
+    "cid:bafybeiakrm2levbf5om4pjoarxznwpht6hvwtj4t3nft3db7brv3lglwvu"
+  ],
+  "name": "Weald Technology",
+  "evaluated": "2026-10-05",
+  "trustlessity": {
+    "level": 2,
+    "privacy": false
+  },
+  "summary": "Weald Technology's site. No public source was found: it is a generated site with a minified script, so it stays at Level 2. When it opens it loads Google Fonts and calls api.vireli.co.",
+  "connections": [
+    {
+      "name": "Google Fonts and api.vireli.co",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Fetched when the page opens."
+    }
+  ]
+}

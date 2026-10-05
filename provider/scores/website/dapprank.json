@@ -1,0 +1,25 @@
+{
+  "subject": "website",
+  "ids": [
+    "cid:bafybeicjwmvde4qnqkhewrxfabryushxwzfgy5uy4a2ur36cvopfw7rl2m"
+  ],
+  "name": "Dapp Rank",
+  "evaluated": "2026-10-05",
+  "trustlessity": {
+    "level": 3,
+    "privacy": false
+  },
+  "summary": "Dapp Rank, which rates dapps on censorship resistance, open source (GPL-3.0). It runs no third-party code, which is Level 3. It is not Level 4: when it opens, its own code reports the visit to Plausible.",
+  "connections": [
+    {
+      "name": "Plausible (plausible.io/api/event)",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Visit reported by the page's own code when it opens."
+    }
+  ],
+  "evidence": [
+    "https://github.com/stigmergic-org/dapprank"
+  ]
+}

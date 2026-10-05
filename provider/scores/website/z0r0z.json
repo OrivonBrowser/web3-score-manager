@@ -1,0 +1,25 @@
+{
+  "subject": "website",
+  "ids": [
+    "cid:bafkreicugs5dr24bh22zkwbr4655ocr5illdkstd5jd7ydbditjqeykysu"
+  ],
+  "name": "z0r0z",
+  "evaluated": "2026-10-05",
+  "trustlessity": {
+    "level": 3,
+    "privacy": false
+  },
+  "summary": "An essay by z0r0z on scaling Ethereum with singleton contracts: one hand-written page served as written, so its source is public, and it runs no script of its own or of others, which is Level 3. It is not Level 4: when it opens it loads images from the ipfs.io gateway and content.wrappr.wtf.",
+  "connections": [
+    {
+      "name": "Images (ipfs.io, content.wrappr.wtf)",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Fetched when the page opens."
+    }
+  ],
+  "evidence": [
+    "https://z0r0z.eth.limo/"
+  ]
+}

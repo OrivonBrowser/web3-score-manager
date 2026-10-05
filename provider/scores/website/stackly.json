@@ -1,0 +1,39 @@
+{
+  "subject": "website",
+  "ids": [
+    "cid:bafybeidpn53iznpgs5yr6gg2owog3jzxbk2hrk3oqyg6m4jufymgvrzyuq"
+  ],
+  "name": "Stackly",
+  "evaluated": "2026-10-05",
+  "trustlessity": {
+    "level": 2,
+    "privacy": false
+  },
+  "summary": "Stackly's recurring-purchase app on CoW Protocol. Its source is public (no licence file). It is not Level 3: when it opens it loads Fathom's analytics script. Token lists come from CoinGecko and chain data from a public RPC endpoint.",
+  "connections": [
+    {
+      "name": "Fathom analytics (cdn.usefathom.com)",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Loaded when the page opens, without asking."
+    },
+    {
+      "name": "Token list (tokens.coingecko.com)",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "One centralised source."
+    },
+    {
+      "name": "Public RPC endpoint (arbitrum-one-rpc.publicnode.com)",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Read without a light client."
+    }
+  ],
+  "evidence": [
+    "https://github.com/SwaprHQ/stackly-ui"
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "subject": "website",
+  "ids": [
+    "cid:bafybeiedkg5xxxysibyzr2bzobzkdap2gizrk7aq2mozjyqv5yk7uuk7uq"
+  ],
+  "name": "Resupply",
+  "evaluated": "2026-10-05",
+  "trustlessity": {
+    "level": 2,
+    "privacy": false
+  },
+  "summary": "Resupply's stablecoin app. No public source was found for this frontend: the project's public repository holds its smart contracts only, so it stays at Level 2. What it reaches after a wallet connects was not checked.",
+  "evidence": [
+    "https://github.com/resupplyfi/resupply"
+  ]
+}

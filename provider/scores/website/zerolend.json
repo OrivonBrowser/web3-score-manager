@@ -1,0 +1,16 @@
+{
+  "subject": "website",
+  "ids": [
+    "cid:bafybeibfvkztxjwtm6o6t56tsg27omyb5whqgvnnywzfback46wfl7khz4"
+  ],
+  "name": "ZeroLend",
+  "evaluated": "2026-10-05",
+  "trustlessity": {
+    "level": 2,
+    "privacy": false
+  },
+  "summary": "ZeroLend's lending app. The served build matches no public source: the only public frontend is an older, Aave-derived UI, so it stays at Level 2.",
+  "evidence": [
+    "https://github.com/zerolend/frontend-legacy"
+  ]
+}

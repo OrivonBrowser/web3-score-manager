@@ -1,0 +1,32 @@
+{
+  "subject": "website",
+  "ids": [
+    "cid:bafybeie3wqowzwcarfol7sfo27rbwi5ygstz2ucgbq7f6esgawnzumr7ru"
+  ],
+  "name": "Croptop",
+  "evaluated": "2026-10-05",
+  "trustlessity": {
+    "level": 2,
+    "privacy": false
+  },
+  "summary": "Croptop's site, a page built with Planet's Croptop template, whose source is public (no licence file). It is not Level 3: when it opens it loads Plausible's analytics script. It also reads from juicebox.center.",
+  "connections": [
+    {
+      "name": "Plausible analytics (plausible.io)",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Loaded when the page opens, without asking."
+    },
+    {
+      "name": "Juicebox data (juicebox.center)",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "One centralised source."
+    }
+  ],
+  "evidence": [
+    "https://github.com/Planetable/SiteTemplateCroptop"
+  ]
+}

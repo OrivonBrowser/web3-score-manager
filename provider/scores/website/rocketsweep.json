@@ -1,0 +1,32 @@
+{
+  "subject": "website",
+  "ids": [
+    "cid:bafybeifx45lmgm2nd36anj7wjvzcombx4d4vdb5cpqsvwvzg3za3ojgpnu"
+  ],
+  "name": "Rocket Sweep",
+  "evaluated": "2026-10-05",
+  "trustlessity": {
+    "level": 2,
+    "privacy": false
+  },
+  "summary": "Rocket Sweep, a tool for Rocket Pool node operators, open source (MIT). It is not Level 3: when it opens, its wallet library loads WalletConnect's hidden verify frame, third-party code the user has not asked for. Chain data comes from an Alchemy key built into the bundle and Cloudflare's Ethereum endpoint.",
+  "connections": [
+    {
+      "name": "WalletConnect verify frame and wallet list",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Loaded when the page opens, before any wallet is connected."
+    },
+    {
+      "name": "RPC endpoints (eth-mainnet.alchemyapi.io, cloudflare-eth.com)",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Read without a light client."
+    }
+  ],
+  "evidence": [
+    "https://github.com/dmccartney/rocketsweep"
+  ]
+}

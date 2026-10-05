@@ -1,0 +1,39 @@
+{
+  "subject": "website",
+  "ids": [
+    "cid:bafybeidh6kbbkbqqjnbzg3lpwyl4iljwiiiz4crircphztlpph7watuzo4"
+  ],
+  "name": "OpenScan",
+  "evaluated": "2026-10-05",
+  "trustlessity": {
+    "level": 3,
+    "privacy": false
+  },
+  "summary": "OpenScan, a block explorer for Bitcoin and EVM networks, open source (MIT). It runs no third-party code, which is Level 3. It is not Level 4: when it opens it queries dozens of public RPC endpoints and Bitcoin APIs, contacts WalletConnect and loads Google Fonts. The endpoints can be changed in its settings, but the defaults are not checked against the chain.",
+  "connections": [
+    {
+      "name": "Public RPC endpoints and Bitcoin APIs (drpc, publicnode, mempool.space, others)",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Queried when the page opens, without a light client."
+    },
+    {
+      "name": "RPC list (cdn.jsdelivr.net) and OpenScan's proxy (openscan.workers.dev)",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Fetched when the page opens."
+    },
+    {
+      "name": "WalletConnect's servers and Google Fonts",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Contacted when the page opens."
+    }
+  ],
+  "evidence": [
+    "https://github.com/openscan-explorer/explorer"
+  ]
+}

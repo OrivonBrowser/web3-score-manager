@@ -1,0 +1,16 @@
+{
+  "subject": "website",
+  "ids": [
+    "cid:bafybeid5mst6zvo7gya4pt24iq2q2w75ad3pyr4rlsrcg4jj5ug4elxvhu"
+  ],
+  "name": "ENS Interviews",
+  "evaluated": "2026-10-05",
+  "trustlessity": {
+    "level": 4,
+    "privacy": false
+  },
+  "summary": "ENS Interviews, a static site built with Spheron's site builder. It serves its scripts with their source maps, so their source is readable in what it serves, and it loads only its own files, so it makes no request beyond the site itself.",
+  "evidence": [
+    "https://ensinterviews.eth.limo/"
+  ]
+}

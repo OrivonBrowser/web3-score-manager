@@ -1,0 +1,16 @@
+{
+  "subject": "website",
+  "ids": [
+    "cid:bafybeiai4km4vbq3ecjgzp2paz7plvwjszhjwmeyp6ekm72dfbwrdxfq3y"
+  ],
+  "name": "IPFS blog",
+  "evaluated": "2026-10-05",
+  "trustlessity": {
+    "level": 3,
+    "privacy": false
+  },
+  "summary": "A build of the IPFS blog, open source (MIT). Its home page runs no third-party code and makes no request beyond its own files, which is Level 3. It is not judged Level 4: many of its files, posts and sitemap included, could not be fetched from IPFS on 2026-10-05, so what they load could not be checked.",
+  "evidence": [
+    "https://github.com/ipfs/ipfs-blog"
+  ]
+}

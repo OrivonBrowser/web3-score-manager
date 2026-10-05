@@ -1,0 +1,25 @@
+{
+  "subject": "website",
+  "ids": [
+    "cid:bafybeiapygr75kndtqcjgirmjj6bxfvijiswjjby5hehymzfir7e3dobgy"
+  ],
+  "name": "Reality.eth",
+  "evaluated": "2026-10-05",
+  "trustlessity": {
+    "level": 3,
+    "privacy": false
+  },
+  "summary": "Reality.eth, the crowd-sourced oracle's app, open source (GPL-3.0). It runs no third-party code, which is Level 3. It is not Level 4: when it opens it reads the question list from an indexer, indexer.reality.gwei.name, without proof.",
+  "connections": [
+    {
+      "name": "Indexer (indexer.reality.gwei.name)",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Question lists, read when the page opens, without proof."
+    }
+  ],
+  "evidence": [
+    "https://github.com/RealityETH/monorepo"
+  ]
+}

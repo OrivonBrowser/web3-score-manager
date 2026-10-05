@@ -1,0 +1,32 @@
+{
+  "subject": "website",
+  "ids": [
+    "cid:bafybeiho37vhh7qnzrs2drjuasagbebojgbx7467ag5aktifdhhz7smc2q"
+  ],
+  "name": "ENS",
+  "evaluated": "2026-10-05",
+  "trustlessity": {
+    "level": 2,
+    "privacy": false
+  },
+  "summary": "The ENS manager app, open source (MIT). It is not Level 3: when it opens it loads Plausible's analytics script, Intercom's chat widget and WalletConnect's hidden verify frame. Names are read from the ENS subgraph and RPC endpoints.",
+  "connections": [
+    {
+      "name": "Plausible analytics and Intercom chat widget",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Loaded when the page opens, without asking."
+    },
+    {
+      "name": "WalletConnect verify frame (verify.walletconnect.com)",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Loaded when the page opens, before any wallet is connected."
+    }
+  ],
+  "evidence": [
+    "https://github.com/ensdomains/ens-app-v3"
+  ]
+}

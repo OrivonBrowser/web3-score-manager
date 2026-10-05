@@ -1,0 +1,25 @@
+{
+  "subject": "website",
+  "ids": [
+    "cid:bafybeie35n6rokcysg6e7vfwhebxgrbrdmnnla4qjvqby7vn3yups3ldqa"
+  ],
+  "name": "Eternal Safe",
+  "evaluated": "2026-10-05",
+  "trustlessity": {
+    "level": 3,
+    "privacy": false
+  },
+  "summary": "Eternal Safe, a decentralised fork of the Safe{Wallet} interface, open source (GPL-3.0). It makes no request when it opens and runs no third-party code, which is Level 3. It is not Level 4: once a network is chosen, Safe accounts are read through public RPC endpoints (Infura, Ankr and others) by default, without a light client. A custom endpoint can be set.",
+  "connections": [
+    {
+      "name": "Public RPC endpoints (Infura, Ankr, Gateway.fm and others)",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Used once a network is chosen, without a light client."
+    }
+  ],
+  "evidence": [
+    "https://github.com/eternalsafe/wallet"
+  ]
+}
