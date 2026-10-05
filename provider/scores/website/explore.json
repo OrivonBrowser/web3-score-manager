@@ -3,12 +3,12 @@
   "ids": [
     "sha256:739104174fe1b4f7be455a8064b08d90558199a80f20920bdb7780d0e91f894b",
     "cid:bafybeicg4s7kkkeul4lyvwjqe4lkawsbaepbedkssvqloqzbnjl3xokgoe",
-    "sha256:cf814bb962ef4b72f43b8856d196134101a312f35bfeb487def4189ad7110625",
-    "cid:bafybeibf332zhpwiknyrjxsd56clbwpeyo5prhv2ajifqlggsejzlt6elq",
     "sha256:b59e6d9c42c49e4c356c6e94f5c273bc68c496c3c113f369e1297ddf9230a47c",
     "cid:bafybeievzpsoadqx6z3yi64lzr5xgs32bw3nw4h4z5g23oigt4c4n6bwxe",
     "sha256:771b557ab29b70fcfcdd0721afcb45c6147c1fa164463d8fd73d58f17d444e41",
-    "cid:bafybeica56tiqcyvfqksgovthkk2zp3ziv7g4pjc6tbj5cutdyceba6dby"
+    "cid:bafybeica56tiqcyvfqksgovthkk2zp3ziv7g4pjc6tbj5cutdyceba6dby",
+    "sha256:b2b403906e917d2a0bd04b462f4ae06f96af65b312f54073ffc3654adb85624f",
+    "cid:bafybeic3rot25ddsjuvocas3xkzk35l25zmsflrc3ij2ufu2p47wzht2de"
   ],
   "name": "Orivon Explore",
   "version": "0.1.0",
