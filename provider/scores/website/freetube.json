@@ -1,0 +1,24 @@
+{
+  "subject": "website",
+  "ids": [
+    "sha256:1a5c364ac84a157a3059ad31fec6cb862afd9db79b2e03c770a9da008bc6979b",
+    "cid:bafybeigcdsumr4jo4j6gxqbg33sd2e3kylnbxqrmepub7iwp3fwjftgoue"
+  ],
+  "name": "FreeTube",
+  "version": "0.25.3",
+  "evaluated": "2026-10-05",
+  "trustlessity": { "level": 2, "privacy": false },
+  "summary": "A YouTube client without ads or an account, built from upstream's open source at a pinned commit. It is not Level 3: to play a video it runs YouTube's own code, the player's signature functions in a sandboxed frame with no network or storage, and Google's BotGuard in a youtube.com context, without asking each time. Every video, comment and channel comes from YouTube or an Invidious instance.",
+  "operations": [
+    { "name": "Watch, search and read comments", "trustlessity": { "level": 2, "privacy": false }, "note": "The code does what it promises, but YouTube or the chosen Invidious instance decides what is served, and sees your IP address and what you watch." },
+    { "name": "Keep subscriptions, history and playlists", "trustlessity": { "level": 4, "privacy": true }, "note": "Stored only in this app's own files on this computer, with no account." },
+    { "name": "Refresh the subscription feed", "trustlessity": { "level": 2, "privacy": false }, "note": "Each subscribed channel is fetched from YouTube or Invidious, which can link the list to your IP address." }
+  ],
+  "connections": [
+    { "name": "YouTube (youtubei.googleapis.com, www.youtube.com, image hosts)", "trustlessity": { "level": 1, "privacy": false }, "note": "Google's servers. Answers cannot be checked against anything else." },
+    { "name": "Invidious instances", "trustlessity": { "level": 1, "privacy": false }, "note": "Independent proxies of YouTube, used when chosen or as a fallback. Each sees your requests." },
+    { "name": "SponsorBlock (sponsor.ajay.app)", "trustlessity": { "level": 1, "privacy": false }, "note": "Crowd-sourced segment data, when turned on. Asked by a hash prefix of the video id." },
+    { "name": "Return YouTube Dislike", "trustlessity": { "level": 1, "privacy": false }, "note": "Estimated dislike counts from one service, when turned on." }
+  ],
+  "evidence": ["https://github.com/FreeTubeApp/FreeTube", "https://github.com/OrivonBrowser/orivon-ports/tree/main/apps/freetube"]
+}
