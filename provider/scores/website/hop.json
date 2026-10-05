@@ -9,7 +9,7 @@
     "level": 2,
     "privacy": false
   },
-  "summary": "Hop's bridge app, open source (MIT). It is not Level 3: when it opens it loads Google Tag Manager and Google Analytics. Chain state comes from public RPC endpoints (Ankr, 1RPC) and bridge data from Hop's subgraph, unchecked. hop.eth points to a DNSLink on app.hop.exchange, so what the name serves follows a DNS record Hop controls.",
+  "summary": "Hop's bridge app, open source (MIT). It is not Level 3: when it opens it loads Google Tag Manager and Google Analytics. Chain state comes from public RPC endpoints (Ankr, 1RPC) and bridge data from Hop's subgraph, unchecked. hop.eth points to a DNSLink record on app.hop.exchange, so what the name serves follows whoever controls that domain's DNS.",
   "connections": [
     {
       "name": "Google Tag Manager and Google Analytics",
