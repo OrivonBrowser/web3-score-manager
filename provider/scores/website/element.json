@@ -1,0 +1,26 @@
+{
+  "subject": "website",
+  "ids": [
+    "sha256:a42796bc8b56a0b3e06d2e76d1e2aac76e99e8e09d5b65d2045f7bec508bae57",
+    "cid:bafybeifbqmphucl4qe3vpuhnwlyk2pusmdnv5vjs4xumvmshdttrdg2p64"
+  ],
+  "name": "Element",
+  "version": "1.12.29",
+  "evaluated": "2026-10-05",
+  "trustlessity": { "level": 3, "privacy": false },
+  "summary": "A Matrix chat client, built from upstream's open source at a pinned commit. Third-party code (widgets, the integration manager, calls) loads only in frames the person opens or accepts, which is Level 3. It is not Level 4: the homeserver holds the account and delivers every message, and it can refuse, delay or drop them. Encryption keeps message content in encrypted rooms from the servers, not who talks to whom.",
+  "operations": [
+    { "name": "Send and receive messages", "trustlessity": { "level": 2, "privacy": false }, "note": "The code does what it promises. In encrypted rooms the servers cannot read or forge messages, but they see who talks to whom and when, and can withhold delivery." },
+    { "name": "Your account", "trustlessity": { "level": 2, "privacy": false }, "note": "Held by the homeserver you sign in to (matrix.org unless you choose another), which can suspend or remove it." },
+    { "name": "Keep encryption keys and history", "trustlessity": { "level": 4, "privacy": false }, "note": "Stored in this site's browser storage on this computer. The key that protects them sits in the same storage, not in the system keyring." }
+  ],
+  "connections": [
+    { "name": "Matrix homeserver (matrix.org by default)", "trustlessity": { "level": 1, "privacy": false }, "note": "Rooms, members and history come from the homeserver, which the client trusts as given. It also sees your IP address." },
+    { "name": "Identity server (vector.im)", "trustlessity": { "level": 1, "privacy": false }, "note": "Used when you look someone up by email or phone number." },
+    { "name": "Integrations and widgets (scalar.vector.im)", "trustlessity": { "level": 1, "privacy": false }, "note": "Third-party services, loaded when you open the integration manager or accept a widget." },
+    { "name": "Usage analytics (posthog.element.io)", "trustlessity": { "level": 1, "privacy": false }, "note": "Off unless you agree to share it when asked." },
+    { "name": "Location maps (api.maptiler.com)", "trustlessity": { "level": 1, "privacy": false }, "note": "Map tiles, fetched when you share or view a location." },
+    { "name": "Bug reports (rageshakes.element.io)", "trustlessity": { "level": 1, "privacy": false }, "note": "Sent only when you submit one, with the logs you choose to include." }
+  ],
+  "evidence": ["https://github.com/element-hq/element-web", "https://spec.matrix.org", "https://github.com/OrivonBrowser/orivon-ports/tree/main/apps/element"]
+}

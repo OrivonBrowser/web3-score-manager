@@ -1,0 +1,17 @@
+{
+  "subject": "website",
+  "ids": [
+    "sha256:d14cc7e8255993af3c0e9e103b9fb7ece94e60dca47f3215621d125ff8964b72",
+    "cid:bafybeifswtpznor64py5vd5gm5gu26auju4gc23dqxt4waxlyigtgcbweu"
+  ],
+  "name": "AirGap Vault",
+  "version": "3.34.4",
+  "evaluated": "2026-10-05",
+  "trustlessity": { "level": 4, "privacy": false },
+  "summary": "An offline signer, built from upstream's open source at a pinned commit. It runs only its own bundled code and makes no network request: every file it loads comes from its own tree. In Orivon it creates and shows accounts but cannot sign, because QR scanning and clipboard reading are refused to every site. It is designed for a phone kept offline; this computer is not.",
+  "operations": [
+    { "name": "Create or import a secret", "trustlessity": { "level": 4, "privacy": false }, "note": "Generated from touch, dice, coin flips or a typed mnemonic, and kept in this site's browser storage on this computer. No other party takes part." },
+    { "name": "Derive and show accounts", "trustlessity": { "level": 4, "privacy": true }, "note": "Computed on this computer, WebAssembly included, with nothing sent anywhere." }
+  ],
+  "evidence": ["https://github.com/airgap-it/airgap-vault", "https://github.com/OrivonBrowser/orivon-ports/tree/main/apps/airgap-vault"]
+}

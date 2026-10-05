@@ -1,0 +1,18 @@
+{
+  "subject": "website",
+  "ids": [
+    "sha256:739104174fe1b4f7be455a8064b08d90558199a80f20920bdb7780d0e91f894b",
+    "cid:bafybeicg4s7kkkeul4lyvwjqe4lkawsbaepbedkssvqloqzbnjl3xokgoe",
+    "sha256:cf814bb962ef4b72f43b8856d196134101a312f35bfeb487def4189ad7110625",
+    "cid:bafybeibf332zhpwiknyrjxsd56clbwpeyo5prhv2ajifqlggsejzlt6elq"
+  ],
+  "name": "Orivon Explore",
+  "version": "0.1.0",
+  "evaluated": "2026-10-05",
+  "trustlessity": { "level": 4, "privacy": false },
+  "summary": "Orivon's directory of Web3 sites, open source, and judged here by its own publisher. It runs only its own files and makes no network request: the directory ships inside the page. Which sites it lists, and at which address, is the publisher's choice, fixed in each build.",
+  "operations": [
+    { "name": "Browse and filter the directory", "trustlessity": { "level": 4, "privacy": true }, "note": "Runs entirely on this computer. Nothing is sent while you browse." }
+  ],
+  "evidence": ["https://github.com/OrivonBrowser/orivon-ports/tree/main/apps/explore"]
+}
