@@ -6,7 +6,9 @@
     "sha256:cf814bb962ef4b72f43b8856d196134101a312f35bfeb487def4189ad7110625",
     "cid:bafybeibf332zhpwiknyrjxsd56clbwpeyo5prhv2ajifqlggsejzlt6elq",
     "sha256:b59e6d9c42c49e4c356c6e94f5c273bc68c496c3c113f369e1297ddf9230a47c",
-    "cid:bafybeievzpsoadqx6z3yi64lzr5xgs32bw3nw4h4z5g23oigt4c4n6bwxe"
+    "cid:bafybeievzpsoadqx6z3yi64lzr5xgs32bw3nw4h4z5g23oigt4c4n6bwxe",
+    "sha256:771b557ab29b70fcfcdd0721afcb45c6147c1fa164463d8fd73d58f17d444e41",
+    "cid:bafybeica56tiqcyvfqksgovthkk2zp3ziv7g4pjc6tbj5cutdyceba6dby"
   ],
   "name": "Orivon Explore",
   "version": "0.1.0",
