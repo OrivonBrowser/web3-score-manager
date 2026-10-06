@@ -2,7 +2,9 @@
   "subject": "website",
   "ids": [
     "sha256:a42796bc8b56a0b3e06d2e76d1e2aac76e99e8e09d5b65d2045f7bec508bae57",
-    "cid:bafybeifbqmphucl4qe3vpuhnwlyk2pusmdnv5vjs4xumvmshdttrdg2p64"
+    "cid:bafybeifbqmphucl4qe3vpuhnwlyk2pusmdnv5vjs4xumvmshdttrdg2p64",
+    "sha256:c3c7f8f8227a5b6127e6622864ec9d6c0bc4180c87032e0df4b897f0cf961247",
+    "cid:bafybeiejev3mbko3dqbjoihrvctufjikokb6ql5zobt47ok5vtjcyh3ig4"
   ],
   "name": "Element",
   "version": "1.12.29",

@@ -2,7 +2,9 @@
   "subject": "website",
   "ids": [
     "sha256:1a5c364ac84a157a3059ad31fec6cb862afd9db79b2e03c770a9da008bc6979b",
-    "cid:bafybeigcdsumr4jo4j6gxqbg33sd2e3kylnbxqrmepub7iwp3fwjftgoue"
+    "cid:bafybeigcdsumr4jo4j6gxqbg33sd2e3kylnbxqrmepub7iwp3fwjftgoue",
+    "sha256:ea1b1efc01afefd73f654521e1fb4d5ce77471d9c5f2c72f24a5df9a84e2e40a",
+    "cid:bafybeihy4h5vkixrhepxqsizvoh4nuyopc2j7ypp7rk4zkxr23lvdilnzq"
   ],
   "name": "FreeTube",
   "version": "0.25.3",
