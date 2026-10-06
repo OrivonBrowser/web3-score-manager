@@ -24,7 +24,7 @@ const LABELS: Record<Subject, Record<number, string>> = {
 };
 
 const PRIVACY: Record<Subject, string> = {
-  website: "every activity, including connections and operations, is reasonably privacy preserving, and the user is warned of a risky action",
+  website: "every activity, including connections and operations, is privacy preserving; no connection shows the user to another party, even with consent",
   operation: "reasonably untrackable and indecipherable without user consent",
   connection: "gives reasonable anonymity",
 };

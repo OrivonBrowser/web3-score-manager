@@ -13,8 +13,8 @@
   "name": "Orivon Explore",
   "version": "0.1.0",
   "evaluated": "2026-10-05",
-  "trustlessity": { "level": 4, "privacy": true },
-  "summary": "Orivon's directory of Web3 sites, open source, and judged here by its own publisher. It runs only its own files and makes no network request: the directory ships inside the page. Which sites it lists, and at which address, is the publisher's choice, fixed in each build.",
+  "trustlessity": { "level": 4, "privacy": false },
+  "summary": "Orivon's directory of Web3 sites, open source, and judged here by its own publisher. The page sends no request itself: the directory and a dated snapshot of judgements ship inside it. It is not private: a visitor who grants trust.score has Orivon resolve every listed .eth name and ask their Web3 Score provider about every listed site, which shows the provider their IP address and that they opened Explore. Which sites it lists is the publisher's choice, fixed in each build.",
   "operations": [
     { "name": "Browse and filter the directory", "trustlessity": { "level": 4, "privacy": true }, "note": "Runs entirely on this computer. Nothing is sent while you browse." }
   ],
