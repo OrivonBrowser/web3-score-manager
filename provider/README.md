@@ -87,11 +87,22 @@ so the consent is willing and aware.
 
 ## How Attila applies Level 4 + privacy
 
-Set `"privacy": true` when every activity is reasonably privacy preserving: the site makes no
-request beyond its own files, or warns before the one action that does, as James Carnley's page
-does for YouTube. Fetching the site's own files from IPFS does not count against it. A Level 4
-site whose ordinary use shows the user to a server is not private: FreeTube, The Lounge and
-Element are Level 4 without privacy.
+Privacy is non-negotiable: consent does not buy an exception. Set `"privacy": true` only when no
+connection the site causes can show the user to another party. A connection without a proxy or
+another form of anonymity shows their IP address and what they do, so it is not privacy
+preserving even when the user asked for it after a warning. A warning is enough only for a risky
+action the user takes themselves, such as publishing something under their name, never for a
+connection. The site's own files, which Orivon fetches the same way for every site, do not count.
+
+- AirGap Vault, Walletbeat, ronan.eth, raffy.eth, ricmoo.eth and ENS Interviews connect to nothing
+  beyond their own files: Level 4 with privacy.
+- James Carnley's page warns before a video loads from YouTube, but YouTube then sees the reader's
+  IP address: Level 4 without privacy.
+- Orivon Explore sends no request itself, but a visitor who grants `trust.score` has Orivon resolve
+  every listed `.eth` name and ask their Web3 Score provider about every listed site, which shows
+  the provider their IP address and that they opened Explore: Level 4 without privacy.
+- FreeTube, The Lounge and Element show the user to YouTube, the IRC networks and the homeserver:
+  Level 4 without privacy.
 
 ## How to check a site
 

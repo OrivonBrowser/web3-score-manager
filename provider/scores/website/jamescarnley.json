@@ -7,9 +7,9 @@
   "evaluated": "2026-10-05",
   "trustlessity": {
     "level": 4,
-    "privacy": true
+    "privacy": false
   },
-  "summary": "James Carnley's homepage, open source (MIT). It loads only its own files. Its videos are the one connection elsewhere, and the page says so: pressing play loads the video from YouTube, and until then nothing on the page talks to Google.",
+  "summary": "James Carnley's homepage, open source (MIT). It loads only its own files. Its videos are the one connection elsewhere, and the page says so: pressing play loads the video from YouTube, and until then nothing on the page talks to Google. That keeps it Level 4. It is not private: once a video plays, YouTube sees the reader's IP address, with no proxy in between.",
   "connections": [
     {
       "name": "YouTube videos",
