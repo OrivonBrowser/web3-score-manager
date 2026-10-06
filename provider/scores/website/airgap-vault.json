@@ -2,7 +2,9 @@
   "subject": "website",
   "ids": [
     "sha256:d14cc7e8255993af3c0e9e103b9fb7ece94e60dca47f3215621d125ff8964b72",
-    "cid:bafybeifswtpznor64py5vd5gm5gu26auju4gc23dqxt4waxlyigtgcbweu"
+    "cid:bafybeifswtpznor64py5vd5gm5gu26auju4gc23dqxt4waxlyigtgcbweu",
+    "sha256:c42dcbe06faf241d2606130d150c4345dfff348729d67947b406b3c6c48f1e53",
+    "cid:bafybeicqymfv47eg7aphl3luwen3tpdosb622m7kwsnt4rkfacagnpbymu"
   ],
   "name": "AirGap Vault",
   "version": "3.34.4",

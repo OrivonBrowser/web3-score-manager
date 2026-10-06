@@ -2,7 +2,9 @@
   "subject": "website",
   "ids": [
     "sha256:26054c511f3394b66c6a022a48d82e559d637ac4b111657482ec6b7a7447fbcf",
-    "cid:bafybeiek2i5n7n7ksldz6lc56jeku5fwsttj6jv7l527dhrlxwdnw4lpty"
+    "cid:bafybeiek2i5n7n7ksldz6lc56jeku5fwsttj6jv7l527dhrlxwdnw4lpty",
+    "sha256:40cfd32f0f42cbdcd27c490ebf359101cd9e266657c3c8db04c736be3bb3ad64",
+    "cid:bafybeiapptln3qdfg2ubwh7lxj6zgxc3s3fc4qb7k3wucfcq7tbqdp7h3u"
   ],
   "name": "ASGARDEX",
   "version": "1.45.3",
