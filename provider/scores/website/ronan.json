@@ -7,7 +7,7 @@
   "evaluated": "2026-10-05",
   "trustlessity": {
     "level": 4,
-    "privacy": false
+    "privacy": true
   },
   "summary": "Ronan Sandford's personal site. Its source is public (no licence file) and it loads only its own files, on every page, so it makes no request beyond the site itself.",
   "evidence": [

@@ -7,7 +7,7 @@
   "name": "AirGap Vault",
   "version": "3.34.4",
   "evaluated": "2026-10-05",
-  "trustlessity": { "level": 4, "privacy": false },
+  "trustlessity": { "level": 4, "privacy": true },
   "summary": "An offline signer, built from upstream's open source at a pinned commit. It runs only its own bundled code and makes no network request: every file it loads comes from its own tree. In Orivon it creates and shows accounts but cannot sign, because QR scanning and clipboard reading are refused to every site. It is designed for a phone kept offline; this computer is not.",
   "operations": [
     { "name": "Create or import a secret", "trustlessity": { "level": 4, "privacy": false }, "note": "Generated from touch, dice, coin flips or a typed mnemonic, and kept in this site's browser storage on this computer. No other party takes part." },

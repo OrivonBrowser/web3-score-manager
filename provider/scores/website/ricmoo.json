@@ -7,7 +7,7 @@
   "evaluated": "2026-10-05",
   "trustlessity": {
     "level": 4,
-    "privacy": false
+    "privacy": true
   },
   "summary": "Pac-Txt, a Pac-Man and Zork mash-up by RicMoo: one self-contained page served as written, so its source is readable in what it serves (an in-file notice licenses it CC BY-NC 3.0). It runs only its own code and makes no network request, opened or played.",
   "operations": [

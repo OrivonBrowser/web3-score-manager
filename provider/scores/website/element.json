@@ -7,8 +7,8 @@
   "name": "Element",
   "version": "1.12.29",
   "evaluated": "2026-10-05",
-  "trustlessity": { "level": 3, "privacy": false },
-  "summary": "A Matrix chat client, built from upstream's open source at a pinned commit. Third-party code (widgets, the integration manager, calls) loads only in frames the person opens or accepts, which is Level 3. It is not Level 4: the homeserver holds the account and delivers every message, and it can refuse, delay or drop them. Encryption keeps message content in encrypted rooms from the servers, not who talks to whom.",
+  "trustlessity": { "level": 4, "privacy": false },
+  "summary": "A Matrix chat client, built from upstream's open source at a pinned commit. Third-party code (widgets, the integration manager, calls) loads only in frames the person opens or accepts. The homeserver the user signs in to holds the account and delivers every message, which a user clearly knows; encryption keys stay on this computer, and the other services are used only on the user's action or consent. That is Level 4 under the exception for evident trust. Not private: servers see who talks to whom and when.",
   "operations": [
     { "name": "Send and receive messages", "trustlessity": { "level": 2, "privacy": false }, "note": "The code does what it promises. In encrypted rooms the servers cannot read or forge messages, but they see who talks to whom and when, and can withhold delivery." },
     { "name": "Your account", "trustlessity": { "level": 2, "privacy": false }, "note": "Held by the homeserver you sign in to (matrix.org unless you choose another), which can suspend or remove it." },

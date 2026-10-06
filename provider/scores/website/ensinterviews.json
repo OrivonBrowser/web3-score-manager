@@ -7,7 +7,7 @@
   "evaluated": "2026-10-05",
   "trustlessity": {
     "level": 4,
-    "privacy": false
+    "privacy": true
   },
   "summary": "ENS Interviews, a static site built with Spheron's site builder. It serves its scripts with their source maps, so their source is readable in what it serves, and it loads only its own files, so it makes no request beyond the site itself.",
   "evidence": [
