@@ -7,7 +7,7 @@
   "evaluated": "2026-10-05",
   "trustlessity": {
     "level": 4,
-    "privacy": false
+    "privacy": true
   },
   "summary": "Walletbeat, ratings of Ethereum wallets for security and privacy, open source (MIT). Its data ships inside the site: across 80 of its pages it loads only its own files, runs no third-party code and makes no request beyond the site itself.",
   "operations": [

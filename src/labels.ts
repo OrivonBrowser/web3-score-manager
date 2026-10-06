@@ -6,8 +6,8 @@ const LABELS: Record<Subject, Record<number, string>> = {
   website: {
     1: "A standard website, without DDOC",
     2: "Supports DDOC",
-    3: "Open source; runs no external code without the user's informed consent",
-    4: "Trustless in all of its operations and external connections",
+    3: "Open source; runs no external code without the user's willing, aware consent",
+    4: "Trustless operations (Level 4) and connections (Level 2), except what the user clearly knows is not trustless",
   },
   operation: {
     1: "Source code incomplete or not available; what happens cannot be known",
@@ -24,7 +24,7 @@ const LABELS: Record<Subject, Record<number, string>> = {
 };
 
 const PRIVACY: Record<Subject, string> = {
-  website: "every activity, including connections and operations, is reasonably privacy preserving",
+  website: "every activity, including connections and operations, is reasonably privacy preserving, and the user is warned of a risky action",
   operation: "reasonably untrackable and indecipherable without user consent",
   connection: "gives reasonable anonymity",
 };

@@ -155,7 +155,7 @@ test("index.html is self-contained, relative and escapes every string", () => {
   assert.ok(html.includes("Settings &gt; Web3"));
   assert.ok(html.includes("Level 4 of 4"));
   assert.ok(html.includes("+ privacy"));
-  assert.ok(html.includes("Trustless in all of its operations"));
+  assert.ok(html.includes("Trustless operations (Level 4) and connections (Level 2)"));
   assert.ok(html.includes('href="score/provider.json"'));
   assert.ok(!/(src|href)="\/(?!\/)/.test(html), "no root-absolute links");
   assert.ok(!/<link |<script|@import|url\(/.test(html));
