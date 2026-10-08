@@ -2,7 +2,9 @@
   "subject": "website",
   "ids": [
     "sha256:3e76bd776555281af084c4df541ca691120812473b72875e2f823e50bfcac6a1",
-    "cid:bafybeie4ofliszqqip4i24iauftc6xskl6z2loaj3iqrm3k5q7dbx6td3y"
+    "cid:bafybeie4ofliszqqip4i24iauftc6xskl6z2loaj3iqrm3k5q7dbx6td3y",
+    "sha256:f63a4993f0c392655ce6547907adc94f4db0833121107a2b443c9b7fc409c061",
+    "cid:bafybeiecrn6fiachnh2jb45ewedm7izswjfofhqiw5yowstjjnvwu7espm"
   ],
   "name": "WebTorrent",
   "version": "0.24.0",
