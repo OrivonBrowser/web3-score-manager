@@ -1,0 +1,22 @@
+{
+  "subject": "website",
+  "ids": [
+    "sha256:3e76bd776555281af084c4df541ca691120812473b72875e2f823e50bfcac6a1",
+    "cid:bafybeie4ofliszqqip4i24iauftc6xskl6z2loaj3iqrm3k5q7dbx6td3y"
+  ],
+  "name": "WebTorrent",
+  "version": "0.24.0",
+  "evaluated": "2026-10-08",
+  "trustlessity": { "level": 4, "privacy": false },
+  "summary": "WebTorrent Desktop, the streaming BitTorrent client, running whole inside Orivon. Its code is open source and it runs only what it ships. Every piece it downloads or plays is checked against the hashes the torrent's info hash commits to, so no peer can pass off other content, and trackers and the DHT only say where peers are; a torrent user clearly knows that trackers and peers are run by others. Torrents, downloads and settings stay in the app's own files on this computer. That is Level 4. Not private: trackers, the DHT and every peer see your IP address and which torrents you fetch or share.",
+  "operations": [
+    { "name": "Download and stream a torrent", "trustlessity": { "level": 4, "privacy": false }, "note": "Each piece is checked against the torrent's own hashes before it is kept or played; peers see what you fetch." },
+    { "name": "Share files (seed) and create torrents", "trustlessity": { "level": 4, "privacy": false }, "note": "The torrent is made on this computer; peers that ask get its pieces and see your IP address." },
+    { "name": "Keep torrents, downloads and settings", "trustlessity": { "level": 4, "privacy": true }, "note": "Stored only in this app's own files on this computer." }
+  ],
+  "connections": [
+    { "name": "BitTorrent peers (TCP and WebRTC)", "trustlessity": { "level": 2, "privacy": false }, "note": "What a peer sends is checked against the torrent's hashes. Each peer sees your IP address and what you fetch or share." },
+    { "name": "Trackers and the DHT", "trustlessity": { "level": 1, "privacy": false }, "note": "They only list peers, so a wrong answer costs time, never integrity. They see your IP address and the info hashes you ask about." }
+  ],
+  "evidence": ["https://github.com/webtorrent/webtorrent-desktop", "https://webtorrent.io/faq", "https://github.com/OrivonBrowser/orivon-ports/tree/main/apps/webtorrent"]
+}
