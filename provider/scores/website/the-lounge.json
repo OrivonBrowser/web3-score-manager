@@ -11,9 +11,9 @@
   "names": ["thelounge.orivonstack.eth"],
   "name": "The Lounge",
   "version": "4.5.2",
-  "evaluated": "2026-10-05",
-  "trustlessity": { "level": 4, "privacy": false },
-  "summary": "A self-hosted IRC client whose server runs inside Orivon on this computer. Its code is open source and it runs only what it ships. Each IRC network is run by its operators, who can read, alter or drop what passes through their servers, and a user joining a network clearly knows that; history and settings stay on this computer, and link previews are off until turned on. That is Level 4 under the exception for evident trust. Not private: each network sees your IP address and what you say.",
+  "evaluated": "2026-10-10",
+  "trustlessity": { "level": 3, "privacy": false },
+  "summary": "A self-hosted IRC client whose server runs inside Orivon on this computer. Its code is open source and it runs only what it ships, which is Level 3. It is not Level 4: every conversation lives on an IRC network whose operators can read, alter or drop what passes through their servers, so the app relies on a server even though the user picks the network and could run their own. History and settings stay on this computer, and link previews are off until turned on. Not private: each network sees your IP address and what you say.",
   "operations": [
     { "name": "Send and receive IRC messages", "trustlessity": { "level": 2, "privacy": false }, "note": "The client is open source and does what it promises, but every message passes through servers the network's operators control." },
     { "name": "Keep chat history and settings", "trustlessity": { "level": 4, "privacy": true }, "note": "Stored only in this app's own files on this computer." }

@@ -10,7 +10,7 @@
   "version": "0.24.0",
   "evaluated": "2026-10-08",
   "trustlessity": { "level": 4, "privacy": false },
-  "summary": "WebTorrent Desktop, the streaming BitTorrent client, running whole inside Orivon. Its code is open source and it runs only what it ships. Every piece it downloads or plays is checked against the hashes the torrent's info hash commits to, so no peer can pass off other content, and trackers and the DHT only say where peers are; a torrent user clearly knows that trackers and peers are run by others. Torrents, downloads and settings stay in the app's own files on this computer. That is Level 4. Not private: trackers, the DHT and every peer see your IP address and which torrents you fetch or share.",
+  "summary": "WebTorrent Desktop, the streaming BitTorrent client, running whole inside Orivon. Its code is open source and it runs only what it ships. Every piece is checked against the hashes the torrent's info hash commits to, so no peer can pass off other content. Trackers and the DHT only say where peers are: any of many will do and a wrong answer costs time, never integrity, so the app relies on no server. Torrents, downloads and settings stay on this computer. That is Level 4. Not private: trackers, the DHT and every peer see your IP address and which torrents you fetch or share.",
   "operations": [
     { "name": "Download and stream a torrent", "trustlessity": { "level": 4, "privacy": false }, "note": "Each piece is checked against the torrent's own hashes before it is kept or played; peers see what you fetch." },
     { "name": "Share files (seed) and create torrents", "trustlessity": { "level": 4, "privacy": false }, "note": "The torrent is made on this computer; peers that ask get its pieces and see your IP address." },

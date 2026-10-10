@@ -118,7 +118,7 @@ The full meaning of each level is on the
 
 | Subject | Levels | Privacy allowed at | Summary |
 |---|---|---|---|
-| `website` | 1 to 4 | 4 | 1 standard site without DDOC; 2 supports DDOC; 3 open source and runs no external code without the user's willing, aware consent; 4 Level 4 operations and Level 2 connections, except what the user clearly knows is not trustless |
+| `website` | 1 to 4 | 4 | 1 standard site without DDOC; 2 supports DDOC; 3 open source and runs no external code without the user's willing, aware consent; 4 Level 4 operations and Level 2 connections, relying on no server, except optional parts the user knowingly starts |
 | `operation` | 1 to 5 | 4 and 5 | 1 code unavailable or unverifiable; 2 code available and does what it promises; 3 relies only on trustless networks; 4 no untrusted party can act against the user; 5 immutable and completely trustless |
 | `connection` | 1 to 3 | 3 | 1 relies on centralized parties; 2 received data can be verified; 3 completely decentralized |
 

@@ -27,10 +27,13 @@ These are the definitions every website judgement applies:
   willingly consenting to it and being aware of its risk and trustlessness.
 - **Level 4:** the site is trustless enough in all of its operations (Level 4 operations) and
   external connections (Level 2 connections). Passive operations count: getting an IBAN from a
-  bank is not accepted at this level, it is a passive operation at Level 1. The exceptions are
-  operations and connections whose trustlessness the user is clearly aware of, as long as
-  everything else is managed in a trustless way. Example: Bisq provides fiat exchange, and you
-  know that fiat interactions are not trustless by themselves; nobody needs to tell you.
+  bank is not accepted at this level, it is a passive operation at Level 1. A site whose purpose
+  relies on a server is not Level 4, however standard or trust-minimised its protocol and whoever
+  picks the server. The exceptions are an optional part that runs only with the user aware of it,
+  and a step the user takes outside the site, as long as everything else is managed in a
+  trustless way. Example: Bisq provides fiat exchange, and fiat payments are not trustless; but
+  the payment goes from the user's own bank, outside the app, and the trade itself does not rely
+  on a server.
 - **Level 4 + privacy:** every single activity on the site, connections and operations included,
   is reasonably privacy preserving, and the user is made aware of the privacy risk of a specific
   risky action.
@@ -61,7 +64,7 @@ These are the definitions every website judgement applies:
 
 FreeTube is the worked example. It runs YouTube's player code and BotGuard to play a video. The
 user learns this from the grant dialog, and using YouTube without ads is why they open the app,
-so the consent is willing and aware.
+so the consent is willing and aware. It stops at 3 because it relies on YouTube's servers.
 
 ## How Attila applies Level 4
 
@@ -73,16 +76,24 @@ so the consent is willing and aware.
   vault address from a centralised API is a passive operation at Level 1.
 - Reads made through the user's own wallet (`window.ethereum`) after they connect it go through
   the connection the user chose, not one the site chose.
-- **The exception** covers what the user clearly knows is not trustless, either because the site
-  tells them before it happens or because it is evident, as long as everything else is trustless:
-  - FreeTube (YouTube), The Lounge (the IRC networks the user joins) and Element (the Matrix
-    homeserver the user signs in to) are Level 4. A user knows YouTube, an IRC network or a
-    homeserver is run by someone, their other features are optional and off until turned on or
-    started by the user, and what they keep locally is trustless.
-  - ASGARDEX stays at 3. The vault address a swap sends funds to comes from a centralised API,
-    and nothing in a wallet tells its user that.
-  - James Carnley's page is Level 4: its videos load from YouTube only when the reader presses
-    play, and the page says so beside each one.
+  ASGARDEX stays at 3: the vault address a swap sends funds to comes from a centralised API.
+- **Relying on a server.** A site relies on a server when, if that server stops or lies, the user
+  loses what they opened the site for or is shown false data. Such a site is at most Level 3,
+  even when its protocol is open and standard, the user picks the server or could run their own,
+  and everyone knows who runs it. FreeTube relies on YouTube, The Lounge on the IRC network a
+  conversation lives on, and Element on the Matrix homeserver that holds the account and delivers
+  every message: all three are Level 3.
+- **Servers that only find peers** are not relied on. Trackers, a DHT and bootstrap or seed nodes
+  tell the app where peers are, any of many will do, and what the peers send is checked against a
+  hash, so a wrong answer costs time, never integrity. They are still Level 1 connections, and
+  they count against privacy. WebTorrent is Level 4.
+- **The exceptions** cover two things the user clearly knows are not trustless, as long as
+  everything else is trustless:
+  - an optional part that runs only when the user knowingly starts it. James Carnley's page is
+    Level 4: its videos load from YouTube only when the reader presses play, and the page says so
+    beside each one;
+  - a step the user takes outside the site, with a party they chose: Bisq's fiat payment, sent
+    from the user's own bank.
 - AirGap Vault and Orivon Explore, which make no network request, are Level 4.
 
 ## How Attila applies Level 4 + privacy
@@ -101,8 +112,8 @@ connection. The site's own files, which Orivon fetches the same way for every si
 - Orivon Explore sends no request itself, but a visitor who grants `trust.score` has Orivon resolve
   every listed `.eth` name and ask their Web3 Score provider about every listed site, which shows
   the provider their IP address and that they opened Explore: Level 4 without privacy.
-- FreeTube, The Lounge and Element show the user to YouTube, the IRC networks and the homeserver:
-  Level 4 without privacy.
+- WebTorrent shows the user's IP address and the torrents they fetch to trackers, the DHT and
+  every peer: Level 4 without privacy.
 
 ## How to check a site
 
