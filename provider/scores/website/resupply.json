@@ -1,15 +1,39 @@
 {
   "subject": "website",
   "ids": [
-    "cid:bafybeiedkg5xxxysibyzr2bzobzkdap2gizrk7aq2mozjyqv5yk7uuk7uq"
+    "cid:bafybeiedkg5xxxysibyzr2bzobzkdap2gizrk7aq2mozjyqv5yk7uuk7uq",
+    "cid:bafybeie3icwmemukiamudif27csgpziz3cwtinnma6eahfwduid6yazoq4"
   ],
   "name": "Resupply",
-  "evaluated": "2026-10-05",
+  "evaluated": "2026-10-10",
   "trustlessity": {
     "level": 2,
     "privacy": false
   },
-  "summary": "Resupply's stablecoin app. No public source was found for this frontend: the project's public repository holds its smart contracts only, so it stays at Level 2. What it reaches after a wallet connects was not checked.",
+  "summary": "Resupply's stablecoin app. No public source was found for this frontend: the project's public repository holds its smart contracts only, so it stays at Level 2. When it opens it reads chain data from a dRPC endpoint, prices from DefiLlama and Curve's API, and contacts WalletConnect's servers. What it reaches after a wallet connects was not checked.",
+  "connections": [
+    {
+      "name": "RPC endpoint (lb.drpc.org)",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Read without a light client."
+    },
+    {
+      "name": "Price APIs (DefiLlama's coins.llama.fi, api.curve.finance)",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Centralised sources, read when the page opens."
+    },
+    {
+      "name": "WalletConnect's servers (pulse.walletconnect.org, api.web3modal.org)",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Contacted when the page opens, before any wallet is connected."
+    }
+  ],
   "evidence": [
     "https://github.com/resupplyfi/resupply"
   ]

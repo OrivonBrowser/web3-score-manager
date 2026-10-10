@@ -1,10 +1,11 @@
 {
   "subject": "website",
   "ids": [
-    "cid:bafybeiecddp4agiwwqbya5qji7tzlfnp3jksf4tbw4jeabrvitzluzljgm"
+    "cid:bafybeiecddp4agiwwqbya5qji7tzlfnp3jksf4tbw4jeabrvitzluzljgm",
+    "cid:bafybeibv3en2ep4c3lans66h2uqx4ritdlkubel4hwdognn3uf25to4qai"
   ],
   "name": "Walletbeat",
-  "evaluated": "2026-10-05",
+  "evaluated": "2026-10-10",
   "trustlessity": {
     "level": 4,
     "privacy": true

@@ -1,10 +1,11 @@
 {
   "subject": "website",
   "ids": [
-    "cid:bafybeigqyo555suvqi3scc2izft3mozskktbtkzs2xghoe2rpxetxbbdiq"
+    "cid:bafybeigqyo555suvqi3scc2izft3mozskktbtkzs2xghoe2rpxetxbbdiq",
+    "cid:bafybeiesmy6rsaglneqxbzkbdj5degzp2izydfadhl2vu3oyrp7k52fypu"
   ],
   "name": "Vitalik Buterin's blog",
-  "evaluated": "2026-10-05",
+  "evaluated": "2026-10-10",
   "trustlessity": {
     "level": 3,
     "privacy": false
