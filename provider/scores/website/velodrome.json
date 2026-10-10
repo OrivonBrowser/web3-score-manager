@@ -1,10 +1,11 @@
 {
   "subject": "website",
   "ids": [
-    "cid:bafybeibf66myaaw64ottwtbxh6cxnck34pdefpkrifyo5uht3thhihdjam"
+    "cid:bafybeibf66myaaw64ottwtbxh6cxnck34pdefpkrifyo5uht3thhihdjam",
+    "cid:bafybeiclocbxgv57uhgowwfww67sjh5zm2tz7knnleybt3pcr45ii33ypy"
   ],
   "name": "Velodrome",
-  "evaluated": "2026-10-05",
+  "evaluated": "2026-10-10",
   "trustlessity": {
     "level": 2,
     "privacy": false
