@@ -10,6 +10,7 @@
     "sha256:19a1ccecfa5751ce2a1cd6bdf471a648723f04fcd4664f0660aa9c8f835f6209",
     "cid:bafybeif373oqfpzdaxbmremcqareasmrvf7n4s2nh37d7jyirf2wwppu3q"
   ],
+  "names": ["explore.orivonstack.eth"],
   "name": "Orivon Explore",
   "version": "0.1.0",
   "evaluated": "2026-10-05",

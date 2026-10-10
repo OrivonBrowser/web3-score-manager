@@ -3,6 +3,9 @@
   "ids": [
     "cid:bafybeiejnahivksp7lksmpfbl4anfsywx2zlqx2xlfch5xq5226iw3dvnq"
   ],
+  "names": [
+    "ipld.eth"
+  ],
   "name": "IPLD",
   "evaluated": "2026-10-05",
   "trustlessity": {

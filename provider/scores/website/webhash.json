@@ -3,6 +3,9 @@
   "ids": [
     "cid:bafybeig45aqpm4lzjmxkafiujwma6kpniiseuzec65em7hvbumsnsuc2eu"
   ],
+  "names": [
+    "webhash.eth"
+  ],
   "name": "WebHash",
   "evaluated": "2026-10-05",
   "trustlessity": {

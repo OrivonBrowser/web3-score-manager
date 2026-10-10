@@ -3,6 +3,9 @@
   "ids": [
     "cid:bafybeiftl6ixglhmrh32nj4irw473t65vewmcupw72sx7ditzectuevv7i"
   ],
+  "names": [
+    "storagebeat.eth"
+  ],
   "name": "StorageBeat",
   "evaluated": "2026-10-05",
   "trustlessity": {

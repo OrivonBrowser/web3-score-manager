@@ -4,6 +4,7 @@ import path from "node:path";
 import { parseArgs } from "node:util";
 import { compileProvider, ValidationFailure, writeSite } from "./build.ts";
 import { addEvaluation, initProvider, listEvaluations, newEvaluation, readBundleHash, removeEvaluation } from "./manage.ts";
+import { DEFAULT_RESOLVER, checkNames, gatewayResolver, report } from "./moved.ts";
 import { startServer } from "./serve.ts";
 import { loadProvider } from "./source.ts";
 import { UserError, formatIssue } from "./types.ts";
@@ -97,6 +98,20 @@ const COMMANDS: Record<string, Command> = {
       }
       io.out(`${loaded.evaluations.length} evaluations, valid\n`);
       return 0;
+    },
+  },
+  moved: {
+    usage: "moved [--dir d] [--resolver https://{name}.limo/]",
+    summary: "list the watched .eth names that now serve a build no evaluation judges",
+    options: { dir: DIR, resolver: { type: "string", default: DEFAULT_RESOLVER } },
+    async run(v, _p, io) {
+      const resolver = str(v.resolver)!;
+      if (!resolver.includes("{name}")) throw new UserError("--resolver must contain {name}");
+      const loaded = loadProvider(str(v.dir)!);
+      if (loaded.issues.length > 0) throw new ValidationFailure(loaded.issues);
+      const { text, failed } = report(await checkNames(loaded.evaluations, gatewayResolver(resolver)));
+      io.out(text);
+      return failed ? 1 : 0;
     },
   },
   ids: {

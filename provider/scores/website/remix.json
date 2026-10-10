@@ -3,6 +3,9 @@
   "ids": [
     "cid:bafybeianiyelez5ncziqssvciyndefwp5fjeh6bmutu7gq3lf6coif4tle"
   ],
+  "names": [
+    "remix.ethereum.eth"
+  ],
   "name": "Remix IDE",
   "evaluated": "2026-10-05",
   "trustlessity": {

@@ -6,6 +6,7 @@
     "sha256:c42dcbe06faf241d2606130d150c4345dfff348729d67947b406b3c6c48f1e53",
     "cid:bafybeicqymfv47eg7aphl3luwen3tpdosb622m7kwsnt4rkfacagnpbymu"
   ],
+  "names": ["airgapvault.orivonstack.eth"],
   "name": "AirGap Vault",
   "version": "3.34.4",
   "evaluated": "2026-10-05",

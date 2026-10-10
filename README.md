@@ -40,6 +40,7 @@ Every command takes `--dir <path>` (default `./provider`) and `--help`.
 | `list` | One line per evaluation: subject, slug, level, name, identifiers |
 | `check` | Validates the provider and every evaluation. Exit code 1 and the error list on failure |
 | `ids <static-dir>` | Prints the Orivon bundle hash of a built app (see below) |
+| `moved [--resolver https://{name}.limo/]` | Asks what each watched `.eth` name serves now and lists every name whose build no evaluation judges. Exit code 1 when one moved, or when no name could be resolved |
 | `build [--out dist]` | Validates, then writes the static site |
 | `serve [--port 7860] [--host 127.0.0.1]` | Builds into a temporary directory and serves it, GET and HEAD only |
 
@@ -80,9 +81,16 @@ file name, matching `^[a-z0-9][a-z0-9-]{0,63}$`.
 }
 ```
 
+A website evaluation may add `names`, the `.eth` names that serve the judged build
+(`"names": ["vitalik.eth"]`). It is never published: Orivon looks a page up by its content, so a
+name that moves to new content loses its evaluation until the new build is judged. `moved` lists
+those names, reading each one's root from the `X-Ipfs-Roots` header of the resolver address, and
+the repository's Watched names workflow runs it every day and keeps one issue open while any name
+has moved. GitHub stops a scheduled workflow in a repository with no activity for 60 days.
+
 Unknown fields are errors in source files, which catches typos. The built site contains only the
 standard's fields. Identifiers are canonicalised: `sha256:` is lowercased, a `cid:` becomes a
-base32 CIDv1 (a CIDv0 is converted), and an identifier listed by two evaluations is an error.
+base32 CIDv1 (a CIDv0 is converted), and an identifier or a name listed by two evaluations is an error.
 
 | Subject | Identifier types |
 |---|---|

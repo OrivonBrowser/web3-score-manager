@@ -3,6 +3,9 @@
   "ids": [
     "cid:bafybeib35za7f5wgavowqj5upcfsuvurfso3gkoddrvmx5obxwi4dbltvy"
   ],
+  "names": [
+    "swap.eth"
+  ],
   "name": "AirSwap",
   "evaluated": "2026-10-05",
   "trustlessity": {

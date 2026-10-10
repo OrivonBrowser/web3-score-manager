@@ -4,6 +4,9 @@
     "cid:bafybeiecddp4agiwwqbya5qji7tzlfnp3jksf4tbw4jeabrvitzluzljgm",
     "cid:bafybeibv3en2ep4c3lans66h2uqx4ritdlkubel4hwdognn3uf25to4qai"
   ],
+  "names": [
+    "beta.walletbeat.eth"
+  ],
   "name": "Walletbeat",
   "evaluated": "2026-10-10",
   "trustlessity": {

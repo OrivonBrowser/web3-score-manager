@@ -29,10 +29,14 @@ export interface Evaluation {
   evidence?: string[];
 }
 
-/** One evaluation file under scores/: `ids` replaces `id`, `subject` repeats the directory. */
+/**
+ * One evaluation file under scores/: `ids` replaces `id`, `subject` repeats the directory. `names`
+ * lists the .eth names that serve the judged build; it is never published, only watched by `moved`.
+ */
 export interface SourceEvaluation extends Omit<Evaluation, "id"> {
   subject: Subject;
   ids: string[];
+  names?: string[];
 }
 
 export interface ProviderDescriptor {
