@@ -3,6 +3,9 @@
   "ids": [
     "cid:bafybeibmcu52uovuzmmy3yugwcc77jkbbdl7q5yrq2a4yupmefjpnq2rva"
   ],
+  "names": [
+    "docs.ens.eth"
+  ],
   "name": "ENS documentation",
   "evaluated": "2026-10-05",
   "trustlessity": {

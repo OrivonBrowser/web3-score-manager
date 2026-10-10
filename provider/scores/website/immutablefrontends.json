@@ -3,6 +3,9 @@
   "ids": [
     "cid:bafybeic5icomycnns3layg3ihdeejxrdtgv2aixra4qf24wwgqwcqqw27y"
   ],
+  "names": [
+    "immutable-frontends.eth"
+  ],
   "name": "Immutable Frontends",
   "evaluated": "2026-10-05",
   "trustlessity": {

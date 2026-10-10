@@ -32,7 +32,7 @@ test("example provider builds the three expected buckets", () => {
 });
 
 test("output is byte-for-byte identical across builds and has no source-only fields", () => {
-  const dir = makeProvider([["website", "a", website({ ids: [SHA_A, SHA_B] })]]);
+  const dir = makeProvider([["website", "a", website({ ids: [SHA_A, SHA_B], names: ["watched.eth"] })]]);
   const first = path.join(tempDir(), "o");
   const second = path.join(tempDir(), "o");
   writeSite(first, compileProvider(dir));
@@ -43,8 +43,10 @@ test("output is byte-for-byte identical across builds and has no source-only fie
   for (const entry of bucket.entries) {
     assert.equal(entry.ids, undefined);
     assert.equal(entry.subject, undefined);
+    assert.equal(entry.names, undefined);
     assert.ok(typeof entry.id === "string");
   }
+  for (const file of tree(first)) assert.ok(!read(first, file).includes("watched.eth"), file);
   assert.ok(read(first, "score/provider.json").endsWith("}\n"));
 });
 

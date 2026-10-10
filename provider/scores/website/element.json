@@ -6,6 +6,7 @@
     "sha256:c3c7f8f8227a5b6127e6622864ec9d6c0bc4180c87032e0df4b897f0cf961247",
     "cid:bafybeiejev3mbko3dqbjoihrvctufjikokb6ql5zobt47ok5vtjcyh3ig4"
   ],
+  "names": ["element.orivonstack.eth"],
   "name": "Element",
   "version": "1.12.29",
   "evaluated": "2026-10-05",

@@ -1,0 +1,57 @@
+# Each day, asks what every watched .eth name serves now. When one serves a build no evaluation
+# judges, Orivon shows no Attila evaluation for it: this keeps one issue open listing those names,
+# and closes it once every name serves a judged build again.
+name: Watched names
+
+on:
+  schedule:
+    - cron: "17 6 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+
+concurrency:
+  group: watched-names
+
+jobs:
+  moved:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - run: npm ci
+      - run: node src/cli.ts check
+      - name: Ask every watched name
+        id: moved
+        run: |
+          set +e
+          node src/cli.ts moved > report.txt
+          echo "code=$?" >> "$GITHUB_OUTPUT"
+          cat report.txt
+      - name: Open, update or close the issue
+        env:
+          GH_TOKEN: ${{ github.token }}
+          CODE: ${{ steps.moved.outputs.code }}
+        run: |
+          title="Watched names serve builds Attila has not judged"
+          tail -n 1 report.txt | grep -Eq '^[0-9]+ names: ' || { echo "moved printed no report"; exit 1; }
+          open=$(gh issue list --state open --search "in:title \"$title\"" --json number,title --jq ".[] | select(.title == \"$title\") | .number" | head -n 1)
+          if [ "$CODE" = 1 ]; then
+            {
+              echo "These \`.eth\` names serve a build no evaluation in \`provider/\` judges, so Orivon shows no Attila evaluation for them. Judge each new build by \`provider/README.md\` section How to check a site, add its CID to the evaluation, and publish Attila again."
+              echo
+              echo "Updated each day by the Watched names workflow, and closed when every name serves a judged build."
+              echo
+              echo '```text'
+              cat report.txt
+              echo '```'
+            } > body.md
+            if [ -n "$open" ]; then gh issue edit "$open" --body-file body.md; else gh issue create --title "$title" --body-file body.md; fi
+          elif [ -n "$open" ]; then
+            gh issue close "$open" --comment "Every watched name serves a judged build again."
+          fi

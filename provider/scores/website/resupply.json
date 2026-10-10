@@ -2,7 +2,11 @@
   "subject": "website",
   "ids": [
     "cid:bafybeiedkg5xxxysibyzr2bzobzkdap2gizrk7aq2mozjyqv5yk7uuk7uq",
-    "cid:bafybeie3icwmemukiamudif27csgpziz3cwtinnma6eahfwduid6yazoq4"
+    "cid:bafybeie3icwmemukiamudif27csgpziz3cwtinnma6eahfwduid6yazoq4",
+    "cid:bafybeiaexvjsncblykeco4h4zvcqkqwqjn72jhqe2rtx2evusuokvxkhde"
+  ],
+  "names": [
+    "resupply.eth"
   ],
   "name": "Resupply",
   "evaluated": "2026-10-10",

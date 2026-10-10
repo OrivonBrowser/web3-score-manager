@@ -107,9 +107,12 @@ connection. The site's own files, which Orivon fetches the same way for every si
 ## How to check a site
 
 1. **Identify the build.** For a `.eth` site, resolve the name to its root CID and file it as a
-   base32 CIDv1 (`cid:bafy...`): that is the identifier Orivon looks up. When the name moves to
-   new content, the evaluation no longer applies until the new CID is judged. For an Orivon port,
-   list both the bundle hash and the CID (see the repository README).
+   base32 CIDv1 (`cid:bafy...`): that is the identifier Orivon looks up, and list the name in
+   `names`. When the name moves to new content, the evaluation no longer applies until the new
+   CID is judged: the Watched names workflow opens an issue listing every such name each day
+   (`node src/cli.ts moved` asks the same now). A new build that makes the same connections as
+   the judged one, with no new third-party code, takes the same evaluation: add its CID. For an
+   Orivon port, list both the bundle hash and the CID (see the repository README).
 2. **Watch it open.** Load the CID in a headless browser and record every request in the first 20
    seconds without touching the page. Every request that leaves the site's own files is a
    connection to judge, and every script from another origin is third-party code.

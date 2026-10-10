@@ -3,6 +3,9 @@
   "ids": [
     "cid:bafybeiehnviixu674bvbazajj27x2kffn7gswn2rfms62juaa6ijywu6pm"
   ],
+  "names": [
+    "app.efs.eth"
+  ],
   "name": "Ethereum File System",
   "evaluated": "2026-10-05",
   "trustlessity": {

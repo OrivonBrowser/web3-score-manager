@@ -3,6 +3,9 @@
   "ids": [
     "cid:bafybeiho37vhh7qnzrs2drjuasagbebojgbx7467ag5aktifdhhz7smc2q"
   ],
+  "names": [
+    "app.ens.eth"
+  ],
   "name": "ENS",
   "evaluated": "2026-10-05",
   "trustlessity": {

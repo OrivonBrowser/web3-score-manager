@@ -4,6 +4,9 @@ import type { Issue, Part, ProviderDescriptor, SourceEvaluation, Subject, Trustl
 
 export const SLUG = /^[a-z0-9][a-z0-9-]{0,63}$/;
 
+/** A lowercase ASCII .eth name: `vitalik.eth`, `app.example.eth`. */
+export const ETH_NAME = /^(?:[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?\.)+eth$/;
+
 const SCALE: Record<Subject, { max: number; privacyAt: readonly number[] }> = {
   website: { max: 4, privacyAt: [4] },
   operation: { max: 5, privacyAt: [4, 5] },
@@ -106,6 +109,19 @@ function parts(c: Collector, value: unknown, subject: Subject, path: string): Pa
   return out;
 }
 
+function ethNames(c: Collector, value: unknown, subject: Subject | undefined): string[] | undefined {
+  if (value === undefined) return undefined;
+  if (subject !== undefined && subject !== "website") return void c.add("names", "allowed only on a website evaluation");
+  if (!Array.isArray(value) || value.length < 1 || value.length > 8) return void c.add("names", "must be an array of 1 to 8 names");
+  const out: string[] = [];
+  value.forEach((item, i) => {
+    if (typeof item !== "string" || item.length > 255 || !ETH_NAME.test(item)) return void c.add(`names[${i}]`, "must be a lowercase .eth name");
+    if (out.includes(item)) return void c.add(`names[${i}]`, `${item} is listed twice`);
+    out.push(item);
+  });
+  return out;
+}
+
 function evidence(c: Collector, value: unknown): string[] | undefined {
   if (value === undefined) return undefined;
   if (!Array.isArray(value)) return void c.add("evidence", "must be an array");
@@ -163,7 +179,7 @@ export function validateSource(
   }
   c.unknownFields(
     value,
-    ["subject", "ids", "name", "version", "evaluated", "trustlessity", "summary", "operations", "connections", "evidence"],
+    ["subject", "ids", "names", "name", "version", "evaluated", "trustlessity", "summary", "operations", "connections", "evidence"],
     "",
   );
 
@@ -189,6 +205,7 @@ export function validateSource(
     });
   }
 
+  const watched = ethNames(c, value.names, subject);
   const name = c.string(value, "name", "", 1, 80, true);
   const version = c.string(value, "version", "", 0, 40, false);
   const evaluated = c.string(value, "evaluated", "", 1, 10, true);
@@ -210,6 +227,7 @@ export function validateSource(
 
   if (c.issues.length > 0 || !subject || !name || !evaluated || !level) return { issues: c.issues };
   const evaluation: SourceEvaluation = { subject, ids, name, evaluated, trustlessity: level };
+  if (watched !== undefined) evaluation.names = watched;
   if (version !== undefined) evaluation.version = version;
   if (summary !== undefined) evaluation.summary = summary;
   if (operations !== undefined) evaluation.operations = operations;
@@ -218,17 +236,19 @@ export function validateSource(
   return { evaluation, issues: [] };
 }
 
-/** An identifier listed by two evaluations is an error, reported on the later file. */
+/** An identifier or a name listed by two evaluations is an error, reported on the later file. */
 export function findDuplicateIds(list: { file: string; evaluation: SourceEvaluation }[]): Issue[] {
-  const owner = new Map<string, string>();
   const issues: Issue[] = [];
-  for (const { file, evaluation } of list) {
-    evaluation.ids.forEach((id, i) => {
-      const first = owner.get(id);
-      if (first !== undefined && first !== file) {
-        issues.push({ file, path: `ids[${i}]`, message: `${id} is already listed by ${first}` });
-      } else owner.set(id, file);
-    });
+  for (const key of ["ids", "names"] as const) {
+    const owner = new Map<string, string>();
+    for (const { file, evaluation } of list) {
+      (evaluation[key] ?? []).forEach((value, i) => {
+        const first = owner.get(value);
+        if (first !== undefined && first !== file) {
+          issues.push({ file, path: `${key}[${i}]`, message: `${value} is already listed by ${first}` });
+        } else owner.set(value, file);
+      });
+    }
   }
   return issues;
 }

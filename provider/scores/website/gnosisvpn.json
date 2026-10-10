@@ -3,6 +3,9 @@
   "ids": [
     "cid:bafybeih5gihptqlszwq2mdfuih3mllbwhu4a3gsvp57ywtmiexbjlemsvy"
   ],
+  "names": [
+    "docs.vpn.gnosis.eth"
+  ],
   "name": "Gnosis VPN documentation",
   "evaluated": "2026-10-05",
   "trustlessity": {
