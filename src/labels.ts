@@ -7,7 +7,7 @@ const LABELS: Record<Subject, Record<number, string>> = {
     1: "A standard website, without DDOC",
     2: "Supports DDOC",
     3: "Open source; runs no external code without the user's willing, aware consent",
-    4: "Trustless operations (Level 4) and connections (Level 2), except what the user clearly knows is not trustless",
+    4: "Trustless operations (Level 4) and connections (Level 2), relying on no server, except optional parts the user knowingly starts",
   },
   operation: {
     1: "Source code incomplete or not available; what happens cannot be known",
