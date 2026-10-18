@@ -1,0 +1,49 @@
+{
+  "subject": "website",
+  "ids": [
+    "cid:bafybeiejro4gch3cdx5doacujrrngknebutcaf52m3gtlzx3kq3j332yua"
+  ],
+  "names": [
+    "jthor.eth"
+  ],
+  "name": "Joel Thorstensson",
+  "evaluated": "2026-10-18",
+  "trustlessity": {
+    "level": 2,
+    "privacy": false
+  },
+  "summary": "Joel Thorstensson's personal site, published with Simple Page (open source, GPL-3.0). It stays at Level 2 because its Media page embeds a YouTube player as it opens, third-party code the visitor has not asked for. Its own code also reports the visit to Plausible and reads Tenderly's RPC and simplepg.org, and its wallet kit calls WalletConnect, when the page opens.",
+  "connections": [
+    {
+      "name": "YouTube player (youtube.com)",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Embedded when the Media page opens."
+    },
+    {
+      "name": "Plausible (plausible.io/api/event)",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Visit reported by the page's own code when it opens."
+    },
+    {
+      "name": "RPC and services (mainnet.gateway.tenderly.co, simplepg.org, ipfs.io)",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Read when the page opens, without proof."
+    },
+    {
+      "name": "WalletConnect and Reown (api.web3modal.org, pulse.walletconnect.org)",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Configuration and telemetry from the site's own bundled wallet kit when the page opens, before a wallet is connected."
+    }
+  ],
+  "evidence": [
+    "https://github.com/stigmergic-org/simplepage"
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "subject": "website",
+  "ids": [
+    "cid:bah5acgzaofgn67vkwsdcsdxdhadd277xbmk54rd2nfk6fg2lsjg54nn3j4yq"
+  ],
+  "names": [
+    "nook-drive.eth"
+  ],
+  "name": "Nook",
+  "evaluated": "2026-10-18",
+  "trustlessity": {
+    "level": 3,
+    "privacy": false
+  },
+  "summary": "The Nook product page, a hand-written site whose script is readable and has no dependencies, served as written, so its source is public (no licence file for the page; the app it advertises is BSD-3-Clause). It runs no third-party code, which is Level 3. It is not Level 4: when it opens it asks api.github.com for the latest release notes.",
+  "connections": [
+    {
+      "name": "GitHub API (api.github.com)",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Latest release read when the page opens."
+    }
+  ],
+  "evidence": [
+    "https://nook-drive.eth.limo/",
+    "https://github.com/GasperX93/nook"
+  ]
+}

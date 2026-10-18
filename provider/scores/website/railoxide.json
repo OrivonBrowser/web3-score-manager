@@ -1,0 +1,19 @@
+{
+  "subject": "website",
+  "ids": [
+    "cid:bafybeif2kurqnxedktcjlqisxjcepll5ijvbrq24ztip4tvlwpsnz47d6q"
+  ],
+  "names": [
+    "railoxide.eth"
+  ],
+  "name": "RailOxide",
+  "evaluated": "2026-10-18",
+  "trustlessity": {
+    "level": 4,
+    "privacy": true
+  },
+  "summary": "RailOxide's install page for a RAILGUN desktop wallet: hand-written HTML, CSS and a short readable script, served as written, so its source is public. The wallet's repository (MIT) names this site as its homepage. The page runs no third-party code and loads only its own files; the GitHub, Telegram and X links are ordinary links.",
+  "evidence": [
+    "https://github.com/triamazikamno/railoxide"
+  ]
+}

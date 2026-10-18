@@ -1,0 +1,19 @@
+{
+  "subject": "website",
+  "ids": [
+    "cid:bafybeiabk3zuqfiwdnisnghngeic7ifsaoythm2mmbmgdytblpnazbgd6m"
+  ],
+  "names": [
+    "winterlock.eth"
+  ],
+  "name": "Winterlock",
+  "evaluated": "2026-10-18",
+  "trustlessity": {
+    "level": 4,
+    "privacy": true
+  },
+  "summary": "Winterlock, a landing page for hash-based owners of Safe accounts: one static HTML file with two self-hosted fonts and an in-browser hash-chain demo, open source in johba37/winterlock.eth (no licence file). It runs no third-party code and loads only its own files; the forum, GitHub and X links are ordinary links.",
+  "evidence": [
+    "https://github.com/johba37/winterlock.eth"
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "subject": "website",
+  "ids": [
+    "cid:bafybeibiqmaakicc56gi5otwl45le6247a2y4furawv7bejlfglkvduwg4"
+  ],
+  "names": [
+    "scorched.namewhisperai.eth"
+  ],
+  "name": "SCORCHED.ETH",
+  "evaluated": "2026-10-18",
+  "trustlessity": {
+    "level": 2,
+    "privacy": false
+  },
+  "summary": "A turn-based artillery game with hotseat, computer and online play. No public source was found, and the site is one minified bundle, so it stays Level 2. It makes no request when it opens; the online mode contacts public Nostr relays and peers over WebRTC only when the user starts it.",
+  "connections": [
+    {
+      "name": "Nostr relays (nos.lol, relay.primal.net and others)",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Matchmaking, only when the user starts Online Multiplayer."
+    },
+    {
+      "name": "WebRTC peers",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Direct connections to the opponent, only in online play."
+    }
+  ]
+}

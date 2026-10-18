@@ -1,0 +1,35 @@
+{
+  "subject": "website",
+  "ids": [
+    "cid:bafybeieyz6ikiz6fqzssltnyxfipm6kkssa2vmy5osleatsaj6aa25ilui"
+  ],
+  "names": [
+    "0xferrous.eth"
+  ],
+  "name": "0xferrous",
+  "evaluated": "2026-10-18",
+  "trustlessity": {
+    "level": 2,
+    "privacy": false
+  },
+  "summary": "A Zola blog of 0xferrous, source public in 0xferrous/0xferrous.github.io (no licence file). It is not Level 3: its post pages load the utterances comments script from utteranc.es with no integrity hash, third-party code that runs when a post opens. Every page also loads a font from unpkg.com.",
+  "connections": [
+    {
+      "name": "utterances comments widget (utteranc.es)",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "A script loaded from another host when a post opens."
+    },
+    {
+      "name": "Font host (unpkg.com)",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "A font file fetched when any page opens."
+    }
+  ],
+  "evidence": [
+    "https://github.com/0xferrous/0xferrous.github.io"
+  ]
+}

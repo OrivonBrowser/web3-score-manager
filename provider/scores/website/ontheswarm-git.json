@@ -1,0 +1,25 @@
+{
+  "subject": "website",
+  "ids": [
+    "cid:bah5acgza2ru5c7j2q6ltlhabslfxshtpmhjtctoqaqqxcwqrmuswqqp445ha"
+  ],
+  "names": [
+    "git.ontheswarm.eth"
+  ],
+  "name": "git-swarm viewer",
+  "evaluated": "2026-10-18",
+  "trustlessity": {
+    "level": 2,
+    "privacy": false
+  },
+  "summary": "A serverless git viewer on Swarm that downloads a repository pack through the bzz.limo gateway and renders it in the page. Its single script is a minified bundle with no source map, and no public repository of it was found, so it stays at Level 2. Even with a source it would stop at 3, because it relies on a gateway to fetch the pack.",
+  "connections": [
+    {
+      "name": "Swarm gateway (bzz.limo)",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Fetches the repository pack when the page opens."
+    }
+  ]
+}

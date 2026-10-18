@@ -1,0 +1,28 @@
+{
+  "subject": "website",
+  "ids": [
+    "cid:bafybeiggicnmwixbn3dmtcorgpwxrbyvj4kpgcfdswmyjnjhl2vbaafjj4"
+  ],
+  "names": [
+    "trustlessness.eth"
+  ],
+  "name": "The Trustless Manifesto",
+  "evaluated": "2026-10-18",
+  "trustlessity": {
+    "level": 2,
+    "privacy": false
+  },
+  "summary": "The Trustless Manifesto site, a small static blog, open source in marissaposner/trustlessness.eth (no licence file). Its home page loads only its own files. It stays at Level 2 because the manifesto page imports the ethers library from cdn.jsdelivr.net with no integrity hash, code the CDN can change at any time.",
+  "connections": [
+    {
+      "name": "ethers from cdn.jsdelivr.net",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Imported as code when the manifesto page opens; the pledge button then works through the visitor's wallet."
+    }
+  ],
+  "evidence": [
+    "https://github.com/marissaposner/trustlessness.eth"
+  ]
+}

@@ -1,0 +1,46 @@
+{
+  "subject": "website",
+  "ids": [
+    "cid:bafybeif5cufpreykiiq2arr7jamynyxu4gyd2rta3nxgghgz7qnxbvlxde"
+  ],
+  "names": [
+    "interlineal.eth"
+  ],
+  "name": "interlineal",
+  "evaluated": "2026-10-18",
+  "trustlessity": {
+    "level": 2,
+    "privacy": false
+  },
+  "summary": "The site of the music duo interlineal, with a player for their NFT tracks. No public source was found. It is not Level 3: when it opens it loads the SoundCloud player script and frame from another host, third-party code the user has not asked for. It also reads Base chain data, prices and NFT images from several hosts.",
+  "connections": [
+    {
+      "name": "SoundCloud player (w.soundcloud.com, widget.sndcdn.com)",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Script and frame loaded when the page opens."
+    },
+    {
+      "name": "Arweave images (arweave.net)",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "NFT artwork fetched when the page opens."
+    },
+    {
+      "name": "Base chain data (blockscout, publicnode, reservoir)",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Queried when the page opens."
+    },
+    {
+      "name": "CoinGecko price API",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Fetched when the page opens."
+    }
+  ]
+}

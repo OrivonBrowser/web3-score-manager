@@ -1,0 +1,19 @@
+{
+  "subject": "website",
+  "ids": [
+    "cid:bafybeicczpvacq5ob4n2w77ig7vv5kg5iysygxd3q4yeluqsjaec346viq"
+  ],
+  "names": [
+    "netlibrary.eth"
+  ],
+  "name": "Net Library",
+  "evaluated": "2026-10-18",
+  "trustlessity": {
+    "level": 4,
+    "privacy": true
+  },
+  "summary": "A one-page landing for Net Library, a media library stored on Base. It is plain HTML with inline styles and no script, so the page is its own public source (no licence file). It loads only its own file; its links to netlibrary.app, GitHub and Net Protocol open only when clicked. Level 4 with privacy.",
+  "evidence": [
+    "https://netlibrary.eth.limo/"
+  ]
+}

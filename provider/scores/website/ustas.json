@@ -1,0 +1,16 @@
+{
+  "subject": "website",
+  "ids": [
+    "cid:bafybeidunuaxw2igocrxcfzg7x4ubuffbdvvyukynqc3icb5nxdq2ufkdm"
+  ],
+  "names": [
+    "ustas.eth"
+  ],
+  "name": "ustas",
+  "evaluated": "2026-10-18",
+  "trustlessity": {
+    "level": 2,
+    "privacy": false
+  },
+  "summary": "ustas, a personal notebook built with Hugo. Its home page loads only the site's own files, but its three scripts are minified with no source map and no public repository for the site was found, so public source is not established and it stays at Level 2."
+}

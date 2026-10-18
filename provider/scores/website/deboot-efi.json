@@ -1,0 +1,19 @@
+{
+  "subject": "website",
+  "ids": [
+    "cid:bah5acgzatyy2epu53sus63kovdxcf4r2bveonn6wnpy7cdpfhwcib4nshvkq"
+  ],
+  "names": [
+    "deboot-efi.eth"
+  ],
+  "name": "DeBoot",
+  "evaluated": "2026-10-18",
+  "trustlessity": {
+    "level": 4,
+    "privacy": true
+  },
+  "summary": "DeBoot, the project page of firmware that boots a machine from an ENS name and Swarm: plain HTML and CSS with one short readable script (a theme key toggle), served as written, so its source is public (no licence file for the page). It loads only its own files; the links to Radicle, GitHub and ENS names are ordinary links.",
+  "evidence": [
+    "https://deboot-efi.eth.limo/"
+  ]
+}

@@ -84,7 +84,8 @@ file name, matching `^[a-z0-9][a-z0-9-]{0,63}$`.
 A website evaluation may add `names`, the `.eth` names that serve the judged build
 (`"names": ["vitalik.eth"]`). It is never published: Orivon looks a page up by its content, so a
 name that moves to new content loses its evaluation until the new build is judged. `moved` lists
-those names, reading each one's root from the `X-Ipfs-Roots` header of the resolver address, and
+those names, reading each one's root from the `X-Ipfs-Roots` header of the resolver address (a
+name that points at Swarm sends none, so it is listed as unresolved and never opens the issue), and
 the repository's Watched names workflow runs it every day and keeps one issue open while any name
 has moved. GitHub stops a scheduled workflow in a repository with no activity for 60 days.
 

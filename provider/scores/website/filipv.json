@@ -1,0 +1,19 @@
+{
+  "subject": "website",
+  "ids": [
+    "cid:bafybeibcnv725mvs5d4ho4scrdbgfjisa7lde5dkvdi3jvh4ggzsi2pybq"
+  ],
+  "names": [
+    "filipv.eth"
+  ],
+  "name": "JuiceboxDAO Town Halls",
+  "evaluated": "2026-10-18",
+  "trustlessity": {
+    "level": 4,
+    "privacy": true
+  },
+  "summary": "JuiceboxDAO Town Halls, a Planet-generated blog of recordings and notes: plain HTML, CSS and a short readable inline script, served as written, so its source is public (no licence file). It runs no third-party code. The home page, archive and every post load only the site's own files; the Discord and Juicebox links are ordinary links.",
+  "evidence": [
+    "https://filipv.eth.limo/"
+  ]
+}

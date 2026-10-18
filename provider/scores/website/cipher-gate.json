@@ -1,0 +1,16 @@
+{
+  "subject": "website",
+  "ids": [
+    "cid:bafybeiaxjoldd3ebfvrwo7bcefijx5rgkpmpqyuomdo5vh56ogqrexp6ei"
+  ],
+  "names": [
+    "cipher-gate.eth"
+  ],
+  "name": "Cipher Gate",
+  "evaluated": "2026-10-18",
+  "trustlessity": {
+    "level": 2,
+    "privacy": false
+  },
+  "summary": "Cipher Gate, the landing page for a local Rust tool that sends transaction signing to a browser wallet. Its Next.js bundle is minified with no source map, and the repository named on crates.io (ChaituKReddy/cipher-gate-proxy-rpc) cannot be found, so it stays at Level 2. It loads only its own files."
+}

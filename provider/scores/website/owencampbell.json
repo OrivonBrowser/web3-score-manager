@@ -1,0 +1,28 @@
+{
+  "subject": "website",
+  "ids": [
+    "cid:bah5acgza4j5jzm5azoyyikgzpdnxxr2g5lcdrxsdavdas4zyjtxpjg25qw6a"
+  ],
+  "names": [
+    "owencampbell.eth"
+  ],
+  "name": "Owen Campbell",
+  "evaluated": "2026-10-18",
+  "trustlessity": {
+    "level": 2,
+    "privacy": false
+  },
+  "summary": "Owen Campbell's blog, built with Hugo. Its source is public (no licence file). Its home page loads only its own files, but the talks page embeds YouTube and Vimeo players that load as the page opens, third-party code the reader did not ask for, so it stays Level 2.",
+  "connections": [
+    {
+      "name": "YouTube and Vimeo players",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Embedded on the talks page; loaded as the page opens."
+    }
+  ],
+  "evidence": [
+    "https://github.com/meatballs/meatballs.github.io"
+  ]
+}

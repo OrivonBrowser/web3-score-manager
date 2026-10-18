@@ -1,0 +1,53 @@
+{
+  "subject": "website",
+  "ids": [
+    "cid:bafybeiakr4pr4yhamlq2wn7ogzefy7pg27wv75iqgzo7dbpjjpatjmpnlm"
+  ],
+  "names": [
+    "yieldbasis.eth"
+  ],
+  "name": "Yield Basis",
+  "evaluated": "2026-10-18",
+  "trustlessity": {
+    "level": 2,
+    "privacy": false
+  },
+  "summary": "The Yield Basis app for depositing BTC or ETH into leveraged Curve liquidity positions. Its bundle is minified with no source map, and the project's public repositories hold contracts and research, not this app, so it stays at Level 2. When it opens it also reads Ethereum through Ankr, prices from DefiLlama and token images from CoinGecko, and loads Google Fonts.",
+  "connections": [
+    {
+      "name": "Ankr RPC (rpc.ankr.com)",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Chain reads when the page opens, without a light client."
+    },
+    {
+      "name": "DefiLlama prices (coins.llama.fi)",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Price lookup when the page opens."
+    },
+    {
+      "name": "CoinGecko token images (assets.coingecko.com)",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Fetched when the page opens."
+    },
+    {
+      "name": "Yield Basis API and indexer (api.yieldbasis.com, indexer.hyperindex.xyz)",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Named in the bundle for market data."
+    },
+    {
+      "name": "Google Fonts",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Fetched when the page opens; tells Google the visit."
+    }
+  ]
+}

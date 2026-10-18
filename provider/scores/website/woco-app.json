@@ -1,0 +1,39 @@
+{
+  "subject": "website",
+  "ids": [
+    "cid:bah5acgzastelsj36j4h4rgidzu4auj6ke5otuduha2ftkax72ovo7t5f4kia"
+  ],
+  "names": [
+    "app.woco.eth"
+  ],
+  "name": "WoCo",
+  "evaluated": "2026-10-18",
+  "trustlessity": {
+    "level": 2,
+    "privacy": false
+  },
+  "summary": "WoCo's event ticketing app, published on Swarm through a feed. It is not Level 3: the page sets its base address to WoCo's own gateway, gateway.woco-net.com, so its scripts, images and data chunks load from that server without an integrity hash, rather than from the content its name points to. When it opens it also calls WoCo's events API and loads Google Fonts.",
+  "connections": [
+    {
+      "name": "WoCo's gateway (gateway.woco-net.com)",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Scripts, images and Swarm chunks loaded from it when the page opens."
+    },
+    {
+      "name": "WoCo's events API (events-api.woco-net.com)",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Called when the page opens."
+    },
+    {
+      "name": "Google Fonts",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Fonts loaded when the page opens."
+    }
+  ]
+}

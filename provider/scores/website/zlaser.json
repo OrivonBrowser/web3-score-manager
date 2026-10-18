@@ -1,0 +1,42 @@
+{
+  "subject": "website",
+  "ids": [
+    "cid:bafybeiajneapq75yma2bsjaz2iluanh3xciq6akj6276ufuj6yc76g4gpi"
+  ],
+  "names": [
+    "zlaser.eth"
+  ],
+  "name": "ZLASER",
+  "evaluated": "2026-10-18",
+  "trustlessity": {
+    "level": 3,
+    "privacy": false
+  },
+  "summary": "An artist site in a single plain HTML file with readable inline script, so the page is its own public source (no licence file). It runs no third-party code. It is not Level 4: when it opens it loads Google Fonts and an image from ImageKit, and it reads its works and exhibition log from JSONBin (api.jsonbin.io), a server it relies on.",
+  "connections": [
+    {
+      "name": "Google Fonts",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Fetched when the page opens; tells Google the visit."
+    },
+    {
+      "name": "Image host (ik.imagekit.io)",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Fetched when the page opens."
+    },
+    {
+      "name": "JSONBin API (api.jsonbin.io)",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "The works and log data are read from it when the page opens."
+    }
+  ],
+  "evidence": [
+    "https://zlaser.eth.limo/"
+  ]
+}

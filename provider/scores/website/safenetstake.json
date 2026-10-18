@@ -1,0 +1,42 @@
+{
+  "subject": "website",
+  "ids": [
+    "cid:bafybeicii64zufd6a4sm6trx2kmk4khrnq6syp6lz5ppt6ljwr5q4ut6oq"
+  ],
+  "names": [
+    "safenetstake.eth"
+  ],
+  "name": "Chainza SAFE Staking",
+  "evaluated": "2026-10-18",
+  "trustlessity": {
+    "level": 3,
+    "privacy": false
+  },
+  "summary": "Chainza SAFE Staking, a non-custodial staking UI, open source (MIT) in Chainza/safenet-staking-monorepo. It loads no script or frame from another host, which is Level 3. It is not Level 4: its bundled wallet kit calls api.web3modal.org and pulse.walletconnect.org when it opens, and it needs an RPC endpoint, the Chainza API and a validator list from GitHub.",
+  "connections": [
+    {
+      "name": "WalletConnect and Reown (api.web3modal.org, pulse.walletconnect.org)",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Configuration and telemetry requests from the site's own bundled wallet kit when the page opens, before a wallet is connected."
+    },
+    {
+      "name": "RPC and API (eth.blockrazor.xyz, api.chainza.io)",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Read when the page opens, without proof."
+    },
+    {
+      "name": "Validator list (raw.githubusercontent.com)",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Fetched when the page opens."
+    }
+  ],
+  "evidence": [
+    "https://github.com/Chainza/safenet-staking-monorepo"
+  ]
+}

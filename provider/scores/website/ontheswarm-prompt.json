@@ -1,0 +1,16 @@
+{
+  "subject": "website",
+  "ids": [
+    "cid:bah5acgzaoec4xqgtksw7jdz7hi5km33jeu6awx4l5acxlrzpqwyblhdohlyq"
+  ],
+  "names": [
+    "prompt.ontheswarm.eth"
+  ],
+  "name": "Prompt Optimizer on Swarm",
+  "evaluated": "2026-10-18",
+  "trustlessity": {
+    "level": 2,
+    "privacy": false
+  },
+  "summary": "Prompt Optimizer on Swarm, a port of the open-source Prompt Optimizer with Swarm sharing added. The upstream project is public (linshenkx/prompt-optimizer), but the port's own source was not found and its bundle is minified, so it stays at Level 2. It makes no request when it opens."
+}

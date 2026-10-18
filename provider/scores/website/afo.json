@@ -1,0 +1,35 @@
+{
+  "subject": "website",
+  "ids": [
+    "cid:bafybeiaiwnhahnik7bne7m3pbfo27eav3a64xsutidigjwoulwb3ieiagm"
+  ],
+  "names": [
+    "afo.eth"
+  ],
+  "name": "Afolabi Aiyeloja",
+  "evaluated": "2026-10-18",
+  "trustlessity": {
+    "level": 3,
+    "privacy": false
+  },
+  "summary": "The portfolio of Afolabi Aiyeloja. Its source is public (MIT). It runs no third-party code and loads only its own files, which is Level 3. It is not Level 4: the bundle includes Sentry and Vercel Analytics code that can send requests, and its contact form posts to a server.",
+  "connections": [
+    {
+      "name": "Contact form server",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "The contact form sends the message to a backend when the user submits it."
+    },
+    {
+      "name": "Sentry and Vercel Analytics (bundled)",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Reporting code in the site's own files; no request was seen when the page opened."
+    }
+  ],
+  "evidence": [
+    "https://github.com/Oba-One/portfolio"
+  ]
+}

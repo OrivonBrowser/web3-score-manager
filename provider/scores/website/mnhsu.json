@@ -1,0 +1,42 @@
+{
+  "subject": "website",
+  "ids": [
+    "cid:bafybeifuhyx4a4qvsltzawp2kmjgkskm4y34vbxbftoipk4mzrrodrepgy"
+  ],
+  "names": [
+    "mnhsu.eth"
+  ],
+  "name": "Astro Hsu (許明恩)",
+  "evaluated": "2026-10-18",
+  "trustlessity": {
+    "level": 3,
+    "privacy": false
+  },
+  "summary": "The personal card of Astro Hsu, founder of Blocktrend. It is one HTML file with a readable inline script, served as written, so it is its own public source. It runs no third-party code, which is Level 3. It is not Level 4: when it opens it loads Google Fonts, images from urusai.cc, Wikimedia and books.com.tw, and a QR code from api.qrserver.com.",
+  "connections": [
+    {
+      "name": "Google Fonts",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Fetched when the page opens; tells Google the visit."
+    },
+    {
+      "name": "Image hosts (urusai.cc, upload.wikimedia.org, books.com.tw)",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Fetched when the page opens."
+    },
+    {
+      "name": "QR code service (api.qrserver.com)",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Fetched when the page opens."
+    }
+  ],
+  "evidence": [
+    "https://mnhsu.eth.limo/"
+  ]
+}

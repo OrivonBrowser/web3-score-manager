@@ -1,0 +1,28 @@
+{
+  "subject": "website",
+  "ids": [
+    "cid:bah5acgzaxsnziiqsiipcugp6d767blowigxfgcjdaqpkr5kjhalupmklf4wq"
+  ],
+  "names": [
+    "wikipedia.swarm.eth"
+  ],
+  "name": "Wikipedia on Swarm",
+  "evaluated": "2026-10-18",
+  "trustlessity": {
+    "level": 3,
+    "privacy": false
+  },
+  "summary": "A searchable Wikipedia snapshot on Swarm: one hand-written page served as written, so its source is public (no licence file), and it runs no third-party code, which is Level 3. It is not Level 4: typing in the search box reads the article index from the public Swarm gateway api.gateway.ethswarm.org by default, or from a local node.",
+  "connections": [
+    {
+      "name": "Swarm gateway (api.gateway.ethswarm.org)",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Used when the visitor types in the search box; the Local option points at localhost:1633."
+    }
+  ],
+  "evidence": [
+    "https://wikipedia.swarm.eth.limo/"
+  ]
+}

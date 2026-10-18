@@ -1,0 +1,42 @@
+{
+  "subject": "website",
+  "ids": [
+    "cid:bah5acgzarvq36xmv4xd24gijso57nsiwiyrsb7xs26xmnuspbsk3yao7oika"
+  ],
+  "names": [
+    "hoverfly.eth"
+  ],
+  "name": "Hoverfly Swarm upload",
+  "evaluated": "2026-10-18",
+  "trustlessity": {
+    "level": 3,
+    "privacy": false
+  },
+  "summary": "The upload page for Hoverfly, a Swarm light client. Its source is public (MIT). It runs no third-party code and makes no request when it opens, which is Level 3. It is not Level 4: its code hard-codes a Gnosis RPC endpoint, a Goldsky indexer for postage batches, the Gnosisscan API and 4byte, which it uses when the user uploads.",
+  "connections": [
+    {
+      "name": "Gnosis RPC (rpc.gnosischain.com)",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Used when the user uploads, without a light client."
+    },
+    {
+      "name": "Postage batch indexer (api.goldsky.com)",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Queried when the user picks a postage batch."
+    },
+    {
+      "name": "Gnosisscan and 4byte APIs",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Used to read transactions and decode calls."
+    }
+  ],
+  "evidence": [
+    "https://github.com/omnipin/hoverfly"
+  ]
+}

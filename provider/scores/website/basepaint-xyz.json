@@ -1,0 +1,28 @@
+{
+  "subject": "website",
+  "ids": [
+    "cid:bafybeielyzdar67xqnmo2gd56o3qpkdxs72vgnhtt54j4k6z7osnt2alxy"
+  ],
+  "names": [
+    "basepaint-xyz.eth"
+  ],
+  "name": "BasePaint Mini",
+  "evaluated": "2026-10-18",
+  "trustlessity": {
+    "level": 3,
+    "privacy": false
+  },
+  "summary": "BasePaint Mini, a minimal BasePaint front end that compiles to one HTML file, open source (no licence file) in BasePaint/basepaint-mini. It runs no third-party code, which is Level 3. It is not Level 4: the app fetches the day's theme from basepaint.xyz/api, a server the site needs, besides reading through the visitor's own wallet.",
+  "connections": [
+    {
+      "name": "BasePaint API (basepaint.xyz/api)",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Theme read by the app once it runs with a wallet."
+    }
+  ],
+  "evidence": [
+    "https://github.com/BasePaint/basepaint-mini"
+  ]
+}

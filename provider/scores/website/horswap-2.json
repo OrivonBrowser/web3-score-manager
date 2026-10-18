@@ -1,0 +1,42 @@
+{
+  "subject": "website",
+  "ids": [
+    "cid:bafybeibtdjzmhx77pxlpmy7fqnwyb7dmrtwbk3n6fpyw3qdgmxaznzwm44"
+  ],
+  "names": [
+    "2.horswap.eth"
+  ],
+  "name": "Horswap",
+  "evaluated": "2026-10-18",
+  "trustlessity": {
+    "level": 3,
+    "privacy": false
+  },
+  "summary": "Dark Florist's fork of the Uniswap interface. Its source is public (GPL-3.0) and the repository names this CID. It runs no third-party code, which is Level 3. It is not Level 4: it reads chain data from RPC endpoints without a light client and fetches token lists from GitHub, CoinGecko, Gemini and IPFS gateways when it opens.",
+  "connections": [
+    {
+      "name": "Ethereum RPC (ethereum.keydonix.com, cloudflare-eth.com)",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Chain reads when the page opens, without a light client."
+    },
+    {
+      "name": "Token lists (CoinGecko, GitHub, Gemini, Arbitrum, Optimism, Celo)",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Fetched when the page opens."
+    },
+    {
+      "name": "IPFS gateways (ipfs.io, gateway.ipfs.io, cloudflare-ipfs.com)",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Used to fetch token list data."
+    }
+  ],
+  "evidence": [
+    "https://github.com/DarkFlorist/Horswap"
+  ]
+}

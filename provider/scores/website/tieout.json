@@ -1,0 +1,35 @@
+{
+  "subject": "website",
+  "ids": [
+    "cid:bafybeicxoixltgtmjkvgevtxsznkviyhtqlperfs2s5qjkcuitadbwerhu"
+  ],
+  "names": [
+    "tieout.eth"
+  ],
+  "name": "tieout",
+  "evaluated": "2026-10-18",
+  "trustlessity": {
+    "level": 3,
+    "privacy": false
+  },
+  "summary": "tieout, a demo that rebuilds a wstETH position from public chain data and ties it to a ledger, open source (MIT) in nick-railsback/tieout. It runs no third-party code, which is Level 3. It is not Level 4: its live position and anchor come from Ethereum and Base RPC endpoints, read without a light client.",
+  "connections": [
+    {
+      "name": "Ethereum RPC (ethereum-rpc.publicnode.com)",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "WebSocket subscription opened when the page loads."
+    },
+    {
+      "name": "Base RPC (mainnet.base.org)",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Anchor read when the page loads."
+    }
+  ],
+  "evidence": [
+    "https://github.com/nick-railsback/tieout"
+  ]
+}

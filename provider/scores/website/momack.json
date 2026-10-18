@@ -1,0 +1,28 @@
+{
+  "subject": "website",
+  "ids": [
+    "cid:bafybeiekeih73k4ajwv64wb6sevlrr33ouwbvzw7xh4gmotvf4gfpb36da"
+  ],
+  "names": [
+    "momack.eth"
+  ],
+  "name": "Molly Mackinlay",
+  "evaluated": "2026-10-18",
+  "trustlessity": {
+    "level": 3,
+    "privacy": false
+  },
+  "summary": "Molly Mackinlay's personal page: one hand-written HTML page with a short readable theme-toggle script, served as written, so its source is public (no licence file). It runs no third-party code, which is Level 3. It is not Level 4: when it opens it loads fonts from Google Fonts.",
+  "connections": [
+    {
+      "name": "Google Fonts (fonts.googleapis.com, fonts.gstatic.com)",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Fetched when the page opens; tells Google the visit."
+    }
+  ],
+  "evidence": [
+    "https://momack.eth.limo/"
+  ]
+}

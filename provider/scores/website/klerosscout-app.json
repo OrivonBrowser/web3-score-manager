@@ -1,0 +1,50 @@
+{
+  "subject": "website",
+  "ids": [
+    "cid:bafybeie5v2jwub5rcjaobuvoozdhshaavzjoofkpwlujbp3hqsnihyoca4"
+  ],
+  "names": [
+    "app.klerosscout.eth"
+  ],
+  "name": "Kleros Scout",
+  "evaluated": "2026-10-18",
+  "trustlessity": {
+    "level": 3,
+    "privacy": false
+  },
+  "summary": "Kleros Scout, the curated registry of address tags and token entries. Its source is public (no licence file) in the Kleros Scout repository and a copy kept for IPFS hosting. It runs no third-party code, which is Level 3. It is not Level 4: it reads Gnosis Chain through a public RPC, needs an indexer and Kleros's CDN to show its lists, and loads Google Fonts.",
+  "connections": [
+    {
+      "name": "Gnosis RPC (rpc.gnosischain.com)",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Read without a light client when the page opens."
+    },
+    {
+      "name": "HyperIndex indexer (indexer.hyperindex.xyz)",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Queried when the page opens to list entries."
+    },
+    {
+      "name": "Kleros CDN (cdn.kleros.link)",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Fetched when the page opens for entry data."
+    },
+    {
+      "name": "Google Fonts",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Fetched when the page opens; tells Google the visit."
+    }
+  ],
+  "evidence": [
+    "https://github.com/kleros/scout",
+    "https://github.com/gmkung/scout"
+  ]
+}

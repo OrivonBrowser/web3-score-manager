@@ -1,0 +1,25 @@
+{
+  "subject": "website",
+  "ids": [
+    "cid:bafybeif4vbhfntjz27fjyvcvbmkchbtip5bgig6xzbtdw4yj3vssv4wi2a"
+  ],
+  "name": "anoni.net Docs",
+  "evaluated": "2026-10-18",
+  "trustlessity": {
+    "level": 3,
+    "privacy": false
+  },
+  "summary": "The docs of anoni.net, a Taiwanese community promoting Tor, Tails and OONI, built with MkDocs Material. Its source is public in anoni-net/docs (CC BY 4.0). It runs no third-party code. It is not Level 4: when it opens, the header asks api.github.com for the latest release of the docs repository.",
+  "connections": [
+    {
+      "name": "GitHub API (api.github.com)",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Latest release lookup for the header, when the page opens."
+    }
+  ],
+  "evidence": [
+    "https://github.com/anoni-net/docs"
+  ]
+}

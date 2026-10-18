@@ -1,0 +1,25 @@
+{
+  "subject": "website",
+  "ids": [
+    "cid:bafybeigwglj7vjhjusoxtgzdno5okucd6by6xh5ckyrmbscziajtamvzyu"
+  ],
+  "names": [
+    "slotray.eth"
+  ],
+  "name": "Slotray",
+  "evaluated": "2026-10-18",
+  "trustlessity": {
+    "level": 2,
+    "privacy": false
+  },
+  "summary": "A browser tool that decodes a verified contract's storage slots. No public repository was found, and the page is a minified Next.js build with no source maps, so there is no public source and it stays at Level 2. It makes no request when it opens; its Etherscan and RPC calls start when a contract is looked up.",
+  "connections": [
+    {
+      "name": "Etherscan API and RPC endpoints (api.etherscan.io, Alchemy)",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Used when a contract is looked up, without a light client."
+    }
+  ]
+}

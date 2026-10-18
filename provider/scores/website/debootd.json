@@ -1,0 +1,19 @@
+{
+  "subject": "website",
+  "ids": [
+    "cid:bah5acgzagxix74i3mrzcd2ixvfvogotlb6xjvsxv3c2eatkinvwx54noivbq"
+  ],
+  "names": [
+    "debootd.eth"
+  ],
+  "name": "debootd.eth",
+  "evaluated": "2026-10-18",
+  "trustlessity": {
+    "level": 4,
+    "privacy": true
+  },
+  "summary": "The page for debootd, a daemon that runs what a machine's ENS name says. It is plain HTML, CSS and one small readable script, served as written, and its source repository is public on Radicle. It loads only its own files, so it makes no request beyond the site itself.",
+  "evidence": [
+    "https://app.radicle.xyz/nodes/seed.radicle.garden/rad:zEGXrqMDDtfYpkkL8PUK6ATyXq1y"
+  ]
+}

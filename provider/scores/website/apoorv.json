@@ -1,0 +1,25 @@
+{
+  "subject": "website",
+  "ids": [
+    "cid:bafybeieekzmrklmlk24pmvp6iqluugn4ab45o45e727vc23l6nz3tpypue"
+  ],
+  "names": [
+    "apoorv.eth"
+  ],
+  "name": "Apoorv Lathey",
+  "evaluated": "2026-10-18",
+  "trustlessity": {
+    "level": 2,
+    "privacy": false
+  },
+  "summary": "Apoorv Lathey's developer portfolio, a Next.js site. It stays at Level 2: when it opens it loads Google Tag Manager (gtag.js) from googletagmanager.com and sends a visit report to Google Analytics, which is third-party analytics code the visitor has not asked for.",
+  "connections": [
+    {
+      "name": "Google Tag Manager and Analytics (googletagmanager.com, google-analytics.com)",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Script and visit report loaded when the page opens."
+    }
+  ]
+}

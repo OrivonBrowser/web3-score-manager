@@ -1,0 +1,39 @@
+{
+  "subject": "website",
+  "ids": [
+    "cid:bafybeih3zmti6g76ltfxy5z3c2b7ij62mvm43oztepl2giewzulj5l5ziy"
+  ],
+  "names": [
+    "zhihu.extrawdw.eth"
+  ],
+  "name": "Extrawdw Zhihu backup",
+  "evaluated": "2026-10-18",
+  "trustlessity": {
+    "level": 2,
+    "privacy": false
+  },
+  "summary": "A blog mirroring the author's own Zhihu answers. No public source for this build was found. It is not Level 3: when it opens it loads Google Analytics, a highlight.js library from jsDelivr with no integrity hash, and the giscus comment widget, third-party code the user has not asked for.",
+  "connections": [
+    {
+      "name": "Google Tag Manager and Analytics",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Scripts loaded when the page opens."
+    },
+    {
+      "name": "giscus comments (giscus.app)",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Widget script, styles and frame loaded when the page opens."
+    },
+    {
+      "name": "jsDelivr (highlight.js)",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Script and styles loaded without integrity hashes."
+    }
+  ]
+}

@@ -1,0 +1,49 @@
+{
+  "subject": "website",
+  "ids": [
+    "cid:bafybeifuyvntplhsf4rs7bfawvljdatypr4ttwfnfqlaqew334bermd7mq"
+  ],
+  "names": [
+    "buildsite.eth"
+  ],
+  "name": "buildsite.eth",
+  "evaluated": "2026-10-18",
+  "trustlessity": {
+    "level": 3,
+    "privacy": false
+  },
+  "summary": "A wizard that turns an ENS name into an IPFS-hosted site. Its source is public (MIT). It runs no third-party code, which is Level 3. It is not Level 4: when it opens it loads Google Fonts and Reown fonts, calls a visit-counter worker, and its bundled wallet library calls WalletConnect and Coinbase.",
+  "connections": [
+    {
+      "name": "Visit counter (buildsite-count.dmpay.workers.dev)",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Called when the page opens."
+    },
+    {
+      "name": "WalletConnect/Reown (web3modal.org, walletconnect.org, reown fonts)",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Requests from the bundled wallet library, before any wallet is connected."
+    },
+    {
+      "name": "Coinbase wallet telemetry (cca-lite.coinbase.com)",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Pings from the bundled wallet library when the page opens."
+    },
+    {
+      "name": "Google Fonts",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Fetched when the page opens; tells Google the visit."
+    }
+  ],
+  "evidence": [
+    "https://github.com/RWA-ID/BuildSite"
+  ]
+}

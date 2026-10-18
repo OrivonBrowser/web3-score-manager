@@ -1,0 +1,35 @@
+{
+  "subject": "website",
+  "ids": [
+    "cid:bafybeihnyyjy4ixvsqb2eco7dh3qxtn6ehnp7zj6hmtptbz4ye6awiutpa"
+  ],
+  "names": [
+    "web3privacynow.eth"
+  ],
+  "name": "Web3Privacy Now",
+  "evaluated": "2026-10-18",
+  "trustlessity": {
+    "level": 3,
+    "privacy": false
+  },
+  "summary": "The Web3Privacy Now link page, published with Simple Page (open source, GPL-3.0). It runs no third-party code, which is Level 3. It is not Level 4: when it opens its own code reports the visit to Plausible and reads from a Tenderly RPC endpoint, simplepg.org and euc.li.",
+  "connections": [
+    {
+      "name": "Plausible (plausible.io/api/event)",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Visit reported by the page's own code when it opens."
+    },
+    {
+      "name": "RPC and services (mainnet.gateway.tenderly.co, simplepg.org, euc.li)",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Read when the page opens, without proof."
+    }
+  ],
+  "evidence": [
+    "https://github.com/stigmergic-org/simplepage"
+  ]
+}

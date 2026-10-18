@@ -1,0 +1,35 @@
+{
+  "subject": "website",
+  "ids": [
+    "cid:bah5acgzaxpffso6wlvaj3caqvxrbsm55p3cashgu4vqpizwhbidgohlenf4q"
+  ],
+  "names": [
+    "d2.ontheswarm.eth"
+  ],
+  "name": "D2 Playground on Swarm",
+  "evaluated": "2026-10-18",
+  "trustlessity": {
+    "level": 2,
+    "privacy": false
+  },
+  "summary": "The D2 diagram playground served from Swarm: a modified build of the public D2 playground (MPL-2.0) that adds a Share via Swarm button. No public source for this build, with its Swarm additions, was found, so it stays at Level 2. When it opens it runs no third-party code and makes no request; diagrams compile in WebAssembly in the page. Share via Swarm uploads to the bzz.limo gateway and the TALA layout calls api.d2lang.com, both only when the user starts them.",
+  "connections": [
+    {
+      "name": "Swarm gateway (bzz.limo)",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Only when the user presses Share via Swarm or opens a shared link."
+    },
+    {
+      "name": "D2 render API (api.d2lang.com)",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Only when the user picks the TALA layout."
+    }
+  ],
+  "evidence": [
+    "https://github.com/terrastruct/d2-playground"
+  ]
+}

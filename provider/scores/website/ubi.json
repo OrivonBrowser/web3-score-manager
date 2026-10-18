@@ -1,0 +1,19 @@
+{
+  "subject": "website",
+  "ids": [
+    "cid:bafybeigogimfdloykhwp5drgijpbmk7ed7l6okwvls3cu73sc4losw4pge"
+  ],
+  "names": [
+    "ubi.eth"
+  ],
+  "name": "UBI",
+  "evaluated": "2026-10-18",
+  "trustlessity": {
+    "level": 4,
+    "privacy": true
+  },
+  "summary": "The ubi.eth landing page for the UBI blockchain, a zero-dependency static site (HTML, CSS and a readable script) with open source (MIT) in DemocracyEarth/ubi2, apps/landing. It loads only its own files and makes no request when it opens; the Add UBI Network button only asks the visitor's own wallet.",
+  "evidence": [
+    "https://github.com/DemocracyEarth/ubi2"
+  ]
+}

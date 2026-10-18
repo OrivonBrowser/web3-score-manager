@@ -1,0 +1,25 @@
+{
+  "subject": "website",
+  "ids": [
+    "cid:bafybeiap7cwvkf6sxhbmjeh2akyo7iea3jgjbc4ubgpg2aqad3y34p4sk4"
+  ],
+  "names": [
+    "showmehow.eth"
+  ],
+  "name": "showmehow.eth",
+  "evaluated": "2026-10-18",
+  "trustlessity": {
+    "level": 2,
+    "privacy": false
+  },
+  "summary": "showmehow.eth, how-to guides on IPFS sites and ENS, built with Eleventy. It stays at Level 2: one post loads Twitter's widgets.js from platform.twitter.com with no integrity hash, and no public source of the site was found (its search script is a minified Pagefind file with no source map). Other pages load only the site's own files.",
+  "connections": [
+    {
+      "name": "Twitter widgets script (platform.twitter.com)",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Loaded as code when the podcast-experiment post opens."
+    }
+  ]
+}

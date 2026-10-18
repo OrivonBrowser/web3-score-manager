@@ -1,0 +1,32 @@
+{
+  "subject": "website",
+  "ids": [
+    "cid:bafybeigyxdvxmfddtepcjw3xiutpvp5q3w3fjdfz6czoguojqvjhmxhaty"
+  ],
+  "names": [
+    "teamomega.eth"
+  ],
+  "name": "Team Omega Audits",
+  "evaluated": "2026-10-18",
+  "trustlessity": {
+    "level": 2,
+    "privacy": false
+  },
+  "summary": "The site of Omega Audits, a two-person Solidity audit team. No public source for this build was found; the linked repository holds only audit reports. It is not Level 3: when it opens it loads Font Awesome's script from use.fontawesome.com with no integrity hash, third-party code that can change at any time. It also loads Google Fonts.",
+  "connections": [
+    {
+      "name": "Font Awesome script (use.fontawesome.com)",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Loaded when the page opens, without an integrity hash."
+    },
+    {
+      "name": "Google Fonts",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Fetched when the page opens; tells Google the visit."
+    }
+  ]
+}

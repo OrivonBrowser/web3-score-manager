@@ -1,0 +1,19 @@
+{
+  "subject": "website",
+  "ids": [
+    "cid:bafybeidsi7faja2zfqpnt66xzvudtihmkdajqqpkx6sbuxt3qmzi6ex6ou"
+  ],
+  "names": [
+    "sanleo.eth"
+  ],
+  "name": "sanleo.eth",
+  "evaluated": "2026-10-18",
+  "trustlessity": {
+    "level": 4,
+    "privacy": true
+  },
+  "summary": "sanleo.eth, a personal blog, open source (no licence file) in sanleo461/blog. Its pages are static HTML with a readable theme script and a vendored MathJax 3.2.0 file that is byte-identical to the official build. The home page, category pages and both posts load only the site's own files.",
+  "evidence": [
+    "https://github.com/sanleo461/blog"
+  ]
+}

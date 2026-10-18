@@ -1,0 +1,39 @@
+{
+  "subject": "website",
+  "ids": [
+    "cid:bafybeie4ky4kqeifwcsd7fvdg73j4mg2ggvcjsb6e5qyrnx4ph7ka6vtga"
+  ],
+  "names": [
+    "dinamic.eth"
+  ],
+  "name": "ENS Dynamic Kit",
+  "evaluated": "2026-10-18",
+  "trustlessity": {
+    "level": 2,
+    "privacy": false
+  },
+  "summary": "ENS Dynamic Kit, a demo and docs page for an off-chain ENS resolver. The Echo-Merlini/ens-dynamic-kit repository its page links to does not exist and no other public source of this site was found; its Next.js bundle has no source map. That is why it stays at Level 2. Its bundled wallet kit, gateway.ensub.org, a news feed and a CORS proxy are connections, not third-party code.",
+  "connections": [
+    {
+      "name": "WalletConnect, Reown and Coinbase (api.web3modal.org, pulse, cca-lite)",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Configuration, fonts and telemetry requests from the site's own bundled wallet kit when the page opens."
+    },
+    {
+      "name": "Resolver and data hosts (gateway.ensub.org, coindesk.com, allorigins.win)",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Fetched when the page opens."
+    },
+    {
+      "name": "Media (mypinata.cloud, seadn.io)",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Videos and images fetched when the page opens."
+    }
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "subject": "website",
+  "ids": [
+    "cid:bafybeiegp5y3iejd5ytk6hh7cbpxfzmide2d7ev3yvvgnla5badl3dgflu"
+  ],
+  "name": "IPLD Explorer",
+  "evaluated": "2026-10-18",
+  "trustlessity": {
+    "level": 4,
+    "privacy": false
+  },
+  "summary": "The IPLD Explorer for walking a CID's Merkle DAG, source public in ipld/explore.ipld.io (MIT). It runs no third-party code and makes no request when it opens. Level 4: blocks are fetched by CID from trustless gateways and checked by hash, and delegated routing only finds providers. Not privacy: exploring a CID shows the user's IP address and the CID to those gateways, routers and, for DNSLink names, DNS resolvers.",
+  "connections": [
+    {
+      "name": "Trustless gateways, routing (trustless-gateway.link, delegated-ipfs.dev)",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Used only when a CID is explored; blocks are checked by hash."
+    },
+    {
+      "name": "DNS over HTTPS (cloudflare-dns.com, dns.google)",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Used only to resolve a DNS name the user enters."
+    }
+  ],
+  "evidence": [
+    "https://github.com/ipld/explore.ipld.io"
+  ]
+}

@@ -1,22 +1,22 @@
 {
   "subject": "website",
   "ids": [
-    "cid:bafybeiara3xdqrrxfqvzlyuf7x42u64c7pnfatjuvvzadhiwhmltsfu4ee"
+    "cid:bafybeier6ud42ptljtfaxrdlknktw54b7ohfpg5h33mosxpxjndxs7xzvm"
   ],
-  "name": "IPFS documentation",
-  "evaluated": "2026-10-05",
+  "name": "IPFS Docs",
+  "evaluated": "2026-10-18",
   "trustlessity": {
     "level": 2,
     "privacy": false
   },
-  "summary": "A build of the IPFS documentation, open source (MIT for code). It is not Level 3: when it opens it loads Google Analytics and SpeedCurve's performance monitoring script.",
+  "summary": "The IPFS documentation site, a VuePress build whose source is public (ipfs/ipfs-docs, no licence file). It stays at Level 2: when it opens it loads the Plausible analytics script from plausible.io without an integrity hash and reports the visit.",
   "connections": [
     {
-      "name": "Google Analytics and SpeedCurve (cdn.speedcurve.com)",
+      "name": "Plausible analytics (plausible.io)",
       "trustlessity": {
         "level": 1
       },
-      "note": "Loaded when the page opens, without asking."
+      "note": "Script and visit report loaded when the page opens, no integrity hash."
     }
   ],
   "evidence": [

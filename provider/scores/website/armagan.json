@@ -1,0 +1,19 @@
+{
+  "subject": "website",
+  "ids": [
+    "cid:bafybeifok2eunxjoacnb4aszboue2pecinryypzh4a6l5jo4a6dluutz6y"
+  ],
+  "names": [
+    "armagan.eth"
+  ],
+  "name": "Armagan Ercan",
+  "evaluated": "2026-10-18",
+  "trustlessity": {
+    "level": 4,
+    "privacy": true
+  },
+  "summary": "The personal page of Armagan Ercan. It is a single plain HTML file with the photo embedded and two small readable inline scripts (theme toggle), so the page is its own public source (no licence file). It makes no request beyond its own file, and its outside links open only when clicked. Level 4 with privacy.",
+  "evidence": [
+    "https://armagan.eth.limo/"
+  ]
+}

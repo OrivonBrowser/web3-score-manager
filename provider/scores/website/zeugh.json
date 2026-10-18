@@ -1,0 +1,28 @@
+{
+  "subject": "website",
+  "ids": [
+    "cid:bafkreihosx5ujpwa7e6gtp35cscwkv3tjb4jelihac5dnk6uha4z4oc6di"
+  ],
+  "names": [
+    "zeugh.eth"
+  ],
+  "name": "Zeugh",
+  "evaluated": "2026-10-18",
+  "trustlessity": {
+    "level": 3,
+    "privacy": false
+  },
+  "summary": "Zeugh's personal page: one hand-written HTML page with no script, served as written, so its source is public (no licence file). It runs no code at all, which is Level 3. It is not Level 4: when it opens it loads three avatar images from a Pinata gateway.",
+  "connections": [
+    {
+      "name": "Avatar images (orange-immediate-walrus-79.mypinata.cloud)",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Fetched when the page opens."
+    }
+  ],
+  "evidence": [
+    "https://zeugh.eth.limo/"
+  ]
+}

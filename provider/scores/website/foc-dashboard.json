@@ -1,0 +1,28 @@
+{
+  "subject": "website",
+  "ids": [
+    "cid:bafybeicionrv4aqv6mqerizkwwbmcantqinxirdcvwjje6g4mnkxaqw5i4"
+  ],
+  "names": [
+    "foc-dashboard.eth"
+  ],
+  "name": "Filecoin Onchain Cloud Dashboard",
+  "evaluated": "2026-10-18",
+  "trustlessity": {
+    "level": 2,
+    "privacy": false
+  },
+  "summary": "Filecoin Onchain Cloud Dashboard, a read-only lookup of datasets and pieces for an FEVM address, open source (MIT) in dgrafe/foc-dashboard. It stays at Level 2 because its script imports viem and its dependencies from esm.sh with no integrity hash, over four hundred requests to a CDN that can change that code at any time.",
+  "connections": [
+    {
+      "name": "viem and dependencies from esm.sh",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Script modules loaded as code when the page opens, with no integrity hash."
+    }
+  ],
+  "evidence": [
+    "https://github.com/dgrafe/foc-dashboard"
+  ]
+}

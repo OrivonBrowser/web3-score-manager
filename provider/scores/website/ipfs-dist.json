@@ -1,0 +1,16 @@
+{
+  "subject": "website",
+  "ids": [
+    "cid:bafybeigq57yutnhpvycfifxgrdziygcxvmwmzmlrm2dcpdmemidirzhnta"
+  ],
+  "name": "IPFS Distributions",
+  "evaluated": "2026-10-18",
+  "trustlessity": {
+    "level": 4,
+    "privacy": true
+  },
+  "summary": "The downloads site for the official IPFS software. Its source is public in ipfs/distributions (MIT; the site folder builds site.js with webpack, and the repo has no fetch call). It runs no third-party code and loads only its own files, and download links are followed only when clicked. Level 4 with privacy.",
+  "evidence": [
+    "https://github.com/ipfs/distributions"
+  ]
+}

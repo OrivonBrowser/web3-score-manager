@@ -1,0 +1,32 @@
+{
+  "subject": "website",
+  "ids": [
+    "cid:bafybeih5tkewx5ems5jsuygc3kd62sucr73tdxs35yzvszna4wcigr6cai"
+  ],
+  "names": [
+    "chaskin.eth"
+  ],
+  "name": "Jason Chaskin",
+  "evaluated": "2026-10-18",
+  "trustlessity": {
+    "level": 2,
+    "privacy": false
+  },
+  "summary": "Jason Chaskin's personal page, a Next.js site. It stays at Level 2 because it embeds two YouTube players as it opens, which also run Google's ad and tracking scripts from doubleclick.net and google.com. No public source of the site was found.",
+  "connections": [
+    {
+      "name": "YouTube players (youtube.com, i.ytimg.com)",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Embedded when the page opens."
+    },
+    {
+      "name": "Google ad and tracking scripts (doubleclick.net, google.com)",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Run by the YouTube players when the page opens."
+    }
+  ]
+}

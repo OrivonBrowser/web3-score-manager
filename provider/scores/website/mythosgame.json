@@ -1,0 +1,25 @@
+{
+  "subject": "website",
+  "ids": [
+    "cid:bah5acgza6mb46nfucjifposs4wnr5dp43xvtdvbfjhhyruqxzefwvywqsgua"
+  ],
+  "names": [
+    "mythosgame.eth"
+  ],
+  "name": "MYTHOS Arena",
+  "evaluated": "2026-10-18",
+  "trustlessity": {
+    "level": 2,
+    "privacy": false
+  },
+  "summary": "MYTHOS Arena, a WebGL first-person shooter. Its bundle is minified with no source map and no public repository was found, so it stays at Level 2. It makes no request when it opens; multiplayer uses the GUN relay at vibing.at when the player chooses it.",
+  "connections": [
+    {
+      "name": "GUN relay (vibing.at/gun)",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Contacted only when multiplayer is chosen."
+    }
+  ]
+}

@@ -1,0 +1,53 @@
+{
+  "subject": "website",
+  "ids": [
+    "cid:bafybeidcxsyha6rotpfauux3d34lzwedrrqu4wjcs5kklrdw3mdfro7v3i"
+  ],
+  "names": [
+    "dotc.eth"
+  ],
+  "name": "Swarm dOTC",
+  "evaluated": "2026-10-18",
+  "trustlessity": {
+    "level": 2,
+    "privacy": false
+  },
+  "summary": "The Swarm Markets dOTC trading app. No public source for this build was found. It is not Level 3: when it opens it loads Google Tag Manager, a Mava chat widget and a Usercentrics consent script from other hosts, third-party code the user has not asked for. It also reads several RPC endpoints, an indexer and the Swarm API.",
+  "connections": [
+    {
+      "name": "Google Tag Manager",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Script loaded when the page opens."
+    },
+    {
+      "name": "Mava chat widget (widget.mava.app, chat.mava.app)",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Chat script loaded when the page opens."
+    },
+    {
+      "name": "Usercentrics (app.usercentrics.eu)",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Consent script loaded when the page opens."
+    },
+    {
+      "name": "RPC endpoints (thirdweb)",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Read without a light client."
+    },
+    {
+      "name": "Indexer and Swarm API (indexer.hyperindex.xyz, api.app.swarm.com)",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Queried when the page opens."
+    }
+  ]
+}

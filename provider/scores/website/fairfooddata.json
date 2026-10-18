@@ -1,0 +1,16 @@
+{
+  "subject": "website",
+  "ids": [
+    "cid:bah5acgzaclp5t3s3vmenu32ornjy5b5fpwhyd6twvejheobpffbdu7l72tkq"
+  ],
+  "names": [
+    "fairfooddata.eth"
+  ],
+  "name": "Fair Food Data",
+  "evaluated": "2026-10-18",
+  "trustlessity": {
+    "level": 2,
+    "privacy": false
+  },
+  "summary": "The Fair Food Data landing page on Swarm. Its scripts are minified bundles with no source map, and no public repository of this page was found (the organisation's twin-page repository is a different page), so it stays at Level 2. It makes no request to another host when it opens."
+}

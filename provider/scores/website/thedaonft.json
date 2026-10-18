@@ -1,0 +1,28 @@
+{
+  "subject": "website",
+  "ids": [
+    "cid:bafybeie7ebqloof4uzvavwua572ybvtguzghqi5uyy6tjxqqqvvnjarwpi"
+  ],
+  "names": [
+    "thedaonft.eth"
+  ],
+  "name": "TheDAO SEC Report NFT",
+  "evaluated": "2026-10-18",
+  "trustlessity": {
+    "level": 3,
+    "privacy": false
+  },
+  "summary": "The mint and unwrap page for the TheDAO SEC Report NFT. Its source is public (no licence file): the page matches the repository's page byte for byte. It runs no third-party code, which is Level 3. It is not Level 4: when it opens it reads chain data from Infura without a light client.",
+  "connections": [
+    {
+      "name": "Infura RPC (mainnet.infura.io)",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Read when the page opens, without a light client."
+    }
+  ],
+  "evidence": [
+    "https://github.com/0xTycoon/thedao-nft"
+  ]
+}

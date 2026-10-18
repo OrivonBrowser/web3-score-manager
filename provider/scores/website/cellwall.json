@@ -1,0 +1,29 @@
+{
+  "subject": "website",
+  "ids": [
+    "cid:bafkreigfeokkxbqrk6jezpbhoc6fks43qx4453cjar2x7r6zxvpqp2ja6e"
+  ],
+  "names": [
+    "cellwall.eth"
+  ],
+  "name": "Cells 2/2",
+  "evaluated": "2026-10-18",
+  "trustlessity": {
+    "level": 3,
+    "privacy": false
+  },
+  "summary": "The dApp of the Cells 2-of-2 multisig, whose contracts are public in z0r0z/cells (MIT). The page is served as written (readable HTML and script), and its one outside script is ethers from cdnjs pinned by an integrity hash, which counts as its own code. It is not Level 4: it loads Google Fonts when it opens.",
+  "connections": [
+    {
+      "name": "Google Fonts",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Fetched when the page opens; tells Google the visit."
+    }
+  ],
+  "evidence": [
+    "https://github.com/z0r0z/cells",
+    "https://cellwall.eth.limo/"
+  ]
+}

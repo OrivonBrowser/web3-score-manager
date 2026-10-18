@@ -1,0 +1,19 @@
+{
+  "subject": "website",
+  "ids": [
+    "cid:bafybeihwgsd5mydatswicl7pyuwfwziu6bb67lcxxu6pv64pauxf253v5m"
+  ],
+  "names": [
+    "stewards.eth"
+  ],
+  "name": "The Stewards of Ethereum",
+  "evaluated": "2026-10-18",
+  "trustlessity": {
+    "level": 4,
+    "privacy": true
+  },
+  "summary": "The Stewards of Ethereum, a community field guide: a hand-written page with a short readable script and a data file, no build step, served as written, so its source is public (no licence file). Its images and font are its own files, and the links to other sites are ordinary links.",
+  "evidence": [
+    "https://stewards.eth.limo/"
+  ]
+}

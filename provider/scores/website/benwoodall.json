@@ -1,0 +1,46 @@
+{
+  "subject": "website",
+  "ids": [
+    "cid:bafybeiherjqput5zo4zs3aolffoydi7cfdnsu7x3stm4buhs2c4njfjoem"
+  ],
+  "names": [
+    "benwoodall.eth"
+  ],
+  "name": "Ben Woodall",
+  "evaluated": "2026-10-18",
+  "trustlessity": {
+    "level": 2,
+    "privacy": false
+  },
+  "summary": "Ben Woodall's personal site and blog. It stays at Level 2 because it loads the ethers library from cdnjs.cloudflare.com with no integrity hash when it opens, code the CDN can change at any time. It also reads Ethereum through ethereum.publicnode.com, resolves names through ensdata.net and loads avatars from euc.li.",
+  "connections": [
+    {
+      "name": "ethers from cdnjs.cloudflare.com",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Script loaded as code when the page opens, with no integrity hash."
+    },
+    {
+      "name": "Ethereum RPC (ethereum.publicnode.com)",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Chain reads when the page opens, without a light client."
+    },
+    {
+      "name": "ENS data API (ensdata.net, api.ensdata.net)",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Name lookups for the signers list when the page opens."
+    },
+    {
+      "name": "Avatar images (euc.li)",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Fetched when the page opens."
+    }
+  ]
+}

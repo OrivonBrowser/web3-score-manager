@@ -1,0 +1,25 @@
+{
+  "subject": "website",
+  "ids": [
+    "cid:bafybeiceuzryxw5iq56vndz4brwust2jtingegy2jpbun6jsf22mt2xlpm"
+  ],
+  "names": [
+    "aeroxyz.eth"
+  ],
+  "name": "Aero Lite",
+  "evaluated": "2026-10-18",
+  "trustlessity": {
+    "level": 2,
+    "privacy": false
+  },
+  "summary": "Aero Lite, a trading and liquidity app for Aero on Arc. Its bundle is minified and no public source was found, which is why it stays at Level 2. Its bundled wallet kit also calls api.web3modal.org and pulse.walletconnect.org when the page opens, connections and not third-party code.",
+  "connections": [
+    {
+      "name": "WalletConnect and Reown (api.web3modal.org, pulse.walletconnect.org)",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Configuration and telemetry requests from the site's own bundled wallet kit when the page opens, before a wallet is connected."
+    }
+  ]
+}

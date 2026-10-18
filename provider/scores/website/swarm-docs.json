@@ -1,0 +1,32 @@
+{
+  "subject": "website",
+  "ids": [
+    "cid:bah5acgzau7rw576sl4dumma4p2lh4navywjci3v75usxk6f4oqwtfo3teicq"
+  ],
+  "names": [
+    "docs.swarm.eth"
+  ],
+  "name": "Swarm documentation",
+  "evaluated": "2026-10-18",
+  "trustlessity": {
+    "level": 2,
+    "privacy": false
+  },
+  "summary": "The Swarm documentation site, built with Docusaurus. It stays at Level 2 whatever its source: when it opens it loads Matomo's analytics script from mtm.swarm.foundation without an integrity hash and reports the visit. The KaTeX stylesheet from jsDelivr is pinned by an integrity hash.",
+  "connections": [
+    {
+      "name": "Matomo analytics (mtm.swarm.foundation)",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Script and visit report loaded when the page opens, without an integrity hash."
+    },
+    {
+      "name": "KaTeX stylesheet (cdn.jsdelivr.net)",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Fetched when the page opens, pinned by an integrity hash."
+    }
+  ]
+}

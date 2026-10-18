@@ -1,0 +1,19 @@
+{
+  "subject": "website",
+  "ids": [
+    "cid:bafybeierjchshtzzc3dc4nz552bgphxmxcdue7qftvmhqddycqr64g4wym"
+  ],
+  "names": [
+    "justw.eth"
+  ],
+  "name": "Just (un)wrap ether",
+  "evaluated": "2026-10-18",
+  "trustlessity": {
+    "level": 4,
+    "privacy": true
+  },
+  "summary": "Just (un)wrap ether, a small WETH wrap and unwrap dapp, open source (GPL-3.0) in stigmergic-org/justweth. It makes no request when it opens and has no hard-coded RPC: it reads and sends only through the visitor's own wallet, or a Safe or an endpoint named in the address.",
+  "evidence": [
+    "https://github.com/stigmergic-org/justweth"
+  ]
+}

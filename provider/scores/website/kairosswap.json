@@ -1,0 +1,19 @@
+{
+  "subject": "website",
+  "ids": [
+    "cid:bafybeidddf3gslnqlbddiaclothgng3tpftgth6jtea6usqxc5gkj63blm"
+  ],
+  "names": [
+    "kairosswap.eth"
+  ],
+  "name": "Kairos",
+  "evaluated": "2026-10-18",
+  "trustlessity": {
+    "level": 4,
+    "privacy": true
+  },
+  "summary": "The landing page of Kairos, an onchain interest rate swap protocol. It is plain HTML and CSS with no script, so the page is its own public source (no licence file). Logos and fonts are its own files, and the app, docs and whitepaper links open only when clicked. Level 4 with privacy.",
+  "evidence": [
+    "https://kairosswap.eth.limo/"
+  ]
+}

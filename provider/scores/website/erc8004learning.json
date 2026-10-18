@@ -1,0 +1,25 @@
+{
+  "subject": "website",
+  "ids": [
+    "cid:bafybeiejmdvwfbrk5rhu46trs56crdsk7xtzihmyo4yhy4x563px46pjtu"
+  ],
+  "names": [
+    "erc8004learning.eth"
+  ],
+  "name": "ERC-8004 Learning DApp",
+  "evaluated": "2026-10-18",
+  "trustlessity": {
+    "level": 2,
+    "privacy": false
+  },
+  "summary": "ERC-8004 Learning DApp, a teaching simulator. No public source was found and its bundle is minified without a source map, which is why it stays at Level 2. Its bundled wallet kit also reports to pulse.walletconnect.org when the page opens, a connection and not third-party code. The Live Sepolia mode reaches RPC and Etherscan servers when chosen.",
+  "connections": [
+    {
+      "name": "WalletConnect telemetry (pulse.walletconnect.org)",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Sent by the site's own bundled wallet kit when the page opens, before any wallet is connected."
+    }
+  ]
+}

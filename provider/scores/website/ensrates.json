@@ -1,0 +1,16 @@
+{
+  "subject": "website",
+  "ids": [
+    "cid:bafybeigkyaep5p4dg37nl65shiiaqnqbfvwf57w4mlyw5kyqwhrom5bfxi"
+  ],
+  "names": [
+    "ensrates.eth"
+  ],
+  "name": "ensRates",
+  "evaluated": "2026-10-18",
+  "trustlessity": {
+    "level": 2,
+    "privacy": false
+  },
+  "summary": "A calculator for ENS v2 registration terms. No public repository was found, and the page is one file with a minified script and no source map, so there is no public source and it stays at Level 2. It makes no request when it opens."
+}

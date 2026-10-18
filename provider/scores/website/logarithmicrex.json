@@ -1,0 +1,32 @@
+{
+  "subject": "website",
+  "ids": [
+    "cid:bafybeidyxelpnklsdtbo5gukfc34i3vppxi66vqa764ctufscyovss6sf4"
+  ],
+  "names": [
+    "logarithmicrex.eth"
+  ],
+  "name": "Rex Kirshner",
+  "evaluated": "2026-10-18",
+  "trustlessity": {
+    "level": 2,
+    "privacy": false
+  },
+  "summary": "Rex Kirshner's Astro site. It stays at Level 2: when it opens it loads Google Tag Manager (gtag.js) from googletagmanager.com without an integrity hash, runs it in a Partytown frame and reports the visit to Google Analytics. It also loads images from cdn.rexkirshner.com.",
+  "connections": [
+    {
+      "name": "Google Tag Manager and Analytics (googletagmanager.com, google-analytics.com)",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Script and visit report loaded when the page opens."
+    },
+    {
+      "name": "Images (cdn.rexkirshner.com)",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Fetched when the page opens."
+    }
+  ]
+}
