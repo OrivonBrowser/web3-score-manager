@@ -1,0 +1,29 @@
+{
+  "subject": "website",
+  "ids": [
+    "cid:bah5acgzangiq7a7gibswrcdcla7njbmb7q6tg4jgwltfqkpg73ys5lkm6eca"
+  ],
+  "names": [
+    "app.livecoding.eth"
+  ],
+  "name": "Strudel on Swarm",
+  "evaluated": "2026-10-18",
+  "trustlessity": {
+    "level": 3,
+    "privacy": false
+  },
+  "summary": "An unofficial Strudel live-coding REPL hosted on Swarm. Its source is public: a fork (AGPL-3.0) in Cafe137/strudel-web3, which another repository names as the source of app.livecoding.eth. It runs no third-party code, which is Level 3. It is not Level 4: when it opens it fetches sample-bank lists from the strudel.b-cdn.net CDN.",
+  "connections": [
+    {
+      "name": "Sample-bank lists (strudel.b-cdn.net)",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Four JSON fetches when the page opens; samples are fetched from other hosts while patterns play."
+    }
+  ],
+  "evidence": [
+    "https://github.com/Cafe137/strudel-web3",
+    "https://github.com/Cafe137/sounduncloud"
+  ]
+}

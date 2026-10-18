@@ -1,0 +1,20 @@
+{
+  "subject": "website",
+  "ids": [
+    "cid:bafybeighbupul2ah6yseeoeroipc2o6g55wcm7ejmv2rkzhfnhgmmvfa7e"
+  ],
+  "names": [
+    "mrree.eth"
+  ],
+  "name": "Ethereum Simulator",
+  "evaluated": "2026-10-18",
+  "trustlessity": {
+    "level": 4,
+    "privacy": true
+  },
+  "summary": "MrRee.eth, a personal page with an Ethereum proof-of-stake simulator article, open source (no licence file) in 0xmrree/blog, a Vite build to a single HTML file; the simulator has its own repository (MIT). It loads only its own file, and the links to the live demo and profiles are ordinary links.",
+  "evidence": [
+    "https://github.com/0xmrree/blog",
+    "https://github.com/0xmrree/ethereum-simulator"
+  ]
+}

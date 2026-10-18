@@ -1,0 +1,28 @@
+{
+  "subject": "website",
+  "ids": [
+    "cid:bafybeid5gtwdn4x5tncvymciszvigxhtmpuw7uwtugdntzacsybngg3uvm"
+  ],
+  "names": [
+    "localsafe.eth"
+  ],
+  "name": "LocalSafe",
+  "evaluated": "2026-10-18",
+  "trustlessity": {
+    "level": 3,
+    "privacy": false
+  },
+  "summary": "LocalSafe, a client-side Safe account interface by Cyfrin with no backend, open source (MIT) in Cyfrin/localsafe.eth. It runs no third-party code, which is Level 3. It is not Level 4: when it opens its bundled wallet kit fetches configuration from api.web3modal.org and reports to pulse.walletconnect.org before any wallet is connected.",
+  "connections": [
+    {
+      "name": "WalletConnect and Reown (api.web3modal.org, pulse.walletconnect.org)",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Configuration and telemetry requests from the site's own bundled wallet kit when the page opens, before a wallet is connected."
+    }
+  ],
+  "evidence": [
+    "https://github.com/Cyfrin/localsafe.eth"
+  ]
+}

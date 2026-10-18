@@ -1,0 +1,32 @@
+{
+  "subject": "website",
+  "ids": [
+    "cid:bafybeigylsl773llsmba2yzl3myzffvowxiksqpzbmnb6xlhhlw4phkllq"
+  ],
+  "names": [
+    "dnssec.steg.eth"
+  ],
+  "name": "EIP-7951 DNSSEC Solutions",
+  "evaluated": "2026-10-18",
+  "trustlessity": {
+    "level": 2,
+    "privacy": false
+  },
+  "summary": "A demo site for EIP-7951 P-256 DNSSEC verification with ENS. The linked steg-eth repository holds the contracts and demos but no front end matching this build, and the site is a minified bundle, so it stays Level 2. Its bundled wallet libraries also send telemetry to MetaMask and Coinbase when the page opens.",
+  "connections": [
+    {
+      "name": "MetaMask SDK analytics (mm-sdk-analytics.api.cx.metamask.io)",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Sent by the bundled wallet library when the page opens."
+    },
+    {
+      "name": "Coinbase wallet telemetry (cca-lite.coinbase.com)",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Pings from the bundled wallet library when the page opens."
+    }
+  ]
+}

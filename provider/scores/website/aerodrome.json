@@ -2,18 +2,19 @@
   "subject": "website",
   "ids": [
     "cid:bafybeihlcmsi6l4i7g5brdr2wet4j6wic77mnmoldgnk3p3pt5g2lugrii",
-    "cid:bafybeic7eptsxqu2qwwmnfgkhlg5di6ggbes5htnfbkn2fvda5q7stbybi"
+    "cid:bafybeic7eptsxqu2qwwmnfgkhlg5di6ggbes5htnfbkn2fvda5q7stbybi",
+    "cid:bafybeibuxd7ijuwdqfpmzbfvrrjos652nwxfqrvqnmvmvwqgnvq4ibzqhq"
   ],
   "names": [
     "aero.drome.eth"
   ],
   "name": "Aerodrome",
-  "evaluated": "2026-10-10",
+  "evaluated": "2026-10-18",
   "trustlessity": {
     "level": 2,
     "privacy": false
   },
-  "summary": "Aerodrome's trading app on Base. No public source was found for the frontend (the project publishes contracts, SDKs and docs), so it stays at Level 2. When it opens it reads chain data from Alchemy and dRPC endpoints and contacts WalletConnect's servers.",
+  "summary": "Aerodrome's trading app on Base. No public source was found for the frontend (the project publishes contracts, SDKs and docs), so it stays at Level 2. When it opens it reads chain data from RPC endpoints (Alchemy, dRPC), contacts WalletConnect's servers, calls a Dromos API and loads token logos from GitHub.",
   "connections": [
     {
       "name": "RPC endpoints (Alchemy, lb.drpc.live)",
@@ -28,6 +29,20 @@
         "level": 1
       },
       "note": "Contacted when the page opens, before any wallet is connected."
+    },
+    {
+      "name": "Dromos API (dromos.xyz)",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Called when the page opens."
+    },
+    {
+      "name": "Token logos (raw.githubusercontent.com)",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Images loaded when the page opens."
     }
   ],
   "evidence": [

@@ -1,0 +1,35 @@
+{
+  "subject": "website",
+  "ids": [
+    "cid:bafybeihrqubibslgdvugihqindemueyn6y3qiix4d5ouns3pdkkxodiiqi"
+  ],
+  "names": [
+    "safenet-explorer.eth"
+  ],
+  "name": "Safenet Explorer",
+  "evaluated": "2026-10-18",
+  "trustlessity": {
+    "level": 3,
+    "privacy": false
+  },
+  "summary": "Safenet Explorer, open source (Apache-2.0) in safe-research/safenet, explorer/. It runs no third-party code, which is Level 3. It is not Level 4: when it opens it reads chain data from the public Gnosis RPC endpoint rpc.gnosischain.com without a light client, and the other networks use their own public RPC endpoints and Etherscan-style APIs when chosen.",
+  "connections": [
+    {
+      "name": "Gnosis RPC (rpc.gnosischain.com)",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Read when the page opens, without a light client."
+    },
+    {
+      "name": "Other chains' RPC and explorer APIs",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Used when another network is chosen."
+    }
+  ],
+  "evidence": [
+    "https://github.com/safe-research/safenet"
+  ]
+}

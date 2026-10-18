@@ -1,0 +1,49 @@
+{
+  "subject": "website",
+  "ids": [
+    "cid:bah5acgzavx7aoqsu42licajoh5jc4ule2c3juyf4tfzousdr3kmokdvcea5a"
+  ],
+  "names": [
+    "beeport.eth"
+  ],
+  "name": "Beeport",
+  "evaluated": "2026-10-18",
+  "trustlessity": {
+    "level": 2,
+    "privacy": false
+  },
+  "summary": "A Swarm postage-stamp and upload app, source public in ethersphere/beeport. It is not Level 3: its feedback widget injects the Formbricks SDK script from app.formbricks.com when the page mounts, third-party code the user did not ask for. It also reads chains and quotes from LI.FI and Relay, stamps from a Bee API and an indexer (The Graph), and uses public RPC endpoints.",
+  "connections": [
+    {
+      "name": "Formbricks feedback widget (app.formbricks.com)",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Its script is injected from that host when the page mounts."
+    },
+    {
+      "name": "LI.FI and Relay APIs (li.quest, api.relay.link)",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Chains, tokens and quotes, a backend API."
+    },
+    {
+      "name": "Bee API and The Graph indexer (beeport.xyz, gateway.thegraph.com)",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Stamp and usage data."
+    },
+    {
+      "name": "Public RPC endpoints (Gnosis, Base and others)",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Read without a light client."
+    }
+  ],
+  "evidence": [
+    "https://github.com/ethersphere/beeport"
+  ]
+}

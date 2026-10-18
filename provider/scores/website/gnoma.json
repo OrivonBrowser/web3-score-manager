@@ -1,0 +1,39 @@
+{
+  "subject": "website",
+  "ids": [
+    "cid:bafybeiazz5aloc2gxkjcs6kohohpkexn6jewgxyuipfnyboi4f2xi46y3q"
+  ],
+  "names": [
+    "gnoma.eth"
+  ],
+  "name": "Gnoma",
+  "evaluated": "2026-10-18",
+  "trustlessity": {
+    "level": 2,
+    "privacy": false
+  },
+  "summary": "Gnoma, an unofficial explorer for Anoma settlements, the shielded pool and the XAN token. Its bundle is minified with no source map and no public repository was found, so it stays at Level 2. When it opens it also calls an API on a Cloudflare Workers address and loads Google Fonts.",
+  "connections": [
+    {
+      "name": "Explorer API (anomapay-explorer.bidurandblog.workers.dev)",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Overview data fetched when the page opens."
+    },
+    {
+      "name": "Public RPC endpoints (1rpc.io, dRPC, PublicNode and others)",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Named in the bundle for chain reads, without a light client."
+    },
+    {
+      "name": "Google Fonts",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Fetched when the page opens; tells Google the visit."
+    }
+  ]
+}

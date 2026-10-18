@@ -1,0 +1,39 @@
+{
+  "subject": "website",
+  "ids": [
+    "cid:bafybeiaj6gdvn7j5g653bwpin3f3luqvmllug34mxzporgmmsji4flvzpi"
+  ],
+  "names": [
+    "jamesbeck.eth"
+  ],
+  "name": "James Beck",
+  "evaluated": "2026-10-18",
+  "trustlessity": {
+    "level": 2,
+    "privacy": false
+  },
+  "summary": "James Beck's blog on ENS and consumer crypto, with music pages. No public source for this build was found. It is not Level 3: when it opens it loads Google Tag Manager and Analytics from another host and embeds SoundCloud, Bandcamp and Nina players that load with the page, third-party code the user has not asked for.",
+  "connections": [
+    {
+      "name": "Google Tag Manager and Analytics",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Scripts loaded when the page opens."
+    },
+    {
+      "name": "SoundCloud, Bandcamp, Nina and Catalog embeds",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Players loaded when the page opens."
+    },
+    {
+      "name": "Twitter images (pbs.twimg.com)",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Fetched when the page opens."
+    }
+  ]
+}

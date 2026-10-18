@@ -1,0 +1,35 @@
+{
+  "subject": "website",
+  "ids": [
+    "cid:bafybeihloxuqvmw34uo7oid7dbgovzdaik2ia2mm7tgzqxxm45aywmfllu"
+  ],
+  "names": [
+    "projectgutenberg.filecoincloud.eth"
+  ],
+  "name": "Project Gutenberg en español (Filecoin mirror)",
+  "evaluated": "2026-10-18",
+  "trustlessity": {
+    "level": 3,
+    "privacy": false
+  },
+  "summary": "A mirror of 572 Spanish Project Gutenberg books with their CIDs. It is one plain HTML file with readable inline scripts, so it is its own public source (no licence file), and it runs no third-party code. It is not Level 4: when it opens it sends a page-view beacon to GoatCounter and reads the donation state from a Filecoin RPC node (api.node.glif.io).",
+  "connections": [
+    {
+      "name": "GoatCounter analytics (projectgutenberg.goatcounter.com)",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Page-view beacon sent by the page's own script when it opens."
+    },
+    {
+      "name": "Filecoin RPC (api.node.glif.io)",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Read without a light client when the page opens, for the donor list."
+    }
+  ],
+  "evidence": [
+    "https://projectgutenberg.filecoincloud.eth.limo/"
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "subject": "website",
+  "ids": [
+    "cid:bah5acgza2qzxwaqwgcb7pkiwaqjcvldfcqasntasiwzm4bqcmsl3ogz2mpdq"
+  ],
+  "names": [
+    "fairdatasociety.eth"
+  ],
+  "name": "Fair Data Society",
+  "evaluated": "2026-10-18",
+  "trustlessity": {
+    "level": 2,
+    "privacy": false
+  },
+  "summary": "The Fair Data Society blog, a minified Next.js build. The organisation's public repositories hold a different Jekyll site and an older blog, not this build, so no public source was found and it stays at Level 2. When it opens it also loads fonts from Google Fonts and Adobe Fonts.",
+  "connections": [
+    {
+      "name": "Google Fonts and Adobe Fonts (fonts.googleapis.com, use.typekit.net)",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Stylesheets and font files fetched when the page opens."
+    }
+  ]
+}

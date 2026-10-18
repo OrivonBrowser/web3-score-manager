@@ -1,0 +1,19 @@
+{
+  "subject": "website",
+  "ids": [
+    "cid:bah5acgzawjqjrxeaggdhsmo7a6khjynixwuvllbxtlzp4nchertzn56shpeq"
+  ],
+  "names": [
+    "whispery.eth"
+  ],
+  "name": "Whispery",
+  "evaluated": "2026-10-18",
+  "trustlessity": {
+    "level": 4,
+    "privacy": true
+  },
+  "summary": "The landing page of Whispery, which sells owned chat channels. It is plain HTML and CSS with a small readable inline script, so the page is its own public source (no licence file). It loads only its own file, and the founding-slot button opens a mail draft rather than sending a request. Level 4 with privacy.",
+  "evidence": [
+    "https://whispery.eth.limo/"
+  ]
+}

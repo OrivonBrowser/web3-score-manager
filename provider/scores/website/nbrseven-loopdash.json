@@ -1,0 +1,16 @@
+{
+  "subject": "website",
+  "ids": [
+    "cid:bafybeidh3dgdxemzbcitaej2i5cdbw6wily52kvto3rsvdgpjd7yqzslli"
+  ],
+  "names": [
+    "loopdash.nbrseven.eth"
+  ],
+  "name": "Loop Dash",
+  "evaluated": "2026-10-18",
+  "trustlessity": {
+    "level": 2,
+    "privacy": false
+  },
+  "summary": "Loop Dash, a one-page mobile arcade game. The page makes no request, but its single inline script is heavily obfuscated and no public source was found, so what runs cannot be read and the site stays at Level 2."
+}

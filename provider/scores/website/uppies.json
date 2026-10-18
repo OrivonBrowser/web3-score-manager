@@ -1,0 +1,19 @@
+{
+  "subject": "website",
+  "ids": [
+    "cid:bafybeibasvgqvem5yoqlthm2bapd2klkojfqrsfkezz5atktoxqgeijgny"
+  ],
+  "names": [
+    "uppies.eth"
+  ],
+  "name": "Uppies",
+  "evaluated": "2026-10-18",
+  "trustlessity": {
+    "level": 4,
+    "privacy": true
+  },
+  "summary": "A small dapp that tops up a Gnosis Pay card from an Aave position, source public in jimjimvalkema/uppies (MIT). It runs no third-party code and makes no request when it opens; contract reads and transactions go through the user's own wallet. Level 4 with privacy.",
+  "evidence": [
+    "https://github.com/jimjimvalkema/uppies"
+  ]
+}

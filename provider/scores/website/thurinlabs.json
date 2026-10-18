@@ -1,0 +1,28 @@
+{
+  "subject": "website",
+  "ids": [
+    "cid:bafybeihdupn5ye5hg3djlpvsu4kxt4ojafat6do37jamr2tdi6tdhkhjfi"
+  ],
+  "names": [
+    "thurinlabs.eth"
+  ],
+  "name": "Thurin Labs",
+  "evaluated": "2026-10-18",
+  "trustlessity": {
+    "level": 3,
+    "privacy": false
+  },
+  "summary": "The company site of Thurin Labs, builder of Thurin.id. Its source is public (MIT) and ships as plain HTML with no third-party scripts. It is Level 3. It is not Level 4: it loads the thurinlabs.eth card image from thurin.id when the page opens, a request to another host.",
+  "connections": [
+    {
+      "name": "thurin.id (card image)",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Fetched when the page opens."
+    }
+  ],
+  "evidence": [
+    "https://github.com/thurinlabs/thurinlabs"
+  ]
+}

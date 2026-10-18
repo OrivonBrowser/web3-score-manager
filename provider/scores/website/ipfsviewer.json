@@ -1,0 +1,32 @@
+{
+  "subject": "website",
+  "ids": [
+    "cid:bafybeihukhinfpbfj7jvb6lbf2lqgodm4or4p257k55mexl4zguaeqgygm"
+  ],
+  "names": [
+    "ipfsviewer.eth"
+  ],
+  "name": "IPFS Viewer",
+  "evaluated": "2026-10-18",
+  "trustlessity": {
+    "level": 2,
+    "privacy": false
+  },
+  "summary": "IPFS Viewer, a tool that opens a CID through public gateways. No public source was found. It stays at Level 2: when it opens it loads a script from e.ipfsviewer.com without an integrity hash (the request was refused today), and viewing a CID goes through public gateways.",
+  "connections": [
+    {
+      "name": "Script (e.ipfsviewer.com/static/array.js)",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Loaded when the page opens, no integrity hash."
+    },
+    {
+      "name": "Public IPFS gateways",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Used to fetch the content a visitor looks up."
+    }
+  ]
+}

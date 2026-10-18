@@ -1,0 +1,32 @@
+{
+  "subject": "website",
+  "ids": [
+    "cid:bafybeifttbrn5ppiu6tmdtdrxxem4joqb3dwjndlislxgraopmslxcsnbm"
+  ],
+  "names": [
+    "nanjingmassacre.eth"
+  ],
+  "name": "Nanjing Massacre digital memorial",
+  "evaluated": "2026-10-18",
+  "trustlessity": {
+    "level": 2,
+    "privacy": false
+  },
+  "summary": "A Chinese-language memorial site with a timeline and archive links. No public source was found. It is not Level 3: when it opens it loads Bilibili video players, whose scripts, API calls and chat sockets come from Bilibili hosts, third-party code the user has not asked for. It also loads Google Fonts.",
+  "connections": [
+    {
+      "name": "Bilibili players (player.bilibili.com, hdslb.com, bilivideo.com)",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Embedded players loaded when the page opens, with scripts, API calls and websockets."
+    },
+    {
+      "name": "Google Fonts",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Fetched when the page opens; tells Google the visit."
+    }
+  ]
+}

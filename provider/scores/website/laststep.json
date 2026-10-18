@@ -1,0 +1,42 @@
+{
+  "subject": "website",
+  "ids": [
+    "cid:bafybeibg2ooqx3vqi3aarkv2xucbm2og53rj2fslcjnbjcig2wac37abjm"
+  ],
+  "names": [
+    "laststep.eth"
+  ],
+  "name": "Last Step",
+  "evaluated": "2026-10-18",
+  "trustlessity": {
+    "level": 3,
+    "privacy": false
+  },
+  "summary": "Last Step, a read-only checker for finished but unclaimed staking and bridge withdrawals: one hand-written HTML page with a readable script and ethers 6.13.4 byte-identical to the official build, served as written, so its source is public (no licence file). It runs no third-party code, which is Level 3. It is not Level 4: it loads Google Fonts and reads Ethereum through public RPC nodes, Blockscout and Etherscan.",
+  "connections": [
+    {
+      "name": "Google Fonts",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Fetched when the page opens; tells Google the visit."
+    },
+    {
+      "name": "Public Ethereum RPC nodes (ethereum-rpc.publicnode.com and others)",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Chain reads when the page opens, without a light client."
+    },
+    {
+      "name": "Blockscout and Etherscan APIs",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Queried with the pasted address when Check is pressed."
+    }
+  ],
+  "evidence": [
+    "https://laststep.eth.limo/"
+  ]
+}

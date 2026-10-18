@@ -1,0 +1,28 @@
+{
+  "subject": "website",
+  "ids": [
+    "cid:bafybeif7rf5neitg6zw46ywzie435krc3lmosn5l7tattejciq4oglgi2u"
+  ],
+  "names": [
+    "jalil.eth"
+  ],
+  "name": "Jalil Wahdatehagh",
+  "evaluated": "2026-10-18",
+  "trustlessity": {
+    "level": 3,
+    "privacy": false
+  },
+  "summary": "Jalil Wahdatehagh's personal link page and notes. Its source is public (no licence file). It runs no third-party code, which is Level 3. It is not Level 4: the profile picture loads from ipfs.vv.xyz when the page opens, a request to another host.",
+  "connections": [
+    {
+      "name": "ipfs.vv.xyz (profile picture)",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Fetched when the page opens."
+    }
+  ],
+  "evidence": [
+    "https://github.com/jwahdatehagh/jalil.cc"
+  ]
+}

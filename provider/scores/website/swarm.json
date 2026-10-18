@@ -1,0 +1,46 @@
+{
+  "subject": "website",
+  "ids": [
+    "cid:bah5acgzazgeq7msizgibloyfw4uncsrgrvtlpbhxhuxe7muky3cfnfw4x2wa"
+  ],
+  "names": [
+    "swarm.eth"
+  ],
+  "name": "Swarm",
+  "evaluated": "2026-10-18",
+  "trustlessity": {
+    "level": 2,
+    "privacy": false
+  },
+  "summary": "The main Swarm website. It stays at Level 2: when it opens it loads Matomo analytics from mtm.swarm.foundation and a Mautic form script from mautic.ethswarm.org, both without integrity hashes, and it reads node statistics from api.swarmscan.io. It also requests a video through bzz.link.",
+  "connections": [
+    {
+      "name": "Matomo analytics (mtm.swarm.foundation)",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Script and visit report loaded when the page opens, no integrity hash."
+    },
+    {
+      "name": "Mautic forms (mautic.ethswarm.org)",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Script and stylesheet loaded when the page opens, no integrity hash."
+    },
+    {
+      "name": "Swarmscan statistics (api.swarmscan.io)",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Node count read when the page opens."
+    },
+    {
+      "name": "Swarm gateway (bzz.link)",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Hero video requested when the page opens."
+    }
+  ]
+}

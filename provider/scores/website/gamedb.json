@@ -1,0 +1,25 @@
+{
+  "subject": "website",
+  "ids": [
+    "cid:bafybeifsbdgsz7ykidhdad5vbngdbl7mll3w7c4cqluejaluwb676okze4"
+  ],
+  "names": [
+    "gamedb.eth"
+  ],
+  "name": "GameDB",
+  "evaluated": "2026-10-18",
+  "trustlessity": {
+    "level": 2,
+    "privacy": false
+  },
+  "summary": "A retro gaming blog published with Planet. No public source was found. It is Level 2: when the page opens it loads the Plausible analytics script from plausible.io with no integrity hash.",
+  "connections": [
+    {
+      "name": "Plausible analytics (plausible.io)",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Script and event request loaded when the page opens."
+    }
+  ]
+}

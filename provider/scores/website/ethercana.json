@@ -1,0 +1,19 @@
+{
+  "subject": "website",
+  "ids": [
+    "cid:bafybeiakrsuvtx67ldcymp6ynaw7pcro6ar4rzoou34xnkjajq6dudjama"
+  ],
+  "names": [
+    "ethercana.eth"
+  ],
+  "name": "Ethercana",
+  "evaluated": "2026-10-18",
+  "trustlessity": {
+    "level": 4,
+    "privacy": true
+  },
+  "summary": "An illustrated essay presenting twelve Ethereum stewards as tarot cards. It is plain HTML with a readable inline script, so the page is its own public source (no licence file). Fonts, card images and styles all come from its own files, so it makes no request beyond the site itself. Links to the stewards' sites open only when clicked.",
+  "evidence": [
+    "https://ethercana.eth.limo/"
+  ]
+}

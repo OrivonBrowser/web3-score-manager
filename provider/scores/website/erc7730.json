@@ -1,0 +1,20 @@
+{
+  "subject": "website",
+  "ids": [
+    "cid:bafybeig7wl6isnrvf7hxhtovncjvquskw4lk7wun2d7eoimrm6yaukhfh4"
+  ],
+  "names": [
+    "erc7730.eth"
+  ],
+  "name": "ERC-7730 Registry",
+  "evaluated": "2026-10-18",
+  "trustlessity": {
+    "level": 4,
+    "privacy": true
+  },
+  "summary": "A pinned snapshot of the ERC-7730 clear-signing registry: one plain HTML page with no script, plus JSON indexes, served as written, so its source is public. The data comes from the ethereum/clear-signing-erc7730-registry repository (no licence checked). It loads only its own files.",
+  "evidence": [
+    "https://erc7730.eth.limo/",
+    "https://github.com/ethereum/clear-signing-erc7730-registry"
+  ]
+}

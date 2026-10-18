@@ -1,0 +1,35 @@
+{
+  "subject": "website",
+  "ids": [
+    "cid:bafybeibaqvyidpyanjktgf2igdi5zy6dlvuynn3a5scndokyfzpf2ou37a"
+  ],
+  "names": [
+    "liudon.eth"
+  ],
+  "name": "Liudon",
+  "evaluated": "2026-10-18",
+  "trustlessity": {
+    "level": 2,
+    "privacy": false
+  },
+  "summary": "Liudon's personal blog, a Hugo site whose source is public in Liudon/liudon.github.io (no licence file). It stays at Level 2 because its posts load Google's AdSense script from pagead2.googlesyndication.com as they open, and one embeds a Bilibili player. The home page loads only the site's own files.",
+  "connections": [
+    {
+      "name": "Google AdSense (pagead2.googlesyndication.com)",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Script loaded as code when a post opens."
+    },
+    {
+      "name": "Bilibili player (player.bilibili.com)",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Embedded when the trip post opens."
+    }
+  ],
+  "evidence": [
+    "https://github.com/Liudon/liudon.github.io"
+  ]
+}

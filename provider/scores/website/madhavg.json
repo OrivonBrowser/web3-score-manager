@@ -1,0 +1,28 @@
+{
+  "subject": "website",
+  "ids": [
+    "cid:bafybeiflqpga7a3lya2darjnfbqkkqrlqkz75hqd2yth5bwpfodtxzx5sy"
+  ],
+  "names": [
+    "madhavg.eth"
+  ],
+  "name": "Madhav Goyal",
+  "evaluated": "2026-10-18",
+  "trustlessity": {
+    "level": 3,
+    "privacy": false
+  },
+  "summary": "Madhav Goyal's blog of dated posts, static HTML pages served as written, so its source is public (no licence file); its MathJax 3.2.0 file is byte-identical to the official build. It runs no third-party code, which is Level 3. It is not Level 4: many posts load images from storage.googleapis.com and Substack's image CDN when they are read.",
+  "connections": [
+    {
+      "name": "Images in posts (storage.googleapis.com, substackcdn.com)",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Fetched when a post that uses them is opened."
+    }
+  ],
+  "evidence": [
+    "https://madhavg.eth.limo/"
+  ]
+}

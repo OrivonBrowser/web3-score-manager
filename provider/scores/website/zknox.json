@@ -1,0 +1,28 @@
+{
+  "subject": "website",
+  "ids": [
+    "cid:bafybeielcklsdqcqp2echlwrbzgev6lbuvzueqtdcjwqoldbw4pfup2mfe"
+  ],
+  "names": [
+    "zknox.eth"
+  ],
+  "name": "ZKNox Blog",
+  "evaluated": "2026-10-18",
+  "trustlessity": {
+    "level": 3,
+    "privacy": false
+  },
+  "summary": "The ZKNox research team's site and blog on post-quantum signatures and ZK. Its source is public (no licence file) in the ZKNoxHQ blog repository. It runs no third-party code, which is Level 3. It is not Level 4: it loads Google Fonts when the page opens, a request to another host.",
+  "connections": [
+    {
+      "name": "Google Fonts",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Fetched when the page opens; tells Google the visit."
+    }
+  ],
+  "evidence": [
+    "https://github.com/ZKNoxHQ/blog"
+  ]
+}

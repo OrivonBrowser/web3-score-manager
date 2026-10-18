@@ -1,0 +1,32 @@
+{
+  "subject": "website",
+  "ids": [
+    "cid:bafybeigseg4xle6afvtngzldocuni3bwwlfwugvwtnquyyycbwcsoz2xta"
+  ],
+  "names": [
+    "victor42.eth"
+  ],
+  "name": "Victor42",
+  "evaluated": "2026-10-18",
+  "trustlessity": {
+    "level": 2,
+    "privacy": false
+  },
+  "summary": "Victor42's Chinese-language Hugo blog. It stays at Level 2: when it opens it loads Google Tag Manager (gtag.js) twice from googletagmanager.com, third-party analytics code the visitor has not asked for. It also loads Lato from Google Fonts.",
+  "connections": [
+    {
+      "name": "Google Tag Manager (googletagmanager.com)",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Two gtag.js scripts loaded when the page opens, no integrity hash."
+    },
+    {
+      "name": "Google Fonts (fonts.googleapis.com)",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Fetched when the page opens."
+    }
+  ]
+}

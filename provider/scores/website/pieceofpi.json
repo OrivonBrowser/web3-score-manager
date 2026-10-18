@@ -1,0 +1,32 @@
+{
+  "subject": "website",
+  "ids": [
+    "cid:bafybeid4ili443jbu4slf4orgvz4edfgnn7n4fhq2dkzkmiiaem2rs7rdu"
+  ],
+  "names": [
+    "pieceofpi.eth"
+  ],
+  "name": "Piece of π",
+  "evaluated": "2026-10-18",
+  "trustlessity": {
+    "level": 2,
+    "privacy": false
+  },
+  "summary": "The project page of a free-mint generative collection. No public source was found. It is Level 2: when the page opens it loads ethers from cdn.ethers.io, Tailwind from cdn.tailwindcss.com and React from unpkg.com, all with no integrity hash, and its top image comes from a Pinata gateway.",
+  "connections": [
+    {
+      "name": "Libraries (cdn.ethers.io, cdn.tailwindcss.com, unpkg.com)",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Scripts loaded from CDNs when the page opens."
+    },
+    {
+      "name": "Pinata gateway (gateway.pinata.cloud)",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "The top image, fetched when the page opens."
+    }
+  ]
+}

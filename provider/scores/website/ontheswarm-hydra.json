@@ -1,0 +1,49 @@
+{
+  "subject": "website",
+  "ids": [
+    "cid:bah5acgzagyg26kvv6bzx4xyekjeq5ouhuv34omjhgc5akx4gkwbs2e4fyr6q"
+  ],
+  "names": [
+    "hydra.ontheswarm.eth"
+  ],
+  "name": "Hydra on Swarm",
+  "evaluated": "2026-10-18",
+  "trustlessity": {
+    "level": 2,
+    "privacy": false
+  },
+  "summary": "Hydra on Swarm, a Swarm build of the open-source Hydra live-coding visual synth. It stays at Level 2: when it opens it loads hydra-synth from cdn.jsdelivr.net and p5.js from cdnjs.cloudflare.com with no integrity hash, code the CDNs can change at any time. It also loads Google Fonts and translation files from raw.githubusercontent.com.",
+  "connections": [
+    {
+      "name": "hydra-synth from cdn.jsdelivr.net",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Script loaded as code when the page opens, with no integrity hash."
+    },
+    {
+      "name": "p5.js from cdnjs.cloudflare.com",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Script loaded as code when the page opens, with no integrity hash."
+    },
+    {
+      "name": "Google Fonts",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Fetched when the page opens; tells Google the visit."
+    },
+    {
+      "name": "Translation files (raw.githubusercontent.com)",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Fetched when the page opens."
+    }
+  ],
+  "evidence": [
+    "https://github.com/hydra-synth/hydra"
+  ]
+}

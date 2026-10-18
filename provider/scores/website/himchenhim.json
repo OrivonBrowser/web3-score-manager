@@ -1,0 +1,25 @@
+{
+  "subject": "website",
+  "ids": [
+    "cid:bafybeidn3rynn4gr44wujyma6gcwwqattf2i32pmajawgleektit3k3pdi"
+  ],
+  "names": [
+    "himchenhim.eth"
+  ],
+  "name": "Dmytro Khimchenko",
+  "evaluated": "2026-10-18",
+  "trustlessity": {
+    "level": 2,
+    "privacy": false
+  },
+  "summary": "Dmytro Khimchenko's audit and talks portfolio. The home page loads only its own files, but a talk page with a recording embeds a YouTube player as it opens, third-party code the visitor has not asked for. No public source of the site was found: the linked repository holds audit reports only. That is why it stays at Level 2.",
+  "connections": [
+    {
+      "name": "YouTube player (youtube.com)",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Embedded when a talk page with a recording opens."
+    }
+  ]
+}

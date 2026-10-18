@@ -1,0 +1,16 @@
+{
+  "subject": "website",
+  "ids": [
+    "cid:bafybeibjojt72jamac3dkxmhbvchmg3m6f64gv3fm2kzgmgmmz7ywxu4ri"
+  ],
+  "names": [
+    "me.scottrepreneur.eth"
+  ],
+  "name": "scottrepreneur",
+  "evaluated": "2026-10-18",
+  "trustlessity": {
+    "level": 2,
+    "privacy": false
+  },
+  "summary": "A blog built with Astro on the AstroPaper theme; the three pages checked load only their own files. No public source for this build was found: the GitHub repository named for the blog holds the older Gatsby site, and the scripts are minified without source maps, so it stays at Level 2."
+}

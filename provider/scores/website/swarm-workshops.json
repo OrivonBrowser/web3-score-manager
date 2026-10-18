@@ -1,0 +1,32 @@
+{
+  "subject": "website",
+  "ids": [
+    "cid:bah5acgzacg7nkvycm4ykaepxevb6gsroyifclpnxxxlusudf76ein6u46igq"
+  ],
+  "names": [
+    "workshops.swarm.eth"
+  ],
+  "name": "Swarm Online Workshops",
+  "evaluated": "2026-10-18",
+  "trustlessity": {
+    "level": 2,
+    "privacy": false
+  },
+  "summary": "Swarm Online Workshops, a Swarm Foundation page listing developer sessions. It stays at Level 2 because it loads the Matomo analytics script from mtm.swarm.foundation with no integrity hash when it opens. It also loads Google Fonts.",
+  "connections": [
+    {
+      "name": "Matomo analytics (mtm.swarm.foundation)",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Script loaded and visit reported when the page opens."
+    },
+    {
+      "name": "Google Fonts",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Fetched when the page opens; tells Google the visit."
+    }
+  ]
+}

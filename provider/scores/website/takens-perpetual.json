@@ -1,0 +1,29 @@
+{
+  "subject": "website",
+  "ids": [
+    "cid:bafybeihbh5enxkvxu76sirnbjo66jpv4kp7ncnluzzjk5b5eogg7k27tam"
+  ],
+  "names": [
+    "perpetual.takens.eth"
+  ],
+  "name": "Perpetual",
+  "evaluated": "2026-10-18",
+  "trustlessity": {
+    "level": 3,
+    "privacy": false
+  },
+  "summary": "Perpetual, a landing page for a generative artwork by Takens Theorem: one self-contained HTML file served as written, so its source is public (no licence file for the page). Its only outside script is jQuery 3.7.1 from cdnjs.cloudflare.com, pinned by an integrity hash, which counts as its own code: Level 3. It is not Level 4 because the page requests that file from another host when it opens.",
+  "connections": [
+    {
+      "name": "jQuery from cdnjs.cloudflare.com",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Fetched when the page opens, pinned by an integrity hash."
+    }
+  ],
+  "evidence": [
+    "https://perpetual.takens.eth.limo/",
+    "https://github.com/takenstheorem/perpetual"
+  ]
+}

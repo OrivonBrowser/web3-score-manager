@@ -1,0 +1,32 @@
+{
+  "subject": "website",
+  "ids": [
+    "cid:bah5acgzab535od4slmqdqubxldhwqem26ofovaarkawxij3qyvvqmm24dx7q"
+  ],
+  "names": [
+    "excalidraw.ontheswarm.eth"
+  ],
+  "name": "Excalidraw on Swarm",
+  "evaluated": "2026-10-18",
+  "trustlessity": {
+    "level": 2,
+    "privacy": false
+  },
+  "summary": "The Excalidraw whiteboard served from Swarm. No public source for this build was found. It is not Level 3: when it opens it loads the Simple Analytics script from scripts.simpleanalyticscdn.com with no integrity hash, third-party code the user has not asked for. It also loads fonts from a DigitalOcean CDN.",
+  "connections": [
+    {
+      "name": "Simple Analytics (scripts.simpleanalyticscdn.com)",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Script and tracking pixel loaded when the page opens."
+    },
+    {
+      "name": "Excalidraw font CDN (digitaloceanspaces.com)",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Fonts fetched when the page opens."
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "subject": "website",
+  "ids": [
+    "cid:bafybeifyb455wffkjworiorlzmwnhv6fupkvtld2u6jzkbxvt7tklj2nvi"
+  ],
+  "name": "CID Inspector",
+  "evaluated": "2026-10-18",
+  "trustlessity": {
+    "level": 4,
+    "privacy": true
+  },
+  "summary": "The IPFS project's CID Inspector, which breaks a CID into its parts in the page. Its source is public (no licence file) and the build matches the one served at cid.ipfs.tech. It runs no third-party code and loads only its own files, and decoding happens locally, so it makes no request beyond the site itself.",
+  "evidence": [
+    "https://github.com/ipfs/cid-utils-website"
+  ]
+}

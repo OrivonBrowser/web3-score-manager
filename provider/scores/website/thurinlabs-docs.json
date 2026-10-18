@@ -1,0 +1,28 @@
+{
+  "subject": "website",
+  "ids": [
+    "cid:bafybeibhsp46xocv6kkadpxjk3bqzzbrqq6vqkr3t7hjz4wlire5gjszva"
+  ],
+  "names": [
+    "docs.thurinlabs.eth"
+  ],
+  "name": "Thurin.id Docs",
+  "evaluated": "2026-10-18",
+  "trustlessity": {
+    "level": 4,
+    "privacy": false
+  },
+  "summary": "Thurin.id Docs, a Docsify documentation site, open source (Apache-2.0) in thurinlabs/docs. It runs no third-party code and loads only its own files. Its Check a key demo asks ethereum.publicnode.com about a key owner only when the visitor presses Check, which the page says beside the button: an optional part started knowingly, so it is Level 4 but not private.",
+  "connections": [
+    {
+      "name": "Ethereum RPC for the demo (ethereum.publicnode.com)",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Only when Check is pressed in the Check a key demo."
+    }
+  ],
+  "evidence": [
+    "https://github.com/thurinlabs/docs"
+  ]
+}

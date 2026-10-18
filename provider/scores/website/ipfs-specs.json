@@ -1,0 +1,25 @@
+{
+  "subject": "website",
+  "ids": [
+    "cid:bafybeieqikrxw6kjbu2aojxr5ypfzb4gk75pkvrfzef6yiv6jucec427e4"
+  ],
+  "name": "IPFS Standards",
+  "evaluated": "2026-10-18",
+  "trustlessity": {
+    "level": 3,
+    "privacy": false
+  },
+  "summary": "IPFS Standards, the specifications site, open source in ipfs/specs (no licence file at the repository root). It runs no script at all, which is Level 3. It is not Level 4: the specification pages load their status badges from img.shields.io when they are read.",
+  "connections": [
+    {
+      "name": "Status badges (img.shields.io)",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Fetched when a specification page is opened."
+    }
+  ],
+  "evidence": [
+    "https://github.com/ipfs/specs"
+  ]
+}

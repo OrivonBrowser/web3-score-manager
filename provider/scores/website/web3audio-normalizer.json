@@ -1,0 +1,25 @@
+{
+  "subject": "website",
+  "ids": [
+    "cid:bafybeibends4aonswbasuwvtjfe5rrmy7qb52riuizbg6awbz6adf3qgey"
+  ],
+  "names": [
+    "normalizer.web3audio.eth"
+  ],
+  "name": "Web3Audio Normalizer",
+  "evaluated": "2026-10-18",
+  "trustlessity": {
+    "level": 2,
+    "privacy": false
+  },
+  "summary": "The WEB3AUDIO Normalizer, a client-side tool that normalises track loudness in the browser. It stays at Level 2 because it loads the GoatCounter analytics script from gc.zgo.at with no integrity hash when it opens, and that script then reports the visit to web3audio.goatcounter.com. No public repository was found.",
+  "connections": [
+    {
+      "name": "GoatCounter analytics (gc.zgo.at, web3audio.goatcounter.com)",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Script loaded and visit reported when the page opens."
+    }
+  ]
+}

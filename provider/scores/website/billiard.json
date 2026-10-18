@@ -1,0 +1,63 @@
+{
+  "subject": "website",
+  "ids": [
+    "cid:bafybeid7lfybdwmemadfkgbbakbit4ainslpnuphsssx7aj3beqjsrt2tm"
+  ],
+  "names": [
+    "billiard.eth"
+  ],
+  "name": "billiard.eth",
+  "evaluated": "2026-10-18",
+  "trustlessity": {
+    "level": 3,
+    "privacy": false
+  },
+  "summary": "An online 8-ball pool game tied to ENS names. Its source is public (MIT). It runs no third-party code, which is Level 3. It is not Level 4: it relies on a game server (a Cloudflare Worker) that runs the authoritative game, and when it opens it reads a public Ethereum RPC, loads Google Fonts and an ENS avatar host, and its bundled wallet library calls WalletConnect and Coinbase.",
+  "connections": [
+    {
+      "name": "Game server (billiard-worker.dmpay.workers.dev)",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Queried when the page opens; it holds the lobby and runs every game."
+    },
+    {
+      "name": "Ethereum RPC (ethereum-rpc.publicnode.com)",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Read without a light client."
+    },
+    {
+      "name": "WalletConnect/Reown (api.web3modal.org, pulse.walletconnect.org)",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Telemetry and wallet list requests from the bundled wallet library, before any wallet is connected."
+    },
+    {
+      "name": "Coinbase wallet telemetry (cca-lite.coinbase.com)",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Pings from the bundled wallet library when the page opens."
+    },
+    {
+      "name": "ENS avatar service (euc.li)",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Fetched when the page opens."
+    },
+    {
+      "name": "Google Fonts",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Fetched when the page opens; tells Google the visit."
+    }
+  ],
+  "evidence": [
+    "https://github.com/RWA-ID/billiard-game"
+  ]
+}

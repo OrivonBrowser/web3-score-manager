@@ -1,0 +1,35 @@
+{
+  "subject": "website",
+  "ids": [
+    "cid:bafkreicxz5fmc64dra4vk3ynm6zcy36thtesbc6xngo6k32pjqpcmqkrtu"
+  ],
+  "names": [
+    "color.rockopera.eth"
+  ],
+  "name": "RockoperaColor",
+  "evaluated": "2026-10-18",
+  "trustlessity": {
+    "level": 2,
+    "privacy": false
+  },
+  "summary": "A dapp to look up, name and mint hex colours as NFTs. Its source is public (no licence file) but it is not Level 3: when it opens it loads the Coloris script from jsDelivr at @latest with no integrity hash and hundreds of module files from esm.sh, third-party code that can change at any time.",
+  "connections": [
+    {
+      "name": "jsDelivr (Coloris colour picker)",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Script and styles at @latest, loaded without integrity hashes."
+    },
+    {
+      "name": "esm.sh modules",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "About 500 module files loaded when the page opens."
+    }
+  ],
+  "evidence": [
+    "https://github.com/mlamont/rockoperacolor"
+  ]
+}

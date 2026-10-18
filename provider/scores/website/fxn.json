@@ -1,0 +1,25 @@
+{
+  "subject": "website",
+  "ids": [
+    "cid:bafybeigxoiczvpwfi5sskrftp3j643uvpazybj2rcwutfyk5hees2jrnna"
+  ],
+  "names": [
+    "fxn.eth"
+  ],
+  "name": "f(x) Protocol",
+  "evaluated": "2026-10-18",
+  "trustlessity": {
+    "level": 2,
+    "privacy": false
+  },
+  "summary": "The f(x) Protocol front end by AladdinDAO, a Next.js build. Its bundle is minified with no source map, and the project's public repositories hold contracts and an SDK, not this app, so it stays at Level 2. When it opens it also reads TVL and yield figures from api.aladdin.club.",
+  "connections": [
+    {
+      "name": "Aladdin API (api.aladdin.club)",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "TVL and yield figures read when the page opens."
+    }
+  ]
+}

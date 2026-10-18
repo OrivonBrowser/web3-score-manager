@@ -1,0 +1,19 @@
+{
+  "subject": "website",
+  "ids": [
+    "cid:bafybeiezi3dzlpq5dhgy4656fgrs3o5vlsggjohw3ygsbw5ph2hr36rlny"
+  ],
+  "names": [
+    "jinheock.eth"
+  ],
+  "name": "Jin Heock",
+  "evaluated": "2026-10-18",
+  "trustlessity": {
+    "level": 4,
+    "privacy": true
+  },
+  "summary": "Jin Heock's portfolio of Farcaster tools and ENS projects. It is one HTML file with inline styles, readable script and images embedded as data, served as written, so it is its own public source. It makes no request beyond itself; the project and video entries are plain links.",
+  "evidence": [
+    "https://jinheock.eth.limo/"
+  ]
+}

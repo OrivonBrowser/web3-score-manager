@@ -1,0 +1,35 @@
+{
+  "subject": "website",
+  "ids": [
+    "cid:bafybeidu6pohujkjx3kbgzkonugipfhe57hxyedt5pbyiy52oxxddefqgm"
+  ],
+  "names": [
+    "wesl-ee.eth"
+  ],
+  "name": "wesl-ee wiki",
+  "evaluated": "2026-10-18",
+  "trustlessity": {
+    "level": 2,
+    "privacy": false
+  },
+  "summary": "A personal wiki generated with ikiwiki, source public in wesl-ee/personal-wiki (no licence file). It is not Level 3: its pages load code from CDNs with no integrity hash (the photo-sphere viewer script from jsDelivr on panorama pages, Bluesky comments from unpkg, React from esm.sh), and the home page already loads stylesheets from jsDelivr and unpkg and an image from web.hooya.wesl.ee.",
+  "connections": [
+    {
+      "name": "jsDelivr, unpkg and esm.sh libraries",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Scripts and styles loaded without an integrity hash."
+    },
+    {
+      "name": "Image host (web.hooya.wesl.ee)",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "A thumbnail fetched when the home page opens."
+    }
+  ],
+  "evidence": [
+    "https://github.com/wesl-ee/personal-wiki"
+  ]
+}

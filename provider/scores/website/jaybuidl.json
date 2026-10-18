@@ -1,0 +1,28 @@
+{
+  "subject": "website",
+  "ids": [
+    "cid:bafybeife6nfsrms46y6o3krgdebq6pupyndhdhqkqrswysgoejpxdtzxwi"
+  ],
+  "names": [
+    "jaybuidl.eth"
+  ],
+  "name": "Jay Buidl",
+  "evaluated": "2026-10-18",
+  "trustlessity": {
+    "level": 3,
+    "privacy": false
+  },
+  "summary": "Jay Buidl's one-page profile card: hand-written HTML and CSS served as written, so its source is public (no licence file). It runs no script, which is Level 3. It is not Level 4: when it opens it loads its fonts from Google Fonts.",
+  "connections": [
+    {
+      "name": "Google Fonts",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Fetched when the page opens; tells Google the visit."
+    }
+  ],
+  "evidence": [
+    "https://jaybuidl.eth.limo/"
+  ]
+}

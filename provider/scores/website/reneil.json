@@ -1,0 +1,32 @@
+{
+  "subject": "website",
+  "ids": [
+    "cid:bafybeifv3osn5satmqe7o7gccgthxkgt2264rehccbzfx5paun7a5y6vaa"
+  ],
+  "names": [
+    "reneil.eth"
+  ],
+  "name": "Reneil",
+  "evaluated": "2026-10-18",
+  "trustlessity": {
+    "level": 2,
+    "privacy": false
+  },
+  "summary": "The personal homepage of Reneil, with its own scripts (jQuery and a template). No public repository for the site was found. It is Level 2: six YouTube players load as the page opens and bring Google's ad and tracking requests (doubleclick, google.com scripts), and it loads Google Fonts.",
+  "connections": [
+    {
+      "name": "YouTube embeds (youtube.com, doubleclick.net, ytimg.com)",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Six players load when the page opens, with Google ad and tracking requests."
+    },
+    {
+      "name": "Google Fonts",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Fetched when the page opens; tells Google the visit."
+    }
+  ]
+}

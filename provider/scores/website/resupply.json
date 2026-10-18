@@ -3,13 +3,14 @@
   "ids": [
     "cid:bafybeiedkg5xxxysibyzr2bzobzkdap2gizrk7aq2mozjyqv5yk7uuk7uq",
     "cid:bafybeie3icwmemukiamudif27csgpziz3cwtinnma6eahfwduid6yazoq4",
-    "cid:bafybeiaexvjsncblykeco4h4zvcqkqwqjn72jhqe2rtx2evusuokvxkhde"
+    "cid:bafybeiaexvjsncblykeco4h4zvcqkqwqjn72jhqe2rtx2evusuokvxkhde",
+    "cid:bafybeigges7tdswqgllbl4ilpyd23kmr4wm27fr4kmsu6mha4r2v2cmnpm"
   ],
   "names": [
     "resupply.eth"
   ],
   "name": "Resupply",
-  "evaluated": "2026-10-10",
+  "evaluated": "2026-10-18",
   "trustlessity": {
     "level": 2,
     "privacy": false
@@ -17,7 +18,7 @@
   "summary": "Resupply's stablecoin app. No public source was found for this frontend: the project's public repository holds its smart contracts only, so it stays at Level 2. When it opens it reads chain data from a dRPC endpoint, prices from DefiLlama and Curve's API, and contacts WalletConnect's servers. What it reaches after a wallet connects was not checked.",
   "connections": [
     {
-      "name": "RPC endpoint (lb.drpc.org)",
+      "name": "RPC endpoint (dRPC: lb.drpc.org, lb.drpc.live)",
       "trustlessity": {
         "level": 1
       },

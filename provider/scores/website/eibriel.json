@@ -1,0 +1,19 @@
+{
+  "subject": "website",
+  "ids": [
+    "cid:bafybeifjkgm6w3w4ytqnegnjyx5d3c7qzognatyhgexauj7jf3qji3k7oq"
+  ],
+  "names": [
+    "eibriel.eth"
+  ],
+  "name": "Eibriel",
+  "evaluated": "2026-10-18",
+  "trustlessity": {
+    "level": 4,
+    "privacy": true
+  },
+  "summary": "The personal site of Eibriel with games, short films and experiments. It is plain HTML and CSS with no script, so the page is its own public source (no licence file). Images, posters and videos all come from its own files (videos start only on play), and outside links open only when clicked. Level 4 with privacy.",
+  "evidence": [
+    "https://eibriel.eth.limo/"
+  ]
+}

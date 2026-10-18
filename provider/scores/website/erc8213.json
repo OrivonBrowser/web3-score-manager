@@ -1,0 +1,19 @@
+{
+  "subject": "website",
+  "ids": [
+    "cid:bafybeiey6lgimibd6x6yjyadniinyzdvkbpwzvsr4jswm4flk6wbvj4pdu"
+  ],
+  "names": [
+    "erc8213.eth"
+  ],
+  "name": "ERC-8213",
+  "evaluated": "2026-10-18",
+  "trustlessity": {
+    "level": 4,
+    "privacy": true
+  },
+  "summary": "The ERC-8213 explainer, a static Next.js page about showing digests of signed data and calldata. Its source is public (MIT, PatrickAlphaC/erc8213, whose homepage is this site). It makes no request beyond its own files: digests are computed in the browser, and the links to other sites, Cyfrin Tools included, are ordinary links the reader follows.",
+  "evidence": [
+    "https://github.com/PatrickAlphaC/erc8213"
+  ]
+}

@@ -1,0 +1,35 @@
+{
+  "subject": "website",
+  "ids": [
+    "cid:bafybeie3hsehf7ut44qgcysfrz7w33njodb2vuye6skyg3eyjcixaimkma"
+  ],
+  "names": [
+    "filestamp.eth"
+  ],
+  "name": "FileStamp",
+  "evaluated": "2026-10-18",
+  "trustlessity": {
+    "level": 3,
+    "privacy": false
+  },
+  "summary": "A proof-of-creation tool that hashes a file locally and stamps the hash on Ethereum. It is served as written: readable app.js plus the vendored ethers library, so the page is its own public source (no licence file). It runs no third-party code. It is not Level 4: it reads chain data from public RPC endpoints (publicnode and others) when it opens and from the Etherscan API for history, without a light client.",
+  "connections": [
+    {
+      "name": "Ethereum RPC endpoints (publicnode, drpc, blastapi, nodies)",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Read when the page opens, without a light client."
+    },
+    {
+      "name": "Etherscan API (api.etherscan.io)",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Used for the stamp history, a backend API."
+    }
+  ],
+  "evidence": [
+    "https://filestamp.eth.limo/"
+  ]
+}

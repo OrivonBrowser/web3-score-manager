@@ -1,0 +1,42 @@
+{
+  "subject": "website",
+  "ids": [
+    "cid:bafybeiaucij6yh3nbbuxsiimvyanzuaxqcqv2i2tq2sne65ijrcqlwb4e4"
+  ],
+  "names": [
+    "impersonator.eth"
+  ],
+  "name": "Impersonator",
+  "evaluated": "2026-10-18",
+  "trustlessity": {
+    "level": 2,
+    "privacy": false
+  },
+  "summary": "Impersonator, a developer tool to use dapps as any address. Its source is public (MIT). It is not Level 3: when it opens it loads Google Tag Manager from another host and WalletConnect's hidden verify frame, third-party code the user has not asked for. It also reads from public RPC endpoints.",
+  "connections": [
+    {
+      "name": "Google Tag Manager and Analytics",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Script from googletagmanager.com loaded when the page opens, with calls to google-analytics.com."
+    },
+    {
+      "name": "WalletConnect verify frame and servers",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Frame from verify.walletconnect.com, plus the relay socket and wallet list, loaded before any wallet is connected."
+    },
+    {
+      "name": "RPC endpoints (Infura, llamarpc)",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Read without a light client."
+    }
+  ],
+  "evidence": [
+    "https://github.com/apoorvlathey/impersonator"
+  ]
+}

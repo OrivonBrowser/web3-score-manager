@@ -1,0 +1,39 @@
+{
+  "subject": "website",
+  "ids": [
+    "cid:bafybeifegdvmd64g5f6gmqx236ca47u4uh62jfufcf74hlwqmczt5bgssi"
+  ],
+  "names": [
+    "merklejapan.eth"
+  ],
+  "name": "Merkle Japan",
+  "evaluated": "2026-10-18",
+  "trustlessity": {
+    "level": 2,
+    "privacy": false
+  },
+  "summary": "The site of Merkle Japan, with study programs and events. No public source for the site was confirmed. It is Level 2: it loads the Tailwind script from cdn.tailwindcss.com with no integrity hash, embeds a Google Forms frame as the page opens, and loads Google Fonts.",
+  "connections": [
+    {
+      "name": "Tailwind CDN script (cdn.tailwindcss.com)",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Loaded when the page opens, no integrity hash."
+    },
+    {
+      "name": "Google Forms embed (forms.gle, docs.google.com)",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "A frame loaded as the page opens."
+    },
+    {
+      "name": "Google Fonts",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Fetched when the page opens; tells Google the visit."
+    }
+  ]
+}

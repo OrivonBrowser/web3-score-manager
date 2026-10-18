@@ -1,0 +1,28 @@
+{
+  "subject": "website",
+  "ids": [
+    "cid:bafybeiedtlxiqby25jh4j5x64cgij6ym6eaacr6entjmz2lc4dklgzk5mm"
+  ],
+  "names": [
+    "complexity.eth"
+  ],
+  "name": "Feng Ling",
+  "evaluated": "2026-10-18",
+  "trustlessity": {
+    "level": 3,
+    "privacy": false
+  },
+  "summary": "Feng Ling's academic site, one hand-written page served as written, so its source is public (no licence file). It runs no third-party code, which is Level 3. It is not Level 4: when it opens it loads its fonts from Google Fonts.",
+  "connections": [
+    {
+      "name": "Google Fonts",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Fetched when the page opens; tells Google the visit."
+    }
+  ],
+  "evidence": [
+    "https://complexity.eth.limo/"
+  ]
+}

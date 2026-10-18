@@ -1,0 +1,35 @@
+{
+  "subject": "website",
+  "ids": [
+    "cid:bafybeifncqh5ho542wq2e7fkbptff6fmcrfaosltk7y3prfpsdog5i2hsq"
+  ],
+  "names": [
+    "sha512rma.eth"
+  ],
+  "name": "Kartikeya Sharma",
+  "evaluated": "2026-10-18",
+  "trustlessity": {
+    "level": 2,
+    "privacy": false
+  },
+  "summary": "Kartikeya Sharma's research site, a Gatsby build whose bundles ship source maps with the sources. Most pages load only the site's own files and Google Fonts, but the projects page embeds a YouTube player as it opens, third-party code the visitor has not asked for. That is why it stays at Level 2 and not 3.",
+  "connections": [
+    {
+      "name": "YouTube player (youtube.com)",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Embedded when the projects page opens."
+    },
+    {
+      "name": "Google Fonts",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Fetched when the page opens; tells Google the visit."
+    }
+  ],
+  "evidence": [
+    "https://sha512rma.eth.limo/app-3cada85fdb1805e41dba.js.map"
+  ]
+}

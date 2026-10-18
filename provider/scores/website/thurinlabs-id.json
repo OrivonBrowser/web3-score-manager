@@ -1,0 +1,42 @@
+{
+  "subject": "website",
+  "ids": [
+    "cid:bafybeiare2mktdivnw5td2d6hzfamofqm3oj63otyqd6h5mghl7bhcbuha"
+  ],
+  "names": [
+    "id.thurinlabs.eth"
+  ],
+  "name": "Thurin.id",
+  "evaluated": "2026-10-18",
+  "trustlessity": {
+    "level": 3,
+    "privacy": false
+  },
+  "summary": "The Thurin.id app, which binds PGP keys to Ethereum addresses and looks them up. Its source is public (MIT). It runs no third-party code, which is Level 3. It is not Level 4: it loads an image from thurin.id when it opens, and a lookup reads the chain over RPC and checks proofs against services such as GitHub, so it relies on servers.",
+  "connections": [
+    {
+      "name": "thurin.id (image)",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Fetched when the page opens."
+    },
+    {
+      "name": "Ethereum RPC",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Used by every lookup, read without a light client."
+    },
+    {
+      "name": "Proof checks (GitHub, Codeberg and others)",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Queried when a lookup verifies a key proof."
+    }
+  ],
+  "evidence": [
+    "https://github.com/thurinlabs/thurin-id"
+  ]
+}

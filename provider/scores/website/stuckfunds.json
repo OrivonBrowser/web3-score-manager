@@ -1,0 +1,32 @@
+{
+  "subject": "website",
+  "ids": [
+    "cid:bafybeigfj56gyr5u5a3yiljxtrbp5ch7nyt27kttvttpip5ss7vam67bnq"
+  ],
+  "names": [
+    "stuckfunds.eth"
+  ],
+  "name": "Stuck Funds Checker",
+  "evaluated": "2026-10-18",
+  "trustlessity": {
+    "level": 2,
+    "privacy": false
+  },
+  "summary": "A checker for unclaimed onchain funds. No public source was found. It is Level 2: when the page opens it loads the Cloudflare Turnstile script from challenges.cloudflare.com with no integrity hash, and it asks the project's own API (a Railway server) for statistics; lookups also go to that server.",
+  "connections": [
+    {
+      "name": "Cloudflare Turnstile (challenges.cloudflare.com)",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "A script and challenge requests loaded when the page opens."
+    },
+    {
+      "name": "Project API (checker-production-d0a1.up.railway.app)",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Statistics when the page opens, and every lookup."
+    }
+  ]
+}

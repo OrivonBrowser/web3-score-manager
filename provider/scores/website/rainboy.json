@@ -1,0 +1,19 @@
+{
+  "subject": "website",
+  "ids": [
+    "cid:bafkreice6k7i35rod365kwwvviw6acnlpyvs67lggfa7xgzsdzix4krfle"
+  ],
+  "names": [
+    "rainboy.eth"
+  ],
+  "name": "rainboy.eth",
+  "evaluated": "2026-10-18",
+  "trustlessity": {
+    "level": 4,
+    "privacy": true
+  },
+  "summary": "rainboy.eth, a one-page portfolio of a new media artist: one hand-written HTML file with short readable inline scripts, served as written, so its source is public (no licence file). It runs no third-party code and loads only its own file; the links to other sites are ordinary links.",
+  "evidence": [
+    "https://rainboy.eth.limo/"
+  ]
+}

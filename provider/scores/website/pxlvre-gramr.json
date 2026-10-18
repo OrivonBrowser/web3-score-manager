@@ -1,0 +1,19 @@
+{
+  "subject": "website",
+  "ids": [
+    "cid:bafybeibbc5besypzjftv4z3jgd5u5n7dnvuazd2ljhemcgxitwpicmk7xy"
+  ],
+  "names": [
+    "gramr.pxlvre.eth"
+  ],
+  "name": "gramr",
+  "evaluated": "2026-10-18",
+  "trustlessity": {
+    "level": 4,
+    "privacy": true
+  },
+  "summary": "The landing page of gramr, a smart contract scaffolding tool. Its source is public in pxlvre/gramr (website folder; no licence file). The page is plain HTML and CSS with a small inline script, runs no third-party code and loads only its own files; its links open only when clicked. Level 4 with privacy.",
+  "evidence": [
+    "https://github.com/pxlvre/gramr"
+  ]
+}

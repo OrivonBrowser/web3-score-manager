@@ -1,0 +1,49 @@
+{
+  "subject": "website",
+  "ids": [
+    "cid:bafybeihmnqzg6budyog4abcxnsncxbphma5ihkcawz2mvgpng7zrvcerxa"
+  ],
+  "names": [
+    "slopcomputer.eth"
+  ],
+  "name": "slop.computer",
+  "evaluated": "2026-10-18",
+  "trustlessity": {
+    "level": 3,
+    "privacy": false
+  },
+  "summary": "slop.computer, an onchain podcast front page built with Scaffold-ETH 2, open source (MIT) in the slop-computer-frontpage repository. It loads no script or frame from another host, which is Level 3. It is not Level 4: its bundled wallet kit calls WalletConnect, Reown and Coinbase when it opens, and it needs Alchemy RPC reads and episode media from slop.computer hosts.",
+  "connections": [
+    {
+      "name": "WalletConnect and Reown (api.web3modal.org, pulse.walletconnect.org)",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Configuration and telemetry requests from the site's own bundled wallet kit when the page opens, before a wallet is connected."
+    },
+    {
+      "name": "Coinbase wallet telemetry (cca-lite.coinbase.com)",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Posted by the bundled wallet kit when the page opens."
+    },
+    {
+      "name": "Alchemy RPC (eth-mainnet.g.alchemy.com)",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Chain reads when the page opens, no light client."
+    },
+    {
+      "name": "Episode media (media.slop.computer, live.slop.computer)",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Images and metadata fetched when the page opens."
+    }
+  ],
+  "evidence": [
+    "https://github.com/clawdbotatg/slop-computer-frontpage"
+  ]
+}

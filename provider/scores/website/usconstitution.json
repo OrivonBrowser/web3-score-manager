@@ -1,0 +1,28 @@
+{
+  "subject": "website",
+  "ids": [
+    "cid:bafybeifb6gn3d6to5tr4nzh7fjnhrqo2hhtou6w2xfndh3thr75f3zmsem"
+  ],
+  "names": [
+    "usconstitution.eth"
+  ],
+  "name": "US Constitution",
+  "evaluated": "2026-10-18",
+  "trustlessity": {
+    "level": 3,
+    "privacy": false
+  },
+  "summary": "A static copy of the US Constitution and Declaration of Independence on a template page. It is served as written (readable HTML and script, with the jQuery library as its own file), so the page is its own public source (no licence file), and it runs no third-party code. It is not Level 4: it loads Google Fonts when it opens.",
+  "connections": [
+    {
+      "name": "Google Fonts",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Fetched when the page opens; tells Google the visit."
+    }
+  ],
+  "evidence": [
+    "https://usconstitution.eth.limo/"
+  ]
+}

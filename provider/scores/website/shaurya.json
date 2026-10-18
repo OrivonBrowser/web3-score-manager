@@ -1,0 +1,28 @@
+{
+  "subject": "website",
+  "ids": [
+    "cid:bafybeiaphwrwfzxsdzwcsgftlvcemchu5g6rfog4bay7gaff3ocypeaezi"
+  ],
+  "names": [
+    "shaurya.eth"
+  ],
+  "name": "Machina Ludens",
+  "evaluated": "2026-10-18",
+  "trustlessity": {
+    "level": 3,
+    "privacy": false
+  },
+  "summary": "A single long-form essay in plain HTML with two small readable inline scripts (theme and font toggles), so the page is its own public source (no licence file). It runs no third-party code. It is not Level 4: when it opens it loads a stylesheet and fonts from Google Fonts.",
+  "connections": [
+    {
+      "name": "Google Fonts",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Fetched when the page opens; tells Google the visit."
+    }
+  ],
+  "evidence": [
+    "https://shaurya.eth.limo/"
+  ]
+}

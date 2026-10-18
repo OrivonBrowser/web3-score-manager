@@ -1,0 +1,25 @@
+{
+  "subject": "website",
+  "ids": [
+    "cid:bafybeiepkt4mz2go6es7ng6wnvquvbrbhlrl7dfx6ltumsiac7f2ruvzhu"
+  ],
+  "names": [
+    "olivida.eth"
+  ],
+  "name": "Livid's blog",
+  "evaluated": "2026-10-18",
+  "trustlessity": {
+    "level": 2,
+    "privacy": false
+  },
+  "summary": "Livid's blog, a Planet-generated site of feature updates for Planet. It stays at Level 2 because it loads Plausible's analytics script from plausible.io when it opens, code from another host that runs on its own.",
+  "connections": [
+    {
+      "name": "Plausible analytics (plausible.io)",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Script loaded and visit reported when the page opens."
+    }
+  ]
+}

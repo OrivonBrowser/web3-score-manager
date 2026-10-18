@@ -1,0 +1,32 @@
+{
+  "subject": "website",
+  "ids": [
+    "cid:bafybeiczjtsvk6gioflnmqx6rkaowoueece4t4bkxi7fpjenlpqzovymla"
+  ],
+  "names": [
+    "luc.eth"
+  ],
+  "name": "Luc van Kampen",
+  "evaluated": "2026-10-18",
+  "trustlessity": {
+    "level": 2,
+    "privacy": false
+  },
+  "summary": "The personal page of Luc van Kampen. No public source for the page was found. It is Level 2: when it opens it loads three tracking scripts from other hosts with no integrity hash (Plausible and two from v3x.report), and it loads talk thumbnails from YouTube and an image from Twitter.",
+  "connections": [
+    {
+      "name": "Analytics scripts (plausible.io, v3x.report, internal.v3x.report)",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Loaded from other hosts when the page opens."
+    },
+    {
+      "name": "Thumbnails (i3.ytimg.com, pbs.twimg.com)",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Fetched when the page opens."
+    }
+  ]
+}

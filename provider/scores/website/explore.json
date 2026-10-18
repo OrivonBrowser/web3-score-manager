@@ -1,23 +1,37 @@
 {
   "subject": "website",
   "ids": [
-    "sha256:5141e21dac1bde46b10e6a1bd2936e167530760c37706a47e7c7a6702b2d602a",
-    "cid:bafybeihur4soaygt7hixqwxseknd7dqgzprzjudb6v3xrnvqq2kv2232ly",
     "sha256:550e3c5bb815d37e42a083b4ff3546ebc4ba5e7897e838b7159721036441fa79",
     "cid:bafybeiccktqcm2hea7mrvmap6pabwb25kcskb4kg5cigrbbknioifozynm",
     "sha256:19a1ccecfa5751ce2a1cd6bdf471a648723f04fcd4664f0660aa9c8f835f6209",
     "cid:bafybeif373oqfpzdaxbmremcqareasmrvf7n4s2nh37d7jyirf2wwppu3q",
     "sha256:17f85286db42fdc2b79e000e306ff16a20a52d11abd8a9fe6a1d8b82b51e1924",
-    "cid:bafybeicrfnrpnqavoltzngcqq52o3dwak6osndt6eh2bg4dayoesyxhlti"
+    "cid:bafybeicrfnrpnqavoltzngcqq52o3dwak6osndt6eh2bg4dayoesyxhlti",
+    "sha256:89e4aea63a20788ec7601409abd48620bef71727926c24451dba8ea7cceec360",
+    "cid:bafybeigo6bgfcvr2lxdt74udz27mlpyhw5jngrqrj6vsqphqvvn6e6cgim"
   ],
-  "names": ["explore.orivonstack.eth"],
+  "names": [
+    "explore.orivonstack.eth"
+  ],
   "name": "Orivon Explore",
   "version": "0.1.0",
-  "evaluated": "2026-10-05",
-  "trustlessity": { "level": 4, "privacy": false },
+  "evaluated": "2026-10-18",
+  "trustlessity": {
+    "level": 4,
+    "privacy": false
+  },
   "summary": "Orivon's directory of Web3 sites, open source, and judged here by its own publisher. The page sends no request itself: the directory and a dated snapshot of judgements ship inside it. It is not private: a visitor who grants trust.score has Orivon resolve every listed .eth name and ask their Web3 Score provider about every listed site, which shows the provider their IP address and that they opened Explore. Which sites it lists is the publisher's choice, fixed in each build.",
   "operations": [
-    { "name": "Browse and filter the directory", "trustlessity": { "level": 4, "privacy": true }, "note": "Runs entirely on this computer. Nothing is sent while you browse." }
+    {
+      "name": "Browse and filter the directory",
+      "trustlessity": {
+        "level": 4,
+        "privacy": true
+      },
+      "note": "Runs entirely on this computer. Nothing is sent while you browse."
+    }
   ],
-  "evidence": ["https://github.com/OrivonBrowser/orivon-ports/tree/main/apps/explore"]
+  "evidence": [
+    "https://github.com/OrivonBrowser/orivon-ports/tree/main/apps/explore"
+  ]
 }

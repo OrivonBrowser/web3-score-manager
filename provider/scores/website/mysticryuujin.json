@@ -1,0 +1,19 @@
+{
+  "subject": "website",
+  "ids": [
+    "cid:bafybeieloefe5xrvk5cdl6qf366ksv3x52y4o2n3pokpkb66yq3q5j7mty"
+  ],
+  "names": [
+    "mysticryuujin.eth"
+  ],
+  "name": "Chase Wright",
+  "evaluated": "2026-10-18",
+  "trustlessity": {
+    "level": 4,
+    "privacy": true
+  },
+  "summary": "Chase Wright's personal site and blog, built with Astro. The pages are served as written: HTML with readable inline scripts (theme toggle, hosting note), no script bundle and no third-party code, so the source is public (no repository found, no licence file). The home page, blog, portfolio and resume load only the site's own files.",
+  "evidence": [
+    "https://mysticryuujin.eth.limo/"
+  ]
+}

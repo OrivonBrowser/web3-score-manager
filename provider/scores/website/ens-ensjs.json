@@ -1,0 +1,28 @@
+{
+  "subject": "website",
+  "ids": [
+    "cid:bah5acgzarz4xgmnlyjrlvtouzbererkrua7bpksxcge4folsddy5llrjrkvq"
+  ],
+  "names": [
+    "ensjs.ens.eth"
+  ],
+  "name": "ENSjs documentation",
+  "evaluated": "2026-10-18",
+  "trustlessity": {
+    "level": 2,
+    "privacy": false
+  },
+  "summary": "The documentation of @ensdomains/ensjs, source public in ensdomains/ensjs. It is not Level 3: the page sets a base URL of https://ensjs.ens.eth.link, so its scripts and styles load from the eth.link gateway, another host, with no integrity hash, instead of from the files the ENS name points to.",
+  "connections": [
+    {
+      "name": "eth.link gateway (ensjs.ens.eth.link)",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Serves the page's scripts, styles and logo through a base URL."
+    }
+  ],
+  "evidence": [
+    "https://github.com/ensdomains/ensjs"
+  ]
+}

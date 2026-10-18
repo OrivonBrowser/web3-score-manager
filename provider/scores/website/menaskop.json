@@ -1,0 +1,19 @@
+{
+  "subject": "website",
+  "ids": [
+    "cid:bafkreihljvrjv7b4o34zuyb2fmemzz5hjx2vhh6rnfgdr4qaa3mud35ds4"
+  ],
+  "names": [
+    "menaskop.eth"
+  ],
+  "name": "Menaskop",
+  "evaluated": "2026-10-18",
+  "trustlessity": {
+    "level": 4,
+    "privacy": true
+  },
+  "summary": "Menaskop's personal page: one hand-written HTML file with no script, served as written, so its source is public (no licence file). It loads only its own file; the links to articles, social profiles and explorers are ordinary links.",
+  "evidence": [
+    "https://menaskop.eth.limo/"
+  ]
+}

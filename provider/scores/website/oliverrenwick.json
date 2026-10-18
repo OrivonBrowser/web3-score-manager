@@ -1,0 +1,25 @@
+{
+  "subject": "website",
+  "ids": [
+    "cid:bafybeihk644eozn6sn7tqxalcctqyauvrcndltwtbjifyicefw4a3322cu"
+  ],
+  "names": [
+    "oliverrenwick.eth"
+  ],
+  "name": "Oliver Renwick",
+  "evaluated": "2026-10-18",
+  "trustlessity": {
+    "level": 2,
+    "privacy": false
+  },
+  "summary": "Oliver Renwick's personal site. No public source for this build was found; the author's older personal-site repository is a different build. Its home page loads only its own files, but the talk pages embed YouTube players that load as the page opens, third-party code the reader did not ask for, so it stays Level 2.",
+  "connections": [
+    {
+      "name": "YouTube players (youtube.com)",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Embedded on the talk pages; loaded as each page opens."
+    }
+  ]
+}

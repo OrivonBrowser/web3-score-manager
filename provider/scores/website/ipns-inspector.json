@@ -1,0 +1,25 @@
+{
+  "subject": "website",
+  "ids": [
+    "cid:bafybeico4krq7qenlkcycpfcwpsnncvshptdbhweevbtggo4timzz6pf7m"
+  ],
+  "name": "IPNS Inspector",
+  "evaluated": "2026-10-18",
+  "trustlessity": {
+    "level": 3,
+    "privacy": false
+  },
+  "summary": "The IPFS project's IPNS Inspector, which shows and creates signed IPNS records in the browser, open source in ipfs/ipns-inspector (no licence file detected). It makes no request when it opens and runs no third-party code, which is Level 3. It is not Level 4: looking up a name asks the delegated routing server delegated-ipfs.dev, so the tool relies on a server, though the record is signed.",
+  "connections": [
+    {
+      "name": "Delegated routing (delegated-ipfs.dev)",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Asked only when a name is looked up or a record is published."
+    }
+  ],
+  "evidence": [
+    "https://github.com/ipfs/ipns-inspector"
+  ]
+}

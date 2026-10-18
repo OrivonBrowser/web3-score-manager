@@ -1,0 +1,19 @@
+{
+  "subject": "website",
+  "ids": [
+    "cid:bafybeig3avyo2fiifulrhy4qrbviko5u7dotbj3ojr4f2boyyhrihp45s4"
+  ],
+  "names": [
+    "chrismg.eth"
+  ],
+  "name": "chrismg.eth",
+  "evaluated": "2026-10-18",
+  "trustlessity": {
+    "level": 4,
+    "privacy": true
+  },
+  "summary": "Chris Gachau's personal portfolio. It is plain HTML, CSS and one small readable script, served as written, so it is its own public source. It loads only its own files, so it makes no request beyond the site itself.",
+  "evidence": [
+    "https://chrismg.eth.limo/"
+  ]
+}

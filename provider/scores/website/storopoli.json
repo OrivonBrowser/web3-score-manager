@@ -1,0 +1,35 @@
+{
+  "subject": "website",
+  "ids": [
+    "cid:bafybeidq6alzb47dbobmxmo7bu2nxmoxvv3rk7niyb3lxwgixsjwbzwobu"
+  ],
+  "names": [
+    "storopoli.eth"
+  ],
+  "name": "Jose Storopoli",
+  "evaluated": "2026-10-18",
+  "trustlessity": {
+    "level": 2,
+    "privacy": false
+  },
+  "summary": "Jose Storopoli's personal blog. Its source is public (MIT). The home page loads only its own files, but several posts embed YouTube players that load as the post opens, third-party code the reader did not ask for, so it stays Level 2. Some posts also load diagrams from mermaid.ink.",
+  "connections": [
+    {
+      "name": "YouTube players (youtube.com)",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Embedded in several posts; loaded as each post opens."
+    },
+    {
+      "name": "Diagram images (mermaid.ink)",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Fetched when a post with a diagram opens."
+    }
+  ],
+  "evidence": [
+    "https://github.com/storopoli/storopoli.com"
+  ]
+}

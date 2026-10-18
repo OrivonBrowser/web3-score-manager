@@ -1,0 +1,35 @@
+{
+  "subject": "website",
+  "ids": [
+    "cid:bafybeif7poetf6pfz3q7xkmszigenilgqdm5lrq3aqcyxenz6tz2nisgza"
+  ],
+  "names": [
+    "envpledge.eth"
+  ],
+  "name": ".env Pledge",
+  "evaluated": "2026-10-18",
+  "trustlessity": {
+    "level": 3,
+    "privacy": false
+  },
+  "summary": "Cyfrin Updraft's .env Pledge page. Its source is public (MIT). It runs no third-party code, which is Level 3. It is not Level 4: when it opens it reads the pledge count from an Optimism RPC endpoint without a light client, and its bundled wallet library calls WalletConnect.",
+  "connections": [
+    {
+      "name": "Optimism RPC (mainnet.optimism.io)",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Read when the page opens, without a light client."
+    },
+    {
+      "name": "WalletConnect/Reown (api.web3modal.org, pulse.walletconnect.org)",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Requests from the bundled wallet library, before any wallet is connected."
+    }
+  ],
+  "evidence": [
+    "https://github.com/Cyfrin/envpledge.eth"
+  ]
+}

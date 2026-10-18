@@ -1,0 +1,19 @@
+{
+  "subject": "website",
+  "ids": [
+    "cid:bafybeihqxhhom54op5mmjzk3kjg7soadmc5mirel5d5bkf4s5feqk5jq7e"
+  ],
+  "names": [
+    "kartbala.eth"
+  ],
+  "name": "kartbala.eth",
+  "evaluated": "2026-10-18",
+  "trustlessity": {
+    "level": 4,
+    "privacy": true
+  },
+  "summary": "A page of browser animations, including an ENS namehash demo. It is plain HTML with readable inline script, so the page is its own public source (no licence file). It makes no request beyond its own file, and its links open only when clicked. Level 4 with privacy.",
+  "evidence": [
+    "https://kartbala.eth.limo/"
+  ]
+}

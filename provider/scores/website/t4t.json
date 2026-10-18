@@ -1,0 +1,42 @@
+{
+  "subject": "website",
+  "ids": [
+    "cid:bah5acgzaebhphcaq43wcvrnkngfsusxvor2ldrbrv6xnlump4kr4ir5miora"
+  ],
+  "names": [
+    "t4t.eth"
+  ],
+  "name": "Token4Token",
+  "evaluated": "2026-10-18",
+  "trustlessity": {
+    "level": 3,
+    "privacy": false
+  },
+  "summary": "Token4Token, a pay-per-token AI inference marketplace on Gnosis and Swarm, with its source in ffaerber/t4t (no licence file). It runs no third-party code, which is Level 3. It is not Level 4: when it opens it loads Google Fonts, reads the Gnosis chain through rpc.gnosischain.com and fetches the xBZZ price from api.coingecko.com.",
+  "connections": [
+    {
+      "name": "Google Fonts",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Fetched when the page opens; tells Google the visit."
+    },
+    {
+      "name": "Gnosis RPC (rpc.gnosischain.com)",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Chain reads when the page opens, without a light client."
+    },
+    {
+      "name": "CoinGecko price API (api.coingecko.com)",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Price fetched when the page opens."
+    }
+  ],
+  "evidence": [
+    "https://github.com/ffaerber/t4t"
+  ]
+}

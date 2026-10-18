@@ -1,0 +1,28 @@
+{
+  "subject": "website",
+  "ids": [
+    "cid:bafybeiaexl44v36jwoxescfuhr3goivjflvdz3opd5p4l2gvvekpuvwgg4"
+  ],
+  "names": [
+    "augustol.eth"
+  ],
+  "name": "AugustoL",
+  "evaluated": "2026-10-18",
+  "trustlessity": {
+    "level": 3,
+    "privacy": false
+  },
+  "summary": "AugustoL's personal page, open source (no licence file) in AugustoL/website. Its only scripts are a short readable one and a vendored Font Awesome file, so it runs no third-party code, which is Level 3. It is not Level 4: when it opens it loads fonts from Google Fonts.",
+  "connections": [
+    {
+      "name": "Google Fonts (fonts.googleapis.com, fonts.gstatic.com)",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Fetched when the page opens; tells Google the visit."
+    }
+  ],
+  "evidence": [
+    "https://github.com/AugustoL/website"
+  ]
+}

@@ -1,0 +1,49 @@
+{
+  "subject": "website",
+  "ids": [
+    "cid:bafybeidwysyvptpbqqkr7b3cq6ar2t6hdgauivtjmjhhzyusjni455hyxm"
+  ],
+  "names": [
+    "vanshs.eth"
+  ],
+  "name": "Vansh Sahay",
+  "evaluated": "2026-10-18",
+  "trustlessity": {
+    "level": 2,
+    "privacy": false
+  },
+  "summary": "Vansh Sahay's personal site. Its source is public (no licence file). It is not Level 3: when it opens it loads the Umami analytics script from cloud.umami.is and the marked and mermaid libraries from jsDelivr, none with an integrity hash, third-party code the user has not asked for.",
+  "connections": [
+    {
+      "name": "Umami analytics (cloud.umami.is)",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Script loaded when the page opens, with a call to gateway.umami.is."
+    },
+    {
+      "name": "jsDelivr (marked, mermaid)",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Scripts loaded without integrity hashes."
+    },
+    {
+      "name": "Google Fonts",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Fetched when the page opens; tells Google the visit."
+    },
+    {
+      "name": "GitHub raw (raw.githubusercontent.com)",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Post text fetched when the page opens."
+    }
+  ],
+  "evidence": [
+    "https://github.com/VanshSahay/portfolio"
+  ]
+}

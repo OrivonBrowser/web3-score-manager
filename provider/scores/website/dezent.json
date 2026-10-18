@@ -1,0 +1,28 @@
+{
+  "subject": "website",
+  "ids": [
+    "cid:bafybeiapgkum2m25t32nhntho26g7wmhmayka7vlsoo6efxv5thjsdbow4"
+  ],
+  "names": [
+    "dezent.eth"
+  ],
+  "name": "Protocol Berg 2023",
+  "evaluated": "2026-10-18",
+  "trustlessity": {
+    "level": 3,
+    "privacy": false
+  },
+  "summary": "Protocol Berg 2023, an event site built with Gatsby whose bundle ships source maps with the sources, so its source is public (no licence file). It runs no third-party code, which is Level 3. It is not Level 4: when it opens it fetches the event schedule from speak.protocol.berlin.",
+  "connections": [
+    {
+      "name": "Schedule export (speak.protocol.berlin)",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Fetched when the page opens."
+    }
+  ],
+  "evidence": [
+    "https://dezent.eth.limo/app-dde5f3e95fc36db142b4.js.map"
+  ]
+}

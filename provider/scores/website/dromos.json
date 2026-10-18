@@ -1,0 +1,16 @@
+{
+  "subject": "website",
+  "ids": [
+    "cid:bafybeiferfvitauarelwfrvbfur4jijw5yiqkydy2uiql6kyoyoe6qdmaa"
+  ],
+  "names": [
+    "dromos.eth"
+  ],
+  "name": "Dromos Labs",
+  "evaluated": "2026-10-18",
+  "trustlessity": {
+    "level": 2,
+    "privacy": false
+  },
+  "summary": "The corporate site of Dromos Labs, a Vite build with minified scripts and no source maps. No public repository for the site was found (the organisation publishes only contract repositories), so there is no public source and it stays at Level 2. It makes no request beyond its own files when it opens; its Plausible script is added only on dromos.xyz."
+}

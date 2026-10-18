@@ -1,0 +1,25 @@
+{
+  "subject": "website",
+  "ids": [
+    "cid:bafybeic2bbxewn6ovu36nk3t2v52jwn66ikttd3y2uh3p7le6dbhqgven4"
+  ],
+  "names": [
+    "playhh.eth"
+  ],
+  "name": "Hostile Heavens",
+  "evaluated": "2026-10-18",
+  "trustlessity": {
+    "level": 2,
+    "privacy": false
+  },
+  "summary": "Hostile Heavens, a browser space game with wallet sign-in. Its bundle is minified with no source map and no public repository was found, so it stays at Level 2. When it opens it connects a WebSocket to the GUN relay gundb-relay.fly.dev for online state.",
+  "connections": [
+    {
+      "name": "GUN relay (gundb-relay.fly.dev)",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "WebSocket opened when the page loads."
+    }
+  ]
+}

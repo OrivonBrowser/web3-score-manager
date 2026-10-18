@@ -1,0 +1,42 @@
+{
+  "subject": "website",
+  "ids": [
+    "cid:bafybeidqx57a2kwpkcsem7kixu6pxgxs3mxt24rzerhqa7p4n7phmvcege"
+  ],
+  "names": [
+    "ethpage.eth"
+  ],
+  "name": "EthPage",
+  "evaluated": "2026-10-18",
+  "trustlessity": {
+    "level": 3,
+    "privacy": false
+  },
+  "summary": "EthPage, a viewer that shows any ENS name as a profile page, open source (MIT) in didierkrux/ethpage. It runs no third-party code, which is Level 3. It is not Level 4: when it opens it reads ENS records through ethereum-rpc.publicnode.com and loads a header image from metadata.ens.domains and a favicon from icons.duckduckgo.com.",
+  "connections": [
+    {
+      "name": "Ethereum RPC (ethereum-rpc.publicnode.com)",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "ENS record reads when the page opens, without a light client."
+    },
+    {
+      "name": "ENS metadata service (metadata.ens.domains)",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Header image fetched when the page opens."
+    },
+    {
+      "name": "DuckDuckGo icons (icons.duckduckgo.com)",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Favicon fetched when the page opens."
+    }
+  ],
+  "evidence": [
+    "https://github.com/didierkrux/ethpage"
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "subject": "website",
+  "ids": [
+    "cid:bafybeigreifgw52o5qgdq7sy3vlh3gi3anrujcda7sbmxp5jc3rpyc4sd4"
+  ],
+  "names": [
+    "paulmillr.eth"
+  ],
+  "name": "Paul Miller",
+  "evaluated": "2026-10-18",
+  "trustlessity": {
+    "level": 4,
+    "privacy": true
+  },
+  "summary": "Paul Miller's personal homepage and blog: plain HTML and CSS with no script, served as written, so its source is public (no licence file). It loads only its own files, on the home page and the posts read, and the links to other sites are ordinary links that nothing fetches.",
+  "evidence": [
+    "https://paulmillr.eth.limo/"
+  ]
+}

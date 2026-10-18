@@ -1,0 +1,35 @@
+{
+  "subject": "website",
+  "ids": [
+    "cid:bafybeibferfjdur5fqqcjjbuubgn5dumaoeyjjndv6etwocty5kvvbarvu"
+  ],
+  "names": [
+    "ncookie.eth"
+  ],
+  "name": "Ncookie's Portfolio",
+  "evaluated": "2026-10-18",
+  "trustlessity": {
+    "level": 3,
+    "privacy": false
+  },
+  "summary": "The portfolio of Ncookie, source public in Ncookiez/portfolio (SvelteKit, no licence file). It runs no third-party code. It is not Level 4: when it opens it loads Google Fonts and eight project images from ncookie.ca.",
+  "connections": [
+    {
+      "name": "Google Fonts",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Fetched when the page opens; tells Google the visit."
+    },
+    {
+      "name": "Project images (ncookie.ca)",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Fetched when the page opens."
+    }
+  ],
+  "evidence": [
+    "https://github.com/Ncookiez/portfolio"
+  ]
+}

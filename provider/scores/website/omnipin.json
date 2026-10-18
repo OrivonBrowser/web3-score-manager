@@ -1,0 +1,19 @@
+{
+  "subject": "website",
+  "ids": [
+    "cid:bah5acgzafz6bqnrqmolgyeddilqlousfaulyzobpe2ztkwxktiot3dkjy6ua"
+  ],
+  "names": [
+    "omnipin.eth"
+  ],
+  "name": "Omnipin",
+  "evaluated": "2026-10-18",
+  "trustlessity": {
+    "level": 4,
+    "privacy": true
+  },
+  "summary": "The documentation of Omnipin, a website deployment tool, built with VitePress, source public in omnipin/omnipin (MIT, docs folder). It runs no third-party code and the home page and docs pages checked load only their own files; outside links open only when clicked. Level 4 with privacy.",
+  "evidence": [
+    "https://github.com/omnipin/omnipin"
+  ]
+}

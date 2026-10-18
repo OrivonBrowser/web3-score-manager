@@ -1,0 +1,35 @@
+{
+  "subject": "website",
+  "ids": [
+    "cid:bafybeibn4bv4mr76z5y4v6x4y33i5wxussak4tyjgmp6qjgcx6r62fe5gi"
+  ],
+  "names": [
+    "assertions.eth"
+  ],
+  "name": "Assertions",
+  "evaluated": "2026-10-18",
+  "trustlessity": {
+    "level": 3,
+    "privacy": false
+  },
+  "summary": "Docs and builder for on-chain assertions (ERC-8211), source public in BlossomLabs/Assertions (MIT, website folder). It runs no third-party code at load; its support widget posts only when a message is sent. It is not Level 4: it loads Google Fonts when it opens, and the builder asks api.evmcrispr.com for token lists.",
+  "connections": [
+    {
+      "name": "Google Fonts",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Fetched when the page opens; tells Google the visit."
+    },
+    {
+      "name": "Token list API (api.evmcrispr.com)",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Asked by the assertion builder page, a backend API."
+    }
+  ],
+  "evidence": [
+    "https://github.com/BlossomLabs/Assertions"
+  ]
+}

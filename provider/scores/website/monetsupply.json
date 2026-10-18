@@ -1,0 +1,19 @@
+{
+  "subject": "website",
+  "ids": [
+    "cid:bafybeifp7v3vlwkwe74ddscnyjoj3zflqhsqaunhct6si6qyfk5fsdgv6a"
+  ],
+  "names": [
+    "monetsupply.eth"
+  ],
+  "name": "monetsupply",
+  "evaluated": "2026-10-18",
+  "trustlessity": {
+    "level": 4,
+    "privacy": true
+  },
+  "summary": "A one-page bio with links to essays and profiles. It is plain HTML with no script, so the page is its own public source (no licence file). It loads only its own file, and its outside links open only when clicked. Level 4 with privacy.",
+  "evidence": [
+    "https://monetsupply.eth.limo/"
+  ]
+}
