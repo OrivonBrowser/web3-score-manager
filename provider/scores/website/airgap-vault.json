@@ -1,14 +1,14 @@
 {
   "subject": "website",
   "ids": [
-    "sha256:d14cc7e8255993af3c0e9e103b9fb7ece94e60dca47f3215621d125ff8964b72",
-    "cid:bafybeifswtpznor64py5vd5gm5gu26auju4gc23dqxt4waxlyigtgcbweu",
     "sha256:c42dcbe06faf241d2606130d150c4345dfff348729d67947b406b3c6c48f1e53",
     "cid:bafybeicqymfv47eg7aphl3luwen3tpdosb622m7kwsnt4rkfacagnpbymu",
     "sha256:b53cf68d3a69f5a514ecf7b815068cb582031fbe09baf64640e757ca511100e3",
     "cid:bafybeigqkthmximj2tbbmboxnuj74no5jjj7w36ulwk5kterb5chgbfd4i",
     "sha256:aedbc93035348c76785c300d184abd7b8b1402eddb22d39993dbbe4e539fba86",
-    "cid:bafybeigez3wk6xe7rqhm6j427xjsot4u37c23zvm5wb4vmrmsok3imh3ny"
+    "cid:bafybeigez3wk6xe7rqhm6j427xjsot4u37c23zvm5wb4vmrmsok3imh3ny",
+    "sha256:221fb5b3de21adfe544d4f5633efb774b7a24e8cbf39c1aae41e60484c582016",
+    "cid:bafybeieimduou27zal3expulbw2jrtg7vmnekpg67r5lqtvccl7vy4sjau"
   ],
   "names": ["airgapvault.orivonstack.eth"],
   "name": "AirGap Vault",
