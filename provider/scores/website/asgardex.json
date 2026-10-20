@@ -4,12 +4,14 @@
     "sha256:26054c511f3394b66c6a022a48d82e559d637ac4b111657482ec6b7a7447fbcf",
     "cid:bafybeiek2i5n7n7ksldz6lc56jeku5fwsttj6jv7l527dhrlxwdnw4lpty",
     "sha256:40cfd32f0f42cbdcd27c490ebf359101cd9e266657c3c8db04c736be3bb3ad64",
-    "cid:bafybeiapptln3qdfg2ubwh7lxj6zgxc3s3fc4qb7k3wucfcq7tbqdp7h3u"
+    "cid:bafybeiapptln3qdfg2ubwh7lxj6zgxc3s3fc4qb7k3wucfcq7tbqdp7h3u",
+    "sha256:4b1510d4c9be2f413834c4a6145b99eeede893acd80f0b24f390b010e99dec3e",
+    "cid:bafybeibqmblas7njfdhhuh3y5tnh37o3kqlzb5rjdmbeeqrrdhdizg2zx4"
   ],
   "names": ["asgardex.orivonstack.eth"],
   "name": "ASGARDEX",
-  "version": "1.45.3",
-  "evaluated": "2026-10-05",
+  "version": "1.46.1",
+  "evaluated": "2026-10-20",
   "trustlessity": { "level": 3, "privacy": false },
   "summary": "A THORChain and MAYAChain wallet and exchange. Its code is open source and every script it runs ships in its own bundle, which is Level 3. It is not Level 4: balances, quotes and vault addresses come from centralised APIs that are not checked against any chain.",
   "operations": [
@@ -20,8 +22,8 @@
   ],
   "connections": [
     { "name": "THORChain and MAYAChain APIs (Midgard, THORNode, MAYANode)", "trustlessity": { "level": 1, "privacy": false }, "note": "Public endpoints run by a few operators. Answers are not proven against either chain." },
-    { "name": "Blockchain data providers (Blockcypher, Haskoin, Etherscan, Blockfrost)", "trustlessity": { "level": 1, "privacy": false }, "note": "Balances and history from centralised indexers, unchecked. Each learns the addresses you hold." },
-    { "name": "EVM JSON-RPC endpoints (publicnode, 1rpc, BNB Chain, Arbitrum, Avalanche)", "trustlessity": { "level": 1, "privacy": false }, "note": "Read without a light client, so every answer is trusted as given." },
+    { "name": "Blockchain data providers (Blockcypher, Haskoin, Etherscan, NearBlocks, others)", "trustlessity": { "level": 1, "privacy": false }, "note": "Balances and history from centralised indexers, unchecked. Each learns the addresses you hold." },
+    { "name": "EVM and NEAR JSON-RPC endpoints (publicnode, 1rpc, FastNEAR, dRPC, others)", "trustlessity": { "level": 1, "privacy": false }, "note": "Read without a light client, so every answer is trusted as given." },
     { "name": "Price data (CoinGecko)", "trustlessity": { "level": 1, "privacy": false }, "note": "One centralised source. It changes displayed values only." }
   ],
   "evidence": ["https://github.com/asgardex/asgardex-desktop", "https://dev.thorchain.org", "https://github.com/OrivonBrowser/orivon-ports/tree/main/apps/asgardex"]

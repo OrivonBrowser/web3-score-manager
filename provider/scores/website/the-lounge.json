@@ -6,12 +6,14 @@
     "sha256:6754d29ca7613c880b518f887fa6c2117e0a45708f09e4de6e183c9c0b6db48a",
     "cid:bafybeibnrohdwzriv3fvfscr6sfeh5akn76as6m6i4kh2lvczrhceu5yqu",
     "sha256:fe18c4b724661a0df451c43cc920fe20664272a61b877ff54ad399d2ebc030b2",
-    "cid:bafybeicub3q45zdnvlnnivi574mnh4vujo2fwxcxnf4yegqp2rc7heijey"
+    "cid:bafybeicub3q45zdnvlnnivi574mnh4vujo2fwxcxnf4yegqp2rc7heijey",
+    "sha256:d3c7ae10b5842c425784f5237a0ef1e1d356fd2d775969c8f96fe3d76e35dfe2",
+    "cid:bafybeihuc7mqjhf4aoy5o3zxlruq4k4e6l3zugkqtfwafqkkjop6krbpxe"
   ],
   "names": ["thelounge.orivonstack.eth"],
   "name": "The Lounge",
   "version": "4.5.2",
-  "evaluated": "2026-10-10",
+  "evaluated": "2026-10-20",
   "trustlessity": { "level": 3, "privacy": false },
   "summary": "A self-hosted IRC client whose server runs inside Orivon on this computer. Its code is open source and it runs only what it ships, which is Level 3. It is not Level 4: every conversation lives on an IRC network whose operators can read, alter or drop what passes through their servers, so the app relies on a server even though the user picks the network and could run their own. History and settings stay on this computer, and link previews are off until turned on. Not private: each network sees your IP address and what you say.",
   "operations": [
