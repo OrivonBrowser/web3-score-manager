@@ -4,12 +4,14 @@
     "sha256:d14cc7e8255993af3c0e9e103b9fb7ece94e60dca47f3215621d125ff8964b72",
     "cid:bafybeifswtpznor64py5vd5gm5gu26auju4gc23dqxt4waxlyigtgcbweu",
     "sha256:c42dcbe06faf241d2606130d150c4345dfff348729d67947b406b3c6c48f1e53",
-    "cid:bafybeicqymfv47eg7aphl3luwen3tpdosb622m7kwsnt4rkfacagnpbymu"
+    "cid:bafybeicqymfv47eg7aphl3luwen3tpdosb622m7kwsnt4rkfacagnpbymu",
+    "sha256:b53cf68d3a69f5a514ecf7b815068cb582031fbe09baf64640e757ca511100e3",
+    "cid:bafybeigqkthmximj2tbbmboxnuj74no5jjj7w36ulwk5kterb5chgbfd4i"
   ],
   "names": ["airgapvault.orivonstack.eth"],
   "name": "AirGap Vault",
   "version": "3.34.4",
-  "evaluated": "2026-10-05",
+  "evaluated": "2026-10-20",
   "trustlessity": { "level": 4, "privacy": true },
   "summary": "An offline signer, built from upstream's open source at a pinned commit. It runs only its own bundled code and makes no network request: every file it loads comes from its own tree. In Orivon it creates and shows accounts but cannot sign, because QR scanning and clipboard reading are refused to every site. It is designed for a phone kept offline; this computer is not.",
   "operations": [

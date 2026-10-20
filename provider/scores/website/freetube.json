@@ -4,12 +4,14 @@
     "sha256:1a5c364ac84a157a3059ad31fec6cb862afd9db79b2e03c770a9da008bc6979b",
     "cid:bafybeigcdsumr4jo4j6gxqbg33sd2e3kylnbxqrmepub7iwp3fwjftgoue",
     "sha256:ea1b1efc01afefd73f654521e1fb4d5ce77471d9c5f2c72f24a5df9a84e2e40a",
-    "cid:bafybeihy4h5vkixrhepxqsizvoh4nuyopc2j7ypp7rk4zkxr23lvdilnzq"
+    "cid:bafybeihy4h5vkixrhepxqsizvoh4nuyopc2j7ypp7rk4zkxr23lvdilnzq",
+    "sha256:6abfcf6c209f17139529de838d0b11f29811d6abcc1e0cfca9bb04f07c60c48b",
+    "cid:bafybeih4daehjwwbc7xsvutwvwzo7hbjk2ayoa6xgkvjodmg4cgz2kxdfi"
   ],
   "names": ["freetube.orivonstack.eth"],
   "name": "FreeTube",
   "version": "0.25.3",
-  "evaluated": "2026-10-10",
+  "evaluated": "2026-10-20",
   "trustlessity": { "level": 3, "privacy": false },
   "summary": "A YouTube client without ads or an account, built from upstream's open source at a pinned commit. It runs YouTube's player code and Google's BotGuard to play a video, which the user knows from Orivon's grant dialog and from why they open the app: Level 3. It is not Level 4: videos, search and comments come from YouTube or an Invidious instance relaying it, so the app relies on YouTube's servers. Subscriptions and history stay on this computer. Not private: YouTube sees what you watch.",
   "operations": [
