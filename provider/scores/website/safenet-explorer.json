@@ -1,13 +1,14 @@
 {
   "subject": "website",
   "ids": [
-    "cid:bafybeihrqubibslgdvugihqindemueyn6y3qiix4d5ouns3pdkkxodiiqi"
+    "cid:bafybeihrqubibslgdvugihqindemueyn6y3qiix4d5ouns3pdkkxodiiqi",
+    "cid:bafybeic4fpjkvyg7jhorab3j7shbu2d3upa6es2ewxbmt4zsbgg4noexwm"
   ],
   "names": [
     "safenet-explorer.eth"
   ],
   "name": "Safenet Explorer",
-  "evaluated": "2026-10-18",
+  "evaluated": "2026-10-21",
   "trustlessity": {
     "level": 3,
     "privacy": false
