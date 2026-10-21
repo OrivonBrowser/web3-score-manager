@@ -106,7 +106,7 @@ export function formatJudged(m: JudgedMessage): string {
   if (m.dryRun) blocks.push(text("🧪 Dry run: nothing was pushed or published.", true));
   if (m.action === "hold") {
     blocks.push(bold("⏸ Waiting for your review"), ...m.reasons.map((r) => text(`• ${r}`)));
-    if (m.compareUrl) blocks.push({ plain: "Open the pull request", wrap: (e) => `<a href="${escAttr(m.compareUrl!)}">${e}</a>`, fixed: true });
+    if (m.compareUrl) blocks.push({ plain: m.compareUrl.includes("/pull/") ? "Review the pull request" : "Open the pull request", wrap: (e) => `<a href="${escAttr(m.compareUrl!)}">${e}</a>`, fixed: true });
   } else {
     const live = m.publishedCid
       ? { plain: shortCid(m.publishedCid), wrap: (e: string) => `✅ Live in Orivon · Attila <code>${e}</code>`, fixed: true }

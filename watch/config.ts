@@ -18,6 +18,8 @@ export interface Config {
   githubRepo: string;
   gitRemote: string;
   deployKey: string | undefined;
+  /** A GitHub token for pushes over HTTPS and for opening pull requests; it never appears in an argument. */
+  githubToken: string | undefined;
   gitName: string;
   gitEmail: string;
   telegramBotToken: string | undefined;
@@ -80,6 +82,7 @@ export function loadConfig(env: Env = process.env): Config {
   const githubRepo = text(env, "GITHUB_REPO", "OrivonBrowser/web3-score-manager");
   const publishDir = text(env, "PUBLISH_DIR", "/home/ubuntu/orivon-apps/web3-score-attila");
   const bin = (name: string) => path.join(appDir, "watch", "node_modules", ".bin", name);
+  const githubToken = optional(env, "GITHUB_TOKEN");
   const only = optional(env, "ATTILA_WATCH_ONLY")
     ?.split(",")
     .map((n) => n.trim())
@@ -99,8 +102,9 @@ export function loadConfig(env: Env = process.env): Config {
     ipfsApi,
     ipfsApiMultiaddr: text(env, "IPFS_API_MULTIADDR", multiaddrOf(ipfsApi)),
     githubRepo,
-    gitRemote: text(env, "GIT_REMOTE", `git@github.com:${githubRepo}.git`),
+    gitRemote: text(env, "GIT_REMOTE", githubToken === undefined ? `git@github.com:${githubRepo}.git` : `https://github.com/${githubRepo}.git`),
     deployKey: optional(env, "DEPLOY_KEY"),
+    githubToken,
     gitName: text(env, "GIT_AUTHOR_NAME", "Attila watch"),
     gitEmail: text(env, "GIT_AUTHOR_EMAIL", "attila-watch@orivonstack.com"),
     telegramBotToken: optional(env, "TELEGRAM_BOT_TOKEN"),
@@ -129,5 +133,5 @@ export function loadConfig(env: Env = process.env): Config {
 
 /** Values that must never appear in an answer, a log line or a message. */
 export function secretsOf(config: Config): string[] {
-  return [config.oauthToken, config.telegramBotToken].filter((s): s is string => s !== undefined);
+  return [config.oauthToken, config.telegramBotToken, config.githubToken].filter((s): s is string => s !== undefined);
 }

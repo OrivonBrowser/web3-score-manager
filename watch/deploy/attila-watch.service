@@ -1,0 +1,25 @@
+[Unit]
+Description=Attila watch: re-judge the Web3 Score sites that published a new build
+Documentation=https://github.com/OrivonBrowser/web3-score-manager/blob/main/watch/README.md
+Wants=network-online.target
+After=network-online.target ipfs.service
+
+[Service]
+Type=oneshot
+User=@SERVICE_USER@
+Group=@SERVICE_USER@
+SupplementaryGroups=attila-judge
+EnvironmentFile=/etc/attila-watch/secrets.env
+Environment=APP_DIR=/opt/attila-watch/app
+Environment=PATH=/usr/local/bin:/usr/bin:/bin
+Environment=HOME=@SERVICE_HOME@
+WorkingDirectory=/var/lib/attila-watch
+ExecStart=/usr/local/bin/node /opt/attila-watch/app/watch/run.ts
+# srt keeps its proxy socket and CA bundle in /tmp, which the sandbox can read: a private /tmp
+# holds only this run's files.
+PrivateTmp=yes
+TimeoutStartSec=3h
+Nice=10
+CPUWeight=50
+MemoryHigh=1200M
+MemoryMax=1600M

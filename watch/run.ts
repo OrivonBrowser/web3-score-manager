@@ -13,6 +13,7 @@ import type { Config } from "./config.ts";
 import { buildFacts, loadBuildRecord, renderFactsMd, saveBuildRecord } from "./facts.ts";
 import { readRegularFile } from "./fsutil.ts";
 import { commitEvaluation, headSha, pushBranch, pushMain, resetToOrigin, syncClone } from "./git.ts";
+import { openPullRequest } from "./github.ts";
 import { readTemplate, renderPrompt, runJudge } from "./judge.ts";
 import { clip, log } from "./log.ts";
 import { decide, mergeEvaluation, serialiseEvaluation } from "./merge.ts";
@@ -232,7 +233,12 @@ async function judgeGroup(config: Config, group: Group, secrets: string[], now: 
     const branch = `attila-watch/${slug}-${cid.slice(0, 12)}`;
     await pushBranch(config, branch, input, !config.dryRun);
     result.branch = branch;
-    if (!config.dryRun) message.compareUrl = `https://github.com/${config.githubRepo}/compare/main...${branch}?expand=1`;
+    if (!config.dryRun) {
+      const reasons = decision.reasons.map((r) => `- ${r}`).join("\n");
+      const prBody = `${body}\n\nThe Attila watch holds this judgement for review:\n\n${reasons}\n\nWhat changed, as the judge sees it: ${verdict.changes}`;
+      const pr = await openPullRequest(config, branch, subject, withoutSecrets(prBody, secrets));
+      message.compareUrl = pr ?? `https://github.com/${config.githubRepo}/compare/main...${branch}?expand=1`;
+    }
   }
   return result;
 }

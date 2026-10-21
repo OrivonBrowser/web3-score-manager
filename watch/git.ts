@@ -15,6 +15,16 @@ function gitEnv(config: Config): Record<string, string> {
     GIT_COMMITTER_EMAIL: config.gitEmail,
     GIT_TERMINAL_PROMPT: "0",
   };
+  if (config.githubToken !== undefined) {
+    // git asks this helper for the password; it reads the token from the environment, so the token
+    // is in no argument list and no remote address.
+    env.ATTILA_GITHUB_TOKEN = config.githubToken;
+    env.GIT_CONFIG_COUNT = "2";
+    env.GIT_CONFIG_KEY_0 = "credential.helper";
+    env.GIT_CONFIG_VALUE_0 = "";
+    env.GIT_CONFIG_KEY_1 = "credential.helper";
+    env.GIT_CONFIG_VALUE_1 = '!f() { test "$1" = get && echo username=x-access-token && echo "password=$ATTILA_GITHUB_TOKEN"; }; f';
+  }
   if (config.deployKey !== undefined) {
     env.GIT_SSH_COMMAND = `ssh -i ${config.deployKey} -o IdentitiesOnly=yes -o StrictHostKeyChecking=accept-new`;
   }
