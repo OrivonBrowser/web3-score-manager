@@ -1,0 +1,39 @@
+#!/bin/bash
+# Signs Attila watch in to Claude: `claude setup-token` makes a one-year token for the owner's
+# Claude subscription, and this stores it in the secrets file the watch reads. Run it in a
+# terminal: ssh -t <user>@<server> /opt/attila-watch/bin/attila-watch-login
+set -euo pipefail
+SECRETS=${ATTILA_WATCH_SECRETS:-/etc/attila-watch/secrets.env}
+CLAUDE=${ATTILA_WATCH_CLAUDE:-/opt/attila-watch/app/watch/node_modules/.bin/claude}
+MODEL=${ATTILA_WATCH_MODEL:-claude-sonnet-5-5}
+
+cfg=$(mktemp -d)
+trap 'rm -rf "$cfg"' EXIT
+
+echo "1) Claude prints a sign-in link. Open it, approve with your Claude account, and paste the code back here."
+echo
+CLAUDE_CONFIG_DIR="$cfg" DISABLE_AUTOUPDATER=1 CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC=1 "$CLAUDE" setup-token
+echo
+echo "2) Paste the token it printed above (it starts with sk-ant-), then press Enter. Nothing shows while you paste."
+IFS= read -rs token
+echo
+token=$(printf %s "$token" | tr -d '[:space:]')
+case $token in
+  sk-ant-*) ;;
+  *) echo "That is not the token: it should start with sk-ant-. Nothing changed."; exit 1 ;;
+esac
+
+echo "3) Checking the token with one short request to $MODEL..."
+answer=$(cd "$cfg" && CLAUDE_CONFIG_DIR="$cfg" CLAUDE_CODE_OAUTH_TOKEN="$token" DISABLE_AUTOUPDATER=1 \
+  CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC=1 timeout 120 "$CLAUDE" -p "Reply with the single word OK." \
+  --model "$MODEL" --tools "" --max-turns 1 2>&1) || { echo "The check failed, nothing changed: $answer"; exit 1; }
+echo "   $MODEL answered: $answer"
+
+new=$(mktemp)
+trap 'rm -rf "$cfg" "$new"' EXIT
+sudo cat "$SECRETS" | TOKEN="$token" awk '
+  /^CLAUDE_CODE_OAUTH_TOKEN=/ { print "CLAUDE_CODE_OAUTH_TOKEN=" ENVIRON["TOKEN"]; done = 1; next }
+  { print }
+  END { if (!done) print "CLAUDE_CODE_OAUTH_TOKEN=" ENVIRON["TOKEN"] }' > "$new"
+sudo install -o root -g "$(stat -c %G "$SECRETS")" -m 0640 "$new" "$SECRETS"
+echo "4) Saved. Attila watch uses this token from its next run; it lasts one year."

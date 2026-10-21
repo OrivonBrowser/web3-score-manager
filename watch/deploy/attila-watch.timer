@@ -1,0 +1,10 @@
+[Unit]
+Description=Run the Attila watch every 3 hours
+
+[Timer]
+OnCalendar=*-*-* 00/3:25:00
+RandomizedDelaySec=10m
+Persistent=true
+
+[Install]
+WantedBy=timers.target

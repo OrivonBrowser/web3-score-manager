@@ -1,0 +1,11 @@
+{
+  "name": "attila-watch",
+  "private": true,
+  "type": "module",
+  "engines": { "node": ">=22.18" },
+  "dependencies": {
+    "playwright": "1.64.1",
+    "@anthropic-ai/sandbox-runtime": "0.0.81",
+    "@anthropic-ai/claude-code": "2.1.306"
+  }
+}
