@@ -1,13 +1,14 @@
 {
   "subject": "website",
   "ids": [
-    "cid:bafybeicii64zufd6a4sm6trx2kmk4khrnq6syp6lz5ppt6ljwr5q4ut6oq"
+    "cid:bafybeicii64zufd6a4sm6trx2kmk4khrnq6syp6lz5ppt6ljwr5q4ut6oq",
+    "cid:bafybeidtsmngkravvcaisfhmb7ja6p42xk773lyv22raqt2ju4belq3plm"
   ],
   "names": [
     "safenetstake.eth"
   ],
   "name": "Chainza SAFE Staking",
-  "evaluated": "2026-10-18",
+  "evaluated": "2026-10-21",
   "trustlessity": {
     "level": 3,
     "privacy": false
@@ -26,7 +27,7 @@
       "trustlessity": {
         "level": 1
       },
-      "note": "Read when the page opens, without proof."
+      "note": "Read when the page opens, without proof. The Chainza API also receives a pageview POST."
     },
     {
       "name": "Validator list (raw.githubusercontent.com)",
