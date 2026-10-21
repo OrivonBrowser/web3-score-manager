@@ -3,13 +3,14 @@
   "ids": [
     "cid:bafybeiapygr75kndtqcjgirmjj6bxfvijiswjjby5hehymzfir7e3dobgy",
     "cid:bafybeig7v2qxgdswmf6h7xrj23j44unr3ptgagr37iuhzeoitr3on4bbpq",
-    "cid:bafybeiff6tgf5xfllfeokmzhyp6xxia6uq7v2amtxpdastjhw2jjxgtff4"
+    "cid:bafybeiff6tgf5xfllfeokmzhyp6xxia6uq7v2amtxpdastjhw2jjxgtff4",
+    "cid:bafybeibin7y4m23rnowcl2v7vww76wivxjtpot2qjffbpj4lqy7rohw5my"
   ],
   "names": [
     "reality.eth"
   ],
   "name": "Reality.eth",
-  "evaluated": "2026-10-18",
+  "evaluated": "2026-10-21",
   "trustlessity": {
     "level": 3,
     "privacy": false
