@@ -6,8 +6,8 @@ judges, the watch opens that build in a sandboxed browser, has a model read its 
 in [provider/README.md](../provider/README.md), and either commits the new judgement or holds it
 for the owner. Then it publishes Attila again and sends the owner a Telegram message for each site.
 
-It runs on a Linux server under a systemd timer. The units and the installer are not in this
-repository; this directory is the code and its tests.
+It runs on a Linux server under a systemd timer. `deploy/` holds the installer, the units and the
+sign-in helper (see Install below).
 
 ## What one run does
 
@@ -33,7 +33,8 @@ repository; this directory is the code and its tests.
 A judgement that passes goes to `main` with one commit per site. A judgement that rises in level,
 gains the privacy mark, comes with a suspected injection, or sits at Level 3 or 4 while the build
 loads third-party scripts or frames by itself is held: it goes to a branch named
-`attila-watch/<name>-<build>`, and the message links the pull request. A build that does not
+`attila-watch/<name>-<build>`, the watch opens a pull request for it when it holds a GitHub token,
+and the message links it. A build that does not
 render is not judged; it is retried on later runs.
 
 ## Security model
@@ -42,13 +43,17 @@ The site is written by a stranger, so everything from it is treated as hostile d
 are independent; each one holds if the others fail.
 
 - **A separate unprivileged user.** The browser and the model run as the judge user, which has no
-  access to the orchestrator's secrets, keys, state or clone.
+  access to the orchestrator's secrets (the GitHub token, the Telegram token and the Claude token
+  in `/etc/attila-watch/secrets.env`), state or clone.
 - **The srt sandbox.** Both run under `srt` (sandbox-runtime). The probe has no network at all.
   The judge reaches `api.anthropic.com` only, through a proxy that holds the OAuth token: the
   process sees a masked placeholder and never the real token. Both can write only to their job
   folder (`output`, `home`, `tmp`), and `/home`, `/root`, `/var/lib`, `/etc/ssh` and the other
   secret locations cannot be read. User namespaces are off, so Chromium runs with `--no-sandbox`
-  inside the outer sandbox.
+  inside the outer sandbox. srt runs without its seccomp socket filter (`allowAllUnixSockets`),
+  because Ubuntu's AppArmor policy for bubblewrap forbids the nested namespace that filter needs;
+  the sandbox has a network namespace of its own, so abstract sockets are out of reach, and `/run`
+  and `/var/run`, where the host's socket files live, cannot be read.
 - **Claude Code on a short leash.** `--restricted` with only `Read`, `Grep` and `Glob`, no MCP, no
   hooks, no slash commands, reads limited to the working directory, a turn cap and a timeout. The
   answer is structured output checked against `judge/schema.json`.
@@ -86,8 +91,9 @@ All settings are environment variables, read in `config.ts`.
 | `PLAYWRIGHT_BROWSERS_PATH` | `/opt/attila-watch/browsers` | Where the Chromium build is installed |
 | `IPFS_API`, `IPFS_API_MULTIADDR` | `http://127.0.0.1:5001`, derived | The IPFS node's API |
 | `GITHUB_REPO` | `OrivonBrowser/web3-score-manager` | Used for commit and pull request links |
-| `GIT_REMOTE` | `git@github.com:<GITHUB_REPO>.git` | Where the clone pushes |
-| `DEPLOY_KEY` | unset | An SSH key for git, used with `IdentitiesOnly` |
+| `GITHUB_TOKEN` | unset | Pushes over HTTPS and opens pull requests for held judgements; git reads it through a credential helper, never from an argument |
+| `GIT_REMOTE` | `https://github.com/<GITHUB_REPO>.git` with a token, `git@github.com:<GITHUB_REPO>.git` without | Where the clone pushes |
+| `DEPLOY_KEY` | unset | An SSH key for git instead of a token, used with `IdentitiesOnly` |
 | `GIT_AUTHOR_NAME`, `GIT_AUTHOR_EMAIL` | `Attila watch`, `attila-watch@orivonstack.com` | Commit identity |
 | `TELEGRAM_BOT_TOKEN`, `TELEGRAM_CHAT_ID` | unset | Without them messages are only logged as unsent |
 | `CLAUDE_CODE_OAUTH_TOKEN` | unset | Passed to the judge's sandbox, where it is masked |
@@ -109,6 +115,30 @@ All settings are environment variables, read in `config.ts`.
 The job folder of a site (`JOBS_DIR`) must be writable by the orchestrator and by the judge user's
 group, and its files are created group-writable. The orchestrator's account needs `sudo -n` rights
 to run `ipfs get`, the probe and the judge as the judge user, and to delete what that user wrote.
+
+## Install
+
+On the server, from a checkout of this repository, as root:
+
+```
+sudo SERVICE_USER=<account> watch/deploy/install.sh
+```
+
+It needs Node 22.18 or newer at `/usr/local/bin/node`. It installs srt's dependencies (bubblewrap,
+socat, ripgrep) and the libraries Chromium's headless shell links, creates the judge user, the
+folders and `/etc/attila-watch/secrets.env`, copies `src/` and `watch/` to `/opt/attila-watch/app`
+with their dependencies, installs Chromium's headless shell and the systemd service and timer
+(`ENABLE_TIMER=0` installs the timer without starting it). Running it again updates the code.
+
+Then fill in `secrets.env` (`TELEGRAM_BOT_TOKEN`, `TELEGRAM_CHAT_ID`, `GITHUB_TOKEN`) and sign in
+to Claude, in a terminal on the server:
+
+```
+/opt/attila-watch/bin/attila-watch-login
+```
+
+It runs `claude setup-token` for the owner's Claude subscription, checks the token with one
+request and stores it as `CLAUDE_CODE_OAUTH_TOKEN`. The token lasts a year.
 
 ## Running it by hand
 

@@ -127,7 +127,15 @@ export async function runJudge(config: Config, job: JudgePaths, prompt: string):
   if (result.spawnError) return { ok: false, error: "the judge could not be started", ...base };
   if (result.timedOut || result.code === 124) return { ok: false, error: "the judge ran out of time", ...base };
   if (result.stdoutTruncated) return { ok: false, error: "the judge's output was too large", ...base };
-  let parsed: { structured_output?: unknown; is_error?: unknown; subtype?: unknown; total_cost_usd?: unknown; num_turns?: unknown };
+  let parsed: {
+    structured_output?: unknown;
+    is_error?: unknown;
+    subtype?: unknown;
+    terminal_reason?: unknown;
+    result?: unknown;
+    total_cost_usd?: unknown;
+    num_turns?: unknown;
+  };
   try {
     parsed = JSON.parse(result.stdout);
   } catch {
@@ -136,7 +144,10 @@ export async function runJudge(config: Config, job: JudgePaths, prompt: string):
   const costUsd = typeof parsed.total_cost_usd === "number" ? parsed.total_cost_usd : undefined;
   const turns = typeof parsed.num_turns === "number" ? parsed.num_turns : undefined;
   if (parsed.structured_output === undefined || parsed.is_error === true) {
-    const why = typeof parsed.subtype === "string" ? parsed.subtype.slice(0, 60) : `exit code ${result.code}`;
+    const reason = [parsed.terminal_reason, parsed.subtype].find((v) => typeof v === "string") as string | undefined;
+    let why = reason?.slice(0, 60) ?? `exit code ${result.code}`;
+    // On an error, `result` is Claude Code's own message ("Not logged in"); a long one may quote the site, so only a short one is kept.
+    if (parsed.is_error === true && typeof parsed.result === "string" && parsed.result.length <= 120) why += `: ${parsed.result}`;
     return { ok: false, error: `the judge gave no structured answer (${why})`, costUsd, turns, ...base };
   }
   return { ok: true, answer: parsed.structured_output, costUsd, turns, ...base };
