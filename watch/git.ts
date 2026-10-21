@@ -5,6 +5,14 @@ import { failed, run } from "./proc.ts";
 
 export class GitError extends Error {}
 
+/**
+ * The installed web3-score command, run on the clone's provider/: the clone has no node_modules,
+ * and the installed copy has its dependencies.
+ */
+export function cliArgs(config: Config, ...args: string[]): string[] {
+  return [path.join(config.appDir, "src", "cli.ts"), ...args, "--dir", path.join(config.repoDir, "provider")];
+}
+
 function gitEnv(config: Config): Record<string, string> {
   const env: Record<string, string> = {
     PATH: process.env.PATH ?? "/usr/bin:/bin",
@@ -67,7 +75,7 @@ export interface CommitInput {
 /** Writes the evaluation, runs `check` on the clone, and commits it. A judgement that fails `check` is undone. */
 export async function commitEvaluation(config: Config, input: CommitInput): Promise<string> {
   writeFileSync(input.file, input.content);
-  const check = await run(config.nodeBin, ["src/cli.ts", "check"], { cwd: config.repoDir, timeoutMs: 120_000 });
+  const check = await run(config.nodeBin, cliArgs(config, "check"), { cwd: config.repoDir, timeoutMs: 120_000 });
   if (failed(check)) {
     await git(config, ["checkout", "--", path.relative(config.repoDir, input.file)]).catch(() => {});
     const lines = (check.stderr || check.stdout).trim().split("\n").slice(0, 5).join("; ");
@@ -95,7 +103,7 @@ export async function pushMain(config: Config): Promise<string> {
       await git(config, ["rebase", "--abort"]).catch(() => {});
       throw new GitError(`the push was rejected and the rebase failed: ${(e as Error).message}`);
     }
-    const check = await run(config.nodeBin, ["src/cli.ts", "check"], { cwd: config.repoDir, timeoutMs: 120_000 });
+    const check = await run(config.nodeBin, cliArgs(config, "check"), { cwd: config.repoDir, timeoutMs: 120_000 });
     if (failed(check)) throw new GitError("after the rebase the provider no longer passes check");
   }
   throw new GitError(`the push kept being rejected: ${lastError}`);

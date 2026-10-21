@@ -3,6 +3,7 @@ import path from "node:path";
 import { CID } from "multiformats/cid";
 import type { Config } from "./config.ts";
 import { writeFileAtomic } from "./fsutil.ts";
+import { cliArgs } from "./git.ts";
 import { failed, run } from "./proc.ts";
 
 const SECTION = "## Web3 Score provider: Orivon Attila";
@@ -51,7 +52,7 @@ function isPreviousBuild(dir: string): boolean {
 export async function publish(config: Config, judged: string[], sha7: string, today: string): Promise<PublishResult> {
   const dist = path.join(config.stateDir, "dist");
   if (existsSync(dist) && !isPreviousBuild(dist)) rmSync(dist, { recursive: true, force: true });
-  const built = await run(config.nodeBin, ["src/cli.ts", "build", "--out", dist], { cwd: config.repoDir, timeoutMs: 120_000 });
+  const built = await run(config.nodeBin, cliArgs(config, "build", "--out", dist), { cwd: config.repoDir, timeoutMs: 120_000 });
   if (failed(built)) throw new Error(`building Attila failed: ${built.stderr.trim().split("\n")[0] ?? ""}`);
 
   mkdirSync(config.publishDir, { recursive: true });

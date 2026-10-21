@@ -6,6 +6,7 @@ import { parseProbe } from "../probe-result.ts";
 import { DENY_READ, probeCommand, writeSrtSettings } from "../sandbox.ts";
 import type { Job } from "../sandbox.ts";
 import { summaryLine, updateSummary } from "../publish.ts";
+import { cliArgs } from "../git.ts";
 import { tempDir } from "../../test/support.ts";
 import { readFileSync } from "node:fs";
 
@@ -85,4 +86,10 @@ test("the summary changes the CID inside the Attila section only and appends the
   const out = updateSummary(text, "OLD", "NEW", line);
   assert.ok(out.includes("- cid: NEW\n- NEW again\n## Other\n- OLD stays"));
   assert.ok(out.endsWith(`- earlier\n${line}\n`));
+});
+
+// The clone has no node_modules: check and build run the installed command on the clone's provider/.
+test("check and build run the installed web3-score command on the clone's provider", () => {
+  const config = loadConfig({ APP_DIR: "/app", REPO_DIR: "/state/repo" });
+  assert.deepEqual(cliArgs(config, "build", "--out", "/state/dist"), ["/app/src/cli.ts", "build", "--out", "/state/dist", "--dir", "/state/repo/provider"]);
 });

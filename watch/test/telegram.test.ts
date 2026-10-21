@@ -48,7 +48,7 @@ test("a live message shows both judgements, the direction and the links", () => 
   assert.match(text, /🟢 <b>Level 3<\/b> · no privacy/);
   assert.match(text, /✅ Live in Orivon · Attila <code>bafybeigdy…bzdi<\/code>/);
   assert.match(text, /<a href="https:\/\/reality\.eth\.limo\/">Site<\/a>/);
-  assert.match(text, /<i>claude-sonnet-5-5 · 23 turns · \$0\.41<\/i>/);
+  assert.match(text, /<i>claude-sonnet-5-5 · 23 turns · ≈ \$0\.41 at API prices<\/i>/);
 });
 
 test("every interpolated string is escaped, attributes too", () => {
