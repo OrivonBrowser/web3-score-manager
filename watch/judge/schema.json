@@ -1,0 +1,65 @@
+{
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "renders",
+    "sameAsBefore",
+    "injectionSuspected",
+    "name",
+    "level",
+    "privacy",
+    "summary",
+    "operations",
+    "connections",
+    "evidence",
+    "changes",
+    "concerns"
+  ],
+  "properties": {
+    "renders": { "type": "boolean" },
+    "sameAsBefore": { "type": "boolean" },
+    "injectionSuspected": { "type": "boolean" },
+    "name": { "type": "string", "minLength": 1, "maxLength": 80 },
+    "version": { "type": "string", "maxLength": 40 },
+    "level": { "type": "integer", "minimum": 1, "maximum": 4 },
+    "privacy": { "type": "boolean" },
+    "summary": { "type": "string", "minLength": 1, "maxLength": 600 },
+    "operations": {
+      "type": "array",
+      "maxItems": 32,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["name", "level"],
+        "properties": {
+          "name": { "type": "string", "minLength": 1, "maxLength": 80 },
+          "level": { "type": "integer", "minimum": 1, "maximum": 5 },
+          "privacy": { "type": "boolean" },
+          "note": { "type": "string", "maxLength": 300 }
+        }
+      }
+    },
+    "connections": {
+      "type": "array",
+      "maxItems": 32,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["name", "level"],
+        "properties": {
+          "name": { "type": "string", "minLength": 1, "maxLength": 80 },
+          "level": { "type": "integer", "minimum": 1, "maximum": 3 },
+          "privacy": { "type": "boolean" },
+          "note": { "type": "string", "maxLength": 300 }
+        }
+      }
+    },
+    "evidence": {
+      "type": "array",
+      "maxItems": 10,
+      "items": { "type": "string", "minLength": 1, "maxLength": 2048 }
+    },
+    "changes": { "type": "string", "maxLength": 800 },
+    "concerns": { "type": "string", "maxLength": 800 }
+  }
+}

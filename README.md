@@ -185,6 +185,8 @@ How Attila judges a website, and the worked examples to follow, are in
 The commands above read `provider/` by default. To run a provider of your own, pass `--dir` with
 another directory.
 
+A job on a server keeps Attila current as the watched sites change; see [watch/README.md](watch/README.md).
+
 ## Example provider
 
 `examples/orivon-test-provider` holds two evaluations (ASGARDEX and The Lounge). `npm start`
