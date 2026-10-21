@@ -117,7 +117,7 @@ export function formatJudged(m: JudgedMessage): string {
   if (m.action === "apply" && m.commitUrl) links.push(`<a href="${escAttr(m.commitUrl)}">Commit</a>`);
   links.push(`<a href="${escAttr(`https://${first}.limo/`)}">Site</a>`);
   blocks.push({ plain: "", wrap: () => `🔗 ${links.join(" · ")}`, fixed: true });
-  const meta = [m.model, m.turns !== undefined ? `${m.turns} turns` : "", m.costUsd !== undefined ? `$${m.costUsd.toFixed(2)}` : ""].filter((s) => s !== "");
+  const meta = [m.model, m.turns !== undefined ? `${m.turns} turns` : "", m.costUsd !== undefined ? `≈ $${m.costUsd.toFixed(2)} at API prices` : ""].filter((s) => s !== "");
   blocks.push({ plain: meta.join(" · "), wrap: (e) => `<i>${e}</i>`, fixed: true });
   return render(blocks);
 }
