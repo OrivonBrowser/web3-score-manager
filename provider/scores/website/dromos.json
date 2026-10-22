@@ -2,13 +2,14 @@
   "subject": "website",
   "ids": [
     "cid:bafybeiferfvitauarelwfrvbfur4jijw5yiqkydy2uiql6kyoyoe6qdmaa",
-    "cid:bafybeid4fin7kkzjs63fotwi6vzthxvhltmc2zr7hjwflg2og4krbkxvae"
+    "cid:bafybeid4fin7kkzjs63fotwi6vzthxvhltmc2zr7hjwflg2og4krbkxvae",
+    "cid:bafybeiciu3rv2foptl4rpiurlz7fdaxi4mp3ubyducabqnb67vydwvj4c4"
   ],
   "names": [
     "dromos.eth"
   ],
   "name": "Dromos Labs",
-  "evaluated": "2026-10-21",
+  "evaluated": "2026-10-22",
   "trustlessity": {
     "level": 2,
     "privacy": false
