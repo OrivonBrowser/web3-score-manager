@@ -1,18 +1,19 @@
 {
   "subject": "website",
   "ids": [
-    "cid:bafybeiceuzryxw5iq56vndz4brwust2jtingegy2jpbun6jsf22mt2xlpm"
+    "cid:bafybeiceuzryxw5iq56vndz4brwust2jtingegy2jpbun6jsf22mt2xlpm",
+    "cid:bafybeia7bj7ioxffwf23kkpb76dz6lxtvddyhilkai47t33d2msidlv3jq"
   ],
   "names": [
     "aeroxyz.eth"
   ],
   "name": "Aero Lite",
-  "evaluated": "2026-10-18",
+  "evaluated": "2026-10-22",
   "trustlessity": {
     "level": 2,
     "privacy": false
   },
-  "summary": "Aero Lite, a trading and liquidity app for Aero on Arc. Its bundle is minified and no public source was found, which is why it stays at Level 2. Its bundled wallet kit also calls api.web3modal.org and pulse.walletconnect.org when the page opens, connections and not third-party code.",
+  "summary": "Aero Lite, a trading and liquidity app for Aero on Arc. Its bundle is minified and no public source was found, which is why it stays at Level 2. Its bundled code calls api.web3modal.org, pulse.walletconnect.org and an Alchemy Arc RPC when the page opens; these are connections, not third-party code.",
   "connections": [
     {
       "name": "WalletConnect and Reown (api.web3modal.org, pulse.walletconnect.org)",
@@ -20,6 +21,13 @@
         "level": 1
       },
       "note": "Configuration and telemetry requests from the site's own bundled wallet kit when the page opens, before a wallet is connected."
+    },
+    {
+      "name": "Alchemy Arc RPC (arc-mainnet.g.alchemy.com)",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Chain reads sent to a hosted RPC endpoint from the site's own bundle when the page opens, with no light client to check the answers."
     }
   ]
 }
