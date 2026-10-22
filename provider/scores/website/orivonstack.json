@@ -1,0 +1,49 @@
+{
+  "subject": "website",
+  "ids": [
+    "cid:bafybeibkwwl4osvvuhwoha5qinyjib5dobqoevfd2f2bfxcxzvwgmi5sfy"
+  ],
+  "names": [
+    "www.orivonstack.eth",
+    "orivonstack.eth",
+    "download.orivonstack.eth"
+  ],
+  "name": "Orivon website",
+  "evaluated": "2026-10-22",
+  "trustlessity": {
+    "level": 3,
+    "privacy": false
+  },
+  "summary": "The Orivon release website, judged here by its own publisher. Its source is public (Apache-2.0) and it is served as written, so it runs only its own code: no analytics, tag manager or embed. It stays at 3 because as it opens it reads the newest release from latest.orivonstack.eth.limo, a gateway whose answer nothing checks against a hash (a Level 1 connection that sees the visitor's IP address). If that read fails, the page shows the release it was built with.",
+  "operations": [
+    {
+      "name": "Read the project pages and choose a download",
+      "trustlessity": {
+        "level": 4,
+        "privacy": true
+      },
+      "note": "The text, images, fonts and scripts are the page's own files."
+    },
+    {
+      "name": "Show the newest release",
+      "trustlessity": {
+        "level": 1,
+        "privacy": false
+      },
+      "note": "Read from a gateway as the page opens; the page's built-in release stands in when it does not answer."
+    }
+  ],
+  "connections": [
+    {
+      "name": "latest.orivonstack.eth.limo (newest release)",
+      "trustlessity": {
+        "level": 1,
+        "privacy": false
+      },
+      "note": "An eth.limo gateway answers; nothing checks its answer against a hash. It sees the visitor's IP address."
+    }
+  ],
+  "evidence": [
+    "https://github.com/OrivonBrowser/orivon-site"
+  ]
+}

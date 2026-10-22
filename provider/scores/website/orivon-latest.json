@@ -1,0 +1,27 @@
+{
+  "subject": "website",
+  "ids": [
+    "cid:bafybeif23iss64mr4lniordnlmvetce36sglefucbyjm4tkgflpwmtqwq4"
+  ],
+  "names": [
+    "latest.orivonstack.eth"
+  ],
+  "name": "Orivon latest release",
+  "version": "0.0.8",
+  "evaluated": "2026-10-22",
+  "trustlessity": {
+    "level": 4,
+    "privacy": true
+  },
+  "summary": "The folder that always holds Orivon's newest release, judged here by its own publisher. Its start page is a few lines of plain HTML and an unminified inline script, written by orivon-mvp's release pinner (scripts/pin-releases.sh), so it is its own public source. It picks the package for the visitor's system and starts that download from the same folder; it contacts nothing else and runs no third-party code. Every file is content-addressed, so Orivon checks each package against the address. Each new release moves the name to a new folder, which is judged again when it appears.",
+  "operations": [
+    {
+      "name": "Download the package for your system",
+      "trustlessity": { "level": 4, "privacy": true },
+      "note": "The package is a file of the same folder, checked against its address."
+    }
+  ],
+  "evidence": [
+    "https://github.com/OrivonBrowser/orivon-mvp/blob/main/scripts/pin-releases.sh"
+  ]
+}
