@@ -2,20 +2,20 @@
   "subject": "website",
   "ids": [
     "sha256:89e4aea63a20788ec7601409abd48620bef71727926c24451dba8ea7cceec360",
-    "cid:bafybeigo6bgfcvr2lxdt74udz27mlpyhw5jngrqrj6vsqphqvvn6e6cgim",
     "sha256:987f8f34767b70c211b47b26e21c4258ea06d04d4ad40bc1c3736e2bbcd5d81f",
     "cid:bafybeifavmd5gjmcx5ebry3mywmw3cflv3ycw3ufxphmu2btxgtssqz7be",
     "sha256:ecba682fa4b88304d50947f4a4b857d08cae2370029e3c8482840eabe03d454e",
     "cid:bafybeib567tv3fl57o7s73nntv5q5vekcjeodnarmicn5lvy4um5prwnbm",
     "sha256:96f0ee5d366303efe025286d61a394cc3035694d29accaf900b90e7efd11ca5a",
-    "cid:bafybeief4gxnq2hv3zyfaravixfsn5px7yhzfxjmogrqs7ozqmyeuberu4"
+    "cid:bafybeief4gxnq2hv3zyfaravixfsn5px7yhzfxjmogrqs7ozqmyeuberu4",
+    "cid:bafybeifyjr2hr7cekoa7n5l27pdegwxhwfian4wirzu7tjvbekval7ckhm"
   ],
   "names": [
     "explore.orivonstack.eth"
   ],
   "name": "Orivon Explore",
-  "version": "0.2.0",
-  "evaluated": "2026-10-21",
+  "version": "0.2.1",
+  "evaluated": "2026-10-22",
   "trustlessity": {
     "level": 4,
     "privacy": false
