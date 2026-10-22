@@ -4,13 +4,14 @@
     "cid:bafybeibf66myaaw64ottwtbxh6cxnck34pdefpkrifyo5uht3thhihdjam",
     "cid:bafybeiclocbxgv57uhgowwfww67sjh5zm2tz7knnleybt3pcr45ii33ypy",
     "cid:bafybeig5ndpplygft24gi5stv6u6o5eb2ovcteny6fbyyybfzlsfotjqoq",
-    "cid:bafybeidops7b5le5xgvwhauxdkua5x2bz3pxjnd3v336ejx3bgx6ywunui"
+    "cid:bafybeidops7b5le5xgvwhauxdkua5x2bz3pxjnd3v336ejx3bgx6ywunui",
+    "cid:bafybeihwe7vknxsstsjk2r3pezvnzghv3hh6leqxh2eg7gpcpy7wzkyi34"
   ],
   "names": [
     "velo.drome.eth"
   ],
   "name": "Velodrome",
-  "evaluated": "2026-10-21",
+  "evaluated": "2026-10-22",
   "trustlessity": {
     "level": 2,
     "privacy": false
