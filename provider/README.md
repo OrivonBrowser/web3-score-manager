@@ -17,6 +17,18 @@ at the Level 1 Orivon observes. Look for an official IPFS or ENS build of it fir
 build only if it loads. A build whose files cannot be fetched, or that renders nothing, is not
 judged: nobody can open it, so a level would describe nothing.
 
+## A `.eth.limo` address is the `.eth` name
+
+Orivon, with its default settings, loads `<name>.eth.limo` and `<name>.eth.link` as `<name>.eth`,
+checked on this computer, whether the address is opened as a page or embedded in one: a link, a
+script, a style, an image, a font, a video or a `fetch`. Judge such an address as the `.eth` name
+it stands for. A site that reaches its own files through its own name's gateway address is loading
+its own files; one that reaches another name's content through a gateway address makes a Level 2
+connection, the same as files fetched by CID. The gateway form is how a Web3 site keeps working in
+other browsers, and it never lowers a level. Two exceptions stay gateway connections at Level 1: a
+frame, which Orivon keeps loading through the gateway because a `.eth` site refuses to be framed
+by another site, and any other gateway (`bzz.limo`, `dweb.link`, `ipfs.io`).
+
 ## The website levels
 
 These are the definitions every website judgement applies:
