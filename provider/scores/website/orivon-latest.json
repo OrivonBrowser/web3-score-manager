@@ -1,13 +1,14 @@
 {
   "subject": "website",
   "ids": [
-    "cid:bafybeif23iss64mr4lniordnlmvetce36sglefucbyjm4tkgflpwmtqwq4"
+    "cid:bafybeif23iss64mr4lniordnlmvetce36sglefucbyjm4tkgflpwmtqwq4",
+    "cid:bafybeidfoydcryajw6tx7k6zzvdzbvtmhrttgfcabi7lrzefjkzs2utvkm"
   ],
   "names": [
     "latest.orivonstack.eth"
   ],
   "name": "Orivon latest release",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "evaluated": "2026-10-22",
   "trustlessity": {
     "level": 4,
@@ -17,7 +18,10 @@
   "operations": [
     {
       "name": "Download the package for your system",
-      "trustlessity": { "level": 4, "privacy": true },
+      "trustlessity": {
+        "level": 4,
+        "privacy": true
+      },
       "note": "The package is a file of the same folder, checked against its address."
     }
   ],
