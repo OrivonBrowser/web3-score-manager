@@ -1,0 +1,74 @@
+{
+  "subject": "website",
+  "ids": [
+    "sha256:8022c858f3315c7dfba0a960f14b802898cbb98cfdf25485c00785113bfe1bc3",
+    "cid:bafybeihlls5dp22lzwbvycw653rbmsax6vihac6cflft4ltzwaklvxn5ze"
+  ],
+  "names": [
+    "editor.decentrawiki.eth"
+  ],
+  "name": "DecentraWiki editor",
+  "version": "0.1.1",
+  "evaluated": "2026-10-23",
+  "trustlessity": {
+    "level": 4,
+    "privacy": false
+  },
+  "summary": "An editor that publishes TiddlyWiki wikis on IPFS, open source in orivon-ports, its scripts unminified. Opening it fetches only its own files; a wiki's own scripts run in a sandboxed frame. Wikis and keys stay in this browser. It relies on no server: it edits offline, computes each IPFS address itself, and pins with a node or service the person picks, accepting only that address, or offers a CAR file. Not private: publishing, and import by address from gateways, show the person's IP address to that service.",
+  "operations": [
+    {
+      "name": "Keep and edit wikis",
+      "trustlessity": {
+        "level": 4,
+        "privacy": true
+      },
+      "note": "Stored in this browser only; nothing is sent while editing."
+    },
+    {
+      "name": "Publish a wiki",
+      "trustlessity": {
+        "level": 4,
+        "privacy": false
+      },
+      "note": "The address is computed here from the bytes sent; the pin is refused unless the service reports that same address. The chosen service sees the person's IP address and the wiki."
+    },
+    {
+      "name": "Import a wiki by its IPFS address",
+      "trustlessity": {
+        "level": 4,
+        "privacy": false
+      },
+      "note": "Fetched from public gateways and checked block by block against the address; the gateway sees what is fetched."
+    },
+    {
+      "name": "Receive a wiki from its pen",
+      "trustlessity": {
+        "level": 4,
+        "privacy": true
+      },
+      "note": "Handed over inside the browser by the page that opened the editor."
+    }
+  ],
+  "connections": [
+    {
+      "name": "The pinning node or service the person chose",
+      "trustlessity": {
+        "level": 2,
+        "privacy": false
+      },
+      "note": "Its answer is checked against the address computed here. It sees the person's IP address and receives the wiki they publish."
+    },
+    {
+      "name": "Public IPFS gateways, on import by address",
+      "trustlessity": {
+        "level": 2,
+        "privacy": false
+      },
+      "note": "Every block is checked against its CID. The gateway sees the person's IP address and which address they fetch."
+    }
+  ],
+  "evidence": [
+    "https://github.com/OrivonBrowser/orivon-ports/tree/main/apps/decentrawiki",
+    "https://github.com/TiddlyWiki/TiddlyWiki5"
+  ]
+}

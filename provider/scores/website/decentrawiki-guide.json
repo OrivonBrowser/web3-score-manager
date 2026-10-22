@@ -1,0 +1,39 @@
+{
+  "subject": "website",
+  "ids": [
+    "cid:bafybeicww7vj2qjm5glim62hrk5ro7p3kd64aytxpf2pprnqs2q2lb2f6m"
+  ],
+  "names": [
+    "decentrawiki.eth"
+  ],
+  "name": "DecentraWiki guide",
+  "version": "0.1.1",
+  "evaluated": "2026-10-23",
+  "trustlessity": {
+    "level": 4,
+    "privacy": true
+  },
+  "summary": "The guide to DecentraWiki, itself a TiddlyWiki wiki published on IPFS. Its source is public, and the page is its own readable source: the TiddlyWiki core beside it is unminified. It loads only its two files and sends no request of its own; links to other sites are links only. Its pen hands the wiki to the DecentraWiki editor inside the browser, with postMessage, and nothing goes over the network. Level 4 with privacy.",
+  "operations": [
+    {
+      "name": "Read the wiki",
+      "trustlessity": {
+        "level": 4,
+        "privacy": true
+      },
+      "note": "Every page is in the files Orivon checked against the address; nothing else is fetched."
+    },
+    {
+      "name": "Hand the wiki to the editor (the pen)",
+      "trustlessity": {
+        "level": 4,
+        "privacy": true
+      },
+      "note": "The tiddlers go to the editor tab it opened, inside the browser; no network request is made."
+    }
+  ],
+  "evidence": [
+    "https://github.com/OrivonBrowser/orivon-ports/tree/main/apps/decentrawiki",
+    "https://github.com/TiddlyWiki/TiddlyWiki5"
+  ]
+}
