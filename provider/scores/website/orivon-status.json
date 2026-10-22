@@ -1,0 +1,65 @@
+{
+  "subject": "website",
+  "ids": [
+    "sha256:55b3971b3ae0ee4865e0fda10eeb40f5d465c20c7910a2498b82f9ffe5cf5e3f",
+    "cid:bafybeic3fmg34oyg3i4dgyqdbp3uiiwaigwb7vottq6eznc3yvuwvaz67m"
+  ],
+  "names": [
+    "status.orivonstack.eth"
+  ],
+  "name": "Orivon Status",
+  "version": "0.1.0",
+  "evaluated": "2026-10-22",
+  "trustlessity": {
+    "level": 3,
+    "privacy": false
+  },
+  "summary": "Orivon's page that checks, from the visitor's own browser, whether its sites, names and releases are served right now. Open source (AGPL-3.0-only), served as written, no third-party code. It stays at 3 because its answers come from servers: ENS names from public Ethereum RPC endpoints with no light client, releases from the GitHub API. IPFS blocks from public gateways are hash-checked in the page. Orivon's grant dialog names all eight hosts, and each sees the visitor's IP address.",
+  "operations": [
+    {
+      "name": "Check that a site, name or release is served",
+      "trustlessity": {
+        "level": 1,
+        "privacy": false
+      },
+      "note": "Name records come from Ethereum RPC endpoints and release data from GitHub; neither is checked against a trustless source."
+    },
+    {
+      "name": "Verify a fetched block against its address",
+      "trustlessity": {
+        "level": 4,
+        "privacy": true
+      },
+      "note": "The hash is computed in the page."
+    }
+  ],
+  "connections": [
+    {
+      "name": "Public Ethereum RPC endpoints (ENS)",
+      "trustlessity": {
+        "level": 1,
+        "privacy": false
+      },
+      "note": "publicnode, drpc and mevblocker answer; no light client checks them."
+    },
+    {
+      "name": "Public IPFS gateways and the routing service",
+      "trustlessity": {
+        "level": 2,
+        "privacy": false
+      },
+      "note": "Blocks and signed IPNS records are checked in the page. The gateways see the visitor's IP address."
+    },
+    {
+      "name": "api.github.com (pins and releases)",
+      "trustlessity": {
+        "level": 1,
+        "privacy": false
+      },
+      "note": "A backend API read as sent."
+    }
+  ],
+  "evidence": [
+    "https://github.com/OrivonBrowser/orivon-ports/tree/main/apps/status"
+  ]
+}
