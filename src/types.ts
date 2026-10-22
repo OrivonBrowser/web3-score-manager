@@ -27,16 +27,17 @@ export interface Evaluation {
   operations?: Part[];
   connections?: Part[];
   evidence?: string[];
+  /** The names that serve the judged build (website only); a score counts at these names. */
+  names?: string[];
 }
 
 /**
  * One evaluation file under scores/: `ids` replaces `id`, `subject` repeats the directory. `names`
- * lists the .eth names that serve the judged build; it is never published, only watched by `moved`.
+ * is published with every entry, and watched by `moved`.
  */
 export interface SourceEvaluation extends Omit<Evaluation, "id"> {
   subject: Subject;
   ids: string[];
-  names?: string[];
 }
 
 export interface ProviderDescriptor {

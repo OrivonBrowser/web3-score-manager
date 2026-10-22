@@ -3,6 +3,9 @@
   "ids": [
     "cid:bafybeifyb455wffkjworiorlzmwnhv6fupkvtld2u6jzkbxvt7tklj2nvi"
   ],
+  "names": [
+    "ipns://cid.ipfs.tech"
+  ],
   "name": "CID Inspector",
   "evaluated": "2026-10-18",
   "trustlessity": {

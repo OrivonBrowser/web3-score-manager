@@ -1,6 +1,6 @@
 import { readFileSync } from "node:fs";
 import path from "node:path";
-import { ETH_NAME } from "../src/validate.ts";
+import { isWatchedName } from "../src/validate.ts";
 import type { Config } from "./config.ts";
 import { run } from "./proc.ts";
 
@@ -58,7 +58,7 @@ export interface JudgeParams {
 /** The name and CID are values the watch has validated, never site text; they are the only things put into the prompt. */
 export function renderPrompt(template: string, p: JudgeParams): string {
   const names = p.name.split(", ");
-  if (names.length < 1 || !names.every((n) => ETH_NAME.test(n))) throw new Error("the name is not a lowercase .eth name");
+  if (names.length < 1 || !names.every(isWatchedName)) throw new Error("the name is not a watched name");
   if (!/^[a-z0-9]{10,100}$/.test(p.cid)) throw new Error("the CID is not a plain lowercase string");
   if (!/^\d{4}-\d{2}-\d{2}$/.test(p.today)) throw new Error("today is not a date");
   return template.replaceAll("{{name}}", p.name).replaceAll("{{cid}}", p.cid).replaceAll("{{today}}", p.today);

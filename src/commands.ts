@@ -102,7 +102,7 @@ const COMMANDS: Record<string, Command> = {
   },
   moved: {
     usage: "moved [--dir d] [--resolver https://{name}.limo/]",
-    summary: "list the watched .eth names that now serve a build no evaluation judges",
+    summary: "list the watched names that now serve a build no evaluation judges",
     options: { dir: DIR, resolver: { type: "string", default: DEFAULT_RESOLVER } },
     async run(v, _p, io) {
       const resolver = str(v.resolver)!;

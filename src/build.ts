@@ -23,6 +23,7 @@ function toEntry(id: string, e: SourceEvaluation): Evaluation {
     ...(e.operations !== undefined && { operations: e.operations }),
     ...(e.connections !== undefined && { connections: e.connections }),
     ...(e.evidence !== undefined && { evidence: e.evidence }),
+    ...(e.names !== undefined && { names: e.names }),
   };
 }
 

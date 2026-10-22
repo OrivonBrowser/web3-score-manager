@@ -43,10 +43,9 @@ test("output is byte-for-byte identical across builds and has no source-only fie
   for (const entry of bucket.entries) {
     assert.equal(entry.ids, undefined);
     assert.equal(entry.subject, undefined);
-    assert.equal(entry.names, undefined);
+    assert.deepEqual(entry.names, ["watched.eth"]);
     assert.ok(typeof entry.id === "string");
   }
-  for (const file of tree(first)) assert.ok(!read(first, file).includes("watched.eth"), file);
   assert.ok(read(first, "score/provider.json").endsWith("}\n"));
 });
 

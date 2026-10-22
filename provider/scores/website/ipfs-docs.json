@@ -3,6 +3,9 @@
   "ids": [
     "cid:bafybeier6ud42ptljtfaxrdlknktw54b7ohfpg5h33mosxpxjndxs7xzvm"
   ],
+  "names": [
+    "ipns://docs.ipfs.tech"
+  ],
   "name": "IPFS Docs",
   "evaluated": "2026-10-18",
   "trustlessity": {

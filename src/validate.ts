@@ -7,6 +7,24 @@ export const SLUG = /^[a-z0-9][a-z0-9-]{0,63}$/;
 /** A lowercase ASCII .eth name: `vitalik.eth`, `app.example.eth`. */
 export const ETH_NAME = /^(?:[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?\.)+eth$/;
 
+/** A lowercase ASCII host name (ENS or DNS, IDNA A-labels): two or more labels, at most 253 characters. */
+const HOST_NAME = /^(?:[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?$/;
+
+/** An IPNS key as the base36 CIDv1 of a libp2p key. */
+const IPNS_KEY = /^k51[0-9a-z]{50,70}$/;
+
+const IPNS_SCHEME = "ipns://";
+
+/** A name an evaluation may list: a host name, `ipns://<k51 key>` or `ipns://<DNSLink host>`. */
+export function isWatchedName(name: string): boolean {
+  if (name.length > 255) return false;
+  if (name.startsWith(IPNS_SCHEME)) {
+    const rest = name.slice(IPNS_SCHEME.length);
+    return IPNS_KEY.test(rest) || (rest.length <= 253 && HOST_NAME.test(rest));
+  }
+  return name.length <= 253 && HOST_NAME.test(name);
+}
+
 const SCALE: Record<Subject, { max: number; privacyAt: readonly number[] }> = {
   website: { max: 4, privacyAt: [4] },
   operation: { max: 5, privacyAt: [4, 5] },
@@ -109,13 +127,15 @@ function parts(c: Collector, value: unknown, subject: Subject, path: string): Pa
   return out;
 }
 
-function ethNames(c: Collector, value: unknown, subject: Subject | undefined): string[] | undefined {
+function watchedNames(c: Collector, value: unknown, subject: Subject | undefined): string[] | undefined {
   if (value === undefined) return undefined;
   if (subject !== undefined && subject !== "website") return void c.add("names", "allowed only on a website evaluation");
   if (!Array.isArray(value) || value.length < 1 || value.length > 8) return void c.add("names", "must be an array of 1 to 8 names");
   const out: string[] = [];
   value.forEach((item, i) => {
-    if (typeof item !== "string" || item.length > 255 || !ETH_NAME.test(item)) return void c.add(`names[${i}]`, "must be a lowercase .eth name");
+    if (typeof item !== "string" || !isWatchedName(item)) {
+      return void c.add(`names[${i}]`, "must be a lowercase host name, ipns://<k51 key> or ipns://<DNSLink host>");
+    }
     if (out.includes(item)) return void c.add(`names[${i}]`, `${item} is listed twice`);
     out.push(item);
   });
@@ -205,7 +225,7 @@ export function validateSource(
     });
   }
 
-  const watched = ethNames(c, value.names, subject);
+  const watched = watchedNames(c, value.names, subject);
   const name = c.string(value, "name", "", 1, 80, true);
   const version = c.string(value, "version", "", 0, 40, false);
   const evaluated = c.string(value, "evaluated", "", 1, 10, true);
@@ -236,19 +256,20 @@ export function validateSource(
   return { evaluation, issues: [] };
 }
 
-/** An identifier or a name listed by two evaluations is an error, reported on the later file. */
+/**
+ * An identifier listed by two evaluations is an error, reported on the later file. A name may be
+ * listed by several: a new build of a full evaluation goes into a new file that lists the same names.
+ */
 export function findDuplicateIds(list: { file: string; evaluation: SourceEvaluation }[]): Issue[] {
   const issues: Issue[] = [];
-  for (const key of ["ids", "names"] as const) {
-    const owner = new Map<string, string>();
-    for (const { file, evaluation } of list) {
-      (evaluation[key] ?? []).forEach((value, i) => {
-        const first = owner.get(value);
-        if (first !== undefined && first !== file) {
-          issues.push({ file, path: `${key}[${i}]`, message: `${value} is already listed by ${first}` });
-        } else owner.set(value, file);
-      });
-    }
+  const owner = new Map<string, string>();
+  for (const { file, evaluation } of list) {
+    evaluation.ids.forEach((value, i) => {
+      const first = owner.get(value);
+      if (first !== undefined && first !== file) {
+        issues.push({ file, path: `ids[${i}]`, message: `${value} is already listed by ${first}` });
+      } else owner.set(value, file);
+    });
   }
   return issues;
 }

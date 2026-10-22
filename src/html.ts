@@ -90,6 +90,7 @@ function article(item: LoadedEvaluation): string {
   const e = item.evaluation;
   const meta = [e.version ? `version ${esc(e.version)}` : "", `evaluated ${esc(e.evaluated)}`].filter(Boolean).join(" &middot; ");
   const ids = e.ids.map((id) => `<li>${esc(id)}</li>`).join("\n");
+  const names = e.names?.length ? `<p class="meta">Names: ${e.names.map((n) => `<code>${esc(n)}</code>`).join(", ")}</p>` : "";
   return `<article id="${esc(item.subject)}-${esc(item.slug)}">
 <h3>${esc(e.name)}</h3>
 <p class="meta">${meta}</p>
@@ -98,6 +99,7 @@ ${e.summary ? `<p>${esc(e.summary)}</p>` : ""}
 <ul class="ids">
 ${ids}
 </ul>
+${names}
 ${e.operations?.length ? partsTable("Operations", "operation", e.operations) : ""}
 ${e.connections?.length ? partsTable("Connections", "connection", e.connections) : ""}
 ${e.evidence?.length ? `<p class="meta">Evidence</p>\n<ul class="evidence">\n${e.evidence.map(evidenceItem).join("\n")}\n</ul>` : ""}

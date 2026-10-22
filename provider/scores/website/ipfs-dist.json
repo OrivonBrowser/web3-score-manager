@@ -3,6 +3,9 @@
   "ids": [
     "cid:bafybeigq57yutnhpvycfifxgrdziygcxvmwmzmlrm2dcpdmemidirzhnta"
   ],
+  "names": [
+    "ipns://dist.ipfs.tech"
+  ],
   "name": "IPFS Distributions",
   "evaluated": "2026-10-18",
   "trustlessity": {

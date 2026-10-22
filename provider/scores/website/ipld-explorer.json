@@ -3,6 +3,9 @@
   "ids": [
     "cid:bafybeiegp5y3iejd5ytk6hh7cbpxfzmide2d7ev3yvvgnla5badl3dgflu"
   ],
+  "names": [
+    "ipns://explore.ipld.io"
+  ],
   "name": "IPLD Explorer",
   "evaluated": "2026-10-18",
   "trustlessity": {

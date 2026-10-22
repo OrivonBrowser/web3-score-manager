@@ -3,7 +3,7 @@ import { createServer } from "node:http";
 import type { AddressInfo } from "node:net";
 import { test } from "node:test";
 import { main } from "../src/commands.ts";
-import { checkNames, gatewayResolver, report } from "../src/moved.ts";
+import { checkNames, gatewayResolver, report, resolverUrl, DEFAULT_RESOLVER, IPNS_GATEWAY } from "../src/moved.ts";
 import { loadProvider } from "../src/source.ts";
 import { findDuplicateIds, validateSource } from "../src/validate.ts";
 import { makeProvider, website } from "./support.ts";
@@ -16,22 +16,37 @@ const V0_AS_V1 = "bafybeifkpmerpae2nxb7gfhceyg722rdtyjybmb3fi3ucc75uxqwaxbtga";
 const issuesOf = (value: unknown, dir?: "website" | "operation") =>
   validateSource(value, "f.json", dir).issues.map((i) => `${i.path}: ${i.message}`);
 
-test("names: lowercase .eth names on a website evaluation only", () => {
-  assert.deepEqual(issuesOf(website({ names: ["vitalik.eth", "app.example.eth"] }), "website"), []);
+const KEY = "ipns://k51qzi5uqu5dli7gc98gxy6jlbarijipfrw1x8z2wfyre3rvhssxvzeummkaff";
+
+test("names: a lowercase host name, ipns://<key> or ipns://<DNSLink host>, on a website evaluation only", () => {
+  const good = ["vitalik.eth", "app.example.eth", "docs.ipfs.tech", "xn--nxasmq6b.example", KEY, "ipns://docs.ipfs.tech", "ipns://blog.ipfs.tech"];
+  for (const name of good) assert.deepEqual(issuesOf(website({ names: [name] }), "website"), [], name);
   assert.deepEqual(validateSource(website({ names: ["a.eth"] }), "f.json").evaluation?.names, ["a.eth"]);
-  for (const bad of ["Vitalik.eth", "vitalik.com", "eth", "-a.eth", "a..eth", " a.eth"]) {
-    assert.ok(issuesOf(website({ names: [bad] })).some((m) => m.startsWith("names[0]:")), bad);
-  }
+  const bad = ["Vitalik.eth", "eth", "-a.eth", "a-.eth", "a..eth", " a.eth", "a.eth.", "http://a.eth", "ipfs://a.eth", "https://docs.ipfs.tech", "ipns://K51abc", "ipns://k51short", "ipns://docs", "ipns://", `${"a".repeat(64)}.eth`, `${"a.".repeat(127)}com`];
+  for (const name of bad) assert.ok(issuesOf(website({ names: [name] })).some((m) => m.startsWith("names[0]:")), name);
   assert.ok(issuesOf(website({ names: [] })).some((m) => m.startsWith("names:")));
+  const nine = Array.from({ length: 9 }, (_, i) => `s${i}.eth`);
+  assert.ok(issuesOf(website({ names: nine })).some((m) => m.startsWith("names:")));
+  assert.deepEqual(issuesOf(website({ names: nine.slice(0, 8) })), []);
   assert.ok(issuesOf(website({ names: ["a.eth", "a.eth"] })).some((m) => m.startsWith("names[1]:")));
   const operation = { subject: "operation", ids: ["eip155:1:0xab"], name: "Op", evaluated: "2026-10-03", trustlessity: { level: 2, privacy: false }, names: ["a.eth"] };
   assert.ok(issuesOf(operation, "operation").some((m) => m.startsWith("names:")));
 });
 
-test("a name watched by two evaluations is an error on the later file", () => {
+test("a name may be listed by several evaluations; an identifier may not", () => {
   const one = { file: "one.json", evaluation: validateSource(website({ names: ["a.eth"] }), "one.json").evaluation! };
   const two = { file: "two.json", evaluation: validateSource(website({ ids: [`cid:${V1}`], names: ["a.eth"] }), "two.json").evaluation! };
-  assert.deepEqual(findDuplicateIds([one, two]), [{ file: "two.json", path: "names[0]", message: "a.eth is already listed by one.json" }]);
+  assert.deepEqual(findDuplicateIds([one, two]), []);
+  const same = { file: "three.json", evaluation: validateSource(website({ names: ["b.eth"] }), "three.json").evaluation! };
+  assert.deepEqual(findDuplicateIds([one, same]), [{ file: "three.json", path: "ids[0]", message: `${one.evaluation.ids[0]} is already listed by one.json` }]);
+});
+
+test("the resolver address depends on the form of the name", () => {
+  const url = (name: string) => resolverUrl(name, DEFAULT_RESOLVER, IPNS_GATEWAY);
+  assert.equal(url("vitalik.eth"), "https://vitalik.eth.limo/");
+  assert.equal(url("docs.ipfs.tech"), "https://dweb.link/ipns/docs.ipfs.tech");
+  assert.equal(url("ipns://docs.ipfs.tech"), "https://dweb.link/ipns/docs.ipfs.tech");
+  assert.equal(url(KEY), `https://dweb.link/ipns/${KEY.slice(7)}`);
 });
 
 test("the resolver reads the first X-Ipfs-Roots entry and canonicalises it", async () => {
@@ -42,6 +57,10 @@ test("the resolver reads the first X-Ipfs-Roots entry and canonicalises it", asy
   };
   assert.equal(await gatewayResolver("https://{name}.limo/", answer(200, `${V0},${V1}`) as typeof fetch)("hop.eth"), `cid:${V0_AS_V1}`);
   assert.deepEqual(asked, ["https://hop.eth.limo/"]);
+  await gatewayResolver(DEFAULT_RESOLVER, answer(200, V1) as typeof fetch)("ipns://docs.ipfs.tech");
+  assert.equal(asked.at(-1), "https://dweb.link/ipns/docs.ipfs.tech");
+  await gatewayResolver("https://g/{name}", answer(200, V1) as typeof fetch)("ipns://docs.ipfs.tech");
+  assert.equal(asked.at(-1), "https://g/docs.ipfs.tech");
   await assert.rejects(gatewayResolver("https://g/{name}", answer(200) as typeof fetch)("a.eth"), /no X-Ipfs-Roots/);
   await assert.rejects(gatewayResolver("https://g/{name}", answer(504, V1) as typeof fetch)("a.eth"), /answered 504/);
   await assert.rejects(gatewayResolver("https://g/{name}", answer(200, "not-a-cid") as typeof fetch)("a.eth"), /not a CID/);
@@ -67,6 +86,21 @@ test("each name is judged, moved or unresolved; the report fails only on a move 
   assert.equal(report(states.filter((s) => s.kind !== "moved")).failed, false);
   assert.equal(report(states.filter((s) => s.kind === "unresolved")).failed, true);
   assert.equal(report([]).failed, false);
+});
+
+test("a name in two evaluations is judged when it resolves to an id of either", async () => {
+  const dir = makeProvider([
+    ["website", "app-1", website({ ids: [`cid:${V1_OLD}`], names: ["app.eth", "ipns://docs.ipfs.tech"], evaluated: "2026-10-01" })],
+    ["website", "app-2", website({ ids: [`cid:${V1}`], names: ["app.eth"], evaluated: "2026-10-02" })],
+  ]);
+  const at = (roots: Record<string, string>) => checkNames(loadProvider(dir).evaluations, async (name) => roots[name] ?? Promise.reject(new Error("no answer")));
+  const [older, newer] = [`cid:${V1_OLD}`, `cid:${V1}`];
+  assert.deepEqual((await at({ "app.eth": older })).map((s) => `${s.kind} ${s.name} ${s.file.split("/").pop()}`), ["judged app.eth app-1.json", "unresolved ipns://docs.ipfs.tech app-1.json"]);
+  assert.equal((await at({ "app.eth": newer }))[0]!.kind, "judged");
+  const elsewhere = await at({ "app.eth": `cid:${V0_AS_V1}` });
+  assert.deepEqual(elsewhere[0], { kind: "moved", name: "app.eth", file: elsewhere[0]!.file, now: `cid:${V0_AS_V1}` });
+  assert.match(elsewhere[0]!.file, /app-2\.json$/);
+  assert.equal(elsewhere.length, 2);
 });
 
 test("moved asks the resolver for every watched name and exits 1 when one moved", async () => {

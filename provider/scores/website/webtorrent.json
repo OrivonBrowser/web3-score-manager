@@ -8,6 +8,7 @@
     "sha256:83e339acc4cc8c8e36a8d8224bc222f391743bc20b254de3915fa421f474ad34",
     "cid:bafybeihagi2ipzmadtfd7mehxsfkfsx5nbfiubo5grs7hvgf5nfi34eney"
   ],
+  "names": ["webtorrent.orivonstack.eth"],
   "name": "WebTorrent",
   "version": "0.24.0",
   "evaluated": "2026-10-20",
