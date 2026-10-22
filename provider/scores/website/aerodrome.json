@@ -3,13 +3,14 @@
   "ids": [
     "cid:bafybeihlcmsi6l4i7g5brdr2wet4j6wic77mnmoldgnk3p3pt5g2lugrii",
     "cid:bafybeic7eptsxqu2qwwmnfgkhlg5di6ggbes5htnfbkn2fvda5q7stbybi",
-    "cid:bafybeibuxd7ijuwdqfpmzbfvrrjos652nwxfqrvqnmvmvwqgnvq4ibzqhq"
+    "cid:bafybeibuxd7ijuwdqfpmzbfvrrjos652nwxfqrvqnmvmvwqgnvq4ibzqhq",
+    "cid:bafybeicvs6vfm5a7qng42v7zt3yfd3vhkyvwytxfbs3pidj5a5ywo4o4hm"
   ],
   "names": [
     "aero.drome.eth"
   ],
   "name": "Aerodrome",
-  "evaluated": "2026-10-18",
+  "evaluated": "2026-10-22",
   "trustlessity": {
     "level": 2,
     "privacy": false
