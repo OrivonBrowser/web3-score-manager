@@ -1,32 +1,40 @@
 {
   "subject": "website",
   "ids": [
-    "cid:bafybeigseg4xle6afvtngzldocuni3bwwlfwugvwtnquyyycbwcsoz2xta"
+    "cid:bafybeigseg4xle6afvtngzldocuni3bwwlfwugvwtnquyyycbwcsoz2xta",
+    "cid:bafybeidzpytsjt7ovmtczzqwkh74e7uf5uvrfgnc4xsqaxz72n6xfl2r6m"
   ],
   "names": [
     "victor42.eth"
   ],
   "name": "Victor42",
-  "evaluated": "2026-10-18",
+  "evaluated": "2026-10-22",
   "trustlessity": {
     "level": 2,
     "privacy": false
   },
-  "summary": "Victor42's Chinese-language Hugo blog. It stays at Level 2: when it opens it loads Google Tag Manager (gtag.js) twice from googletagmanager.com, third-party analytics code the visitor has not asked for. It also loads Lato from Google Fonts.",
+  "summary": "Victor42's Chinese-language Hugo blog. It stays at Level 2: its pages carry Google Tag Manager (gtag.js) loading code that runs on the victor42.eth.limo address, third-party analytics code the visitor has not asked for. It also loads Lato from Google Fonts. Its images come from cdn.victor42.work.",
   "connections": [
     {
       "name": "Google Tag Manager (googletagmanager.com)",
       "trustlessity": {
         "level": 1
       },
-      "note": "Two gtag.js scripts loaded when the page opens, no integrity hash."
+      "note": "gtag.js injected by an inline script on every page when the host is victor42.eth.limo; no integrity hash. Not seen in the headless probe."
     },
     {
       "name": "Google Fonts (fonts.googleapis.com)",
       "trustlessity": {
         "level": 1
       },
-      "note": "Fetched when the page opens."
+      "note": "Lato stylesheet fetched when the page opens."
+    },
+    {
+      "name": "Site image host (cdn.victor42.work)",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Post images and favicon fetched when the page opens."
     }
   ]
 }
