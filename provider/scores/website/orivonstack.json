@@ -11,10 +11,10 @@
   "name": "Orivon website",
   "evaluated": "2026-10-22",
   "trustlessity": {
-    "level": 3,
+    "level": 4,
     "privacy": false
   },
-  "summary": "The Orivon release website, judged here by its own publisher. Its source is public (Apache-2.0) and it is served as written, so it runs only its own code: no analytics, tag manager or embed. It stays at 3 because as it opens it reads the newest release from latest.orivonstack.eth.limo, a gateway whose answer nothing checks against a hash (a Level 1 connection that sees the visitor's IP address). If that read fails, the page shows the release it was built with.",
+  "summary": "The Orivon release website, judged here by its own publisher. Its source is public (Apache-2.0) and it is served as written, so it runs only its own code: no analytics, tag manager or embed. As it opens it reads the newest release from latest.orivonstack.eth.limo, which Orivon loads from latest.orivonstack.eth and checks, so nothing it shows rests on a server: Level 4. Not private: that read shows the IPFS nodes serving the release folder the visitor's IP address.",
   "operations": [
     {
       "name": "Read the project pages and choose a download",
@@ -27,20 +27,20 @@
     {
       "name": "Show the newest release",
       "trustlessity": {
-        "level": 1,
+        "level": 4,
         "privacy": false
       },
-      "note": "Read from a gateway as the page opens; the page's built-in release stands in when it does not answer."
+      "note": "Read from latest.orivonstack.eth, checked against the name; the page's built-in release stands in when it does not answer."
     }
   ],
   "connections": [
     {
-      "name": "latest.orivonstack.eth.limo (newest release)",
+      "name": "latest.orivonstack.eth, addressed as latest.orivonstack.eth.limo",
       "trustlessity": {
-        "level": 1,
+        "level": 2,
         "privacy": false
       },
-      "note": "An eth.limo gateway answers; nothing checks its answer against a hash. It sees the visitor's IP address."
+      "note": "Orivon loads the gateway address from the name and checks every block. The nodes that serve it see the visitor's IP address."
     }
   ],
   "evidence": [

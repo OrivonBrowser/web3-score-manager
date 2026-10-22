@@ -7,21 +7,12 @@
     "ensjs.ens.eth"
   ],
   "name": "ENSjs documentation",
-  "evaluated": "2026-10-18",
+  "evaluated": "2026-10-22",
   "trustlessity": {
-    "level": 2,
+    "level": 3,
     "privacy": false
   },
-  "summary": "The documentation of @ensdomains/ensjs, source public in ensdomains/ensjs. It is not Level 3: the page sets a base URL of https://ensjs.ens.eth.link, so its scripts and styles load from the eth.link gateway, another host, with no integrity hash, instead of from the files the ENS name points to.",
-  "connections": [
-    {
-      "name": "eth.link gateway (ensjs.ens.eth.link)",
-      "trustlessity": {
-        "level": 1
-      },
-      "note": "Serves the page's scripts, styles and logo through a base URL."
-    }
-  ],
+  "summary": "The documentation of @ensdomains/ensjs, source public in ensdomains/ensjs. Its pages set a base URL of https://ensjs.ens.eth.link, which Orivon loads from ensjs.ens.eth itself, so its scripts and styles are its own files and no third-party code runs by itself: Level 3. Not judged Level 4: its bundle carries search and feedback forms that post to endpoints, and this judgement did not trace them to the end.",
   "evidence": [
     "https://github.com/ensdomains/ensjs"
   ]
