@@ -1,0 +1,24 @@
+{
+  "subject": "website",
+  "ids": [
+    "sha256:37019e2d24854fc0e3937b353a85199b0038e76be6373778796f48b6f06a9579",
+    "cid:bafybeihch73eiwlsiqhdifilh332njwuosiqgcnj7bo5ucl6zf6rnf3qla"
+  ],
+  "names": ["superproductivity.orivonstack.eth"],
+  "name": "Super Productivity",
+  "version": "19.2.0.1",
+  "evaluated": "2026-10-23",
+  "trustlessity": { "level": 3, "privacy": false },
+  "summary": "A to-do list and time tracker, built from upstream's open source (MIT) at a pinned commit. Every script, bundled plugins included, ships in its own files, with no analytics: Level 3. Not Level 4: by default it asks api.github.com for the newest release when it opens and daily, an unverified connection the user did not start. Tasks stay on this computer; sync, trackers and calendars connect only once configured. Not private: GitHub sees your IP address on each check.",
+  "operations": [
+    { "name": "Plan tasks and track time", "trustlessity": { "level": 4, "privacy": false }, "note": "Kept in this site's browser storage on this computer, with no account." },
+    { "name": "Sync between devices (WebDAV, SuperSync, Dropbox)", "trustlessity": { "level": 2, "privacy": false }, "note": "Optional and off until configured. The code does what it promises, but the sync server holds the copy and sees your IP address and when you work." },
+    { "name": "Import issues from a tracker or a calendar", "trustlessity": { "level": 2, "privacy": false }, "note": "Optional and off until configured. The tracker or calendar server decides what is shown and sees your IP address." }
+  ],
+  "connections": [
+    { "name": "Update check (api.github.com)", "trustlessity": { "level": 1, "privacy": false }, "note": "Made by default, after 30 seconds and then daily, unless turned off in Settings. It only decides whether a banner appears; the answer is not verified." },
+    { "name": "Sync servers (WebDAV, SuperSync, Dropbox)", "trustlessity": { "level": 1, "privacy": false }, "note": "Only the one the user configures. Answers are trusted as given." },
+    { "name": "Issue trackers and calendars", "trustlessity": { "level": 1, "privacy": false }, "note": "GitHub, GitLab, Gitea, Redmine, Trello, ClickUp, Linear, OpenProject, Nextcloud Deck, CalDAV, Azure DevOps and iCal or Google calendars, each only when the user adds it." }
+  ],
+  "evidence": ["https://github.com/super-productivity/super-productivity/tree/466a426700e7402f8628bc80ce499d3de6160dbb", "https://github.com/OrivonBrowser/orivon-ports/tree/main/apps/superproductivity"]
+}

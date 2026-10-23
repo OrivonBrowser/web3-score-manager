@@ -1,0 +1,24 @@
+{
+  "subject": "website",
+  "ids": [
+    "sha256:23497d8bd5ff226764b3101955cf246a30ba252681f68bc022eaa7edcc5a3151",
+    "cid:bafybeib3jp5g4roavyvtblnclkigy3bu3lshmrlrmpulc7pyeawqo6djju"
+  ],
+  "names": ["restfox.orivonstack.eth"],
+  "name": "Restfox",
+  "version": "0.41.0.1",
+  "evaluated": "2026-10-23",
+  "trustlessity": { "level": 3, "privacy": false },
+  "summary": "An HTTP and socket testing client, built from upstream's open source (MIT) at a pinned commit. Every script ships in its own files: Level 3. Its page-view ping to the developer's Umami analytics is sent by the app's own bundled code, not external code, so it keeps Level 3 but fails Level 4: with the star-count request to api.github.com it is an unverified connection made when the app opens. Not private: the ping and every request show your IP address.",
+  "operations": [
+    { "name": "Send a request and read the response", "trustlessity": { "level": 2, "privacy": false }, "note": "The code does what it promises. The server the user names answers, sees your IP address and decides what comes back." },
+    { "name": "Keep workspaces, requests and history", "trustlessity": { "level": 4, "privacy": false }, "note": "Stored in this site's browser storage on this computer, with no account." },
+    { "name": "Run a plugin the user adds", "trustlessity": { "level": 2, "privacy": false }, "note": "Plugins are code the user adds, run in a sandbox inside the page. They are not loaded unless the user installs one." }
+  ],
+  "connections": [
+    { "name": "Developer analytics (umami.artelin.dev)", "trustlessity": { "level": 1, "privacy": false }, "note": "A page-view ping sent when the app opens, unless Settings > Advanced > Disable Page View Analytics Tracking is ticked. It carries the screen size, language and app version." },
+    { "name": "GitHub star count (api.github.com)", "trustlessity": { "level": 1, "privacy": false }, "note": "Asked when the app opens, with no setting. It only changes a displayed number." },
+    { "name": "Servers the user types as request addresses", "trustlessity": { "level": 1, "privacy": false }, "note": "Any public https address, and plain http only for localhost on ten ports. Answers are shown as received." }
+  ],
+  "evidence": ["https://github.com/flawiddsouza/Restfox/tree/0fffd36d2f95", "https://github.com/OrivonBrowser/orivon-ports/tree/main/apps/restfox"]
+}
