@@ -9,7 +9,7 @@
   "version": "26.10.0.1",
   "evaluated": "2026-10-23",
   "trustlessity": { "level": 3, "privacy": false },
-  "summary": "A local-first budgeting app, built from upstream's open source (MIT) at a pinned commit, with upstream's own backend running in Orivon. Every script ships in its own files, with no analytics: Level 3. Not Level 4: by default it asks api.github.com for the newest release and fetches a news file from raw.githubusercontent.com, unverified connections the user did not start (both can be turned off in Settings). The budget stays on this computer; sync to a server the user names is optional. Not private: GitHub sees your IP address, and a sync server you add sees it and holds your budget (encrypted only if you set a password).",
+  "summary": "A local-first budgeting app, built from upstream's open source (MIT) at a pinned commit, with upstream's own backend running in Orivon. Every script ships in its own files, with no analytics: Level 3. Not Level 4: by default it asks api.github.com for the newest release and fetches a news file from raw.githubusercontent.com, unverified connections the user did not start (both can be turned off). The budget stays on this computer; sync to a server the user names is optional. Not private: GitHub sees your IP address.",
   "operations": [
     { "name": "Budget, record transactions, run reports", "trustlessity": { "level": 4, "privacy": false }, "note": "The budget is a SQLite file in this app's own folder on this computer, with no account. Not private only because of the default GitHub requests." },
     { "name": "Import and export (CSV, budget zip)", "trustlessity": { "level": 4, "privacy": true }, "note": "Files are read from and saved to folders the person picks; nothing is sent anywhere." },
