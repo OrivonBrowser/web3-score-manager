@@ -86,7 +86,7 @@ with the entry. Orivon counts the judged level of a page whose content is one of
 shown at one of these names or at its own `ipfs://` address; at any other name it shows the level
 it observed instead. A name is one of three forms: a lowercase ASCII host name (an ENS name or a
 DNS host, as IDNA A-labels, at least two labels of `a-z`, `0-9` and `-`, none starting or ending
-with `-`, a last label that is not all digits, at most 253 characters: `vitalik.eth`,
+with `-`, a last label that is not all digits and is neither `localhost` nor `orivon`, at most 253 characters: `vitalik.eth`,
 `docs.ipfs.tech`), `ipns://<base36 k51... key>`, or `ipns://<DNSLink host>`. A name is listed once
 within an evaluation and may be listed by several. An evaluation holds at most 8 ids, so a later
 build may be judged in a new file that lists the same names; the watch instead drops the oldest

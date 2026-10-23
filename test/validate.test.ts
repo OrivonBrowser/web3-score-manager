@@ -115,6 +115,14 @@ test("ids: 1 to 8 entries, none repeated", () => {
   rejects(website({ ids: [SHA_A, SHA_A.toUpperCase().replace("SHA256", "sha256")] }), "ids[1]");
 });
 
+test("names: a host under localhost or .orivon is refused", () => {
+  accepts(website({ names: ["watched.eth", "ipns://docs.example.org"] }));
+  rejects(website({ names: ["x.localhost"] }), "names[0]");
+  rejects(website({ names: ["ipns://x.localhost"] }), "names[0]");
+  rejects(website({ names: ["x.ipfs.orivon"] }), "names[0]");
+  rejects(website({ names: ["ipns://x.ipfs.orivon"] }), "names[0]");
+});
+
 test("an identifier listed by two evaluations is an error", () => {
   const one = validateSource(website({ ids: [SHA_A] }), "one.json").evaluation!;
   const two = validateSource(website({ ids: [SHA_B, SHA_A] }), "two.json").evaluation!;

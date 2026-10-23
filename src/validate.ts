@@ -21,9 +21,12 @@ export function isWatchedName(name: string): boolean {
   return isHost(name);
 }
 
-/** A host name whose last label is not all digits, which keeps IPv4 literals out. */
+/**
+ * A host name whose last label is not all digits, which keeps IPv4 literals out, and is neither
+ * `localhost` nor `orivon`, the loopback and internal origins no provider judges.
+ */
 function isHost(host: string): boolean {
-  return host.length <= 253 && HOST_NAME.test(host) && !/(^|\.)[0-9]+$/.test(host);
+  return host.length <= 253 && HOST_NAME.test(host) && !/(^|\.)[0-9]+$/.test(host) && !/(^|\.)(orivon|localhost)$/.test(host);
 }
 
 const SCALE: Record<Subject, { max: number; privacyAt: readonly number[] }> = {
