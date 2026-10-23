@@ -1,13 +1,14 @@
 {
   "subject": "website",
   "ids": [
-    "cid:bafybeiazz5aloc2gxkjcs6kohohpkexn6jewgxyuipfnyboi4f2xi46y3q"
+    "cid:bafybeiazz5aloc2gxkjcs6kohohpkexn6jewgxyuipfnyboi4f2xi46y3q",
+    "cid:bafybeiedl3s5lt2pewxdalsu4kjze2ckjm353fsjktljuwi2w4hpypv5la"
   ],
   "names": [
     "gnoma.eth"
   ],
   "name": "Gnoma",
-  "evaluated": "2026-10-18",
+  "evaluated": "2026-10-23",
   "trustlessity": {
     "level": 2,
     "privacy": false
