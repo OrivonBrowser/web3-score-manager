@@ -1,0 +1,32 @@
+{
+  "subject": "website",
+  "ids": [
+    "cid:bafkreif4ad43pkbv6tbxsnj2q5s6vamqsexxndocsme54fijzq4d32rasm"
+  ],
+  "names": [
+    "donbuck.eth",
+    "jsunblaze.eth",
+    "jasonblais.eth",
+    "ensnews.ubnet.eth",
+    "orivon.ubnet.eth",
+    "4myauto.ubnet.eth",
+    "035.ubnet.eth",
+    "audiotime.ubnet.eth"
+  ],
+  "name": "UBNet profile page (default ENS template)",
+  "evaluated": "2026-10-23",
+  "trustlessity": {
+    "level": 2,
+    "privacy": false
+  },
+  "summary": "A UBNet profile page whose root is a short loader. As it opens it fetches a pointer from ubnet.work, then fetches the template that pointer names from a host the loader does not fix, and runs that template's scripts, so the code that draws the profile is chosen by ubnet.work each time and cannot be read from this build. No public source for that template was found. Level 2: third-party code runs on its own, with no consent, and the page cannot be checked beyond the loader itself.",
+  "connections": [
+    {
+      "name": "ubnet.work template pointer and template",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Fetched as the page opens; the answer chooses the code that runs, and ubnet.work sees the visitor's IP address."
+    }
+  ]
+}

@@ -1,0 +1,42 @@
+{
+  "subject": "website",
+  "ids": [
+    "cid:bafybeihc4bbwh3imdvh5hbqexwtqqm5wcq3yl5jxrenfvq4z7be5erpch4"
+  ],
+  "names": [
+    "agent.ubnet.eth"
+  ],
+  "name": "UBNet Agent",
+  "evaluated": "2026-10-23",
+  "trustlessity": {
+    "level": 3,
+    "privacy": false
+  },
+  "summary": "The UBNet AI agent profile page. It is served as written (readable scripts plus the vendored ethers library), so the page is its own public source (no licence file), and it runs no third-party code, which is Level 3. It is not Level 4: when it opens it reads chain data from publicnode without a light client, requests agent metadata from the ipfs.io gateway and loads Google Fonts.",
+  "connections": [
+    {
+      "name": "publicnode Ethereum RPC",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Read without a light client when the page opens."
+    },
+    {
+      "name": "ipfs.io gateway",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Agent metadata is requested through a public gateway when the page opens."
+    },
+    {
+      "name": "Google Fonts",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Fetched when the page opens; tells Google the visit."
+    }
+  ],
+  "evidence": [
+    "https://agent.ubnet.eth.limo/"
+  ]
+}

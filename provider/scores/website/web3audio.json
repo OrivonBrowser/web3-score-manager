@@ -1,0 +1,60 @@
+{
+  "subject": "website",
+  "ids": [
+    "cid:bafybeih5ds77qkb7njfogvq5amwb3ipt3pmnco7pycptmpzkphlcjtrpa4"
+  ],
+  "names": [
+    "web3audio.eth"
+  ],
+  "name": "web3audio.eth",
+  "evaluated": "2026-10-23",
+  "trustlessity": {
+    "level": 2,
+    "privacy": false
+  },
+  "summary": "Web3 Audio, a wallet-native audio tools, marketplace and radio site. No public source was found. It stays at Level 2 because it runs third-party code when it opens: ethers from cdn.jsdelivr.net with no integrity hash and the GoatCounter analytics script from gc.zgo.at.",
+  "connections": [
+    {
+      "name": "cdn.jsdelivr.net (ethers 5.7.2)",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Script loaded when the page opens without an integrity hash."
+    },
+    {
+      "name": "GoatCounter (gc.zgo.at, web3audio.goatcounter.com)",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Analytics script and a visit ping sent when the page opens."
+    },
+    {
+      "name": "Google Fonts",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Stylesheet and font files fetched when the page opens; tells Google the visit."
+    },
+    {
+      "name": "dbloops.com and stream.dbloops.com",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Now-playing, marketplace and community data fetched from the project server, repeatedly while the page is open."
+    },
+    {
+      "name": "api.coinbase.com",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "ETH price fetched when the page opens."
+    },
+    {
+      "name": "api.ensideas.com",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "ENS names of listed addresses resolved when the page opens."
+    }
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "subject": "website",
+  "ids": [
+    "cid:bafybeiatl7ytw7lnd3j77ufqniri3yi5g3cywdotcvi3e6nbnimrxk35hq"
+  ],
+  "names": [
+    "support.ubnet.eth"
+  ],
+  "name": "Unblocked Profile Support",
+  "evaluated": "2026-10-23",
+  "trustlessity": {
+    "level": 2,
+    "privacy": false
+  },
+  "summary": "Unblocked Profile how-tos and wallet-signed support questions, built on UBNet. Its source is the served page, but it is Level 2: when it opens it loads the UBNet SDK (about 26 scripts) from ubnet.work with no integrity hash, so ubnet.work can change the code that runs. It also reads Ethereum through the publicnode RPC.",
+  "connections": [
+    {
+      "name": "UBNet SDK scripts (ubnet.work)",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Third-party code loaded when the page opens, without an integrity hash."
+    },
+    {
+      "name": "Ethereum RPC (ethereum-rpc.publicnode.com)",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Read without a light client when the page opens."
+    }
+  ]
+}

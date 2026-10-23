@@ -1,0 +1,43 @@
+{
+  "subject": "website",
+  "ids": [
+    "cid:bafybeibsspkg6jej7doy5sdqx3cplm6dzgcn3mdsb6fxj5shf3nt6di5wu"
+  ],
+  "names": [
+    "mail.ubnet.eth"
+  ],
+  "name": "UBNet Mail",
+  "evaluated": "2026-10-23",
+  "trustlessity": {
+    "level": 3,
+    "privacy": false
+  },
+  "summary": "UBNet Mail, a page for registering a name.ubnet.eth mailbox and sending wallet mail: a readable script.js plus the vendored ethers and Spasm SDK (spasm-network/spasm.js, MIT) bundles, served as written (no licence file). It runs no third-party code. It relies on the UBNet server ubnet1.eth-ub.net for messages and submissions, so it is at most Level 3; it also loads Google Fonts and reads Ethereum from publicnode.",
+  "connections": [
+    {
+      "name": "ubnet1.eth-ub.net (UBNet message API)",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Messages and signed events go through this server when the user uses the mailbox."
+    },
+    {
+      "name": "ethereum-rpc.publicnode.com",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Ethereum RPC read without a light client, called when the page opens."
+    },
+    {
+      "name": "Google Fonts",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Stylesheet and font files fetched when the page opens; tells Google the visit."
+    }
+  ],
+  "evidence": [
+    "https://mail.ubnet.eth.limo/",
+    "https://github.com/spasm-network/spasm.js"
+  ]
+}

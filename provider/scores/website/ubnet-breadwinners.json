@@ -1,0 +1,56 @@
+{
+  "subject": "website",
+  "ids": [
+    "cid:bafybeidb56gzfmnsmsp7g47wipw6dwt34vsjgtrdaexgsxot5ikc3yl4qa"
+  ],
+  "names": [
+    "breadwinners.ubnet.eth"
+  ],
+  "name": "Bread Winner's Bakery",
+  "evaluated": "2026-10-23",
+  "trustlessity": {
+    "level": 3,
+    "privacy": false
+  },
+  "summary": "An ENS ordering storefront for a bakery in Ottawa, built from the UBNet template. It is served as written (readable scripts plus the vendored ethers and Spasm libraries), so the page is its own public source (no licence file), and it runs no third-party code, which is Level 3. It is not Level 4: when it opens it reads chain data from publicnode, its catalog from my.eth-ub.net, ETH prices from Coinbase, images from breadwinnersbakery.ca and Google Fonts.",
+  "connections": [
+    {
+      "name": "publicnode Ethereum RPC",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Read without a light client when the page opens."
+    },
+    {
+      "name": "my.eth-ub.net API",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "The store's posts and catalog are fetched from this server when the page opens."
+    },
+    {
+      "name": "Coinbase price API",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "ETH spot price fetched when the page opens."
+    },
+    {
+      "name": "breadwinnersbakery.ca images",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Logo and photo loaded from the bakery's own web server when the page opens."
+    },
+    {
+      "name": "Google Fonts",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Fetched when the page opens; tells Google the visit."
+    }
+  ],
+  "evidence": [
+    "https://breadwinners.ubnet.eth.limo/"
+  ]
+}
