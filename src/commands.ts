@@ -4,7 +4,7 @@ import path from "node:path";
 import { parseArgs } from "node:util";
 import { compileProvider, ValidationFailure, writeSite } from "./build.ts";
 import { addEvaluation, initProvider, listEvaluations, newEvaluation, readBundleHash, removeEvaluation } from "./manage.ts";
-import { DEFAULT_RESOLVER, checkNames, gatewayResolver, report } from "./moved.ts";
+import { DEFAULT_DNSLINK_RESOLVER, DEFAULT_RESOLVER, checkNames, gatewayResolver, report } from "./moved.ts";
 import { startServer } from "./serve.ts";
 import { loadProvider } from "./source.ts";
 import { UserError, formatIssue } from "./types.ts";
@@ -101,15 +101,21 @@ const COMMANDS: Record<string, Command> = {
     },
   },
   moved: {
-    usage: "moved [--dir d] [--resolver https://{name}.limo/]",
+    usage: "moved [--dir d] [--resolver https://{name}.limo/] [--dnslink-resolver https://cloudflare-dns.com/dns-query]",
     summary: "list the watched names that now serve a build no evaluation judges",
-    options: { dir: DIR, resolver: { type: "string", default: DEFAULT_RESOLVER } },
+    options: {
+      dir: DIR,
+      resolver: { type: "string", default: DEFAULT_RESOLVER },
+      "dnslink-resolver": { type: "string", default: process.env.DNSLINK_RESOLVER ?? DEFAULT_DNSLINK_RESOLVER },
+    },
     async run(v, _p, io) {
       const resolver = str(v.resolver)!;
       if (!resolver.includes("{name}")) throw new UserError("--resolver must contain {name}");
+      const dnslink = str(v["dnslink-resolver"])!;
+      if (!URL.canParse(dnslink)) throw new UserError("--dnslink-resolver must be a URL");
       const loaded = loadProvider(str(v.dir)!);
       if (loaded.issues.length > 0) throw new ValidationFailure(loaded.issues);
-      const { text, failed } = report(await checkNames(loaded.evaluations, gatewayResolver(resolver)));
+      const { text, failed } = report(await checkNames(loaded.evaluations, gatewayResolver(resolver, fetch, undefined, dnslink)));
       io.out(text);
       return failed ? 1 : 0;
     },

@@ -317,7 +317,7 @@ async function execute(config: Config, state: State, say: (message: string) => P
 
   const loaded = loadProvider(path.join(config.repoDir, "provider"));
   if (loaded.issues.length > 0) throw new Error(`the provider does not pass check: ${loaded.issues.slice(0, 3).map(formatIssue).join("; ")}`);
-  const states = await checkNames(restrictTo(loaded.evaluations, config.only), gatewayResolver(config.resolver));
+  const states = await checkNames(restrictTo(loaded.evaluations, config.only), gatewayResolver(config.resolver, fetch, undefined, config.dnslinkResolver));
   const unresolved = states.filter((s) => s.kind === "unresolved").length;
   const groups = groupMoved(states);
   log(`${states.length} names watched: ${groups.reduce((n, g) => n + g.names.length, 0)} moved, ${unresolved} unresolved`);

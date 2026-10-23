@@ -40,7 +40,7 @@ Every command takes `--dir <path>` (default `./provider`) and `--help`.
 | `list` | One line per evaluation: subject, slug, level, name, identifiers |
 | `check` | Validates the provider and every evaluation. Exit code 1 and the error list on failure |
 | `ids <static-dir>` | Prints the Orivon bundle hash of a built app (see below) |
-| `moved [--resolver https://{name}.limo/]` | Asks what each watched name serves now and lists every name whose build no evaluation judges. Exit code 1 when one moved, or when no name could be resolved |
+| `moved [--resolver https://{name}.limo/] [--dnslink-resolver <url>]` | Asks what each watched name serves now and lists every name whose build no evaluation judges. Exit code 1 when one moved, or when no name could be resolved |
 | `build [--out dist]` | Validates, then writes the static site |
 | `serve [--port 7860] [--host 127.0.0.1]` | Builds into a temporary directory and serves it, GET and HEAD only |
 
@@ -82,24 +82,30 @@ file name, matching `^[a-z0-9][a-z0-9-]{0,63}$`.
 ```
 
 A website evaluation may add `names`, 1 to 8 names that serve the judged build. It is published
-with the entry, and a score counts at those names: an app that lists a site by one of them takes
-the score, and a name no evaluation lists takes none. A name is one of three forms: a lowercase
-ASCII host name (an ENS name or a DNS host, as IDNA A-labels, at least two labels of `a-z`, `0-9`
-and `-`, none starting or ending with `-`, at most 253 characters: `vitalik.eth`, `docs.ipfs.tech`),
-`ipns://<base36 k51... key>`, or `ipns://<DNSLink host>`. A name is listed once within an
-evaluation and may be listed by several: a new build of a full evaluation goes into a new file
-that lists the same names. A name that moves to new content loses its evaluation until the new
-build is judged. `moved` lists those names: it takes the union of the ids of every evaluation that
-lists a name, and reads the name's root from the `X-Ipfs-Roots` header of the resolver address
-(ENS names through the resolver template, `https://{name}.limo/` by default; DNS hosts and
-`ipns://` names through `https://dweb.link/ipns/{name}`). A name that points at Swarm sends no
-root, so it is listed as unresolved and never opens the issue. The repository's Watched names
-workflow runs it every day and keeps one issue open while any name has moved. GitHub stops a
-scheduled workflow in a repository with no activity for 60 days.
+with the entry. Orivon counts the judged level of a page whose content is one of `ids` when it is
+shown at one of these names or at its own `ipfs://` address; at any other name it shows the level
+it observed instead. A name is one of three forms: a lowercase ASCII host name (an ENS name or a
+DNS host, as IDNA A-labels, at least two labels of `a-z`, `0-9` and `-`, none starting or ending
+with `-`, a last label that is not all digits, at most 253 characters: `vitalik.eth`,
+`docs.ipfs.tech`), `ipns://<base36 k51... key>`, or `ipns://<DNSLink host>`. A name is listed once
+within an evaluation and may be listed by several. An evaluation holds at most 8 ids, so a later
+build may be judged in a new file that lists the same names; the watch instead drops the oldest
+CID (`watch/merge.ts`). A name that moves to new content loses its evaluation until the new build
+is judged. `moved` lists those names: it takes the union of the ids of every evaluation that lists
+a name, and asks for the name's root by form. An ENS name goes to the resolver template
+(`https://{name}.limo/` by default) and its root is the first entry of the `X-Ipfs-Roots` header.
+A DNS host or `ipns://<host>` name is read from its `_dnslink` TXT record through DNS over HTTPS
+(`--dnslink-resolver`, or the `DNSLINK_RESOLVER` environment variable; Cloudflare's JSON endpoint
+by default), and the record must be `dnslink=/ipfs/<cid>`. An `ipns://` key and a `/ipns/` record
+are listed as unresolved. A `--resolver` other than the default is asked for every form. A name
+that points at Swarm sends no root, so it is listed as unresolved and never opens the issue. The
+repository's Watched names workflow runs it every day and keeps one issue open while any name has
+moved. GitHub stops a scheduled workflow in a repository with no activity for 60 days.
 
 Unknown fields are errors in source files, which catches typos. The built site contains only the
-standard's fields, and `names` is one of them. Identifiers are canonicalised: `sha256:` is lowercased, a `cid:` becomes a
-base32 CIDv1 (a CIDv0 is converted), and an identifier listed by two evaluations is an error.
+standard's fields, and `names` is one of them. Identifiers are canonicalised: `sha256:` is
+lowercased, a `cid:` becomes a base32 CIDv1 (a CIDv0 is converted), and an identifier listed by
+two evaluations is an error.
 
 | Subject | Identifier types |
 |---|---|

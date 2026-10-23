@@ -28,6 +28,7 @@ test("example provider builds the three expected buckets", () => {
   const lounge = JSON.parse(read(out, "score/website/c6.json"));
   assert.equal(lounge.entries[0].id, "cid:bafybeieqer67ojhi6q3eiatmrcu3r3mqjehn7hwit2satqjfnljo65fb4q");
   assert.equal(lounge.entries[0].name, "The Lounge");
+  assert.equal("names" in lounge.entries[0], false);
   assert.equal(JSON.parse(read(out, "score/provider.json")).bucketHexChars, 2);
 });
 
@@ -46,6 +47,7 @@ test("output is byte-for-byte identical across builds and has no source-only fie
     assert.deepEqual(entry.names, ["watched.eth"]);
     assert.ok(typeof entry.id === "string");
   }
+  assert.ok(read(first, "index.html").includes("<code>watched.eth</code>"));
   assert.ok(read(first, "score/provider.json").endsWith("}\n"));
 });
 

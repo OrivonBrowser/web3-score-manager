@@ -4,9 +4,6 @@ import type { Issue, Part, ProviderDescriptor, SourceEvaluation, Subject, Trustl
 
 export const SLUG = /^[a-z0-9][a-z0-9-]{0,63}$/;
 
-/** A lowercase ASCII .eth name: `vitalik.eth`, `app.example.eth`. */
-export const ETH_NAME = /^(?:[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?\.)+eth$/;
-
 /** A lowercase ASCII host name (ENS or DNS, IDNA A-labels): two or more labels, at most 253 characters. */
 const HOST_NAME = /^(?:[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?$/;
 
@@ -17,12 +14,16 @@ const IPNS_SCHEME = "ipns://";
 
 /** A name an evaluation may list: a host name, `ipns://<k51 key>` or `ipns://<DNSLink host>`. */
 export function isWatchedName(name: string): boolean {
-  if (name.length > 255) return false;
   if (name.startsWith(IPNS_SCHEME)) {
     const rest = name.slice(IPNS_SCHEME.length);
-    return IPNS_KEY.test(rest) || (rest.length <= 253 && HOST_NAME.test(rest));
+    return IPNS_KEY.test(rest) || isHost(rest);
   }
-  return name.length <= 253 && HOST_NAME.test(name);
+  return isHost(name);
+}
+
+/** A host name whose last label is not all digits, which keeps IPv4 literals out. */
+function isHost(host: string): boolean {
+  return host.length <= 253 && HOST_NAME.test(host) && !/(^|\.)[0-9]+$/.test(host);
 }
 
 const SCALE: Record<Subject, { max: number; privacyAt: readonly number[] }> = {

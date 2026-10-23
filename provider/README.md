@@ -130,17 +130,18 @@ connection. The site's own files, which Orivon fetches the same way for every si
 ## How to check a site
 
 1. **Identify the build.** For a `.eth` site, resolve the name to its root CID and file it as a
-   base32 CIDv1 (`cid:bafy...`): that is the identifier Orivon looks up. List in `names` every
-   name that serves the judged build, and only those: a score counts at the names listed, so a
-   name that serves other content is left out. A site on IPFS served at a DNS host lists
-   `ipns://<host>` when that host's DNSLink names the build; a name no resolver confirms stays
-   unlisted, and the content then counts only at its own `ipfs://` address. A name that points at Swarm is filed by the CID of its Swarm root (`cid:bah5...`), the
-   root its feed points at today when it has one. When the name moves to new content, the evaluation no longer applies until the new
-   CID is judged: the Watched names workflow opens an issue listing every such name each day
-   (`node src/cli.ts moved` asks the same now; it cannot read a Swarm name's root yet, and lists
-   one as unresolved). A new build that makes the same connections as
-   the judged one, with no new third-party code, takes the same evaluation: add its CID. For an
-   Orivon port, list both the bundle hash and the CID (see the repository README).
+   base32 CIDv1 (`cid:bafy...`): that is the identifier Orivon looks up. List in `names` every name
+   that serves the judged build, and only those: a score counts at the names listed, so a name that
+   serves other content is left out. A site on IPFS served at a DNS host lists `ipns://<host>` when
+   that host's DNSLink names the build; a name no resolver confirms stays unlisted, and the content
+   then counts only at its own `ipfs://` address. A name that points at Swarm is filed by the CID of
+   its Swarm root (`cid:bah5...`), the root its feed points at today when it has one. When the name
+   moves to new content, the evaluation no longer applies until the new CID is judged: the Watched
+   names workflow opens an issue listing every such name each day (`node src/cli.ts moved` asks the
+   same now; it cannot read a Swarm name's root yet, and lists one as unresolved). A new build that
+   makes the same connections as the judged one, with no new third-party code, takes the same
+   evaluation: add its CID. For an Orivon port, list both the bundle hash and the CID (see the
+   repository README).
 2. **Watch it open.** Load the CID in a headless browser and record every request in the first 20
    seconds without touching the page. Every request that leaves the site's own files is a
    connection to judge, and every script from another origin is third-party code.

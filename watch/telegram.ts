@@ -115,11 +115,19 @@ export function formatJudged(m: JudgedMessage): string {
   }
   const links: string[] = [];
   if (m.action === "apply" && m.commitUrl) links.push(`<a href="${escAttr(m.commitUrl)}">Commit</a>`);
-  links.push(`<a href="${escAttr(`https://${first}.limo/`)}">Site</a>`);
-  blocks.push({ plain: "", wrap: () => `🔗 ${links.join(" · ")}`, fixed: true });
+  const site = siteUrl(first);
+  if (site !== undefined) links.push(`<a href="${escAttr(site)}">Site</a>`);
+  if (links.length > 0) blocks.push({ plain: "", wrap: () => `🔗 ${links.join(" · ")}`, fixed: true });
   const meta = [m.model, m.turns !== undefined ? `${m.turns} turns` : "", m.costUsd !== undefined ? `≈ $${m.costUsd.toFixed(2)} at API prices` : ""].filter((s) => s !== "");
   blocks.push({ plain: meta.join(" · "), wrap: (e) => `<i>${e}</i>`, fixed: true });
   return render(blocks);
+}
+
+/** Where a watched name opens in a browser: ENS names through .limo, DNS hosts as they are, an IPNS key nowhere. */
+function siteUrl(name: string): string | undefined {
+  const host = name.replace(/^ipns:\/\//, "");
+  if (name.startsWith("ipns://k51")) return undefined;
+  return host.endsWith(".eth") ? `https://${host}.limo/` : `https://${host}/`;
 }
 
 export interface FailureMessage {

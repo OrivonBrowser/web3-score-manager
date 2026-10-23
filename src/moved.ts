@@ -14,8 +14,8 @@ export type NameState =
 
 /**
  * Each distinct watched name, in the order it first appears. A name is judged when what it serves
- * is among the ids of any evaluation that lists it; `file` is the one of those evaluations judged
- * last, the one a newer build of that name joins.
+ * is among the ids of any evaluation that lists it. `file` is the evaluation that judges it, or, for
+ * a moved or unresolved name, the one judged last, which a newer build joins.
  */
 export async function checkNames(evaluations: LoadedEvaluation[], resolve: Resolve, parallel = 4): Promise<NameState[]> {
   const byName = new Map<string, LoadedEvaluation[]>();
@@ -43,41 +43,92 @@ export async function checkNames(evaluations: LoadedEvaluation[], resolve: Resol
   return states;
 }
 
-/** Where a name is asked: ENS names through the .limo resolver, DNS hosts and ipns:// names through a gateway. */
-export const IPNS_GATEWAY = "https://dweb.link/ipns/{name}";
+/** Asked for the `_dnslink` TXT record of DNS hosts and `ipns://<host>` names, through DNS over HTTPS (JSON form). */
+export const DEFAULT_DNSLINK_RESOLVER = "https://cloudflare-dns.com/dns-query";
 
-/** The resolver address for one listed name, from the template set for ENS names and the one for the rest. */
-export function resolverUrl(listed: string, ensTemplate: string, ipnsTemplate: string): string {
-  const bare = listed.replace(/^ipns:\/\//, "");
-  const template = listed.startsWith("ipns://") || !bare.endsWith(".eth") ? ipnsTemplate : ensTemplate;
-  return template.replaceAll("{name}", bare);
+const IPNS_SCHEME = "ipns://";
+const TXT = 16;
+
+/** The resolver address for one listed name: the template with `{name}` replaced by the name without its scheme. */
+export function resolverUrl(listed: string, template: string): string {
+  return template.replaceAll("{name}", listed.replace(/^ipns:\/\//, ""));
+}
+
+/** The DNS-over-HTTPS query for the DNSLink record of a host. */
+export function dnslinkUrl(host: string, endpoint: string): string {
+  const url = new URL(endpoint);
+  url.searchParams.set("name", `_dnslink.${host}`);
+  url.searchParams.set("type", "TXT");
+  return url.toString();
+}
+
+async function fetchOrExplain(fetchFn: typeof fetch, url: string, init: RequestInit): Promise<Response> {
+  try {
+    return await fetchFn(url, init);
+  } catch (e) {
+    const cause = (e as Error & { cause?: unknown }).cause;
+    throw new Error(`${url} could not be reached: ${cause instanceof Error ? cause.message : (e as Error).message}`);
+  }
+}
+
+function rootOf(url: string, root: string): string {
+  const id = canonicalise(`cid:${root}`, "website");
+  if (!id.ok) throw new Error(`${url} sent a root that is not a CID: ${root}`);
+  return id.id;
+}
+
+/** The value of the first `dnslink=` string among the TXT answers, with the quotes of the DoH JSON form removed. */
+function dnslinkValue(body: unknown): string | undefined {
+  const answers = (body as { Answer?: { type?: number; data?: unknown }[] } | null)?.Answer;
+  for (const answer of Array.isArray(answers) ? answers : []) {
+    if (answer.type !== TXT || typeof answer.data !== "string") continue;
+    const text = answer.data.replace(/^"|"$/g, "").replaceAll('" "', "");
+    if (text.startsWith("dnslink=")) return text.slice("dnslink=".length);
+  }
+  return undefined;
 }
 
 /**
- * Reads the root a gateway serves for a name from the first entry of its X-Ipfs-Roots header.
- * With the default ENS template, other names go to the IPNS gateway; a custom template serves all.
+ * Reads the build a name serves now. ENS names go to the template, from the first entry of the
+ * X-Ipfs-Roots header it answers with. DNS hosts and `ipns://<host>` names are read from the host's
+ * DNSLink record, which must be `/ipfs/<cid>`; an `ipns://` key or a `/ipns/` record is unresolved.
+ * A template other than the default is asked for every form.
  */
 export function gatewayResolver(
   ensTemplate: string,
   fetchFn: typeof fetch = fetch,
   timeoutMs = 60_000,
-  ipnsTemplate: string = ensTemplate === DEFAULT_RESOLVER ? IPNS_GATEWAY : ensTemplate,
+  dnslinkEndpoint: string = DEFAULT_DNSLINK_RESOLVER,
 ): Resolve {
-  return async (name) => {
-    const url = resolverUrl(name, ensTemplate, ipnsTemplate);
-    let response: Response;
-    try {
-      response = await fetchFn(url, { method: "HEAD", redirect: "follow", signal: AbortSignal.timeout(timeoutMs) });
-    } catch (e) {
-      const cause = (e as Error & { cause?: unknown }).cause;
-      throw new Error(`${url} could not be reached: ${cause instanceof Error ? cause.message : (e as Error).message}`);
-    }
+  const viaTemplate = async (name: string): Promise<string> => {
+    const url = resolverUrl(name, ensTemplate);
+    const response = await fetchOrExplain(fetchFn, url, { method: "HEAD", redirect: "follow", signal: AbortSignal.timeout(timeoutMs) });
     if (!response.ok) throw new Error(`${url} answered ${response.status}`);
     const root = response.headers.get("x-ipfs-roots")?.split(",")[0]?.trim();
     if (!root) throw new Error(`${url} sent no X-Ipfs-Roots header`);
-    const id = canonicalise(`cid:${root}`, "website");
-    if (!id.ok) throw new Error(`${url} sent a root that is not a CID: ${root}`);
-    return id.id;
+    return rootOf(url, root);
+  };
+  const viaDnslink = async (host: string): Promise<string> => {
+    const url = dnslinkUrl(host, dnslinkEndpoint);
+    const response = await fetchOrExplain(fetchFn, url, { headers: { accept: "application/dns-json" }, redirect: "follow", signal: AbortSignal.timeout(timeoutMs) });
+    if (!response.ok) throw new Error(`${url} answered ${response.status}`);
+    let body: unknown;
+    try {
+      body = await response.json();
+    } catch {
+      throw new Error(`${url} did not answer in the DNS JSON form`);
+    }
+    const value = dnslinkValue(body);
+    if (value === undefined) throw new Error(`${host} has no DNSLink record`);
+    const match = /^\/ipfs\/([^/]+)/.exec(value);
+    if (!match) throw new Error(`the DNSLink record of ${host} is ${value}, not an /ipfs/ address`);
+    return rootOf(url, match[1]!);
+  };
+  return async (name) => {
+    if (ensTemplate !== DEFAULT_RESOLVER) return viaTemplate(name);
+    const bare = name.startsWith(IPNS_SCHEME) ? name.slice(IPNS_SCHEME.length) : name;
+    if (name.startsWith(IPNS_SCHEME) && /^k51/.test(bare)) throw new Error("an ipns:// key is not resolved: no gateway is asked for it");
+    return name.startsWith(IPNS_SCHEME) || !name.endsWith(".eth") ? viaDnslink(bare) : viaTemplate(name);
   };
 }
 

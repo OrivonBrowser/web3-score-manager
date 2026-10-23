@@ -51,6 +51,15 @@ test("a live message shows both judgements, the direction and the links", () => 
   assert.match(text, /<i>claude-sonnet-5-5 · 23 turns · ≈ \$0\.41 at API prices<\/i>/);
 });
 
+test("the Site link follows the form of the first watched name", () => {
+  const site = (name: string, action: "apply" | "hold" = "hold") => formatJudged(judged({ name, action, publishedCid: undefined, commitUrl: undefined }));
+  assert.match(site("a.eth, b.eth"), /<a href="https:\/\/a\.eth\.limo\/">Site<\/a>/);
+  assert.match(site("ipns://docs.ipfs.tech"), /<a href="https:\/\/docs\.ipfs\.tech\/">Site<\/a>/);
+  assert.match(site("docs.ipfs.tech"), /<a href="https:\/\/docs\.ipfs\.tech\/">Site<\/a>/);
+  const key = site("ipns://k51qzi5uqu5dli7gc98gxy6jlbarijipfrw1x8z2wfyre3rvhssxvzeummkaff");
+  assert.ok(!key.includes(">Site<") && !key.includes("🔗"));
+});
+
 test("every interpolated string is escaped, attributes too", () => {
   const text = formatJudged(judged());
   assert.ok(text.includes("Old &lt;summary&gt; &amp; more."));

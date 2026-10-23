@@ -1,5 +1,5 @@
 import path from "node:path";
-import { DEFAULT_RESOLVER } from "../src/moved.ts";
+import { DEFAULT_DNSLINK_RESOLVER, DEFAULT_RESOLVER } from "../src/moved.ts";
 
 export interface Config {
   repoDir: string;
@@ -26,6 +26,7 @@ export interface Config {
   telegramChatId: string | undefined;
   oauthToken: string | undefined;
   resolver: string;
+  dnslinkResolver: string;
   model: string;
   maxTurns: number;
   judgeTimeoutS: number;
@@ -111,6 +112,7 @@ export function loadConfig(env: Env = process.env): Config {
     telegramChatId: optional(env, "TELEGRAM_CHAT_ID"),
     oauthToken: optional(env, "CLAUDE_CODE_OAUTH_TOKEN"),
     resolver: text(env, "RESOLVER", DEFAULT_RESOLVER),
+    dnslinkResolver: text(env, "DNSLINK_RESOLVER", DEFAULT_DNSLINK_RESOLVER),
     model: text(env, "MODEL", "claude-sonnet-5-5"),
     maxTurns: integer(env, "MAX_TURNS", 80),
     judgeTimeoutS: integer(env, "JUDGE_TIMEOUT_S", 1500),

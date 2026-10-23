@@ -3,6 +3,9 @@
   "ids": [
     "cid:bafybeiddamod5xk4uipjz52xodu4z62ul5xk6lzo3qaiz32yc3t6vd7xqa"
   ],
+  "names": [
+    "ipfs.eth"
+  ],
   "name": "IPFS",
   "evaluated": "2026-10-05",
   "trustlessity": {

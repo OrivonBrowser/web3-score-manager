@@ -1,7 +1,7 @@
 # The Attila watch
 
 A job that keeps Orivon Attila (`provider/`) in step with the sites it judges. Every three hours
-it asks each watched `.eth` name what it serves now. When a name serves a build no evaluation
+it asks each watched name what it serves now. When a name serves a build no evaluation
 judges, the watch opens that build in a sandboxed browser, has a model read its files by the rules
 in [provider/README.md](../provider/README.md), and either commits the new judgement or holds it
 for the owner. Then it publishes Attila again and sends the owner a Telegram message for each site.
@@ -57,7 +57,7 @@ are independent; each one holds if the others fail.
 - **Claude Code on a short leash.** `--restricted` with only `Read`, `Grep` and `Glob`, no MCP, no
   hooks, no slash commands, reads limited to the working directory, a turn cap and a timeout. The
   answer is structured output checked against `judge/schema.json`.
-- **Only validated values in the prompt.** The prompt holds the `.eth` name, the CID and the date,
+- **Only validated values in the prompt.** The prompt holds the watched name, the CID and the date,
   each checked first. Site text reaches the judge as files it reads, never as prompt text.
 - **A deterministic merge.** The watch, not the model, writes the evaluation: it keeps `ids`
   (at most eight, the new build last), `names` and `subject`, takes the judged fields, and refuses
@@ -97,7 +97,8 @@ All settings are environment variables, read in `config.ts`.
 | `GIT_AUTHOR_NAME`, `GIT_AUTHOR_EMAIL` | `Attila watch`, `attila-watch@orivonstack.com` | Commit identity |
 | `TELEGRAM_BOT_TOKEN`, `TELEGRAM_CHAT_ID` | unset | Without them messages are only logged as unsent |
 | `CLAUDE_CODE_OAUTH_TOKEN` | unset | Passed to the judge's sandbox, where it is masked |
-| `RESOLVER` | `https://{name}.limo/` | How a name's build is read |
+| `RESOLVER` | `https://{name}.limo/` | How an ENS name's build is read; any other value is asked for every form of name |
+| `DNSLINK_RESOLVER` | `https://cloudflare-dns.com/dns-query` | The DNS-over-HTTPS endpoint that reads the DNSLink record of a DNS host or `ipns://<host>` name |
 | `MODEL` | `claude-sonnet-5-5` | The judge's model |
 | `MAX_TURNS`, `JUDGE_TIMEOUT_S` | `80`, `1500` | Limits on one judgement |
 | `FETCH_TIMEOUT_S`, `PREVIOUS_FETCH_TIMEOUT_S`, `STAT_TIMEOUT_S`, `PROBE_TIMEOUT_S` | `900`, `180`, `120`, `120` | Limits on the other steps |
