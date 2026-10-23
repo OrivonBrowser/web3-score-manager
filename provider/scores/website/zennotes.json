@@ -1,0 +1,18 @@
+{
+  "subject": "website",
+  "ids": [
+    "sha256:d2ac361616947bb5f34c6ace846a0a35703a089e699ce67000c61374b76ff29e",
+    "cid:bafybeievmomit3zeokbxuj6av6mkjkqndwisczkmpasfdyujwld333qdhq"
+  ],
+  "names": ["zennotes.orivonstack.eth"],
+  "name": "ZenNotes",
+  "version": "2.74.0.1",
+  "evaluated": "2026-10-23",
+  "trustlessity": { "level": 4, "privacy": true },
+  "summary": "A Markdown notes app that keeps notes as files in a folder, built from upstream's open source (MIT) at a pinned commit. It runs only its own files and asks Orivon for no network access, so it makes no request beyond its own files: Level 4 with privacy. Upstream's cloud, remote server, assistants and update check are not in this build. Libraries inside it name outside hosts (YouTube and Vimeo embeds, Excalidraw collaboration, Typst downloads) but Orivon serves the app with a policy that admits no outside request, image or frame.",
+  "operations": [
+    { "name": "Write, search and organise notes", "trustlessity": { "level": 4, "privacy": true }, "note": "Notes are Markdown files in a private folder and in the folder the person picks; nothing is sent anywhere." },
+    { "name": "Tasks, databases and templates", "trustlessity": { "level": 4, "privacy": true }, "note": "Computed on this computer from the same files." }
+  ],
+  "evidence": ["https://github.com/ZenNotes/zennotes/tree/9e2c651c9bdd", "https://github.com/OrivonBrowser/orivon-ports/tree/main/apps/zennotes"]
+}

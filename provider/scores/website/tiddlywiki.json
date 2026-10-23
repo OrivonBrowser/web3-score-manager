@@ -1,0 +1,21 @@
+{
+  "subject": "website",
+  "ids": [
+    "sha256:a9627fc2c95949c226d2a800f621a1a3a22c29917e54717a78e01deafe38d735",
+    "cid:bafybeiblsmup3rv65nvtrv6ybtz7anrb3rn3ez3s7rkdxycmo63wvgxmcy"
+  ],
+  "names": ["wikifolder.orivonstack.eth"],
+  "name": "TiddlyWiki (Node.js server)",
+  "version": "5.4.1.1",
+  "evaluated": "2026-10-23",
+  "trustlessity": { "level": 4, "privacy": false },
+  "summary": "TiddlyWiki's Node.js server (BSD-3-Clause), built from upstream's open source at a pinned commit, running inside Orivon and showing the wiki in an embedded view. It runs only what it ships and dials nothing: the server listens on this computer only and the wiki is stored in the app's own folder, so no remote party takes part: Level 4. Not private: the wiki is an ordinary page, so a tiddler linking an outside image, frame or plugin library would show your IP address. The default wiki makes none, but this was not watched with such content.",
+  "operations": [
+    { "name": "Create, edit and search tiddlers", "trustlessity": { "level": 4, "privacy": false }, "note": "Saved as files in this app's own folder on this computer by the app's own server; nothing is sent to another party." },
+    { "name": "Serve the wiki on this computer", "trustlessity": { "level": 4, "privacy": true }, "note": "The server listens on 127.0.0.1 port 8777 for the embedded view and stops with the app's last page." }
+  ],
+  "connections": [
+    { "name": "Own server (127.0.0.1, port 8777)", "trustlessity": { "level": 3, "privacy": true }, "note": "A listener inside the app on this computer. Nothing leaves the computer." }
+  ],
+  "evidence": ["https://github.com/TiddlyWiki/TiddlyWiki5/tree/d391595836e2", "https://tiddlywiki.com", "https://github.com/OrivonBrowser/orivon-ports/tree/main/apps/wikifolder"]
+}

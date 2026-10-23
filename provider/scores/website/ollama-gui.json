@@ -1,0 +1,23 @@
+{
+  "subject": "website",
+  "ids": [
+    "sha256:5664d5970c2f177af691e85b4538d77ae3ee6e63bc7cfa881f867bd6a3b8c6a1",
+    "cid:bafybeibkfdnmunfhy7warnusjug23mfjqghjfgh45wuxqejsseik5dgpte"
+  ],
+  "names": ["ollamagui.orivonstack.eth"],
+  "name": "Ollama GUI",
+  "version": "2.0.5.1",
+  "evaluated": "2026-10-23",
+  "trustlessity": { "level": 4, "privacy": false },
+  "summary": "A chat interface for models that run on this computer through Ollama, built from upstream's open source (MIT) at a pinned commit, unchanged. It runs only its own files, with no analytics, and may reach only localhost:11434, the user's own Ollama: no other party takes part, which is Level 4. The one step that leaves the computer is optional: Pull has Ollama download a model, and the registry then sees your IP address, so it is not private. The Gravatar avatar option cannot load: the build holds no grant to an outside host.",
+  "operations": [
+    { "name": "Chat with a model", "trustlessity": { "level": 4, "privacy": true }, "note": "Prompts and replies pass only between this page and the Ollama program on this computer, and are kept in this site's browser storage." },
+    { "name": "List installed models and settings", "trustlessity": { "level": 4, "privacy": true }, "note": "Read from the local Ollama and kept in this site's browser storage." },
+    { "name": "Pull a model", "trustlessity": { "level": 2, "privacy": false }, "note": "Optional, and started by the user. Ollama downloads the model from its registry; the files are checked against their digests, but the registry decides what a name means and sees your IP address." }
+  ],
+  "connections": [
+    { "name": "Ollama on this computer (localhost:11434)", "trustlessity": { "level": 3, "privacy": true }, "note": "A program on the same computer, reached over the loopback address. Nothing leaves the computer." },
+    { "name": "Model registry (made by your own Ollama during a pull)", "trustlessity": { "level": 1, "privacy": false }, "note": "Only when the user presses Pull. The page itself never contacts it." }
+  ],
+  "evidence": ["https://github.com/HelgeSverre/ollama-gui/tree/b79a7b8ca537", "https://github.com/ollama/ollama", "https://github.com/OrivonBrowser/orivon-ports/tree/main/apps/ollamagui"]
+}

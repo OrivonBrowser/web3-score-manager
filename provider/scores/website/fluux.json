@@ -1,0 +1,24 @@
+{
+  "subject": "website",
+  "ids": [
+    "sha256:f15399bdb397218bc79f83d8b7f0bde2173f5db289b567b5d0047a6d11d96326",
+    "cid:bafybeifjwruyrxhgdynomju6ijxfc7caoz6z62sfk7mjgrqijpvkpk6qmm"
+  ],
+  "names": ["fluux.orivonstack.eth"],
+  "name": "Fluux Messenger",
+  "version": "0.18.0.1",
+  "evaluated": "2026-10-23",
+  "trustlessity": { "level": 3, "privacy": false },
+  "summary": "An XMPP chat client, built from upstream's open source (AGPL) at a pinned commit. Every script ships in its own files, so no external code runs: Level 3. Not Level 4: the XMPP server the user signs in to holds the account and delivers every message, and attachments live on its upload host, so the app relies on a server, though XMPP is open and the user can pick or run their own. Keys and history stay on this computer. Not private: the server sees your IP address and who talks to whom.",
+  "operations": [
+    { "name": "Send and receive messages", "trustlessity": { "level": 2, "privacy": false }, "note": "The code does what it promises. With OpenPGP turned on the server cannot read the text, but it sees who talks to whom and when, and can withhold delivery." },
+    { "name": "Your account and contacts", "trustlessity": { "level": 2, "privacy": false }, "note": "Held by the XMPP server you sign in to, which can suspend or remove it." },
+    { "name": "Send and receive attachments", "trustlessity": { "level": 2, "privacy": false }, "note": "Uploaded to and downloaded from the server's HTTP upload host. Encrypted attachments are decrypted on this computer; the host still sees your IP address and the file's size." },
+    { "name": "Keep OpenPGP keys, account and history", "trustlessity": { "level": 4, "privacy": false }, "note": "Stored in this site's browser storage on this computer. Not private: the stored account name is the one the server knows." }
+  ],
+  "connections": [
+    { "name": "XMPP server (WebSocket, and its host-meta file)", "trustlessity": { "level": 1, "privacy": false }, "note": "The server named at sign-in. Rooms, contacts and history come from it and are trusted as given. It sees your IP address." },
+    { "name": "HTTP upload host", "trustlessity": { "level": 1, "privacy": false }, "note": "The host the server advertises for attachments. Used only when you send or open an attachment." }
+  ],
+  "evidence": ["https://github.com/processone/fluux-messenger/tree/f900aba2eb56f49bd1a5c379d7f396e285278d17", "https://xmpp.org", "https://github.com/OrivonBrowser/orivon-ports/tree/main/apps/fluux"]
+}
