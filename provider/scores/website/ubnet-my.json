@@ -1,0 +1,56 @@
+{
+  "subject": "website",
+  "ids": [
+    "cid:bafybeiewwqc7dflm7as4n4mwqtsiam6n7vrcu6hlsvxbx6lptswuuddosy"
+  ],
+  "names": [
+    "my.ubnet.eth"
+  ],
+  "name": "My UBNet",
+  "evaluated": "2026-10-23",
+  "trustlessity": {
+    "level": 3,
+    "privacy": false
+  },
+  "summary": "My UBNet, the profile page of the UBNet network: readable unminified scripts (script.js, ubnet.js, chats.js) and vendored ethers, served as written (no licence file). It runs no third-party code. It reads Ethereum from publicnode and profile data from ipfs.io when it opens, and relies on the UBNet server for feeds, so it is at most Level 3; it also loads Google Fonts.",
+  "connections": [
+    {
+      "name": "ethereum-rpc.publicnode.com",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Ethereum RPC read without a light client, called when the page opens."
+    },
+    {
+      "name": "ipfs.io gateway",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Profile metadata fetched by CID when the page opens, trusted from the gateway."
+    },
+    {
+      "name": "UBNet server",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Profile, feed and follower data are read from the UBNet indexer."
+    },
+    {
+      "name": "Profile extras (Blockscout, EFP, Google favicons)",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Requested when a profile has NFTs, followers or links to show."
+    },
+    {
+      "name": "Google Fonts",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Stylesheet and font files fetched when the page opens; tells Google the visit."
+    }
+  ],
+  "evidence": [
+    "https://my.ubnet.eth.limo/"
+  ]
+}

@@ -1,0 +1,39 @@
+{
+  "subject": "website",
+  "ids": [
+    "cid:bafybeibmynrojqorrojqrplnplm2d64ri4k5ynwe6qjjf7bogfna4qkheu"
+  ],
+  "names": [
+    "domain.ubnet.eth"
+  ],
+  "name": "Domains.UBNET",
+  "evaluated": "2026-10-23",
+  "trustlessity": {
+    "level": 2,
+    "privacy": false
+  },
+  "summary": "The UBNet name registration page. No public source was found for the code it runs. It is not Level 3: when it opens it loads the UBNet SDK, about 26 scripts from my.eth-ub.net with no integrity hash, third-party code the user has not asked for that the host can change at any time. It also loads Google Fonts and reads chain data from publicnode.",
+  "connections": [
+    {
+      "name": "UBNet SDK scripts (my.eth-ub.net)",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Loaded when the page opens, without integrity hashes."
+    },
+    {
+      "name": "Google Fonts",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Fetched when the page opens; tells Google the visit."
+    },
+    {
+      "name": "publicnode Ethereum RPC",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Read without a light client when the page opens."
+    }
+  ]
+}

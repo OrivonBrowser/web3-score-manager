@@ -1,0 +1,28 @@
+{
+  "subject": "website",
+  "ids": [
+    "cid:bafybeiesxsf7a6fbdnuh4lr5xethrbqjrcux65ygnyi4bbvfdy4h3zwhhy"
+  ],
+  "names": [
+    "birdistheword.ubnet.eth"
+  ],
+  "name": "Bird Is The Word Boat Tours",
+  "evaluated": "2026-10-23",
+  "trustlessity": {
+    "level": 3,
+    "privacy": false
+  },
+  "summary": "A boat-tour site for Negril, Jamaica: plain HTML, CSS and one readable script, served as written, so the page is its own public source (no licence file). It runs no third-party code on its own; its YouTube video loads only when the visitor presses play and its booking forms open WhatsApp on submit, which is Level 3. It is not Level 4: its stylesheet imports Google Fonts when the page opens.",
+  "connections": [
+    {
+      "name": "Google Fonts",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Imported by the stylesheet when the page opens; tells Google the visit."
+    }
+  ],
+  "evidence": [
+    "https://birdistheword.ubnet.eth.limo/"
+  ]
+}

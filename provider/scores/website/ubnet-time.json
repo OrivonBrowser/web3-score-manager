@@ -1,0 +1,20 @@
+{
+  "subject": "website",
+  "ids": [
+    "cid:bafybeifwohx7on4ifrn2yrwwidfsekuissbzeqbxdbxmwudnhz23qenn6a"
+  ],
+  "names": [
+    "time.ubnet.eth"
+  ],
+  "name": "The Workplace Ledger",
+  "evaluated": "2026-10-23",
+  "trustlessity": {
+    "level": 4,
+    "privacy": true
+  },
+  "summary": "A one-page journalism site with a readable script.js, a stylesheet and an SVG, served as written and so its own public source (no licence file). It loads only its own files, with no fonts, scripts or requests to other hosts; links to outside sources are followed only when the reader clicks them, and the newsletter form sends nothing: Level 4 with privacy.",
+  "evidence": [
+    "ipfs://bafybeifwohx7on4ifrn2yrwwidfsekuissbzeqbxdbxmwudnhz23qenn6a",
+    "https://time.ubnet.eth.limo/"
+  ]
+}
