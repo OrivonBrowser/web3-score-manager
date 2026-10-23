@@ -1,0 +1,24 @@
+{
+  "subject": "website",
+  "ids": [
+    "sha256:65f91bfa353ff57fb469e187525430ec7f238cad4f884d7570f2af58dae2f04e",
+    "cid:bafybeiebm5q4zo72cv5oysj7o7jim7jhdmp6ybg2gdlcx5it2rlpuydppu"
+  ],
+  "names": ["actualbudget.orivonstack.eth"],
+  "name": "Actual Budget",
+  "version": "26.10.0.1",
+  "evaluated": "2026-10-23",
+  "trustlessity": { "level": 3, "privacy": false },
+  "summary": "A local-first budgeting app, built from upstream's open source (MIT) at a pinned commit, with upstream's own backend running in Orivon. Every script ships in its own files, with no analytics: Level 3. Not Level 4: by default it asks api.github.com for the newest release and fetches a news file from raw.githubusercontent.com, unverified connections the user did not start (both can be turned off). The budget stays on this computer; sync to a server the user names is optional. Not private: GitHub sees your IP address.",
+  "operations": [
+    { "name": "Budget, record transactions, run reports", "trustlessity": { "level": 4, "privacy": false }, "note": "The budget is a SQLite file in this app's own folder on this computer, with no account. Not private only because of the default GitHub requests." },
+    { "name": "Import and export (CSV, budget zip)", "trustlessity": { "level": 4, "privacy": true }, "note": "Files are read from and saved to folders the person picks; nothing is sent anywhere." },
+    { "name": "Sync to a self-hosted Actual server", "trustlessity": { "level": 2, "privacy": false }, "note": "Optional and off until the user enters a server address. The code does what it promises; the server holds the synced copy (encrypted if the user sets a password), sees your IP address and when you sync, and can withhold it." }
+  ],
+  "connections": [
+    { "name": "Update check (api.github.com)", "trustlessity": { "level": 1, "privacy": false }, "note": "Made by default when a budget opens, unless the user turns the update notice off in Settings. It only decides whether a banner appears; the answer is not verified." },
+    { "name": "News feed (raw.githubusercontent.com)", "trustlessity": { "level": 1, "privacy": false }, "note": "A JSON file of announcements, fetched by default and cached for six hours, unless the user turns the news feed off in Settings. Its text is shown as received." },
+    { "name": "Sync server chosen by the user", "trustlessity": { "level": 1, "privacy": false }, "note": "Only the one address the user enters, over https. Bank connections, if the user sets any up, go through that server and are made by it." }
+  ],
+  "evidence": ["https://github.com/actualbudget/actual/tree/2bebdbaae0b701120a8cad9d56aafd64fa04c577", "https://github.com/OrivonBrowser/orivon-ports/tree/main/apps/actualbudget"]
+}
