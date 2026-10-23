@@ -4,13 +4,15 @@
     "sha256:8022c858f3315c7dfba0a960f14b802898cbb98cfdf25485c00785113bfe1bc3",
     "cid:bafybeihlls5dp22lzwbvycw653rbmsax6vihac6cflft4ltzwaklvxn5ze",
     "sha256:d9e16478eff0574fbd9596c48da3e4ea8b62ec5b091be6a5c5473572685021be",
-    "cid:bafybeiaoxawo647nar7ksmx7qgkegvjld7rkylfrxh4epbjkvesqhz7w3e"
+    "cid:bafybeiaoxawo647nar7ksmx7qgkegvjld7rkylfrxh4epbjkvesqhz7w3e",
+    "sha256:74232a8b31b561aaaf9a2fcccbc450e37a2ad8151a9076fa145427d710cbece1",
+    "cid:bafybeib5zvk3q6ovwrff6xwxded6dzx65ioarpf7bt3k26nozk2pdlqxai"
   ],
   "names": [
     "editor.decentrawiki.eth"
   ],
   "name": "DecentraWiki editor",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "evaluated": "2026-10-23",
   "trustlessity": {
     "level": 4,
