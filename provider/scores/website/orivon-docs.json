@@ -1,0 +1,47 @@
+{
+  "subject": "website",
+  "ids": [
+    "cid:bafybeihpgctfj3gghaivmal7ggiywmwtgyu2czs4tljx3ny5lla6crt7zu"
+  ],
+  "names": [
+    "docs.orivonstack.eth"
+  ],
+  "name": "Orivon documentation",
+  "evaluated": "2026-10-23",
+  "trustlessity": {
+    "level": 3,
+    "privacy": false
+  },
+  "summary": "The Orivon documentation, judged here by its own publisher. Its source is public (OrivonBrowser/orivon-docs, Apache-2.0) and the build is that repository's web3 build, so the page runs only its own files: no analytics, tag manager, embed or search service, and its fonts are its own. Not Level 4: the pages that show the download table (the home page, Download, Quick start) ask api.github.com for the newest release as they open, to label the download buttons, and GitHub's release API is a centralised server, a Level 1 connection. Not private: that request shows GitHub the visitor's IP address.",
+  "operations": [
+    {
+      "name": "Read the documentation",
+      "trustlessity": {
+        "level": 4,
+        "privacy": true
+      },
+      "note": "The text, images, fonts and scripts are the page's own files."
+    },
+    {
+      "name": "Show the newest release beside each download",
+      "trustlessity": {
+        "level": 1,
+        "privacy": false
+      },
+      "note": "Read from api.github.com and not checked against anything; the buttons fall back to the releases page when it does not answer."
+    }
+  ],
+  "connections": [
+    {
+      "name": "api.github.com release list",
+      "trustlessity": {
+        "level": 1,
+        "privacy": false
+      },
+      "note": "A centralised API read as the page opens, cached for the session. GitHub sees the visitor's IP address."
+    }
+  ],
+  "evidence": [
+    "https://github.com/OrivonBrowser/orivon-docs"
+  ]
+}
