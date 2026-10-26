@@ -3,18 +3,18 @@
   "ids": [
     "sha256:8022c858f3315c7dfba0a960f14b802898cbb98cfdf25485c00785113bfe1bc3",
     "sha256:d9e16478eff0574fbd9596c48da3e4ea8b62ec5b091be6a5c5473572685021be",
-    "cid:bafybeiaoxawo647nar7ksmx7qgkegvjld7rkylfrxh4epbjkvesqhz7w3e",
     "sha256:74232a8b31b561aaaf9a2fcccbc450e37a2ad8151a9076fa145427d710cbece1",
     "cid:bafybeib5zvk3q6ovwrff6xwxded6dzx65ioarpf7bt3k26nozk2pdlqxai",
     "sha256:20d4be6458a999ae844850c60c4d1cf673eb3f68f64026fb64a43ceeb4b65465",
     "cid:bafybeickxi2tborocqpae2svhjdsepdjddi5rcmhj64mbpvgvqrcbboqnm",
-    "cid:bafybeicujncpyaz5qdmwinzbpfddon6kchav3i7sv3pogqafnpbqvbltb4"
+    "cid:bafybeicujncpyaz5qdmwinzbpfddon6kchav3i7sv3pogqafnpbqvbltb4",
+    "cid:bafybeign6c7fxzsfvn7ewsc6tdmn4t4ywphbhepqbgdk3wnomp4r6ykoae"
   ],
   "names": [
     "editor.decentrawiki.eth"
   ],
   "name": "DecentraWiki editor",
-  "version": "0.1.5",
+  "version": "0.1.7",
   "evaluated": "2026-10-26",
   "trustlessity": {
     "level": 4,
