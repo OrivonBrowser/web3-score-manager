@@ -1,13 +1,14 @@
 {
   "subject": "website",
   "ids": [
-    "cid:bafybeihwgsd5mydatswicl7pyuwfwziu6bb67lcxxu6pv64pauxf253v5m"
+    "cid:bafybeihwgsd5mydatswicl7pyuwfwziu6bb67lcxxu6pv64pauxf253v5m",
+    "cid:bafybeih2tpbjzh47i5zxi4dftyfq3wkgmcsrelqn4g3pemmwtbmazjde6e"
   ],
   "names": [
     "stewards.eth"
   ],
   "name": "The Stewards of Ethereum",
-  "evaluated": "2026-10-18",
+  "evaluated": "2026-10-26",
   "trustlessity": {
     "level": 4,
     "privacy": true
