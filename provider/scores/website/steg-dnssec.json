@@ -1,13 +1,14 @@
 {
   "subject": "website",
   "ids": [
-    "cid:bafybeigylsl773llsmba2yzl3myzffvowxiksqpzbmnb6xlhhlw4phkllq"
+    "cid:bafybeigylsl773llsmba2yzl3myzffvowxiksqpzbmnb6xlhhlw4phkllq",
+    "cid:bafybeih5imtjxp544g4nsnlcueomey7fhgwvczbzxa7mwavrbkumj7zt6u"
   ],
   "names": [
     "dnssec.steg.eth"
   ],
   "name": "EIP-7951 DNSSEC Solutions",
-  "evaluated": "2026-10-18",
+  "evaluated": "2026-10-26",
   "trustlessity": {
     "level": 2,
     "privacy": false
