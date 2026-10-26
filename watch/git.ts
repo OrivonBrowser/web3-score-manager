@@ -1,4 +1,4 @@
-import { existsSync, mkdirSync, writeFileSync } from "node:fs";
+import { existsSync, mkdirSync, rmSync, writeFileSync } from "node:fs";
 import path from "node:path";
 import type { Config } from "./config.ts";
 import { failed, run } from "./proc.ts";
@@ -77,7 +77,8 @@ export async function commitEvaluation(config: Config, input: CommitInput): Prom
   writeFileSync(input.file, input.content);
   const check = await run(config.nodeBin, cliArgs(config, "check"), { cwd: config.repoDir, timeoutMs: 120_000 });
   if (failed(check)) {
-    await git(config, ["checkout", "--", path.relative(config.repoDir, input.file)]).catch(() => {});
+    // A new file is not tracked, so there is nothing to check out: it is removed instead.
+    await git(config, ["checkout", "--", path.relative(config.repoDir, input.file)]).catch(() => rmSync(input.file, { force: true }));
     const lines = (check.stderr || check.stdout).trim().split("\n").slice(0, 5).join("; ");
     throw new GitError(`the judgement does not pass check: ${lines.slice(0, 400)}`);
   }

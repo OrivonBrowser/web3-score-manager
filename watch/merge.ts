@@ -1,17 +1,28 @@
+import path from "node:path";
 import type { Part, SourceEvaluation } from "../src/types.ts";
 import type { ProbeSummary } from "./probe-result.ts";
 import type { Verdict, VerdictPart } from "./verdict.ts";
 
 const MAX_IDS = 8;
 
+/** Whether judging `newId` needs a new evaluation file: this one already holds the most ids an evaluation may. */
+export function startsNewFile(old: SourceEvaluation, newId: string): boolean {
+  return old.ids.length >= MAX_IDS && !old.ids.includes(newId);
+}
+
 function nextIds(old: string[], newId: string): string[] {
-  const ids = [...old.filter((id) => id !== newId), newId];
-  while (ids.length > MAX_IDS) {
-    let drop = ids.findIndex((id) => id !== newId && id.startsWith("cid:"));
-    if (drop === -1) drop = ids.findIndex((id) => id !== newId);
-    ids.splice(drop, 1);
+  const kept = old.filter((id) => id !== newId);
+  return kept.length >= MAX_IDS ? [newId] : [...kept, newId];
+}
+
+/** The first `<base>-<n>.json` beside `file` that `exists` does not report, n from 2; a trailing `-<n>` of the old name is not stacked. */
+export function newEvaluationFile(file: string, exists: (candidate: string) => boolean): string {
+  const slug = path.basename(file, ".json").replace(/-\d+$/, "");
+  for (let n = 2; ; n++) {
+    const suffix = `-${n}`;
+    const candidate = path.join(path.dirname(file), `${slug.slice(0, 64 - suffix.length).replace(/-+$/, "")}${suffix}.json`);
+    if (!exists(candidate)) return candidate;
   }
-  return ids;
 }
 
 function partsOf(list: VerdictPart[]): Part[] {
@@ -22,7 +33,11 @@ function partsOf(list: VerdictPart[]): Part[] {
   });
 }
 
-/** The old evaluation with the judge's reading of the new build: ids, names and subject stay the watch's own. */
+/**
+ * The old evaluation with the judge's reading of the new build: ids, names and subject stay the watch's own.
+ * An evaluation that already holds eight ids is not trimmed: the result lists only the new build, to be written
+ * as a new file (`startsNewFile`) that lists the same names.
+ */
 export function mergeEvaluation(old: SourceEvaluation, v: Verdict, newCid: string, today: string): SourceEvaluation {
   const merged: SourceEvaluation = {
     subject: old.subject,

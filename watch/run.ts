@@ -1,4 +1,4 @@
-import { closeSync, copyFileSync, lstatSync, mkdirSync, openSync, readFileSync, rmSync, writeFileSync } from "node:fs";
+import { closeSync, copyFileSync, existsSync, lstatSync, mkdirSync, openSync, readFileSync, rmSync, writeFileSync } from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { loadProvider, readJson } from "../src/source.ts";
@@ -16,7 +16,7 @@ import { commitEvaluation, headSha, pushBranch, pushMain, resetToOrigin, syncClo
 import { openPullRequest } from "./github.ts";
 import { readTemplate, renderPrompt, runJudge } from "./judge.ts";
 import { clip, log } from "./log.ts";
-import { decide, mergeEvaluation, serialiseEvaluation } from "./merge.ts";
+import { decide, mergeEvaluation, newEvaluationFile, serialiseEvaluation, startsNewFile } from "./merge.ts";
 import { parseProbe } from "./probe-result.ts";
 import type { ProbeSummary } from "./probe-result.ts";
 import { failed, run } from "./proc.ts";
@@ -193,6 +193,7 @@ async function judgeGroup(config: Config, group: Group, secrets: string[], now: 
   writeFileSync(path.join(job.dir, "judge-result.json"), `${judged.stdout}\n`);
 
   const merged = mergeEvaluation(old, verdict, cid, today);
+  const target = startsNewFile(old, group.id) ? newEvaluationFile(group.file, existsSync) : group.file;
   const decision = decide(old, merged, verdict, probe);
   if (decision.action === "reject") {
     return { kind: "rejected", group, reason: `${decision.reasons.join("; ")}${verdict.changes ? `. ${clip(verdict.changes, 300)}` : ""}` };
@@ -205,7 +206,7 @@ async function judgeGroup(config: Config, group: Group, secrets: string[], now: 
     "",
     `Judged by the Attila watch with ${config.model}.`,
   ].join("\n");
-  const input = { file: group.file, content: serialiseEvaluation(merged), subject, body };
+  const input = { file: target, content: serialiseEvaluation(merged), subject, body };
   const message: JudgedMessage = {
     name: names,
     cid,
@@ -230,7 +231,7 @@ async function judgeGroup(config: Config, group: Group, secrets: string[], now: 
       throw e;
     }
   } else {
-    const branch = `attila-watch/${slug}-${cid.slice(0, 12)}`;
+    const branch = `attila-watch/${slugOf(target)}-${cid.slice(0, 12)}`;
     await pushBranch(config, branch, input, !config.dryRun);
     result.branch = branch;
     if (!config.dryRun) {

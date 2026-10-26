@@ -6,7 +6,7 @@ import { CID } from "multiformats/cid";
 import { create as createDigest } from "multiformats/hashes/digest";
 import type { SourceEvaluation } from "../../src/types.ts";
 import { validateSource } from "../../src/validate.ts";
-import { decide, mergeEvaluation, serialiseEvaluation } from "../merge.ts";
+import { decide, mergeEvaluation, newEvaluationFile, serialiseEvaluation, startsNewFile } from "../merge.ts";
 import type { ProbeSummary } from "../probe-result.ts";
 import { validateVerdict } from "../verdict.ts";
 import type { Verdict } from "../verdict.ts";
@@ -43,21 +43,35 @@ test("the new CID goes last; names, subject and old ids stay", () => {
   assert.equal(merged.name, "Example");
 });
 
-test("more than eight ids drops the earliest cid, never a sha256 id", () => {
+test("a full evaluation is not trimmed: the merged one lists only the new build and starts a new file", () => {
   const ids = [sha("a"), sha("b"), cid(1), cid(2), cid(3), cid(4), cid(5), cid(6)];
-  const merged = mergeEvaluation(old({ ids }), verdict(), NEW, "2026-10-21");
-  assert.equal(merged.ids.length, 8);
-  assert.ok(merged.ids.includes(sha("a")) && merged.ids.includes(sha("b")));
-  assert.ok(!merged.ids.includes(cid(1)));
-  assert.equal(merged.ids.at(-1), `cid:${NEW}`);
+  const full = old({ ids });
+  assert.equal(startsNewFile(full, `cid:${NEW}`), true);
+  const merged = mergeEvaluation(full, verdict(), NEW, "2026-10-21");
+  assert.deepEqual(merged.ids, [`cid:${NEW}`]);
+  assert.deepEqual(merged.names, ["reality.eth"]);
+  assert.deepEqual(full.ids, ids);
+  const checked = validateSource(JSON.parse(serialiseEvaluation(merged)), "x.json", "website");
+  assert.ok(checked.evaluation, JSON.stringify(checked));
 });
 
-test("with only sha256 ids to drop, the earliest one that is not the new id goes", () => {
-  const ids = Array.from({ length: 8 }, (_, i) => sha(String(i + 1)));
-  const merged = mergeEvaluation(old({ ids }), verdict(), NEW, "2026-10-21");
-  assert.equal(merged.ids.length, 8);
-  assert.ok(!merged.ids.includes(sha("1")));
-  assert.equal(merged.ids.at(-1), `cid:${NEW}`);
+test("seven ids still append in the same file; the eighth fills it", () => {
+  const seven = [sha("a"), cid(1), cid(2), cid(3), cid(4), cid(5), cid(6)];
+  assert.equal(startsNewFile(old({ ids: seven }), `cid:${NEW}`), false);
+  assert.equal(mergeEvaluation(old({ ids: seven }), verdict(), NEW, "2026-10-21").ids.length, 8);
+  assert.equal(startsNewFile(old({ ids: [...seven, cid(7)] }), cid(7)), false);
+});
+
+test("the new file is the first free <slug>-<n>.json beside the old one", () => {
+  const taken = new Set<string>();
+  assert.equal(newEvaluationFile("/p/scores/website/explore.json", (f) => taken.has(f)), "/p/scores/website/explore-2.json");
+  taken.add("/p/scores/website/explore-2.json");
+  assert.equal(newEvaluationFile("/p/scores/website/explore.json", (f) => taken.has(f)), "/p/scores/website/explore-3.json");
+  assert.equal(newEvaluationFile("/p/scores/website/explore-2.json", (f) => taken.has(f)), "/p/scores/website/explore-3.json");
+  const long = "a".repeat(64);
+  const name = path.basename(newEvaluationFile(`/p/${long}.json`, () => false), ".json");
+  assert.equal(name.length, 64);
+  assert.ok(name.endsWith("-2"));
 });
 
 test("empty evidence falls back to the old evidence; both empty omits the key", () => {
