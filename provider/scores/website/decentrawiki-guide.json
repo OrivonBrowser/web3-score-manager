@@ -3,14 +3,15 @@
   "ids": [
     "cid:bafybeicww7vj2qjm5glim62hrk5ro7p3kd64aytxpf2pprnqs2q2lb2f6m",
     "cid:bafybeicq62wg4hffd3igac3t7ggkr6bcb7hikik75fugjryeg2qphtj2xy",
-    "cid:bafybeiaguadwjnfdrtua35mmcvtq5ll2dqpknsmbftbgqjopxxml3zp4sm"
+    "cid:bafybeiaguadwjnfdrtua35mmcvtq5ll2dqpknsmbftbgqjopxxml3zp4sm",
+    "cid:bafybeicwq4ldplx5a4qvmsx2lp6qp6md6fm6isikgwfz5ahyfjngzcrjta"
   ],
   "names": [
     "decentrawiki.eth"
   ],
   "name": "DecentraWiki guide",
   "version": "0.1.4",
-  "evaluated": "2026-10-23",
+  "evaluated": "2026-10-26",
   "trustlessity": {
     "level": 4,
     "privacy": true
