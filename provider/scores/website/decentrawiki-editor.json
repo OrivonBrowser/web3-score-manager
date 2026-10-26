@@ -2,25 +2,25 @@
   "subject": "website",
   "ids": [
     "sha256:8022c858f3315c7dfba0a960f14b802898cbb98cfdf25485c00785113bfe1bc3",
-    "cid:bafybeihlls5dp22lzwbvycw653rbmsax6vihac6cflft4ltzwaklvxn5ze",
     "sha256:d9e16478eff0574fbd9596c48da3e4ea8b62ec5b091be6a5c5473572685021be",
     "cid:bafybeiaoxawo647nar7ksmx7qgkegvjld7rkylfrxh4epbjkvesqhz7w3e",
     "sha256:74232a8b31b561aaaf9a2fcccbc450e37a2ad8151a9076fa145427d710cbece1",
     "cid:bafybeib5zvk3q6ovwrff6xwxded6dzx65ioarpf7bt3k26nozk2pdlqxai",
     "sha256:20d4be6458a999ae844850c60c4d1cf673eb3f68f64026fb64a43ceeb4b65465",
-    "cid:bafybeickxi2tborocqpae2svhjdsepdjddi5rcmhj64mbpvgvqrcbboqnm"
+    "cid:bafybeickxi2tborocqpae2svhjdsepdjddi5rcmhj64mbpvgvqrcbboqnm",
+    "cid:bafybeicujncpyaz5qdmwinzbpfddon6kchav3i7sv3pogqafnpbqvbltb4"
   ],
   "names": [
     "editor.decentrawiki.eth"
   ],
   "name": "DecentraWiki editor",
-  "version": "0.1.4",
-  "evaluated": "2026-10-23",
+  "version": "0.1.5",
+  "evaluated": "2026-10-26",
   "trustlessity": {
     "level": 4,
     "privacy": false
   },
-  "summary": "An editor that publishes TiddlyWiki wikis on IPFS, open source in orivon-ports, its scripts unminified. Opening it fetches only its own files; a wiki's own scripts run in a sandboxed frame. Wikis and keys stay in this browser. It edits offline and computes each IPFS address itself; a pin counts only when the node, service or Orivon's free pinning (named, 30 days) reports that address, and a CAR file needs none. Not private: publishing and import show the person's IP address.",
+  "summary": "An editor that publishes TiddlyWiki wikis on IPFS, open source in orivon-ports, its scripts unminified. Opening it fetches only its own files; a wiki's own scripts run in a sandboxed frame. Wikis and keys stay in this browser. It computes each IPFS address itself and counts a pin only when the node or service reports that address. In Orivon it can run its own shipped IPFS node. Not private: publishing and import show the person's IP address.",
   "operations": [
     {
       "name": "Keep and edit wikis",
@@ -33,16 +33,14 @@
     {
       "name": "Publish a wiki",
       "trustlessity": {
-        "level": 4,
-        "privacy": false
+        "level": 4
       },
-      "note": "The address is computed here from the bytes sent; the pin is refused unless the service reports that same address. The dialog names the service, and for free pinning its end date, before Publish is pressed. The chosen service sees the person's IP address and the wiki."
+      "note": "The address is computed here; the pin is refused unless the service reports that same address. The dialog names the service, and for free pinning its end date. In Orivon the wiki can go from a node run in the page to Orivon's node. The service sees the person's IP address and the wiki."
     },
     {
       "name": "Import a wiki by its IPFS address",
       "trustlessity": {
-        "level": 4,
-        "privacy": false
+        "level": 4
       },
       "note": "Fetched from public gateways and checked block by block against the address; the gateway sees what is fetched."
     },
@@ -59,26 +57,30 @@
     {
       "name": "The pinning node or service the person chose",
       "trustlessity": {
-        "level": 2,
-        "privacy": false
+        "level": 2
       },
       "note": "Its answer is checked against the address computed here. It sees the person's IP address and receives the wiki they publish."
     },
     {
       "name": "Orivon's free pinning (telemetry.orivonstack.com/decentrawiki), when chosen",
       "trustlessity": {
-        "level": 2,
-        "privacy": false
+        "level": 2
       },
-      "note": "Optional and named with its 30-day end date; it is the default only when nothing else is set up. Its answer is checked against the address computed here. It sees the person's IP address and the wiki, and records only the wiki's address. If it stops, any other service or a CAR file still publishes."
+      "note": "Optional and named with its end date. Its answer is checked against the address computed here. It sees the person's IP address and the wiki. If it stops, any other service or a CAR file still publishes."
     },
     {
       "name": "Public IPFS gateways, on import by address",
       "trustlessity": {
-        "level": 2,
-        "privacy": false
+        "level": 2
       },
       "note": "Every block is checked against its CID. The gateway sees the person's IP address and which address they fetch."
+    },
+    {
+      "name": "The page's own IPFS node, on this computer (127.0.0.1:5180-5189)",
+      "trustlessity": {
+        "level": 2
+      },
+      "note": "Started only when publishing with free pinning in Orivon. A local program shipped in the build's own files. It dials Orivon's node on port 4001, which sees the person's IP address."
     }
   ],
   "evidence": [
