@@ -5,13 +5,14 @@
     "cid:bafybeic7eptsxqu2qwwmnfgkhlg5di6ggbes5htnfbkn2fvda5q7stbybi",
     "cid:bafybeibuxd7ijuwdqfpmzbfvrrjos652nwxfqrvqnmvmvwqgnvq4ibzqhq",
     "cid:bafybeicvs6vfm5a7qng42v7zt3yfd3vhkyvwytxfbs3pidj5a5ywo4o4hm",
-    "cid:bafybeifsdn42xctnmu3ednghx6boxdgyhugt7ssmuuleq7jw2d4lwrug3a"
+    "cid:bafybeifsdn42xctnmu3ednghx6boxdgyhugt7ssmuuleq7jw2d4lwrug3a",
+    "cid:bafybeic2j45wnik3t63zmtwz22byjv3ed7doemjf2bz3kpw6hqbh4ivyjm"
   ],
   "names": [
     "aero.drome.eth"
   ],
   "name": "Aerodrome",
-  "evaluated": "2026-10-23",
+  "evaluated": "2026-10-27",
   "trustlessity": {
     "level": 2,
     "privacy": false
