@@ -116,6 +116,8 @@ another form of anonymity shows their IP address and what they do, so it is not 
 preserving even when the user asked for it after a warning. A warning is enough only for a risky
 action the user takes themselves, such as publishing something under their name, never for a
 connection. The site's own files, which Orivon fetches the same way for every site, do not count.
+A connection into an anonymity network such as Tor is private: the relay that sees the person's IP
+address learns only that they use the network, never what they reach or publish.
 
 - AirGap Vault, Walletbeat, ronan.eth, raffy.eth, ricmoo.eth and ENS Interviews connect to nothing
   beyond their own files: Level 4 with privacy.
@@ -126,6 +128,8 @@ connection. The site's own files, which Orivon fetches the same way for every si
   the provider their IP address and that they opened Explore: Level 4 without privacy.
 - WebTorrent shows the user's IP address and the torrents they fetch to trackers, the DHT and
   every peer: Level 4 without privacy.
+- TorSocks reaches only the Tor network, whose relays that see the person's IP address learn only
+  that they run Tor: Level 4 with privacy.
 
 ## How to check a site
 
