@@ -1,13 +1,14 @@
 {
   "subject": "website",
   "ids": [
-    "cid:bafybeicdp4k4ygepdb3se65nc3dccpi3kj5wsjf22f23z56qfi3untvnma"
+    "cid:bafybeicdp4k4ygepdb3se65nc3dccpi3kj5wsjf22f23z56qfi3untvnma",
+    "cid:bafybeihh3yeubki552vt2oulksd25m6v6wkzy6zahuxrmweibfdgs6z4py"
   ],
   "names": [
     "ronan.eth"
   ],
   "name": "Ronan Sandford",
-  "evaluated": "2026-10-05",
+  "evaluated": "2026-10-27",
   "trustlessity": {
     "level": 4,
     "privacy": true
