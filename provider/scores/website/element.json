@@ -1,14 +1,13 @@
 {
   "subject": "website",
   "ids": [
-    "sha256:a42796bc8b56a0b3e06d2e76d1e2aac76e99e8e09d5b65d2045f7bec508bae57",
-    "cid:bafybeifbqmphucl4qe3vpuhnwlyk2pusmdnv5vjs4xumvmshdttrdg2p64",
     "sha256:c3c7f8f8227a5b6127e6622864ec9d6c0bc4180c87032e0df4b897f0cf961247",
     "cid:bafybeiejev3mbko3dqbjoihrvctufjikokb6ql5zobt47ok5vtjcyh3ig4",
     "sha256:17fa3435bb27e4ca4751771e873c37503cb1dfce6866f63c167bbc85af61c075",
     "cid:bafybeigalu55lavkmxwbamq3s3rzpmbg5zshwhagzsqku3oexx5xqdtp2u",
     "sha256:eb15ba3fd39f14665ebde67fc6459e3acdd0df33d5b66bc71d27351040cb4c80",
-    "cid:bafybeib6tvgsqv7lwwoa5soizl5uaykbrvqe7ftnf45lhgajhefrlhcn5a"
+    "cid:bafybeib6tvgsqv7lwwoa5soizl5uaykbrvqe7ftnf45lhgajhefrlhcn5a",
+    "cid:bah5acgzazuhvpchexw5cw4mnsoipesdm55gj26kgwzr4w544f6agarajfmpq"
   ],
   "names": ["element.orivonstack.eth"],
   "name": "Element",
