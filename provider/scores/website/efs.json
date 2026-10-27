@@ -2,7 +2,8 @@
   "subject": "website",
   "ids": [
     "cid:bafybeiehnviixu674bvbazajj27x2kffn7gswn2rfms62juaa6ijywu6pm",
-    "cid:bafybeidhx6rcbxhjpqeirqwysvi6uvnm2reuh6lyrbnlbx4q3oyuahlhmu"
+    "cid:bafybeidhx6rcbxhjpqeirqwysvi6uvnm2reuh6lyrbnlbx4q3oyuahlhmu",
+    "cid:bafybeibbguk5fz5pthzmtr4sbq7454tuxrbrvvjnjfsixauspqcbrmz6za"
   ],
   "names": [
     "app.efs.eth"
@@ -20,7 +21,7 @@
       "trustlessity": {
         "level": 1
       },
-      "note": "Read without a light client. PublicNode and Tenderly sepolia endpoints are new in this build."
+      "note": "Read without a light client."
     },
     {
       "name": "WalletConnect's servers (pulse, explorer-api.walletconnect.com)",
