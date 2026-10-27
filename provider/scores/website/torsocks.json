@@ -1,0 +1,24 @@
+{
+  "subject": "website",
+  "ids": [
+    "sha256:8eb445fa98de52f75fd315b915be1a863eb82fc68edcc9b1117eac2b20226cf0",
+    "cid:bafybeigg4fubtbuuust73dn7b6oflillszvjebdw3jcroj73xsckuqt2ou"
+  ],
+  "names": ["torsocks.eth"],
+  "name": "TorSocks",
+  "version": "0.1.4",
+  "evaluated": "2026-10-27",
+  "trustlessity": { "level": 4, "privacy": true },
+  "summary": "Tor inside Orivon: a SOCKS5 proxy and onion services, written in orivon-ports on Arti, the Tor Project's Rust Tor (MIT or Apache-2.0), compiled to WebAssembly. It runs only what it ships; opening it fetches only its own files. Arti accepts the relay list only when Tor's directory authorities signed it, and any of thousands of relays will do, so it relies on no server: Level 4. Private: the relays that see the person's IP address learn that they run Tor, never what they reach or publish.",
+  "operations": [
+    { "name": "Send a program's traffic through the SOCKS5 proxy", "trustlessity": { "level": 4, "privacy": true }, "note": "It leaves through a three-relay circuit, so the site sees an exit relay's address, not the person's; names are resolved through Tor. An exit relay can read what is not encrypted (plain http), never who sent it." },
+    { "name": "Open .onion sites", "trustlessity": { "level": 4, "privacy": true }, "note": "An onion address is the service's own key, and the connection is checked against it end to end." },
+    { "name": "Publish an article, a picture, files or a website at a .onion address", "trustlessity": { "level": 4, "privacy": true }, "note": "Served from this computer while TorSocks is open, at an address made from a key kept in the app's files. Visitors and relays do not learn the publisher's IP address. The page says a byline is public." },
+    { "name": "Keep Tor's state, keys, settings and publications", "trustlessity": { "level": 4, "privacy": true }, "note": "Stored only in this app's own files on this computer." }
+  ],
+  "connections": [
+    { "name": "Tor relays", "trustlessity": { "level": 2 }, "note": "Each relay's keys are checked against the signed relay list before a circuit uses it, and every hop is encrypted. The first relay sees the person's IP address and that they run Tor, never where the traffic goes." },
+    { "name": "Tor directory authorities and directory caches", "trustlessity": { "level": 2 }, "note": "They send the relay list, which Arti accepts only when a majority of the directory authorities signed it. They see the IP address of a computer running Tor, not what it does." }
+  ],
+  "evidence": ["https://github.com/OrivonBrowser/orivon-ports/tree/main/apps/torsocks", "https://gitlab.torproject.org/tpo/core/arti/-/tree/ce8bc6e0998bd5a4efdf06dd62dce53c98ea1087"]
+}
