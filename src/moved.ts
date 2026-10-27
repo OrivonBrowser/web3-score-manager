@@ -12,6 +12,9 @@ export type NameState =
   | { kind: "moved"; name: string; file: string; now: string }
   | { kind: "unresolved"; name: string; file: string; reason: string };
 
+/** The position of an evaluation file among those of one app: `explore-2.json` follows `explore.json`, which counts as 1. */
+const order = (file: string): number => Number(/-(\d+)\.json$/.exec(file)?.[1] ?? 1);
+
 /**
  * Each distinct watched name, in the order it first appears. A name is judged when what it serves
  * is among the ids of any evaluation that lists it. `file` is the evaluation that judges it, or, for
@@ -29,7 +32,8 @@ export async function checkNames(evaluations: LoadedEvaluation[], resolve: Resol
     while (next < jobs.length) {
       const at = next++;
       const { name, items } = jobs[at]!;
-      const latest = items.reduce((a, b) => (b.evaluation.evaluated >= a.evaluation.evaluated ? b : a));
+      const latest = items.reduce((a, b) =>
+        b.evaluation.evaluated > a.evaluation.evaluated || (b.evaluation.evaluated === a.evaluation.evaluated && order(b.file) >= order(a.file)) ? b : a);
       try {
         const now = await resolve(name);
         const judging = items.find((item) => item.evaluation.ids.includes(now));

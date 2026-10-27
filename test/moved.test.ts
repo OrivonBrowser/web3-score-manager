@@ -127,6 +127,17 @@ test("a name in two evaluations is judged when it resolves to an id of either", 
   assert.equal(elsewhere.length, 2);
 });
 
+test("a moved name points at the later file of its app when two share a day", async () => {
+  const ids = Array.from({ length: 8 }, (_, i) => `sha256:${String(i).repeat(64)}`);
+  const dir = makeProvider([
+    ["website", "explore", website({ ids, names: ["app.eth"], evaluated: "2026-10-05" })],
+    ["website", "explore-2", website({ ids: [`sha256:${"9".repeat(64)}`], names: ["app.eth"], evaluated: "2026-10-05" })],
+  ]);
+  const [state] = await checkNames(loadProvider(dir).evaluations, async () => `cid:${V0_AS_V1}`);
+  assert.equal(state!.kind, "moved");
+  assert.match(state!.file, /explore-2\.json$/);
+});
+
 test("moved asks the resolver for every watched name and exits 1 when one moved", async () => {
   const roots: Record<string, string> = { "/blog.eth": V1, "/app.eth": V1 };
   const server = createServer((req, res) => {
