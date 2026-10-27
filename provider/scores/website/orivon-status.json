@@ -1,14 +1,13 @@
 {
   "subject": "website",
   "ids": [
-    "sha256:55b3971b3ae0ee4865e0fda10eeb40f5d465c20c7910a2498b82f9ffe5cf5e3f",
-    "cid:bafybeic3fmg34oyg3i4dgyqdbp3uiiwaigwb7vottq6eznc3yvuwvaz67m",
     "sha256:f5046fb63975722743eee5bd1bdcf01b2fb76a2126b667a839b52f8119beaa28",
     "cid:bafybeiezh4jy4j3m4h2n2lcke4wqwuaseo6zee5njhtrslwrm67zdcm6de",
     "sha256:eacb4d69b9b6b5b9fe67fde8044475e1a0e5f6ef8ef7c5e7b11a485afc457190",
     "cid:bafybeidlx7whfqrbd4yccdxljwamwle6xyrnf6n3laz5oozc7vfqurhtk4",
     "sha256:7a0ac52e58c02d0451ec55bc62ec03cbb3f176bcf9a39e603bca73e5cedce460",
-    "cid:bafybeifjdzcrj6nb7igqgxs7k3kphp5ktwsqqsifmwuzq254tlgkg7zxca"
+    "cid:bafybeifjdzcrj6nb7igqgxs7k3kphp5ktwsqqsifmwuzq254tlgkg7zxca",
+    "cid:bah5acgzausqxvcy65fcunsovc5dpoefb4judr7ahprbtepogoscf6qe7hyra"
   ],
   "names": [
     "status.orivonstack.eth"

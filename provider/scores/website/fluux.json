@@ -2,7 +2,8 @@
   "subject": "website",
   "ids": [
     "sha256:f15399bdb397218bc79f83d8b7f0bde2173f5db289b567b5d0047a6d11d96326",
-    "cid:bafybeifjwruyrxhgdynomju6ijxfc7caoz6z62sfk7mjgrqijpvkpk6qmm"
+    "cid:bafybeifjwruyrxhgdynomju6ijxfc7caoz6z62sfk7mjgrqijpvkpk6qmm",
+    "cid:bah5acgzavtz56n5rzuava2c5sn5kyk4g2kqvdbtxujpwo747jdrqlwon67pq"
   ],
   "names": ["fluux.orivonstack.eth"],
   "name": "Fluux Messenger",

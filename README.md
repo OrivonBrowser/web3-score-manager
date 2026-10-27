@@ -196,6 +196,12 @@ After rebuilding a port, refresh its identifiers: run `web3-score ids <static-di
 bundle hash and the `ipfs add` command above for the new CID, then replace the old values in the
 evaluation's `ids`.
 
+An Orivon site whose `.eth` name points at a Swarm feed is the same build under a third identifier:
+the Swarm reference of that version, as a CIDv1 of codec swarm-manifest (`cid:bah5…`), which Orivon
+asks about when it loads the site from Swarm. Orivon's feed job uploads each new version and prints
+the identifier ready to paste (`swarm-feeds.mjs list` in orivon-mvp, column Score id); add it after the build's IPFS CID, and only to
+an evaluation that already judges that IPFS CID.
+
 ## Development
 
 ```

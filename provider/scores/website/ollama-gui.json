@@ -2,7 +2,8 @@
   "subject": "website",
   "ids": [
     "sha256:5664d5970c2f177af691e85b4538d77ae3ee6e63bc7cfa881f867bd6a3b8c6a1",
-    "cid:bafybeibkfdnmunfhy7warnusjug23mfjqghjfgh45wuxqejsseik5dgpte"
+    "cid:bafybeibkfdnmunfhy7warnusjug23mfjqghjfgh45wuxqejsseik5dgpte",
+    "cid:bah5acgzaffkuesm7exm5bbxuejo6pqkxrhxxhgyitp5aiz3ksp6x2b2v5r4q"
   ],
   "names": ["ollamagui.orivonstack.eth"],
   "name": "Ollama GUI",

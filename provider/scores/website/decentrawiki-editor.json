@@ -1,14 +1,14 @@
 {
   "subject": "website",
   "ids": [
-    "sha256:8022c858f3315c7dfba0a960f14b802898cbb98cfdf25485c00785113bfe1bc3",
     "sha256:d9e16478eff0574fbd9596c48da3e4ea8b62ec5b091be6a5c5473572685021be",
     "sha256:74232a8b31b561aaaf9a2fcccbc450e37a2ad8151a9076fa145427d710cbece1",
     "sha256:20d4be6458a999ae844850c60c4d1cf673eb3f68f64026fb64a43ceeb4b65465",
     "cid:bafybeickxi2tborocqpae2svhjdsepdjddi5rcmhj64mbpvgvqrcbboqnm",
     "cid:bafybeicujncpyaz5qdmwinzbpfddon6kchav3i7sv3pogqafnpbqvbltb4",
     "cid:bafybeign6c7fxzsfvn7ewsc6tdmn4t4ywphbhepqbgdk3wnomp4r6ykoae",
-    "cid:bafybeigboqq6yxt527atqaypxkvcjd34dz2dpbkziuval3j2ld4s54e7ma"
+    "cid:bafybeigboqq6yxt527atqaypxkvcjd34dz2dpbkziuval3j2ld4s54e7ma",
+    "cid:bah5acgza7vbcdwo5hmftfpigjifszqdjep5pefqhyxypzdeepx2csgli3f3a"
   ],
   "names": [
     "editor.decentrawiki.eth"

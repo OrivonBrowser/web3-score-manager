@@ -2,7 +2,8 @@
   "subject": "website",
   "ids": [
     "sha256:8eb445fa98de52f75fd315b915be1a863eb82fc68edcc9b1117eac2b20226cf0",
-    "cid:bafybeigg4fubtbuuust73dn7b6oflillszvjebdw3jcroj73xsckuqt2ou"
+    "cid:bafybeigg4fubtbuuust73dn7b6oflillszvjebdw3jcroj73xsckuqt2ou",
+    "cid:bah5acgza4ylfjbtvb6lukxjo5isvoqokbrxtosxyv2hy3yyxgdw3boewk45a"
   ],
   "names": ["torsocks.eth"],
   "name": "TorSocks",
