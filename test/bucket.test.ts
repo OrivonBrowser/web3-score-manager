@@ -6,6 +6,9 @@ const VECTORS: [string, string][] = [
   ["sha256:26054c511f3394b66c6a022a48d82e559d637ac4b111657482ec6b7a7447fbcf", "4c"],
   ["sha256:b6761c9738dab8dae6c3ac00c9d048e26992ebbd5f095601f1b8e4782ee24cb2", "da"],
   ["cid:bafybeieqer67ojhi6q3eiatmrcu3r3mqjehn7hwit2satqjfnljo65fb4q", "c6"],
+  ["arw:7hY2dQxLwq0tZ5Nf_3vKpB8mR1cJ4sEoUaGiTkWnXyA", "68"],
+  ["btmh:12200123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef", "26"],
+  ["btih:0123456789abcdef0123456789abcdef01234567", "4f"],
 ];
 
 test("bucket test vectors at 2 hex characters", () => {

@@ -47,6 +47,23 @@ test("init, new, add, list, remove round trip", () => {
   assert.throws(() => removeEvaluation(dir, "demo"), /no evaluation/);
 });
 
+test("new and remove take an arw, btmh or btih identifier, and new refuses one that breaks its form", () => {
+  const dir = path.join(tempDir(), "p");
+  initProvider(dir, { name: "P", bucketHexChars: 2 });
+  const ids = [
+    "arw:7hY2dQxLwq0tZ5Nf_3vKpB8mR1cJ4sEoUaGiTkWnXyA",
+    "btmh:12200123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef",
+    "btih:0123456789abcdef0123456789abcdef01234567",
+  ];
+  const file = newEvaluation(dir, "website", "mixed", [SHA_A, ...ids]);
+  assert.deepEqual(JSON.parse(readFileSync(file, "utf8")).ids, [SHA_A, ...ids]);
+  assert.deepEqual(listEvaluations(dir).issues, []);
+  assert.throws(() => newEvaluation(dir, "website", "upper", [ids[2]!.toUpperCase().replace("BTIH", "btih")]), /--id btih:.*lowercase/);
+  assert.throws(() => newEvaluation(dir, "operation", "wrong-subject", [ids[0]!]), /not allowed on a operation/);
+  removeEvaluation(dir, ids[1]!);
+  assert.ok(!existsSync(file));
+});
+
 test("add rejects an invalid file and writes nothing", () => {
   const dir = path.join(tempDir(), "p");
   initProvider(dir, { name: "P", bucketHexChars: 2 });
