@@ -5,22 +5,21 @@
     "sha256:74232a8b31b561aaaf9a2fcccbc450e37a2ad8151a9076fa145427d710cbece1",
     "sha256:20d4be6458a999ae844850c60c4d1cf673eb3f68f64026fb64a43ceeb4b65465",
     "cid:bafybeickxi2tborocqpae2svhjdsepdjddi5rcmhj64mbpvgvqrcbboqnm",
-    "cid:bafybeicujncpyaz5qdmwinzbpfddon6kchav3i7sv3pogqafnpbqvbltb4",
-    "cid:bafybeign6c7fxzsfvn7ewsc6tdmn4t4ywphbhepqbgdk3wnomp4r6ykoae",
-    "cid:bafybeigboqq6yxt527atqaypxkvcjd34dz2dpbkziuval3j2ld4s54e7ma",
-    "cid:bah5acgza7vbcdwo5hmftfpigjifszqdjep5pefqhyxypzdeepx2csgli3f3a"
+    "sha256:bda49bfcc1793443c8f66be059de7609a8c71846d23a3a1a37c3ebcab347a9a5",
+    "cid:bafybeiciev2azt4vhv3a4ckpdbuhtahvhlh77o2uw3efibeuohkg5tbu5m",
+    "cid:bah5acgza4t4qm5joidetqwrysjy2aqciaq7lslknb3t22z7cadpzkrmz2bbq"
   ],
   "names": [
     "editor.decentrawiki.eth"
   ],
   "name": "DecentraWiki editor",
-  "version": "0.1.8",
+  "version": "0.1.9",
   "evaluated": "2026-10-27",
   "trustlessity": {
     "level": 4,
     "privacy": false
   },
-  "summary": "An editor that publishes TiddlyWiki wikis on IPFS, open source in orivon-ports, its scripts unminified. Opening it fetches only its own files. Wikis and keys stay in this browser. It computes each IPFS address itself, counts a pin only when the service reports that address, and now gives a wiki a stable IPNS address whose records are checked against the name. Not private: publishing, import and name look-ups show the person's IP address.",
+  "summary": "An editor that publishes TiddlyWiki wikis on IPFS, open source in orivon-ports, its scripts unminified; the IPFS node it ships is built from the public OrivonBrowser/orivon-ipfs-node. Opening it fetches only its own files. Wikis and keys stay in this browser. It computes each IPFS address itself, counts a pin only when the service reports that address, and now gives a wiki a stable IPNS address whose records are checked against the name. Not private: publishing, import and name look-ups show the person's IP address.",
   "operations": [
     {
       "name": "Keep and edit wikis",
@@ -87,11 +86,12 @@
       "trustlessity": {
         "level": 2
       },
-      "note": "Started only when publishing with free pinning in Orivon. A local program shipped in the build's own files. It dials Orivon's node, which sees the person's IP address."
+      "note": "Started only when publishing with free pinning in Orivon. A local program shipped in the build's own files, built from the public OrivonBrowser/orivon-ipfs-node. It dials Orivon's node, which sees the person's IP address."
     }
   ],
   "evidence": [
     "https://github.com/OrivonBrowser/orivon-ports/tree/main/apps/decentrawiki",
+    "https://github.com/OrivonBrowser/orivon-ipfs-node",
     "https://github.com/TiddlyWiki/TiddlyWiki5"
   ]
 }
