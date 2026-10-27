@@ -1,6 +1,9 @@
 {
   "subject": "website",
   "ids": [
+    "sha256:0f16cf5367ab6716d649b51f7bbaf50ab393f25ce607ba7b2e2bc5bb0195f196",
+    "cid:bafybeiatmxpyhyheolxp2277olwoa7t3iwz7o777ef35tbtq3erojja7su",
+    "cid:bah5acgzag4qjug5snnellv76imzxvtvyofi6pviwnpefdy7zswvzitwb5h2q",
     "sha256:57e84e53e3562bdec2f8520113109898d7170fe9118ab58cac83898ca8583a2d",
     "cid:bafybeif5bho4qac34idnjldofwaj34tlkqr6cjusfpqhqtifija4sxduym",
     "cid:bah5acgzanempvzhm4jlj722xbcj5qws22nr6uplgn772eif43jj26fivu5oa"
@@ -9,13 +12,13 @@
     "share.orivonstack.eth"
   ],
   "name": "Orivon Share",
-  "version": "0.1.2",
-  "evaluated": "2026-10-27",
+  "version": "0.1.3",
+  "evaluated": "2026-10-28",
   "trustlessity": {
     "level": 4,
     "privacy": false
   },
-  "summary": "Shares files, folders and websites from the person's own computer over IPFS, optionally encrypted with age under a password. Open source in orivon-ports, scripts unminified; its IPFS node is built from the public OrivonBrowser/orivon-ipfs-node. Opening it fetches only its own files. Content is encrypted and addressed here, and everything received is checked block by block. Trackers, STUN and the DHT only find peers and gateways carry checked blocks, so it relies on no server: Level 4. Not private: trackers, peers and gateways see the person's IP address.",
+  "summary": "Shares files, folders and websites from the person's own computer over IPFS, optionally encrypted with age under a password. Open source in orivon-ports, scripts unminified; its IPFS node is built from the public OrivonBrowser/orivon-ipfs-node. Opening it fetches only its own files. Everything received is checked block by block. Trackers, the DHT and Orivon's relay only connect peers, and gateways carry checked blocks, so it relies on no server: Level 4. Not private: trackers, peers, the relay and gateways see the person's IP address.",
   "operations": [
     {
       "name": "Share files, a folder or a website",
@@ -88,7 +91,15 @@
         "level": 2,
         "privacy": false
       },
-      "note": "A local program in the build's own files, run under the grants the person accepted. Blocks are checked against their address; the DHT and bootstrap peers only find peers. A reachable computer announces the shares it serves. Peers see the person's IP address and what is fetched or announced."
+      "note": "A local program in the build's own files, run under the grants the person accepted. Blocks are checked against their address; the DHT and bootstrap peers only find peers. The node announces the shares it serves. Peers see the person's IP address and what is fetched or announced."
+    },
+    {
+      "name": "Orivon's relay (152.228.138.30:4003)",
+      "trustlessity": {
+        "level": 2,
+        "privacy": false
+      },
+      "note": "While Share is open, its IPFS node holds a place on this libp2p relay, so a computer behind a router can be reached by its IPFS address. The relay passes encrypted traffic and stores nothing; every block is checked against its address. It sees both sides' IP addresses and how much passes."
     },
     {
       "name": "Cloudflare DNS (1.1.1.1, 1.0.0.1)",
