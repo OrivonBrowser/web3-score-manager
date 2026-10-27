@@ -59,11 +59,12 @@ are independent; each one holds if the others fail.
   answer is structured output checked against `judge/schema.json`.
 - **Only validated values in the prompt.** The prompt holds the watched name, the CID and the date,
   each checked first. Site text reaches the judge as files it reads, never as prompt text.
-- **A deterministic merge.** The watch, not the model, writes the evaluation: it keeps `ids`
-  (at most eight, the new build last; at eight the new build goes in a new file listing the same names), `names` and `subject`, takes the judged fields, and refuses
-  a scale violation (privacy only at website Level 4, operation 4 and 5, connection 3, evidence
-  that is not an absolute http, https, ipfs or ipns address). `web3-score check` must pass on the
-  result.
+- **A deterministic merge.** The watch, not the model, writes the evaluation: it keeps `ids` (at
+  most eight, the new build last; a build at an evaluation that holds eight goes in a new file,
+  `<slug>-2.json`, that lists the same names), `names` and `subject`, takes the judged fields, and
+  refuses a scale violation (privacy only at website Level 4, operation 4 and 5, connection 3,
+  evidence that is not an absolute http, https, ipfs or ipns address). `web3-score check` must pass
+  on the result.
 - **A secret scan.** The raw output is searched for the OAuth token, the Telegram token and the
   shapes of API keys, bot tokens, private keys and the sandbox's masked-token placeholder. A hit
   discards the answer and is reported without the match.

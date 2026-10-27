@@ -90,8 +90,8 @@ with `-`, a last label that is not all digits and is neither `localhost` nor `or
 `docs.ipfs.tech`), `ipns://<base36 k51... key>`, or `ipns://<DNSLink host>`. A name is listed once
 within an evaluation and may be listed by several. An evaluation holds at most 8 ids, so a later
 build is judged in a new file that lists the same names, and the watch writes it that way
-(`watch/merge.ts`: `<slug>-2.json`, then `-3`). A name that moves to new content loses its evaluation until the new build
-is judged. `moved` lists those names: it takes the union of the ids of every evaluation that lists
+(`watch/merge.ts`: `<slug>-2.json`, then `-3`). A name that moves to new content loses its
+evaluation until the new build is judged. `moved` lists those names: it takes the union of the ids of every evaluation that lists
 a name, and asks for the name's root by form. An ENS name goes to the resolver template
 (`https://{name}.limo/` by default) and its root is the first entry of the `X-Ipfs-Roots` header.
 A DNS host or `ipns://<host>` name is read from its `_dnslink` TXT record through DNS over HTTPS
