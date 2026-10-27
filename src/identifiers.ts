@@ -1,10 +1,10 @@
 import { CID } from "multiformats/cid";
 import type { Subject } from "./types.ts";
 
-export type IdType = "sha256" | "cid" | "caip10" | "caip2" | "origin";
+export type IdType = "sha256" | "cid" | "arw" | "btmh" | "btih" | "caip10" | "caip2" | "origin";
 
 export const ID_TYPES: Record<Subject, readonly IdType[]> = {
-  website: ["sha256", "cid"],
+  website: ["sha256", "cid", "arw", "btmh", "btih"],
   operation: ["caip10"],
   connection: ["caip2", "origin"],
 };
@@ -12,6 +12,12 @@ export const ID_TYPES: Record<Subject, readonly IdType[]> = {
 const CAIP10 = /^[-a-z0-9]{3,8}:[-_a-zA-Z0-9]{1,32}:[-.%a-zA-Z0-9]{1,128}$/;
 const CAIP2 = /^[-a-z0-9]{3,8}:[-_a-zA-Z0-9]{1,32}$/;
 const SHA256 = /^[0-9a-fA-F]{64}$/;
+// arw, btmh and btih are written exactly as the standard's Identifiers table says, as Orivon looks them up:
+// another case, length, padding or alphabet is not that type, so none is rewritten.
+const ARWEAVE_ID = /^[A-Za-z0-9_-]{43}$/;
+/** A SHA-256 multihash: code 0x12, length 0x20, then the 32-byte digest. */
+const TORRENT_MULTIHASH = /^1220[0-9a-f]{64}$/;
+const TORRENT_INFOHASH = /^[0-9a-f]{40}$/;
 const ORIGIN = /^https:\/\/[^/?#@\s\\]+$/;
 
 export type Canonical = { ok: true; id: string; type: IdType } | { ok: false; message: string };
@@ -41,6 +47,15 @@ export function canonicalise(raw: string, subject: Subject): Canonical {
       } catch {
         return fail("cid is not a parseable CIDv0 or base32 CIDv1");
       }
+    case "arw":
+      if (!ARWEAVE_ID.test(value)) return fail("arw is an Arweave transaction id: 43 characters of base64url, exactly");
+      return { ok: true, type: "arw", id: raw };
+    case "btmh":
+      if (!TORRENT_MULTIHASH.test(value)) return fail("btmh is lowercase hex: 1220 and 64 hex characters, 68 in all");
+      return { ok: true, type: "btmh", id: raw };
+    case "btih":
+      if (!TORRENT_INFOHASH.test(value)) return fail("btih is lowercase hex: 40 characters");
+      return { ok: true, type: "btih", id: raw };
     case "caip10":
       if (!CAIP10.test(value)) return fail("caip10 must look like eip155:1:0xab...");
       return { ok: true, type: "caip10", id: raw };

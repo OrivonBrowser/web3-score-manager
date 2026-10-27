@@ -70,6 +70,22 @@ test("an evaluation with N ids yields N entries, sorted by id, in the right buck
   assert.deepEqual(seen.sort(), [...ids].sort());
 });
 
+test("arw, btmh and btih identifiers are filed in the buckets the standard's test vectors give", () => {
+  const vectors: [string, string][] = [
+    ["arw:7hY2dQxLwq0tZ5Nf_3vKpB8mR1cJ4sEoUaGiTkWnXyA", "68"],
+    ["btmh:12200123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef", "26"],
+    ["btih:0123456789abcdef0123456789abcdef01234567", "4f"],
+  ];
+  const dir = makeProvider([["website", "torrent-and-arweave", website({ ids: vectors.map(([id]) => id) })]], 2);
+  const out = path.join(tempDir(), "o");
+  writeSite(out, compileProvider(dir));
+  for (const [id, bucket] of vectors) {
+    const file = JSON.parse(read(out, `score/website/${bucket}.json`));
+    assert.deepEqual(file.entries.map((e: { id: string }) => e.id), [id]);
+  }
+  assert.deepEqual(tree(out).filter((f) => f.startsWith("score/website/")), vectors.map(([, bucket]) => `score/website/${bucket}.json`).sort());
+});
+
 test("two evaluations in one bucket share a file; empty buckets are absent", () => {
   const dir = makeProvider([
     ["website", "a", website({ ids: [SHA_A] })],

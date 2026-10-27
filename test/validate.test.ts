@@ -107,6 +107,48 @@ test("identifier types per subject", () => {
   rejects(op(SHA_A), "ids[0]", "operation");
 });
 
+const ARW_ID = "arw:7hY2dQxLwq0tZ5Nf_3vKpB8mR1cJ4sEoUaGiTkWnXyA";
+const BTMH_ID = "btmh:12200123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef";
+const BTIH_ID = "btih:0123456789abcdef0123456789abcdef01234567";
+
+test("a website evaluation may list an arw, btmh or btih identifier", () => {
+  accepts(website({ ids: [ARW_ID] }), "website");
+  accepts(website({ ids: [BTMH_ID] }), "website");
+  accepts(website({ ids: [BTIH_ID] }), "website");
+  const { evaluation } = validateSource(website({ ids: [SHA_A, ARW_ID, BTMH_ID, BTIH_ID] }), "f.json", "website");
+  assert.deepEqual(evaluation!.ids, [SHA_A, ARW_ID, BTMH_ID, BTIH_ID]);
+});
+
+test("an arw, btmh or btih identifier that breaks its form is an error at its place", () => {
+  rejects(website({ ids: [SHA_A, `${ARW_ID}a`] }), "ids[1]");
+  rejects(website({ ids: [BTMH_ID.toUpperCase().replace("BTMH", "btmh")] }), "ids[0]");
+  rejects(website({ ids: [SHA_A, BTIH_ID.replace("0123", "0G23")] }), "ids[1]");
+  rejects(website({ ids: [`${BTIH_ID}:x`] }), "ids[0]");
+  rejects(website({ ids: [BTIH_ID.toUpperCase()] }), "ids[0]");
+});
+
+test("an arw, btmh or btih identifier is not an identifier of an operation, a connection or a part", () => {
+  const op = (id: string) => ({ subject: "operation", ids: [id], name: "Op", evaluated: "2026-10-03", trustlessity: { level: 2 } });
+  const conn = (id: string) => ({ subject: "connection", ids: [id], name: "C", evaluated: "2026-10-03", trustlessity: { level: 2 } });
+  for (const id of [ARW_ID, BTMH_ID, BTIH_ID]) {
+    rejects(op(id), "ids[0]", "operation");
+    rejects(conn(id), "ids[0]", "connection");
+    rejects(website({ operations: [{ name: "p", trustlessity: { level: 1 }, id }] }), "operations[0].id");
+    rejects(website({ connections: [{ name: "p", trustlessity: { level: 1 }, id }] }), "connections[0].id");
+  }
+});
+
+test("an arw, btmh or btih identifier listed by two evaluations is an error", () => {
+  for (const id of [ARW_ID, BTMH_ID, BTIH_ID]) {
+    const one = validateSource(website({ ids: [id] }), "one.json").evaluation!;
+    const two = validateSource(website({ ids: [SHA_B, id] }), "two.json").evaluation!;
+    const issues = findDuplicateIds([{ file: "one.json", evaluation: one }, { file: "two.json", evaluation: two }]);
+    assert.equal(issues.length, 1, id);
+    assert.equal(issues[0]!.path, "ids[1]");
+  }
+  rejects(website({ ids: [ARW_ID, ARW_ID] }), "ids[1]");
+});
+
 test("ids: 1 to 8 entries, none repeated", () => {
   rejects(website({ ids: [] }), "ids");
   rejects(website({ ids: Array.from({ length: 9 }, (_, i) => `sha256:${String(i).repeat(64)}`) }), "ids");

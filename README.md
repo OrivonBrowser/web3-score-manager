@@ -105,11 +105,13 @@ moved. GitHub stops a scheduled workflow in a repository with no activity for 60
 Unknown fields are errors in source files, which catches typos. The built site contains only the
 standard's fields, and `names` is one of them. Identifiers are canonicalised: `sha256:` is
 lowercased, a `cid:` becomes a base32 CIDv1 (a CIDv0 is converted), and an identifier listed by
-two evaluations is an error.
+two evaluations is an error. `arw:`, `btmh:` and `btih:` are checked and never rewritten: they
+must already be spelled as the table says; another case, length, padding or a second colon is an
+error.
 
 | Subject | Identifier types |
 |---|---|
-| `website` | `sha256:<64 hex>` (Orivon bundle hash), `cid:<CID>` |
+| `website` | `sha256:<64 hex>` (Orivon bundle hash), `cid:<CID>`, `arw:<43 base64url characters>` (Arweave transaction id), `btmh:1220<64 lowercase hex>` (torrent SHA-256 multihash), `btih:<40 lowercase hex>` (torrent SHA-1 info-hash) |
 | `operation` | `caip10:<account>` |
 | `connection` | `caip2:<chain>`, `origin:https://host[:port]` |
 
