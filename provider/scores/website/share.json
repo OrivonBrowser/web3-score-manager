@@ -1,18 +1,18 @@
 {
   "subject": "website",
   "ids": [
+    "sha256:94501a118df56fb6c88de1c9bd15ae0c3a0724cd2f7ce27abd19dda15ffa076f",
+    "cid:bafybeidsfsvudxgfigibtrebwimzcppqkwjo2qmkb3gm2ms3xrasihttbq",
+    "cid:bah5acgzarqkvynijezgp7bdsahvjgbrjzhdw5is5d3cwdxzmtk2r2p5kqcka",
     "sha256:b717d18ea457c0bc921cd3f2d3698800051347680b25723851bf0f28eea614a3",
     "cid:bafybeihwyvxbmwhwttngycrc2nwdqxqv6rwtjbloavmgcbk5pt33rau7du",
-    "cid:bah5acgzarxjb7gl5bwo27ozc6uemisrz66ekrshl45jynxjassfjkipqs5fa",
-    "sha256:30af9a67ec40bead264fd5ecb7af3f6b6f998e6e1ae6ec0918f4a331727ee2ca",
-    "cid:bafybeiebaigq3ch3kl73p2vycrhy5de7c4ld2ssjwrznb6dfy2hqwewpma",
-    "cid:bah5acgzayxhfco3vogc76n3x2l2hx7dvvtqlpucnzncqgqns46jgjjmtwwha"
+    "cid:bah5acgzarxjb7gl5bwo27ozc6uemisrz66ekrshl45jynxjassfjkipqs5fa"
   ],
   "names": [
     "share.orivonstack.eth"
   ],
   "name": "Orivon Share",
-  "version": "0.1.6",
+  "version": "0.1.7",
   "evaluated": "2026-10-28",
   "trustlessity": {
     "level": 4,
@@ -65,7 +65,7 @@
         "level": 4,
         "privacy": false
       },
-      "note": "Only when the person picks a pinning service or their own IPFS node. The pin counts only when the service reports the address computed here. The service sees the person's IP address and the files, encrypted ones still encrypted."
+      "note": "Only when the person ticks Orivon's 30-day copy or picks a pinning service or their own node. It counts only when the service reports the address computed here. The service sees the IP address and the files, encrypted ones still encrypted; an unprotected copy on Orivon's server is public."
     }
   ],
   "connections": [
@@ -116,6 +116,14 @@
         "privacy": false
       },
       "note": "ipfs.filebase.io, trustless-gateway.link, ipfs.orbitor.dev. Every block is checked against its address. The gateway sees the person's IP address and the share's address."
+    },
+    {
+      "name": "Orivon's copy service (telemetry.orivonstack.com/share), when chosen",
+      "trustlessity": {
+        "level": 2,
+        "privacy": false
+      },
+      "note": "Only when the person ticks \"Keep a copy on Orivon's server\": it receives the share's CAR, keeps it 30 days on Orivon's IPFS node and Filebase, and its answer is checked against the address computed here. It sees the person's IP address and the files, encrypted ones still encrypted."
     },
     {
       "name": "The pinning service or IPFS node the person chose",
