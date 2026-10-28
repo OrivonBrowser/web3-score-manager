@@ -1,14 +1,16 @@
 {
   "subject": "website",
   "ids": [
+    "sha256:c293c7de00f915af3b3128e579a7c01df6795fcfe7e2e33958598233eee707bf",
+    "cid:bafybeibj6xay7yjqvaurvtcqn3gupwgqbty3weqo4zgijywandfu6ujlyy",
     "sha256:8eb445fa98de52f75fd315b915be1a863eb82fc68edcc9b1117eac2b20226cf0",
     "cid:bafybeigg4fubtbuuust73dn7b6oflillszvjebdw3jcroj73xsckuqt2ou",
     "cid:bah5acgza4ylfjbtvb6lukxjo5isvoqokbrxtosxyv2hy3yyxgdw3boewk45a"
   ],
   "names": ["torsocks.eth"],
   "name": "TorSocks",
-  "version": "0.1.4",
-  "evaluated": "2026-10-27",
+  "version": "0.1.5",
+  "evaluated": "2026-10-28",
   "trustlessity": { "level": 4, "privacy": true },
   "summary": "Tor inside Orivon: a SOCKS5 proxy and onion services, written in orivon-ports on Arti, the Tor Project's Rust Tor (MIT or Apache-2.0), compiled to WebAssembly. It runs only what it ships; opening it fetches only its own files. Arti accepts the relay list only when Tor's directory authorities signed it, and any of thousands of relays will do, so it relies on no server: Level 4. Private: the relays that see the person's IP address learn that they run Tor, never what they reach or publish.",
   "operations": [
