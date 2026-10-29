@@ -1,20 +1,21 @@
 {
   "subject": "website",
   "ids": [
-    "sha256:146f94a5b530e9b70b8d55dbe3dc53ce1fbc2424145f29bc6927979197a52922",
-    "cid:bafybeie2u4mydigo5ml5grz5rzgc5m22sbm5pdafmwjpmagy7vrtvh2j3i",
-    "sha256:128c5441600433802ab332795cbd9dc55729ad778b0a485465e7e5d92cdea436",
-    "cid:bafybeif4dr6wudovvi6bdevrlltjdmnfujixi3g6lonobo74khrl7w3ioe",
-    "cid:bah5acgzafc4alek5lmtmie4jm7rfbxrxjpawskl3ufcn3jdxgkyygwdirlga",
+    "sha256:be7599c35e3cc7775b11391adc09eb2fdc60fa44b959f949326d6254c7ded180",
+    "cid:bafybeic4wp7uktm3iuqzzylqbzvledzrsm2okf7nej4x54lbo4pu46rhou",
+    "cid:bah5acgzaj7yvqxrm2b34o6eudvyvdkc3nskgcz2lfkehprss63umnxfnhyra",
     "sha256:d817d0eb8e2781048f8f5b34fe99e8a4d336190e1d46abf33c242d5653d9f111",
-    "cid:bafybeidrsi35qzapfufjf6djoo3v62vrlbez7gfcasl7s52gxf76nqsn7q"
+    "cid:bafybeidrsi35qzapfufjf6djoo3v62vrlbez7gfcasl7s52gxf76nqsn7q",
+    "cid:bah5acgza6ynzhwaer6tnjpgf6s3zu2lqtqycruw3mlsx436hc52e37agiy5q",
+    "sha256:128c5441600433802ab332795cbd9dc55729ad778b0a485465e7e5d92cdea436",
+    "cid:bafybeif4dr6wudovvi6bdevrlltjdmnfujixi3g6lonobo74khrl7w3ioe"
   ],
   "names": [
     "explore.orivonstack.eth"
   ],
   "name": "Orivon Explore",
-  "version": "0.2.8",
-  "evaluated": "2026-10-28",
+  "version": "0.2.9",
+  "evaluated": "2026-10-29",
   "trustlessity": {
     "level": 4,
     "privacy": false

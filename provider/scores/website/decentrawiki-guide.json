@@ -6,14 +6,16 @@
     "cid:bafybeiaguadwjnfdrtua35mmcvtq5ll2dqpknsmbftbgqjopxxml3zp4sm",
     "cid:bafybeicwq4ldplx5a4qvmsx2lp6qp6md6fm6isikgwfz5ahyfjngzcrjta",
     "cid:bafybeieo765ky5l3p3uoihf4p56d6ljnfi7tywqve7u37jjy54qwyq4umi",
-    "cid:bah5acgzaffsjeffgvsnwaim7vsti3vs3aszpqfujg5fndzndl3o7knpr5vrq"
+    "cid:bah5acgzaffsjeffgvsnwaim7vsti3vs3aszpqfujg5fndzndl3o7knpr5vrq",
+    "cid:bafybeibookuymfzkv5ojdtruwsny6oogscafsed77izwl7osh5yrtbsi4q",
+    "cid:bah5acgzabvxbqux6lk7kw4uznvlzaqp72xc4ole2idondiql3stmattezudq"
   ],
   "names": [
     "decentrawiki.eth"
   ],
   "name": "DecentraWiki guide",
-  "version": "0.1.4",
-  "evaluated": "2026-10-27",
+  "version": "0.1.11",
+  "evaluated": "2026-10-29",
   "trustlessity": {
     "level": 4,
     "privacy": true
