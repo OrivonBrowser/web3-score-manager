@@ -1,26 +1,26 @@
 {
   "subject": "website",
   "ids": [
-    "sha256:d9e16478eff0574fbd9596c48da3e4ea8b62ec5b091be6a5c5473572685021be",
-    "sha256:74232a8b31b561aaaf9a2fcccbc450e37a2ad8151a9076fa145427d710cbece1",
-    "sha256:20d4be6458a999ae844850c60c4d1cf673eb3f68f64026fb64a43ceeb4b65465",
-    "cid:bafybeickxi2tborocqpae2svhjdsepdjddi5rcmhj64mbpvgvqrcbboqnm",
+    "sha256:23ed792d297e07e54eaecd1e2bee79b552892e30ffd52b2bb6c3422e0e67a6f4",
+    "cid:bafybeihhfw4j4snzh55ukzvjbujf4bdtz26645uwgp3bwuf4lim6ryiozm",
+    "cid:bah5acgzah37h6nrvualc7bfza5gpeoksuipbgnzkirstgrlfxb2cocvuv7fa",
+    "sha256:a432527086aad214578f335b76e517b64787b3d3e63ad493afc294e3f29de2f9",
+    "cid:bafybeic2tbucs6m2spoqy5mxf7oaw6c74ii6ouza2gwacmhr4ht7iybcy4",
+    "cid:bah5acgza24pf2f3fzzu45ytt77sk5gvihfpzmsi33ougyt6mlmf6jcnrksyq",
     "sha256:bda49bfcc1793443c8f66be059de7609a8c71846d23a3a1a37c3ebcab347a9a5",
-    "cid:bafybeiciev2azt4vhv3a4ckpdbuhtahvhlh77o2uw3efibeuohkg5tbu5m",
-    "cid:bah5acgza4t4qm5joidetqwrysjy2aqciaq7lslknb3t22z7cadpzkrmz2bbq",
-    "cid:bafybeic2tbucs6m2spoqy5mxf7oaw6c74ii6ouza2gwacmhr4ht7iybcy4"
+    "cid:bafybeiciev2azt4vhv3a4ckpdbuhtahvhlh77o2uw3efibeuohkg5tbu5m"
   ],
   "names": [
     "editor.decentrawiki.eth"
   ],
   "name": "DecentraWiki editor",
-  "version": "0.1.9",
-  "evaluated": "2026-10-27",
+  "version": "0.1.11",
+  "evaluated": "2026-10-29",
   "trustlessity": {
     "level": 4,
     "privacy": false
   },
-  "summary": "An editor that publishes TiddlyWiki wikis on IPFS, open source in orivon-ports, its scripts unminified; the IPFS node it ships is built from the public OrivonBrowser/orivon-ipfs-node. Opening it fetches only its own files. Wikis and keys stay in this browser. It computes each IPFS address itself, counts a pin only when the service reports that address, and now gives a wiki a stable IPNS address whose records are checked against the name. Not private: publishing, import and name look-ups show the person's IP address.",
+  "summary": "An editor that publishes TiddlyWiki wikis on IPFS, open source in orivon-ports with unminified scripts; its IPFS node is built from the public OrivonBrowser/orivon-ipfs-node. In Orivon it hosts each published wiki from the person's computer by default. Every address is computed here and every block checked against it; Orivon's relay and free pinning only carry or keep checked data, so it relies on no server: Level 4. Not private: visitors, peers and Orivon's relay see the person's IP address.",
   "operations": [
     {
       "name": "Keep and edit wikis",
@@ -35,7 +35,14 @@
       "trustlessity": {
         "level": 4
       },
-      "note": "The address is computed here; the pin is refused unless the service reports that same address. The service sees the person's IP address and the wiki."
+      "note": "The address is computed here. By default the wiki leaves from this computer's own node and Orivon's node reads it from there; a pin is refused unless the service reports that same address. The service sees the person's IP address and the wiki."
+    },
+    {
+      "name": "Host published wikis from this computer",
+      "trustlessity": {
+        "level": 4
+      },
+      "note": "On by default in Orivon; Settings switches it off. The node serves the newest version of each wiki to anyone on IPFS while the editor is open; readers check every block against its address."
     },
     {
       "name": "Point a wiki's address at a new version",
@@ -69,11 +76,11 @@
       "note": "Its answer is checked against the address computed here. It sees the person's IP address and receives the wiki they publish."
     },
     {
-      "name": "Orivon's free pinning (telemetry.orivonstack.com/decentrawiki), when chosen",
+      "name": "Orivon's free pinning (telemetry.orivonstack.com/decentrawiki), on by default",
       "trustlessity": {
         "level": 2
       },
-      "note": "Also asked for name records on import. Pin answers are checked against the address computed here; records against the name. It sees the person's IP address, the wiki and the name."
+      "note": "Orivon's node reads each new version from this computer, or it is uploaded when hosting is off, and keeps it 30 days. Pin answers are checked against the address computed here, records against the name. It sees the person's IP address, the wiki and the name."
     },
     {
       "name": "Public IPFS gateways, on import and name look-up",
@@ -87,7 +94,31 @@
       "trustlessity": {
         "level": 2
       },
-      "note": "Started only when publishing with free pinning in Orivon. A local program shipped in the build's own files, built from the public OrivonBrowser/orivon-ipfs-node. It dials Orivon's node, which sees the person's IP address."
+      "note": "Starts when a wiki is published and, with hosting on, when the editor opens with wikis stored. A local program in the build's own files, built from the public OrivonBrowser/orivon-ipfs-node, run under the grants the person accepted."
+    },
+    {
+      "name": "IPFS peers and the DHT, while hosting",
+      "trustlessity": {
+        "level": 2,
+        "privacy": false
+      },
+      "note": "The node accepts connections on ports 4811-4820. What is served and received is checked against its address; the DHT and bootstrap peers only find peers. Peers and visitors see the person's IP address and which wikis it announces."
+    },
+    {
+      "name": "Orivon's relay (152.228.138.30:4003)",
+      "trustlessity": {
+        "level": 2,
+        "privacy": false
+      },
+      "note": "While hosting, the node holds a place on this libp2p relay, shared with Orivon Share, so a computer behind a router can be reached. It passes encrypted traffic and stores nothing; blocks are checked against their address. It sees both sides' IP addresses."
+    },
+    {
+      "name": "Cloudflare DNS (1.1.1.1, 1.0.0.1)",
+      "trustlessity": {
+        "level": 1,
+        "privacy": false
+      },
+      "note": "Resolves only the names of the IPFS network's entry points, which then only find peers. It sees the person's IP address and those names."
     }
   ],
   "evidence": [
