@@ -1,6 +1,7 @@
 import { canonicalise } from "./identifiers.ts";
-import { STANDARD, SUBJECTS } from "./types.ts";
-import type { Issue, Part, ProviderDescriptor, SourceEvaluation, Subject, Trustlessity } from "./types.ts";
+import { MAX_NOTE, isMarkId, plainText } from "./mark-values.ts";
+import { STANDARD, SUBJECTS, WARNING_KINDS, judgesContent } from "./types.ts";
+import type { Issue, Part, ProviderDescriptor, Security, SourceEvaluation, Subject, Trustlessity, Warning } from "./types.ts";
 
 export const SLUG = /^[a-z0-9][a-z0-9-]{0,63}$/;
 
@@ -33,7 +34,12 @@ const SCALE: Record<Subject, { max: number; privacyAt: readonly number[] }> = {
   website: { max: 4, privacyAt: [4] },
   operation: { max: 5, privacyAt: [4, 5] },
   connection: { max: 3, privacyAt: [3] },
+  integration: { max: 4, privacyAt: [4] },
 };
+
+const MAX_WARNINGS = 8;
+const SECURITY_LEVELS = 4;
+const JUDGES_CONTENT = "allowed only on a website or integration evaluation";
 
 const EVIDENCE_PROTOCOLS = ["http:", "https:", "ipfs:", "ipns:"];
 
@@ -70,6 +76,15 @@ class Collector {
       return undefined;
     }
     return value;
+  }
+  /** Like `string`, for a note a client draws: 0 to `max` characters of plain text, with no control, bidirectional or zero-width character. */
+  plain(obj: Obj, key: string, path: string, max: number): string | undefined {
+    const value = obj[key];
+    const at = path ? `${path}.${key}` : key;
+    if (value === undefined) return undefined;
+    const text = plainText(value, 0, max);
+    if (text === undefined) this.add(at, `must be at most ${max} characters of plain text, with no control, bidirectional or zero-width character`);
+    return text;
   }
 }
 
@@ -146,6 +161,48 @@ function watchedNames(c: Collector, value: unknown, subject: Subject | undefined
   return out;
 }
 
+function warnings(c: Collector, value: unknown, subject: Subject | undefined): Warning[] | undefined {
+  if (value === undefined) return undefined;
+  if (subject !== undefined && !judgesContent(subject)) return void c.add("warnings", JUDGES_CONTENT);
+  if (!Array.isArray(value) || value.length < 1 || value.length > MAX_WARNINGS) {
+    return void c.add("warnings", `must be an array of 1 to ${MAX_WARNINGS} warnings; leave the field out to warn of nothing`);
+  }
+  const out: Warning[] = [];
+  value.forEach((item, i) => {
+    const at = `warnings[${i}]`;
+    if (!isObj(item)) return void c.add(at, "must be an object");
+    c.unknownFields(item, ["kind", "note"], at);
+    const kind = item.kind;
+    const known = WARNING_KINDS.find((each) => each === kind);
+    if (known === undefined) return void c.add(`${at}.kind`, `must be one of ${WARNING_KINDS.join(", ")}`);
+    const note = c.plain(item, "note", at, MAX_NOTE);
+    const warning: Warning = { kind: known };
+    if (note !== undefined && note !== "") warning.note = note;
+    out.push(warning);
+  });
+  return out;
+}
+
+function security(c: Collector, value: unknown, subject: Subject | undefined): Security | undefined {
+  if (value === undefined) return undefined;
+  if (subject !== undefined && !judgesContent(subject)) return void c.add("security", JUDGES_CONTENT);
+  if (!isObj(value)) return void c.add("security", "must be an object: { level, note? }");
+  c.unknownFields(value, ["level", "note"], "security");
+  const level = value.level;
+  const note = c.plain(value, "note", "security", MAX_NOTE);
+  if (typeof level !== "number" || !Number.isInteger(level) || level < 1 || level > SECURITY_LEVELS) {
+    return void c.add("security.level", `must be an integer from 1 to ${SECURITY_LEVELS}`);
+  }
+  return note !== undefined && note !== "" ? { level, note } : { level };
+}
+
+function markId(c: Collector, value: unknown, subject: Subject | undefined): string | undefined {
+  if (value === undefined) return undefined;
+  if (subject !== undefined && !judgesContent(subject)) return void c.add("mark", JUDGES_CONTENT);
+  if (!isMarkId(value)) return void c.add("mark", "must be the id of one of the provider's marks: a lower-case word of at most 24 characters");
+  return value;
+}
+
 function evidence(c: Collector, value: unknown): string[] | undefined {
   if (value === undefined) return undefined;
   if (!Array.isArray(value)) return void c.add("evidence", "must be an array");
@@ -203,7 +260,7 @@ export function validateSource(
   }
   c.unknownFields(
     value,
-    ["subject", "ids", "names", "name", "version", "evaluated", "trustlessity", "summary", "operations", "connections", "evidence"],
+    ["subject", "ids", "names", "name", "version", "evaluated", "trustlessity", "summary", "operations", "connections", "evidence", "warnings", "security", "mark"],
     "",
   );
 
@@ -248,6 +305,9 @@ export function validateSource(
     }
   }
   const links = evidence(c, value.evidence);
+  const warned = warnings(c, value.warnings, subject);
+  const secured = security(c, value.security, subject);
+  const marked = markId(c, value.mark, subject);
 
   if (c.issues.length > 0 || !subject || !name || !evaluated || !level) return { issues: c.issues };
   const evaluation: SourceEvaluation = { subject, ids, name, evaluated, trustlessity: level };
@@ -257,6 +317,9 @@ export function validateSource(
   if (operations !== undefined) evaluation.operations = operations;
   if (connections !== undefined) evaluation.connections = connections;
   if (links !== undefined) evaluation.evidence = links;
+  if (warned !== undefined) evaluation.warnings = warned;
+  if (secured !== undefined) evaluation.security = secured;
+  if (marked !== undefined) evaluation.mark = marked;
   return { evaluation, issues: [] };
 }
 

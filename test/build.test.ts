@@ -14,12 +14,13 @@ function tree(root: string, rel = ""): string[] {
 
 const read = (root: string, rel: string) => readFileSync(path.join(root, ...rel.split("/")), "utf8");
 
-test("example provider builds the three expected buckets", () => {
+test("example provider builds the three expected buckets and its marks", () => {
   const out = path.join(tempDir(), "dist");
   writeSite(out, compileProvider("examples/orivon-test-provider"));
   assert.deepEqual(tree(out), [
     "index.html",
     "score/index.html",
+    "score/marks.json",
     "score/provider.json",
     "score/website/4c.json",
     "score/website/c6.json",
@@ -30,6 +31,9 @@ test("example provider builds the three expected buckets", () => {
   assert.equal(lounge.entries[0].name, "The Lounge");
   assert.equal("names" in lounge.entries[0], false);
   assert.equal(JSON.parse(read(out, "score/provider.json")).bucketHexChars, 2);
+  const marks = JSON.parse(read(out, "score/marks.json"));
+  assert.equal(marks.subject, "marks");
+  assert.deepEqual(marks.marks.map((m: { id: string; restyles?: string }) => [m.id, m.restyles]), [["audited", undefined]]);
 });
 
 test("output is byte-for-byte identical across builds and has no source-only fields", () => {

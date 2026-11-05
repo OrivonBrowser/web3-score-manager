@@ -1,0 +1,15 @@
+{
+  "standard": "orivon-web3-score/1",
+  "subject": "marks",
+  "updated": "2026-11-05",
+  "marks": [
+    {
+      "id": "audited",
+      "label": "Audited",
+      "tone": "#2563eb",
+      "ink": { "light": "#1e3a8a", "dark": "#bfdbfe" },
+      "icon": { "path": "M12 2 L22 22 L2 22 Z" },
+      "note": "A person read every line of this code."
+    }
+  ]
+}

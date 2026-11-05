@@ -1,12 +1,17 @@
 import { CID } from "multiformats/cid";
 import type { Subject } from "./types.ts";
 
-export type IdType = "sha256" | "cid" | "arw" | "btmh" | "btih" | "caip10" | "caip2" | "origin";
+export type IdType = "sha256" | "cid" | "arw" | "btmh" | "btih" | "caip10" | "caip2" | "origin" | "integration";
 
+/**
+ * Orivon files an installed integration's connection rating under the `sha256:` bundle hash of what it pinned, and under `cid:`
+ * once the install record carries the root; an integration's own verdict is filed under `integration:` or the `sha256:` of its file.
+ */
 export const ID_TYPES: Record<Subject, readonly IdType[]> = {
   website: ["sha256", "cid", "arw", "btmh", "btih"],
   operation: ["caip10"],
-  connection: ["caip2", "origin"],
+  connection: ["sha256", "cid", "caip2", "origin"],
+  integration: ["integration", "sha256"],
 };
 
 const CAIP10 = /^[-a-z0-9]{3,8}:[-_a-zA-Z0-9]{1,32}:[-.%a-zA-Z0-9]{1,128}$/;
@@ -19,6 +24,13 @@ const ARWEAVE_ID = /^[A-Za-z0-9_-]{43}$/;
 const TORRENT_MULTIHASH = /^1220[0-9a-f]{64}$/;
 const TORRENT_INFOHASH = /^[0-9a-f]{40}$/;
 const ORIGIN = /^https:\/\/[^/?#@\s\\]+$/;
+/** What an integration's principal accepts as a declaration id; a built-in's name is written in the same characters. */
+const DECLARATION_ID = "[a-z0-9][a-z0-9._-]{0,63}";
+// The forms of an `integration:` value, written exactly as the format page's Integration identifiers section says: the
+// bundle form, a built-in's row, and the SHA-256 of a data-only integration's declaration (the one with no file of its own).
+const INTEGRATION_BUNDLE = new RegExp(`^[0-9a-f]{64}#${DECLARATION_ID}$`);
+const INTEGRATION_BUILTIN = new RegExp(`^builtin:${DECLARATION_ID}$`);
+const INTEGRATION_DECLARATION = /^decl:[0-9a-f]{64}$/;
 
 export type Canonical = { ok: true; id: string; type: IdType } | { ok: false; message: string };
 
@@ -56,6 +68,13 @@ export function canonicalise(raw: string, subject: Subject): Canonical {
     case "btih":
       if (!TORRENT_INFOHASH.test(value)) return fail("btih is lowercase hex: 40 characters");
       return { ok: true, type: "btih", id: raw };
+    case "integration":
+      if (!INTEGRATION_BUNDLE.test(value) && !INTEGRATION_BUILTIN.test(value) && !INTEGRATION_DECLARATION.test(value)) {
+        return fail(
+          "integration is <64 lowercase hex>#<declaration id>, builtin:<name>, or decl:<64 lowercase hex>; a declaration id is lowercase letters, digits, . _ and -, at most 64, the first a letter or digit",
+        );
+      }
+      return { ok: true, type: "integration", id: raw };
     case "caip10":
       if (!CAIP10.test(value)) return fail("caip10 must look like eip155:1:0xab...");
       return { ok: true, type: "caip10", id: raw };

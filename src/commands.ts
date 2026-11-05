@@ -3,7 +3,8 @@ import { tmpdir } from "node:os";
 import path from "node:path";
 import { parseArgs } from "node:util";
 import { compileProvider, ValidationFailure, writeSite } from "./build.ts";
-import { addEvaluation, initProvider, listEvaluations, newEvaluation, readBundleHash, removeEvaluation } from "./manage.ts";
+import { integrationIds } from "./integration-ids.ts";
+import { addEvaluation, initProvider, listEvaluations, newEvaluation, newMarks, readBundleHash, removeEvaluation } from "./manage.ts";
 import { DEFAULT_DNSLINK_RESOLVER, DEFAULT_RESOLVER, checkNames, gatewayResolver, report } from "./moved.ts";
 import { startServer } from "./serve.ts";
 import { loadProvider } from "./source.ts";
@@ -42,11 +43,15 @@ const COMMANDS: Record<string, Command> = {
     },
   },
   new: {
-    usage: "new <website|operation|connection> <slug> [--dir d] [--id <identifier>]...",
-    summary: "write a template evaluation to fill in",
+    usage: "new <website|operation|connection|integration> <slug> [--dir d] [--id <identifier>]...  |  new marks [--dir d]",
+    summary: "write a template evaluation to fill in, or a marks.json with one mark of the provider's own",
     options: { dir: DIR, id: { type: "string", multiple: true } },
     async run(v, p, io) {
-      if (p.length !== 2) throw new UserError("new takes a subject and a slug");
+      if (p.length === 1 && p[0] === "marks") {
+        io.out(`created ${newMarks(str(v.dir)!)}\nEdit it, then run: web3-score check\n`);
+        return 0;
+      }
+      if (p.length !== 2) throw new UserError("new takes a subject and a slug, or the word marks");
       const file = newEvaluation(str(v.dir)!, p[0]!, p[1]!, (v.id as string[] | undefined) ?? []);
       io.out(`created ${file}\nEdit it, then run: web3-score check\n`);
       return 0;
@@ -121,12 +126,12 @@ const COMMANDS: Record<string, Command> = {
     },
   },
   ids: {
-    usage: "ids <static-dir>",
-    summary: "print the Orivon bundle hash of a built static app",
-    options: {},
-    async run(_v, p, io) {
+    usage: "ids <static-dir> [--integrations]",
+    summary: "print the Orivon bundle hash of a built static app, or with --integrations the identifier of each integration it declares",
+    options: { integrations: { type: "boolean" } },
+    async run(v, p, io) {
       if (p.length !== 1) throw new UserError("ids takes one directory");
-      io.out(`${readBundleHash(p[0]!)}\n`);
+      io.out(v.integrations === true ? `${integrationIds(p[0]!).join("\n")}\n` : `${readBundleHash(p[0]!)}\n`);
       return 0;
     },
   },

@@ -1,6 +1,7 @@
 import { copyFileSync, existsSync, mkdirSync, readFileSync, unlinkSync, writeFileSync } from "node:fs";
 import path from "node:path";
 import { canonicalise } from "./identifiers.ts";
+import { MARKS_FILE } from "./marks.ts";
 import { loadProvider, readJson, scanScores } from "./source.ts";
 import { SUBJECTS, UserError, formatIssue } from "./types.ts";
 import type { Subject } from "./types.ts";
@@ -44,6 +45,7 @@ const PLACEHOLDER_ID: Record<Subject, string> = {
   website: "sha256:<64 hex characters>",
   operation: "caip10:<chain namespace>:<chain id>:<account>",
   connection: "caip2:<chain namespace>:<chain id>",
+  integration: "integration:<64 hex characters of the bundle hash>#<declaration id>",
 };
 
 export function newEvaluation(dir: string, subjectArg: string, slug: string, ids: string[]): string {
@@ -62,6 +64,28 @@ export function newEvaluation(dir: string, subjectArg: string, slug: string, ids
     name: "Name of what is evaluated",
     evaluated: today(),
     trustlessity: { level: 1, privacy: false },
+  });
+  return file;
+}
+
+/** The file `new marks` writes: one mark of the provider's own that restyles nothing, which `check` accepts as it stands. */
+export function newMarks(dir: string): string {
+  const file = path.join(dir, MARKS_FILE);
+  if (existsSync(file)) throw new UserError(`${file} already exists`);
+  writeJson(file, {
+    standard: "orivon-web3-score/1",
+    subject: "marks",
+    updated: today(),
+    marks: [
+      {
+        id: "audited",
+        label: "Audited",
+        tone: "#2563eb",
+        ink: { light: "#1e3a8a", dark: "#bfdbfe" },
+        icon: { path: "M12 2 L22 22 L2 22 Z" },
+        note: "A person read every line of this code.",
+      },
+    ],
   });
   return file;
 }

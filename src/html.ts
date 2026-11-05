@@ -1,4 +1,5 @@
-import { SCALE_MAX, levelLabel, privacyLabel } from "./labels.ts";
+import { SCALE_MAX, gradeOf, levelLabel, privacyLabel } from "./labels.ts";
+import type { MarksFile } from "./marks.ts";
 import type { LoadedEvaluation } from "./source.ts";
 import { SUBJECTS } from "./types.ts";
 import type { Part, ProviderDescriptor, Subject, Trustlessity } from "./types.ts";
@@ -36,6 +37,9 @@ th,td{text-align:left;vertical-align:top;border-top:1px solid var(--line);paddin
 th{color:var(--muted);font-weight:600;border-top:0}
 caption{text-align:left;font-weight:600;padding:.25rem 0}
 ul.evidence{margin:.4rem 0 0;padding-left:1.2rem;overflow-wrap:anywhere}
+.warning{color:#b42318;font-weight:600}
+@media (prefers-color-scheme:dark){.warning{color:#ff8a80}}
+.dot{display:inline-block;width:.7rem;height:.7rem;border-radius:50%;margin-right:.4rem;vertical-align:baseline}
 `;
 
 function page(title: string, body: string): string {
@@ -59,7 +63,8 @@ ${body}
 function level(subject: Subject, t: Trustlessity): string {
   const label = levelLabel(subject, t.level);
   const priv = t.privacy ? `<span class="privacy" title="${esc(privacyLabel(subject))}">+ privacy</span>` : "";
-  return `<span class="level">Level ${t.level} of ${SCALE_MAX[subject]}</span>${priv}<span class="note">${esc(label)}${
+  const grade = subject === "integration" ? ` (${gradeOf(t.level)})` : "";
+  return `<span class="level">Level ${t.level} of ${SCALE_MAX[subject]}${grade}</span>${priv}<span class="note">${esc(label)}${
     t.privacy ? `; privacy: ${esc(privacyLabel(subject))}` : ""
   }</span>`;
 }
@@ -86,6 +91,15 @@ function evidenceItem(url: string): string {
   return `<li>${web ? `<a href="${esc(url)}" rel="noopener noreferrer">${esc(url)}</a>` : `<code>${esc(url)}</code>`}</li>`;
 }
 
+function verdictExtras(e: LoadedEvaluation["evaluation"]): string {
+  const warnings = e.warnings?.length
+    ? `<ul class="evidence">\n${e.warnings.map((w) => `<li class="warning">Warning: ${esc(w.kind)}${w.note ? `. ${esc(w.note)}` : ""}</li>`).join("\n")}\n</ul>`
+    : "";
+  const security = e.security ? `<p class="meta">Security: Level ${e.security.level} of 4${e.security.note ? `. ${esc(e.security.note)}` : ""}</p>` : "";
+  const mark = e.mark ? `<p class="meta">Mark: <code>${esc(e.mark)}</code></p>` : "";
+  return [warnings, security, mark].filter(Boolean).join("\n");
+}
+
 function article(item: LoadedEvaluation): string {
   const e = item.evaluation;
   const meta = [e.version ? `version ${esc(e.version)}` : "", `evaluated ${esc(e.evaluated)}`].filter(Boolean).join(" &middot; ");
@@ -99,6 +113,7 @@ ${e.summary ? `<p>${esc(e.summary)}</p>` : ""}
 <ul class="ids">
 ${ids}
 </ul>
+${verdictExtras(e)}
 ${names}
 ${e.operations?.length ? partsTable("Operations", "operation", e.operations) : ""}
 ${e.connections?.length ? partsTable("Connections", "connection", e.connections) : ""}
@@ -113,16 +128,37 @@ function about(provider: ProviderDescriptor): string {
   return `<p class="hint">About this provider: ${web ? `<a href="${text}" rel="noopener noreferrer">${text}</a>` : `<code>${text}</code>`}</p>`;
 }
 
-export function renderIndex(provider: ProviderDescriptor, evaluations: LoadedEvaluation[]): string {
+const HEADINGS: Record<Subject, string> = { website: "Websites", operation: "Operations", connection: "Connections", integration: "Integrations" };
+
+function marksSection(marks: MarksFile | undefined): string {
+  if (marks === undefined || marks.marks.length === 0) return "";
+  const rows = marks.marks
+    .map((m) => {
+      const what = m.restyles ? `How ${esc(m.restyles)} is drawn` : "Drawn beside the grade";
+      return `<tr><td><span class="dot" style="background:${m.tone}"></span>${esc(m.label)}<div><code>${esc(m.id)}</code></div></td><td>${what}</td><td>${m.note ? esc(m.note) : ""}</td></tr>`;
+    })
+    .join("\n");
+  return `<h2>Marks</h2>
+<table>
+<caption>Updated ${esc(marks.updated)}; <a href="score/marks.json">score/marks.json</a></caption>
+<thead><tr><th>Mark</th><th>Use</th><th>Note</th></tr></thead>
+<tbody>
+${rows}
+</tbody>
+</table>`;
+}
+
+export function renderIndex(provider: ProviderDescriptor, evaluations: LoadedEvaluation[], marks?: MarksFile): string {
   const sections = SUBJECTS.map((subject) => {
     const list = evaluations.filter((x) => x.subject === subject);
     if (list.length === 0) return "";
-    return `<h2>${subject === "website" ? "Websites" : subject === "operation" ? "Operations" : "Connections"}</h2>\n${list.map(article).join("\n")}`;
+    return `<h2>${HEADINGS[subject]}</h2>\n${list.map(article).join("\n")}`;
   }).join("\n");
   const body = `<h1>${esc(provider.name)}</h1>
 <p class="hint">Web3 Score provider (${esc(provider.standard)}). Use this site's address followed by <code>/score</code> as the Web3 Score provider in Orivon's Settings &gt; Web3.</p>
 ${about(provider)}
 <p class="hint"><a href="score/provider.json">score/provider.json</a></p>
+${marksSection(marks)}
 ${sections || '<p class="hint">No evaluations yet.</p>'}`;
   return page(provider.name, body);
 }

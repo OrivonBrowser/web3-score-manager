@@ -1,12 +1,32 @@
-export type Subject = "website" | "operation" | "connection";
+export type Subject = "website" | "operation" | "connection" | "integration";
 
-export const SUBJECTS: readonly Subject[] = ["website", "operation", "connection"];
+export const SUBJECTS: readonly Subject[] = ["website", "operation", "connection", "integration"];
+
+/** The subjects whose evaluations may carry warnings, a Security level and a mark: the ones that judge content. */
+export function judgesContent(subject: Subject): boolean {
+  return subject === "website" || subject === "integration";
+}
 
 export const STANDARD = "orivon-web3-score/1";
 
 export interface Trustlessity {
   level: number;
   privacy: boolean;
+}
+
+export const WARNING_KINDS = ["phishing", "drainer", "malware", "web2", "other"] as const;
+export type WarningKind = (typeof WARNING_KINDS)[number];
+
+/** The provider's word that the content is bad. */
+export interface Warning {
+  kind: WarningKind;
+  note?: string;
+}
+
+/** The Security level a provider gives content, 1 to 4. */
+export interface Security {
+  level: number;
+  note?: string;
 }
 
 export interface Part {
@@ -29,6 +49,12 @@ export interface Evaluation {
   evidence?: string[];
   /** The names that serve the judged build (website only); a score counts at these names. */
   names?: string[];
+  /** Website and integration only. */
+  warnings?: Warning[];
+  /** Website and integration only. */
+  security?: Security;
+  /** Website and integration only: the id of one of the provider's marks in marks.json. */
+  mark?: string;
 }
 
 /**

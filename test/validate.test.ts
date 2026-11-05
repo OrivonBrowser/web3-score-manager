@@ -82,7 +82,8 @@ test("part ids must be identifiers of the part's subject", () => {
   const conn = (id: string) => website({ connections: [{ name: "p", trustlessity: { level: 1 }, id }] });
   accepts(conn("origin:https://api.example.com"));
   accepts(conn("caip2:eip155:1"));
-  rejects(conn(SHA_A), "connections[0].id");
+  accepts(conn(SHA_A));
+  rejects(conn("arw:7hY2dQxLwq0tZ5Nf_3vKpB8mR1cJ4sEoUaGiTkWnXyA"), "connections[0].id");
 });
 
 test("evidence entries are absolute http, https, ipfs or ipns addresses, at most 10", () => {

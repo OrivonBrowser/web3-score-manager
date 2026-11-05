@@ -3,6 +3,7 @@ import { mkdirSync, readdirSync, rmSync, statSync, writeFileSync } from "node:fs
 import path from "node:path";
 import { bucketOf } from "./bucket.ts";
 import { renderIndex, renderScoreIndex } from "./html.ts";
+import type { MarksFile } from "./marks.ts";
 import type { LoadedEvaluation } from "./source.ts";
 import { loadProvider } from "./source.ts";
 import { STANDARD, SUBJECTS, UserError, formatIssue } from "./types.ts";
@@ -24,11 +25,14 @@ function toEntry(id: string, e: SourceEvaluation): Evaluation {
     ...(e.connections !== undefined && { connections: e.connections }),
     ...(e.evidence !== undefined && { evidence: e.evidence }),
     ...(e.names !== undefined && { names: e.names }),
+    ...(e.warnings !== undefined && { warnings: e.warnings }),
+    ...(e.security !== undefined && { security: e.security }),
+    ...(e.mark !== undefined && { mark: e.mark }),
   };
 }
 
 /** The whole site as relative POSIX path -> text. Pure and deterministic. */
-export function renderSite(provider: ProviderDescriptor, evaluations: LoadedEvaluation[]): Map<string, string> {
+export function renderSite(provider: ProviderDescriptor, evaluations: LoadedEvaluation[], marks?: MarksFile): Map<string, string> {
   const files = new Map<string, string>();
   const descriptor: ProviderDescriptor = { standard: provider.standard, name: provider.name, bucketHexChars: provider.bucketHexChars };
   if (provider.about !== undefined) descriptor.about = provider.about;
@@ -50,7 +54,8 @@ export function renderSite(provider: ProviderDescriptor, evaluations: LoadedEval
       files.set(`score/${subject}/${bucket}.json`, json({ standard: STANDARD, subject, bucket, entries }));
     }
   }
-  files.set("index.html", renderIndex(provider, evaluations));
+  if (marks !== undefined) files.set("score/marks.json", json(marks));
+  files.set("index.html", renderIndex(provider, evaluations, marks));
   files.set("score/index.html", renderScoreIndex(provider));
   return files;
 }
@@ -59,7 +64,7 @@ export function renderSite(provider: ProviderDescriptor, evaluations: LoadedEval
 export function compileProvider(dir: string): Map<string, string> {
   const loaded = loadProvider(dir);
   if (loaded.issues.length > 0 || !loaded.provider) throw new ValidationFailure(loaded.issues);
-  return renderSite(loaded.provider, loaded.evaluations);
+  return renderSite(loaded.provider, loaded.evaluations, loaded.marks);
 }
 
 export class ValidationFailure extends UserError {

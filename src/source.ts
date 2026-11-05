@@ -1,5 +1,7 @@
 import { readdirSync, readFileSync, statSync } from "node:fs";
 import path from "node:path";
+import { MARKS_FILE, validateMarks } from "./marks.ts";
+import type { MarksFile } from "./marks.ts";
 import { SUBJECTS } from "./types.ts";
 import type { Issue, ProviderDescriptor, SourceEvaluation, Subject } from "./types.ts";
 import { SLUG, findDuplicateIds, validateProvider, validateSource } from "./validate.ts";
@@ -72,8 +74,35 @@ export function readJson(file: string): { value?: unknown; issue?: Issue } {
 
 export interface LoadedProvider {
   provider?: ProviderDescriptor;
+  /** The provider's own marks, when it has a marks.json beside provider.json. */
+  marks?: MarksFile;
   evaluations: LoadedEvaluation[];
   issues: Issue[];
+}
+
+function loadMarks(dir: string): { marks?: MarksFile; issues: Issue[] } {
+  const file = path.join(dir, MARKS_FILE);
+  try {
+    statSync(file);
+  } catch {
+    return { issues: [] };
+  }
+  const read = readJson(file);
+  return read.issue ? { issues: [read.issue] } : validateMarks(read.value, file);
+}
+
+/** An evaluation names a mark the provider holds, and one that is added beside the graded mark: a restyle is applied by level, never named. */
+export function findMarkIssues(list: LoadedEvaluation[], marks: MarksFile | undefined, marksBroken: boolean): Issue[] {
+  const issues: Issue[] = [];
+  for (const { file, evaluation } of list) {
+    const id = evaluation.mark;
+    if (id === undefined || marksBroken) continue;
+    const held = marks?.marks.find((mark) => mark.id === id);
+    if (marks === undefined) issues.push({ file, path: "mark", message: `names "${id}", but the provider has no ${MARKS_FILE}` });
+    else if (held === undefined) issues.push({ file, path: "mark", message: `names "${id}", which ${MARKS_FILE} does not hold` });
+    else if (held.restyles !== undefined) issues.push({ file, path: "mark", message: `names "${id}", which restyles ${held.restyles}; a restyle is applied by level and is never named` });
+  }
+  return issues;
 }
 
 export function loadProvider(dir: string): LoadedProvider {
@@ -103,5 +132,8 @@ export function loadProvider(dir: string): LoadedProvider {
     if (checked.evaluation) evaluations.push({ file, subject: f.subject as Subject, slug: f.slug, evaluation: checked.evaluation });
   }
   issues.push(...findDuplicateIds(evaluations));
-  return { provider, evaluations, issues };
+  const loadedMarks = loadMarks(dir);
+  issues.push(...loadedMarks.issues);
+  issues.push(...findMarkIssues(evaluations, loadedMarks.marks, loadedMarks.issues.length > 0));
+  return { provider, ...(loadedMarks.marks !== undefined && { marks: loadedMarks.marks }), evaluations, issues };
 }
