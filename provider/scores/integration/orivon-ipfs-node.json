@@ -1,0 +1,16 @@
+{
+  "subject": "integration",
+  "ids": [
+    "integration:builtin:ipfs-node"
+  ],
+  "name": "Orivon's IPFS node",
+  "evaluated": "2026-11-05",
+  "trustlessity": {
+    "level": 4,
+    "privacy": false
+  },
+  "summary": "The IPFS node Orivon runs on this computer (WebAssembly, in a process of its own) and the default source of ipfs:// content. Open source. Every block it receives is checked against its CID, so a peer or a pinning service can slow a load and never change what a site is. It finds who holds a block through the IPFS network and, when the person allows it, two lookup services. Not private: peers see this computer's address and what it asks for, unless the tunnel for nodes is on. Judged here by its publisher.",
+  "evidence": [
+    "https://github.com/OrivonBrowser/orivon-mvp"
+  ]
+}

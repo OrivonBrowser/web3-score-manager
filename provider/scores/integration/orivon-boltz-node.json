@@ -1,0 +1,17 @@
+{
+  "subject": "integration",
+  "ids": [
+    "integration:builtin:boltz"
+  ],
+  "name": "Boltz (api.boltz.exchange)",
+  "evaluated": "2026-11-05",
+  "trustlessity": {
+    "level": 3,
+    "privacy": false
+  },
+  "summary": "The node row that answers BOLTZ_NET_0_1 from api.boltz.exchange. Open source. It is 3, not 4: the API is one operator's server and nothing here checks its quotes and swap data. It sees this computer's address and what is swapped. Judged here by its publisher.",
+  "evidence": [
+    "https://github.com/OrivonBrowser/orivon-mvp",
+    "https://github.com/BoltzExchange/boltz-backend"
+  ]
+}

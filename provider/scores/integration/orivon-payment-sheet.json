@@ -1,0 +1,16 @@
+{
+  "subject": "integration",
+  "ids": [
+    "integration:builtin:payment-sheet"
+  ],
+  "name": "Orivon payment sheet",
+  "evaluated": "2026-11-05",
+  "trustlessity": {
+    "level": 4,
+    "privacy": true
+  },
+  "summary": "The row that opens Orivon's own payment sheet for bitcoin: links, in place of asking which app should. Open source, and the sheet itself makes no connection: the legs it draws are priced and sent by the payment rows, judged on their own, and nothing is signed without the person's confirmation. Judged here by its publisher.",
+  "evidence": [
+    "https://github.com/OrivonBrowser/orivon-mvp"
+  ]
+}

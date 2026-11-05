@@ -1,0 +1,16 @@
+{
+  "subject": "integration",
+  "ids": [
+    "integration:builtin:attila"
+  ],
+  "name": "Attila",
+  "evaluated": "2026-11-05",
+  "trustlessity": {
+    "level": 4,
+    "privacy": false
+  },
+  "summary": "The built-in Web3 Score provider row, which reads Attila at ipfs://attila.orivonstack.eth/score: a static site on IPFS under an ENS name, so every file is checked against its address and the name by the light client. Open source. A lookup names one hash bucket and no site, but the IPFS request shows the bucket and this computer's address to the peers that serve it. The provider judging this row is the one judged here, and says so. Judged here by its publisher.",
+  "evidence": [
+    "https://github.com/OrivonBrowser/orivon-mvp"
+  ]
+}

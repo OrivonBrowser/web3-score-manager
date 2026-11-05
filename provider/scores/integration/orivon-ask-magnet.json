@@ -1,0 +1,16 @@
+{
+  "subject": "integration",
+  "ids": [
+    "integration:builtin:ask-magnet"
+  ],
+  "name": "Ask each time (magnet:)",
+  "evaluated": "2026-11-05",
+  "trustlessity": {
+    "level": 4,
+    "privacy": true
+  },
+  "summary": "The row for magnet: links when the person has chosen no app for them: Orivon asks which app opens the link. Open source, and it makes no connection and sends the link nowhere until the person picks an app. Judged here by its publisher.",
+  "evidence": [
+    "https://github.com/OrivonBrowser/orivon-mvp"
+  ]
+}

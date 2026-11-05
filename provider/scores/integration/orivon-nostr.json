@@ -1,0 +1,16 @@
+{
+  "subject": "integration",
+  "ids": [
+    "integration:builtin:orivon-nostr"
+  ],
+  "name": "Orivon Nostr",
+  "evaluated": "2026-11-05",
+  "trustlessity": {
+    "level": 4,
+    "privacy": true
+  },
+  "summary": "The Nostr Crypto: derives keys at the NIP-06 path and signs events through the Account. Open source, pure logic with no request of its own; relays are reached by sites, not by this code. Judged here by its publisher.",
+  "evidence": [
+    "https://github.com/OrivonBrowser/orivon-mvp"
+  ]
+}

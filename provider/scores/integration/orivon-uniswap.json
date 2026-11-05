@@ -1,0 +1,17 @@
+{
+  "subject": "integration",
+  "ids": [
+    "integration:builtin:uniswap"
+  ],
+  "name": "Uniswap",
+  "evaluated": "2026-11-05",
+  "trustlessity": {
+    "level": 3,
+    "privacy": false
+  },
+  "summary": "Swaps Ether or a pinned token for a pinned token through the pools of Uniswap V3, on the person's own chain. Open source and signed locally; holds nothing for anyone. The price is read in one batched call through the person's Ethereum node. It stays at 3 because the router contract and the pools have not been judged as operations; it rises to 4 when an operation verdict for them says so. Judged here by its publisher.",
+  "evidence": [
+    "https://github.com/OrivonBrowser/orivon-mvp",
+    "https://github.com/Uniswap/universal-router"
+  ]
+}

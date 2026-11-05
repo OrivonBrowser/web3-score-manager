@@ -1,0 +1,16 @@
+{
+  "subject": "integration",
+  "ids": [
+    "integration:builtin:direct-transfer"
+  ],
+  "name": "Direct transfer",
+  "evaluated": "2026-11-05",
+  "trustlessity": {
+    "level": 3,
+    "privacy": false
+  },
+  "summary": "Pays the same asset from the person to the payee with nothing in between: Ether, the pinned tokens and Bitcoin. Open source, holds no one's funds and signs locally. It is 3, not 4: the Ethereum legs read through the light client, but the Bitcoin leg builds its fee and outputs from a public Esplora server whose answers nothing checks. Raised to 4 when that read is checked. Judged here by its publisher.",
+  "evidence": [
+    "https://github.com/OrivonBrowser/orivon-mvp"
+  ]
+}

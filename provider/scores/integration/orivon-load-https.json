@@ -1,0 +1,16 @@
+{
+  "subject": "integration",
+  "ids": [
+    "integration:builtin:load-https"
+  ],
+  "name": "Load from the site's server over HTTPS",
+  "evaluated": "2026-11-05",
+  "trustlessity": {
+    "level": 1,
+    "privacy": false
+  },
+  "summary": "The row of Load sites from that loads a name's site from the server its record names, over HTTPS. Unless the name carries a DDOC record that anchors the hash tree of its files, what the server sends is not checked against an address, so the site can change at any request and the person cannot tell: part of what runs comes from outside what was pinned. Judged here by its publisher.",
+  "evidence": [
+    "https://github.com/OrivonBrowser/orivon-mvp"
+  ]
+}

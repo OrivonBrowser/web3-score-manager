@@ -1,0 +1,17 @@
+{
+  "subject": "integration",
+  "ids": [
+    "integration:builtin:chainlink-prices"
+  ],
+  "name": "Chainlink prices",
+  "evaluated": "2026-11-05",
+  "trustlessity": {
+    "level": 3,
+    "privacy": false
+  },
+  "summary": "The node row that answers ETH_PRICE_0_1 and BTC_PRICE_0_1 in dollars from Chainlink's USD feeds, read through the person's Ethereum node, so it is as well proven as that node's answers. It opens no connection of its own. Open source. It is 3, not 4: the chain proves the oracle network posted the value, and nothing proves the value true. Judged here by its publisher.",
+  "evidence": [
+    "https://github.com/OrivonBrowser/orivon-mvp",
+    "https://github.com/smartcontractkit/chainlink"
+  ]
+}

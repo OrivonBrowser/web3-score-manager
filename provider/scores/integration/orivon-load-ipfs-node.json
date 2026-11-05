@@ -1,0 +1,16 @@
+{
+  "subject": "integration",
+  "ids": [
+    "integration:builtin:load-ipfs-node"
+  ],
+  "name": "Load from Orivon's IPFS node",
+  "evaluated": "2026-11-05",
+  "trustlessity": {
+    "level": 4,
+    "privacy": false
+  },
+  "summary": "The row of Load sites from that loads ipfs content through Orivon's IPFS node, on by default. Every block is checked against its CID, so the peers that send it can slow a load and never change the site. Open source. Not private: peers see this computer's address and the CIDs it asks for. Judged here by its publisher.",
+  "evidence": [
+    "https://github.com/OrivonBrowser/orivon-mvp"
+  ]
+}

@@ -142,6 +142,10 @@ test("the built bucket carries warnings, security and the mark of an integration
 test("the documented test vectors land in the documented buckets", () => {
   assert.equal(bucketOf("integration:26054c511f3394b66c6a022a48d82e559d637ac4b111657482ec6b7a7447fbcf#swap-quotes", 2), "4f");
   assert.equal(bucketOf("integration:builtin:ethfs", 2), "17");
+  assert.equal(bucketOf("integration:decl:26054c511f3394b66c6a022a48d82e559d637ac4b111657482ec6b7a7447fbcf", 2), "43");
+  assert.equal(bucketOf("integration:decl:26054c511f3394b66c6a022a48d82e559d637ac4b111657482ec6b7a7447fbcf", 8), "43134bb4");
+  assert.equal(bucketOf("integration:builtin:ethfs", 8), "178c8cf0");
+  assert.equal(bucketOf("integration:26054c511f3394b66c6a022a48d82e559d637ac4b111657482ec6b7a7447fbcf#swap-quotes", 8), "4fb50266");
 });
 
 test("marks.json is validated by check and published as score/marks.json", () => {

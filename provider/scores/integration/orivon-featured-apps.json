@@ -1,0 +1,16 @@
+{
+  "subject": "integration",
+  "ids": [
+    "integration:builtin:featured"
+  ],
+  "name": "Orivon Featured apps",
+  "evaluated": "2026-11-05",
+  "trustlessity": {
+    "level": 4,
+    "privacy": true
+  },
+  "summary": "The Featured catalogue of the new tab: five apps (Explore, WebTorrent, ASGARDEX, Ledger Wallet, The Lounge) listed in Orivon's own code at their .orivonstack.eth names. Its entries are not fetched, so there is no feed that can change the list after the build or learn that it was shown. Which apps it lists is the publisher's choice, fixed in each release. Judged here by its publisher.",
+  "evidence": [
+    "https://github.com/OrivonBrowser/orivon-mvp"
+  ]
+}

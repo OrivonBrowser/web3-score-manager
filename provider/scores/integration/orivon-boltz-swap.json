@@ -1,0 +1,17 @@
+{
+  "subject": "integration",
+  "ids": [
+    "integration:builtin:boltz-swap"
+  ],
+  "name": "Boltz",
+  "evaluated": "2026-11-05",
+  "trustlessity": {
+    "level": 3,
+    "privacy": false
+  },
+  "summary": "Pays a Lightning invoice from Bitcoin on chain through the Boltz service. Open source and signed locally. It is 3, not 4: the quote, the swap data and the address funds go to come from Boltz's server, which can refuse, go offline or state a wrong price, so the person relies on that party until the refund path has run. Judged here by its publisher.",
+  "evidence": [
+    "https://github.com/OrivonBrowser/orivon-mvp",
+    "https://github.com/BoltzExchange/boltz-backend"
+  ]
+}

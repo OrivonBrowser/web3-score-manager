@@ -1,0 +1,16 @@
+{
+  "subject": "integration",
+  "ids": [
+    "integration:builtin:ens"
+  ],
+  "name": "ENS names",
+  "evaluated": "2026-11-05",
+  "trustlessity": {
+    "level": 4,
+    "privacy": false
+  },
+  "summary": "Resolves .eth names on this computer through the Ethereum light client, which proves each record against the chain, so no resolver or gateway can answer with a record the chain does not hold. Open source. Not private: the servers the light client asks learn which names are opened. Judged here by its publisher.",
+  "evidence": [
+    "https://github.com/OrivonBrowser/orivon-mvp"
+  ]
+}

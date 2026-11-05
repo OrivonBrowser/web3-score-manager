@@ -1,0 +1,16 @@
+{
+  "subject": "integration",
+  "ids": [
+    "integration:builtin:load-owner"
+  ],
+  "name": "Load from the site owner's record",
+  "evaluated": "2026-11-05",
+  "trustlessity": {
+    "level": 4,
+    "privacy": false
+  },
+  "summary": "The row of Load sites from that follows the record a name's owner set. The record is read through the Ethereum light client, which proves it, and the row loads nothing itself: it names the content that the IPFS or Swarm rows then fetch and check against its address. Open source. Not private, for the reason the light client is not. Judged here by its publisher.",
+  "evidence": [
+    "https://github.com/OrivonBrowser/orivon-mvp"
+  ]
+}

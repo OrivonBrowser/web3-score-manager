@@ -1,0 +1,17 @@
+{
+  "subject": "integration",
+  "ids": [
+    "integration:builtin:helios"
+  ],
+  "name": "Ethereum light client",
+  "evaluated": "2026-11-05",
+  "trustlessity": {
+    "level": 4,
+    "privacy": false
+  },
+  "summary": "Helios, the Ethereum light client Orivon runs on this computer. Open source. It proves what it reads (balances, contract state, ENS records) against the chain's consensus, so the RPC servers it asks cannot lie without being caught. It starts from a checkpoint shipped with the release or kept by an earlier run; when both are over 14 days old it takes one that two beacon servers agree on. Not private: the servers it asks see this computer's address. Judged here by its publisher.",
+  "evidence": [
+    "https://github.com/OrivonBrowser/orivon-mvp",
+    "https://github.com/a16z/helios"
+  ]
+}

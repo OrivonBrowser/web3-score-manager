@@ -34,12 +34,13 @@ Every command takes `--dir <path>` (default `./provider`) and `--help`.
 | Command | What it does |
 |---|---|
 | `init --name "<name>" [--bucket-hex-chars 2] [--about <url>]` | Creates `provider.json` and `scores/`. Refuses to overwrite |
-| `new <subject> <slug> [--id <identifier>]...` | Writes a template evaluation. Without `--id` it holds a placeholder that fails `check` until you edit it |
+| `new <subject> <slug> [--id <identifier>]...` | Writes a template evaluation, for a `website`, `operation`, `connection` or `integration`. Without `--id` it holds a placeholder that fails `check` until you edit it |
+| `new marks` | Writes a template `marks.json` that restyles no grade and adds one mark. Refuses to overwrite |
 | `add <file.json> [--slug s] [--force]` | Validates a file and copies it to `scores/<subject>/<slug>.json` |
 | `remove <slug-or-identifier>` | Deletes the evaluation with that slug, or the one listing that identifier |
 | `list` | One line per evaluation: subject, slug, level, name, identifiers |
 | `check` | Validates the provider and every evaluation. Exit code 1 and the error list on failure |
-| `ids <static-dir>` | Prints the Orivon bundle hash of a built app (see below) |
+| `ids <static-dir> [--integrations]` | Prints the Orivon bundle hash of a built app, or with `--integrations` the identifier of each integration the app declares (see below) |
 | `moved [--resolver https://{name}.limo/] [--dnslink-resolver <url>]` | Asks what each watched name serves now and lists every name whose build no evaluation judges. Exit code 1 when one moved, or when no name could be resolved |
 | `build [--out dist]` | Validates, then writes the static site |
 | `serve [--port 7860] [--host 127.0.0.1]` | Builds into a temporary directory and serves it, GET and HEAD only |
@@ -56,6 +57,8 @@ provider/
     website/<slug>.json
     operation/<slug>.json
     connection/<slug>.json
+    integration/<slug>.json
+  marks.json                (optional)
 ```
 
 `provider.json` is the standard's descriptor: `standard`, `name`, `bucketHexChars` (1 or 2) and an
@@ -80,6 +83,11 @@ file name, matching `^[a-z0-9][a-z0-9-]{0,63}$`.
   "evidence": ["https://github.com/asgardex/asgardex-desktop"]
 }
 ```
+
+A website or integration evaluation may add `warnings` (1 to 8 entries, each a `kind` and an optional `note`),
+a `security` level (1 to 4, with an optional `note`) and a `mark`, the id of one of the marks in `marks.json`.
+Another subject refuses all three. An integration evaluation is on the website scale and lists no names, operations or
+connections: it is judged as a whole.
 
 A website evaluation may add `names`, 1 to 8 names that serve the judged build. It is published
 with the entry. Orivon counts the judged level of a page whose content is one of `ids` when it is
@@ -128,6 +136,17 @@ kinds of JSON file under it:
 `build` writes only the bucket files that hold an entry. The authoritative wire format is
 [web3-score-provider.md](https://github.com/OrivonBrowser/orivon-mvp/blob/main/docs/architecture/web3-score-provider.md).
 
+## Marks
+
+`marks.json` is optional. It is the standard's `marks` file: up to 16 marks, each with an `id`, a plain-text `label`, a
+`tone`, light and dark `ink`, an optional one-path `icon` and `note`, and optionally the one grade (`web2`, `web25` or
+`web3`) it restyles. `check` applies the rules Orivon reads the file with, and refuses what Orivon would leave unused: a
+label with a control, bidirectional or zero-width character or a mix of Latin, Cyrillic and Greek letters, a word Orivon
+draws itself (`web2`, `web25`, `web3`, `web?`, `unprotected`, `warning` and `!`, however it is spelt with look-alike letters; a mark that restyles a grade may carry that grade's own word), a second mark that restyles
+the same grade, and ink that reads below 4.5:1 on its plate in either theme. It also refuses a field Orivon would
+ignore, so a misspelt `restyles` is caught. An evaluation's `mark` must name a mark the file holds, and a file that
+names a mark no evaluation uses is not an error. `build` writes the validated file as `score/marks.json`.
+
 ## Levels
 
 The full meaning of each level is on the
@@ -138,9 +157,11 @@ The full meaning of each level is on the
 | `website` | 1 to 4 | 4 | 1 standard site without DDOC; 2 supports DDOC; 3 open source and runs no external code without the user's willing, aware consent; 4 Level 4 operations and Level 2 connections, relying on no server, except optional parts the user knowingly starts |
 | `operation` | 1 to 5 | 4 and 5 | 1 code unavailable or unverifiable; 2 code available and does what it promises; 3 relies only on trustless networks; 4 no untrusted party can act against the user; 5 immutable and completely trustless |
 | `connection` | 1 to 3 | 3 | 1 relies on centralized parties; 2 received data can be verified; 3 completely decentralized |
+| `integration` | 1 to 4 | 4 | The website scale for one integration (a node, a library, an extension, a wallet or search provider, a built-in): 1 part of what it runs or shows comes from outside what was pinned; 2 everything it runs is pinned, its source is not public; 3 open source, runs only what was pinned, relies on a server or on data nothing checks; 4 open source, trustless operations and checked connections |
 
 Privacy may be left out, meaning false. Operations and connections are listed inside a website
-evaluation, and can also be published as their own subjects.
+evaluation, and can also be published as their own subjects. An integration's level groups as a website's does:
+1 is Web2, 2 and 3 are Web2.5 and 4 is Web3.
 
 ## Publishing
 
@@ -178,6 +199,22 @@ web3-score ids ../my-app/dist      # prints sha256:<hash> from .well-known/orivo
 The IPFS CID of the same files comes from `ipfs add -r -H --cid-version=1 -Q <dir>`. List both in
 `ids` to cover a site reached by either route.
 
+An integration is identified by what it is, not by the site that offers it:
+
+| The integration | `ids` takes |
+|---|---|
+| Brings files and is installed with its site's bundle pinned | `integration:<64 hex>#<declaration id>`: the bundle hash without `sha256:`, and the id its declaration gives it |
+| A library or an extension (one file) | `sha256:<64 hex>`: the hash its declaration names for the file |
+| Only data (a score provider, a catalogue, a search, a link scheme) | `integration:decl:<64 hex>`: the SHA-256 of the declaration's canonical JSON (keys in UTF-16 order, no white space) |
+| Shipped with Orivon | `integration:builtin:<name>`: the name of its row |
+
+```
+web3-score ids ../my-app/dist --integrations   # one identifier per integration in .well-known/orivon.json
+```
+
+The tool prints the first form that fits a declaration, in the order the table gives, from the bundle hash in
+`.well-known/orivon-ddoc.json` and the declarations in `.well-known/orivon.json`.
+
 ## What a provider learns
 
 A lookup never names the site: it reveals the bucket, one of 16 (`bucketHexChars` 1) or 256 (2),
@@ -193,10 +230,11 @@ evaluation, 256 bucket files of 1 MiB hold about 250,000 evaluations.
 ## Orivon Attila
 
 `provider/` in this repository is Orivon Attila, the provider Orivon runs: one evaluation for each
-app from `orivon-ports` that is published on IPFS. Its address is
+app from `orivon-ports` that is published on IPFS, one verdict for each integration Orivon ships, and one for each library
+fixture Orivon's tests serve. Its address is
 `ipns://k51qzi5uqu5dli7gc98gxy6jlbarijipfrw1x8z2wfyre3rvhssxvzeummkaff/score`. After a change,
 Orivon's IPFS node pins the new build and moves that name to it, so the address stays the same.
-How Attila judges a website, and the worked examples to follow, are in
+How Attila judges a website or an integration, and the worked examples to follow, are in
 [provider/README.md](provider/README.md): read it before adding or changing an evaluation.
 The commands above read `provider/` by default. To run a provider of your own, pass `--dir` with
 another directory.

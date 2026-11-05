@@ -1,0 +1,16 @@
+{
+  "subject": "integration",
+  "ids": [
+    "integration:builtin:swarm-node"
+  ],
+  "name": "Orivon's Swarm node",
+  "evaluated": "2026-11-05",
+  "trustlessity": {
+    "level": 4,
+    "privacy": false
+  },
+  "summary": "The Swarm node Orivon runs on this computer, the default source of bzz:// content and of .eth names that point at Swarm. Open source. Every chunk is checked against its address and a feed's newest update against its signature, so a peer cannot change what a site is. Not private: the Swarm network sees this computer's address and the references it asks for, unless the tunnel for nodes is on. Judged here by its publisher.",
+  "evidence": [
+    "https://github.com/OrivonBrowser/orivon-mvp"
+  ]
+}

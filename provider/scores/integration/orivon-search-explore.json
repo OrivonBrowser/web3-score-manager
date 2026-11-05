@@ -1,0 +1,17 @@
+{
+  "subject": "integration",
+  "ids": [
+    "integration:builtin:search-web3-explore"
+  ],
+  "name": "Explore",
+  "evaluated": "2026-11-05",
+  "trustlessity": {
+    "level": 4,
+    "privacy": false
+  },
+  "summary": "The Web3 search row: a typed query opens Explore, the directory of Web3 sites, at ipfs://explore.orivonstack.eth, a page checked against its address. It takes Explore's level. Not private: the IPFS request names the page asked for and shows this computer's address to the peers that serve it. Judged here by its publisher.",
+  "evidence": [
+    "https://github.com/OrivonBrowser/orivon-mvp",
+    "https://github.com/OrivonBrowser/orivon-ports/tree/main/apps/explore"
+  ]
+}

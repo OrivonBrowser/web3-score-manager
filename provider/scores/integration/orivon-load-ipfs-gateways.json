@@ -1,0 +1,16 @@
+{
+  "subject": "integration",
+  "ids": [
+    "integration:builtin:load-ipfs-gateways"
+  ],
+  "name": "Load from public IPFS gateways",
+  "evaluated": "2026-11-05",
+  "trustlessity": {
+    "level": 3,
+    "privacy": false
+  },
+  "summary": "The row of Load sites from that loads ipfs content from public gateways, set to ask first. Orivon checks each block against its CID, so a gateway cannot change a site. It is 3, not 4: loading depends on a few gateway servers, which stop or refuse at will and see this computer's address and the CID asked for. Judged here by its publisher.",
+  "evidence": [
+    "https://github.com/OrivonBrowser/orivon-mvp"
+  ]
+}

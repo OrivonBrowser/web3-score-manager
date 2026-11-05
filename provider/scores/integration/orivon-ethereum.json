@@ -1,0 +1,16 @@
+{
+  "subject": "integration",
+  "ids": [
+    "integration:builtin:orivon-ethereum"
+  ],
+  "name": "Orivon Ethereum",
+  "evaluated": "2026-11-05",
+  "trustlessity": {
+    "level": 4,
+    "privacy": false
+  },
+  "summary": "The Ethereum Crypto: derives addresses, builds and encodes transactions and messages, and signs through the Account. Open source. Its reads go through the Ethereum light client, which proves them; the Crypto itself makes no request. Privacy is not claimed because every read goes through servers that see this computer's address. Judged here by its publisher.",
+  "evidence": [
+    "https://github.com/OrivonBrowser/orivon-mvp"
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "subject": "integration",
+  "ids": [
+    "integration:builtin:load-swarm-node"
+  ],
+  "name": "Load from Orivon's Swarm node",
+  "evaluated": "2026-11-05",
+  "trustlessity": {
+    "level": 4,
+    "privacy": false
+  },
+  "summary": "The row of Load sites from that loads bzz content through Orivon's Swarm node, on by default. Every chunk is checked against its address and a feed's newest update against its signature. Open source. Not private: peers see this computer's address and the references it asks for. Judged here by its publisher.",
+  "evidence": [
+    "https://github.com/OrivonBrowser/orivon-mvp"
+  ]
+}

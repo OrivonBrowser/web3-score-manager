@@ -1,0 +1,16 @@
+{
+  "subject": "integration",
+  "ids": [
+    "integration:builtin:load-http"
+  ],
+  "name": "Load from the site's server over HTTP",
+  "evaluated": "2026-11-05",
+  "trustlessity": {
+    "level": 1,
+    "privacy": false
+  },
+  "summary": "The row of Load sites from that loads a name's site from the server its record names, over plain HTTP, off by default. Without a DDOC record nothing checks what arrives, and anyone on the path can read and change it: part of what runs comes from outside what was pinned. Judged here by its publisher.",
+  "evidence": [
+    "https://github.com/OrivonBrowser/orivon-mvp"
+  ]
+}

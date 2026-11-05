@@ -2,8 +2,10 @@
 
 This directory is Orivon Attila, the provider Orivon runs (see the repository README for its
 address and how it is published). Every website evaluation in `scores/website/` is judged by the
-rules below. Read them before adding or changing one, and apply them as written: a level that
-departs from them is a mistake, even when the site seems to deserve it.
+rules below, and every integration evaluation in `scores/integration/` by the section How Attila
+judges an integration at the end. Read them before adding or changing one, and apply them as
+written: a level that departs from them is a mistake, even when the site or the integration seems
+to deserve it.
 
 ## Where a judgement starts
 
@@ -150,3 +152,139 @@ connection. The site's own files, which Orivon fetches the same way for every si
 4. **Write the evaluation**: the level, a summary that says why it is that level and not the next
    one up, the operations and connections found, the repository in `evidence`, and the date in
    `evaluated`.
+
+## How Attila judges an integration
+
+An integration is something a person adds to their browser that then acts for them: an Account that
+signs, a node that answers for a chain, a tunnel, a search engine, a source a name's sites load
+from. A verdict is about that one integration, never about the site that offered it: a site that
+offers five integrations has five verdicts, and updating the site changes none of them. A verdict
+lives in `scores/integration/`, on the same four-step scale as a website, and Orivon draws it as
+the mark on the integration's row and page (Level 1 is Web2, Levels 2 and 3 are Web2.5, Level 4 is
+Web3).
+
+**Built-ins are judged like every other integration.** The subject, the scale, the rules below and
+the way the verdict is drawn make no exception for what Orivon ships. Orivon's publisher runs Attila,
+so a built-in's summary ends "Judged here by its publisher", as Orivon Explore's does, and a reader
+weighs it as that. A built-in is filed under its row, `integration:builtin:<name>`. That identifier is
+provisional: it is the row's name until Orivon's built-ins are published as packages beside the
+others, and then each is filed under its bundle hash like any other.
+
+### What a verdict covers
+
+`ids` holds the identifier Orivon looks the integration up by, in the form that fits what it is:
+
+| The integration | Identifier | How to get it |
+|---|---|---|
+| Brings files of its own (a page, a component, a standard's module) and is installed from a site | `integration:<64 hex of the site's bundle hash>#<declaration id>` | `node src/cli.ts ids <static-dir> --integrations` |
+| A library or an extension: one file pinned by its own hash | `sha256:<64 hex>`, the `hash` its declaration gives | the same command |
+| Only data (a search engine, a catalogue, a Web3 Score provider): no file of its own | `integration:decl:<64 hex>`, the SHA-256 of its canonical declaration | the same command |
+| Shipped with Orivon | `integration:builtin:<name>`, where `builtin:<name>` is the row's id: `integration:builtin:ipfs-node` | the row's id in Orivon's Integrations page |
+
+A verdict covers the code its identifier names. A site that updates an integration's files has a new
+bundle hash and so a new identifier, which is judged when it appears; the old verdict stays on the
+old build. `names`, `operations` and `connections` are not used: an integration is pinned content,
+not a name, and it is judged as a whole.
+
+### The levels
+
+These are the website levels, read for an integration: its code, what it reaches, and what it does
+with the person's keys, money or data take the place of a site's files.
+
+- **Level 1 (Web2):** part of what it runs or shows comes from outside what Orivon pinned, so it
+  cannot be checked: a page that loads its logic from a server at run time, or a pointer to a
+  service whose pages are that service's (a Web2 search engine).
+- **Level 2 (Web2.5):** everything it runs is pinned and can be checked, but its source is not
+  public. Without public source an integration stays at 2.
+- **Level 3 (Web2.5):** the source is public, it runs no external code the person did not knowingly
+  start, but it relies on a server or a party, or on data nothing checks.
+- **Level 4 (Web3):** open source, trustless in every operation (Level 4) and in every connection
+  (Level 2 or better), and relying on no server except an optional part the person knowingly starts.
+- **Level 4 + privacy:** no connection the integration causes can show the person to another
+  party. Privacy is non-negotiable here too: consent does not buy it, and an integration that
+  reaches the network at all almost never has it.
+
+### Rules that carry over from websites
+
+- **Relying on a server caps at Level 3**, however open the protocol and whoever picks the server.
+  The test is the same: if that server stops or lies, does the person lose what they added the
+  integration for, or see false data? A node that asks a public server whose answers nothing
+  checks (an Esplora API, THORNode, Boltz) is 3. A node that checks every answer (a light client,
+  an IPFS or Swarm node that checks blocks against their address) is not relying on the servers it
+  asks for integrity.
+- **Servers that only find peers are not relied on.** Bootstrap nodes and a DHT say where peers are,
+  and what the peers send is checked against an address. They still count against privacy.
+- **A pointer takes the level of what it points at.** An integration that is only an address (a
+  search engine's template, a catalogue's feed, a Web3 Score provider's address) does nothing else,
+  so it is judged with the thing it names: a search engine whose pages are a closed service's is 1,
+  and one that opens a directory checked by its address is 4.
+- **Passive operations count.** Reading a price, a balance or a quote from a source nothing checks
+  is a Level 1 operation. A price read from an oracle network is trusted data: Level 3 at best.
+- **External code needs consent.** A page integration that fetches a script from a CDN with no
+  `integrity` hash, or loads a remote frame as it starts, is not pinned code: Level 1.
+- **A key the integration holds** is judged by where it is kept and who can use it. An Account that
+  keeps the keys on the computer and signs there is Level 4; one that sends the key or the
+  signing to a server is 1 or 2, whatever its source.
+
+### What to look at, by type
+
+| Type | Its operations | Its connections |
+|---|---|---|
+| `account` | Where the key lives and who can sign | What it reaches while it signs: a device, a server |
+| `crypto`, `address-list` | Deriving and encoding: pure code | None of its own; the node it reads through is judged on its own |
+| `payment` | Building the legs, and where funds are sent | The nodes and services that price and route; the address a swap pays to |
+| `network-node` | Answering a chain or service | The servers it asks, and whether each answer is checked |
+| `tunnel` | Carrying the traffic | The relays and directories; who sees the destination |
+| `name-resolution`, `data-gathering` | Turning a name or record into bytes | Whether the bytes are checked against an address, and by whom |
+| `web3-score`, `catalogue`, `search`, `link-scheme` | Pointers: judged with what they name | The service or feed they point at |
+| `extension` | What it can do to every page | What it fetches, and whether its code is pinned |
+| `library`, `standard` | Pure logic or a definition | None |
+| `dashboard` | What the page shows and runs | What the page requests |
+
+### Warnings, Security and marks
+
+- **Warnings** are Attila's word that an integration is bad: `phishing`, `drainer`, `malware`, `web2`
+  (it presents itself as Web3 and is not) or `other`, with a note a person can read. A warning is
+  about the content whatever level it has, and Orivon shows it wherever the integration is shown.
+  Use it for harm, never to say "low level".
+- **Security** is `{ level, note? }` from 1 to 4. The scale's levels are provisional until the
+  canonical page defines them, so Attila gives none yet.
+- **Marks:** Attila publishes no `marks.json`, so every verdict is drawn with Orivon's own marks, and
+  no evaluation sets `mark`. `examples/orivon-test-provider/marks.json` shows the file: one mark of
+  the provider's own, restyling nothing. A label may never be or contain a word Orivon draws itself
+  (`web2`, `web25`, `web3`, `web?`, `unprotected`, `warning`, `!`, also when spelt with look-alike letters), and `check` measures the ink
+  against the plate in both themes.
+
+### How to check an integration
+
+1. **Identify it.** For an installed one, build the site and run `ids <static-dir> --integrations`;
+   for a built-in, take the row's id. File every form that names the same code in one evaluation.
+2. **Read its declaration and its code.** The declaration says the type, what it uses and what it
+   asks for; the code says what it does. Note every address it can reach and every script it can run.
+3. **Run it** in a headless Orivon with the network recorded, and list every request it causes.
+4. **Judge** by the levels above. Name in the summary why it is that level and not the next one up.
+5. **Write it:** `new integration <slug> --id <identifier>`, fill it in, `check`, then `build`.
+
+### Worked examples (binding)
+
+- **Orivon's IPFS node** is 4: every block is checked against its CID, so a peer can slow it and
+  never change what a site is. It is not private: peers see the address and the CIDs asked for.
+- **The Ethereum light client** is 4: every read is proven against the chain's consensus. Its
+  checkpoint comes from the release, or from two beacon servers only when that one is over 14 days
+  old. The servers it asks see the address.
+- **The public IPFS gateways** are 3: the blocks are checked, but loading depends on a few
+  gateway servers, which also see the address and the CID.
+- **The site's own server over HTTPS** is 1: what it sends is not checked against an address.
+- **A Web2 search engine** is 1: every query goes to its servers and the pages that come back are
+  its own. **Explore as a search engine** takes Explore's level.
+- **mempool.space, THORNode and Boltz** as nodes are 3: they are public servers whose answers
+  nothing here checks. **Chainlink prices**, read through the light client, are 3: the chain proves
+  the feed's value, and the oracle network is still trusted for it.
+- **uBlock Origin** is 3: open source and pinned, but it downloads filter lists from servers nothing
+  checks and acts on every page.
+- **A Nym tunnel and a user's own SOCKS5 proxy** are 3: both rely on parties the person does not
+  run and nothing checks.
+- **Pure local code with no connection**, such as an address list, an Account that signs on the
+  computer or an embedded SQLite, is 4 with privacy.
+- **A standard's row** (`builtin:std-<CODE>`) is not judged: it defines a code and runs nothing,
+  and its row id carries an upper-case code, which no identifier form takes.

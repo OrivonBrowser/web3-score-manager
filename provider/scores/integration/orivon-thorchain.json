@@ -1,0 +1,17 @@
+{
+  "subject": "integration",
+  "ids": [
+    "integration:builtin:thorchain"
+  ],
+  "name": "THORChain",
+  "evaluated": "2026-11-05",
+  "trustlessity": {
+    "level": 3,
+    "privacy": false
+  },
+  "summary": "Swaps Bitcoin for Ether or USDC, and either for Bitcoin, through THORChain's pools with a deposit the person signs. Open source. It is 3, not 4: the vault address a deposit pays to and the quote come from a public THORNode API whose answers nothing here checks beyond comparing the node's memo with its own. Judged here by its publisher.",
+  "evidence": [
+    "https://github.com/OrivonBrowser/orivon-mvp",
+    "https://gitlab.com/thorchain/thornode"
+  ]
+}

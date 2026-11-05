@@ -1,0 +1,16 @@
+{
+  "subject": "integration",
+  "ids": [
+    "integration:builtin:orivon-bitcoin"
+  ],
+  "name": "Orivon Bitcoin",
+  "evaluated": "2026-11-05",
+  "trustlessity": {
+    "level": 3,
+    "privacy": false
+  },
+  "summary": "The Bitcoin Crypto: derives addresses, builds and signs transactions with the Account. Open source. It is 3, not 4: the balances, outputs and fees it builds from come from a public Esplora server whose answers nothing checks, so a lying server can hide funds or set a wrong fee, though it cannot sign. Privacy is not claimed. Judged here by its publisher.",
+  "evidence": [
+    "https://github.com/OrivonBrowser/orivon-mvp"
+  ]
+}
