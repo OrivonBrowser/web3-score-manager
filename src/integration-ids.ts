@@ -23,31 +23,65 @@ function canonicalJson(value: unknown): string {
   return JSON.stringify(value);
 }
 
-/** Whether a declaration brings a file of its own: the page, module or package it runs. Everything else is data Orivon reads. */
-const bringsFile = (declaration: Fields): boolean => ["entry", "module", "crx"].some((key) => declaration[key] !== undefined);
+/** Orivon's default for where a declaration runs when it does not say: a page, a component, or data it only reads. */
+function hostingOf(declaration: Fields): string {
+  if (typeof declaration.hosting === "string") return declaration.hosting;
+  switch (declaration.type) {
+    case "data-gathering":
+      return declaration.entry === undefined && declaration.module === undefined ? "data" : "page";
+    case "library":
+      return "component";
+    case "web3-score":
+    case "standard":
+    case "catalogue":
+    case "search":
+      return "data";
+    default:
+      return "page";
+  }
+}
+
+/** Whether a declaration brings a file of its own, as Orivon counts them: a page entry, a component or standard module, a network node's runner, a panel. Everything else is data Orivon reads. */
+function bringsFile(declaration: Fields): boolean {
+  if (declaration.type === "library" || declaration.type === "extension") return false;
+  const hosting = hostingOf(declaration);
+  return (
+    (hosting === "page" && declaration.entry !== undefined) ||
+    (hosting === "component" && declaration.module !== undefined) ||
+    (declaration.type === "network-node" && declaration.runner !== undefined) ||
+    (declaration.type === "standard" && declaration.module !== undefined) ||
+    declaration.panel !== undefined
+  );
+}
+
+const declarationId = (declaration: Fields): string => {
+  const checked = canonicalise(`integration:decl:${createHash("sha256").update(canonicalJson(declaration)).digest("hex")}`, "integration");
+  if (!checked.ok) throw new UserError(`${String(declaration.id)}: ${checked.message}`);
+  return checked.id;
+};
 
 /**
- * The identifier a provider files one declared integration under (the format page's Integration identifiers section):
- * a library or an extension is one file, filed by its own hash; one that brings files is filed under the bundle hash
- * of the site that carries it and its declaration id; a data-only declaration is filed by the SHA-256 of the declaration.
+ * The identifiers a provider files one declared integration under (the format page's Integration identifiers section).
+ * A library or an extension is one file, filed by its own hash. In a site whose bundle is pinned (some integration of
+ * it brings a file), the others are filed under the bundle hash and their declaration id, and one that brings no file of
+ * its own is also looked up by the SHA-256 of its declaration; the two forms come space-separated. In a site with no
+ * file to pin, a data-only integration is filed by the declaration hash alone.
  */
-export function integrationIdOf(declaration: Fields, bundleHash: string): string {
+export function integrationIdOf(declaration: Fields, bundleHash: string, pinned = true): string {
   const id = declaration.id;
   if (typeof id !== "string") throw new UserError("an integration declares no id");
   const type = declaration.type;
   const hash = declaration.hash;
-  let raw: string;
   if (type === "library" || type === "extension") {
     if (typeof hash !== "string" || !FILE_HASH.test(hash)) throw new UserError(`${id}: a ${type} declares the SHA-256 of its file as 64 lowercase hex characters in hash`);
-    raw = `sha256:${hash}`;
-  } else if (bringsFile(declaration)) {
-    raw = `integration:${bundleHash.slice("sha256:".length)}#${id}`;
-  } else {
-    raw = `integration:decl:${createHash("sha256").update(canonicalJson(declaration)).digest("hex")}`;
+    const checked = canonicalise(`sha256:${hash}`, "integration");
+    if (!checked.ok) throw new UserError(`${id}: ${checked.message}`);
+    return checked.id;
   }
-  const checked = canonicalise(raw, "integration");
+  if (!pinned) return declarationId(declaration);
+  const checked = canonicalise(`integration:${bundleHash.slice("sha256:".length)}#${id}`, "integration");
   if (!checked.ok) throw new UserError(`${id}: ${checked.message}`);
-  return checked.id;
+  return bringsFile(declaration) ? checked.id : `${checked.id} ${declarationId(declaration)}`;
 }
 
 /** The identifiers of every integration the app in `staticDir` declares, in the order its manifest lists them. */
@@ -58,8 +92,10 @@ export function integrationIds(staticDir: string): string[] {
   if (read.issue) throw new UserError(formatIssue(read.issue));
   const declared = isFields(read.value) ? read.value.integrations : undefined;
   if (!Array.isArray(declared) || declared.length === 0) throw new UserError(`${file} declares no integrations`);
-  return declared.map((item, i) => {
+  const fields = declared.map((item, i) => {
     if (!isFields(item)) throw new UserError(`${file}: integrations[${i}] must be an object`);
-    return integrationIdOf(item, bundleHash);
+    return item;
   });
+  const pinned = fields.some(bringsFile);
+  return fields.map((item) => integrationIdOf(item, bundleHash, pinned));
 }

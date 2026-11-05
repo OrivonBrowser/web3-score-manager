@@ -170,6 +170,10 @@ weighs it as that. A built-in is filed under its row, `integration:builtin:<name
 provisional: it is the row's name until Orivon's built-ins are published as packages beside the
 others, and then each is filed under its bundle hash like any other.
 
+The built-in rows of standards (`builtin:std-<CODE>`) have no verdict yet: an upper-case code does not fit the
+row form `builtin:<lower-case name>`, so they are judged once Orivon gives a standard's built-in row an
+id, or a form, that does.
+
 ### What a verdict covers
 
 `ids` holds the identifier Orivon looks the integration up by, in the form that fits what it is:
@@ -178,7 +182,7 @@ others, and then each is filed under its bundle hash like any other.
 |---|---|---|
 | Brings files of its own (a page, a component, a standard's module) and is installed from a site | `integration:<64 hex of the site's bundle hash>#<declaration id>` | `node src/cli.ts ids <static-dir> --integrations` |
 | A library or an extension: one file pinned by its own hash | `sha256:<64 hex>`, the `hash` its declaration gives | the same command |
-| Only data (a search engine, a catalogue, a Web3 Score provider): no file of its own | `integration:decl:<64 hex>`, the SHA-256 of its canonical declaration | the same command |
+| Only data (a search engine, a catalogue, a Web3 Score provider): no file of its own | In a site whose bundle is pinned, `integration:<64 hex of the bundle hash>#<declaration id>` (list the `decl` form beside it): the data-only integration is filed under the bundle. In a site with no file at all, `integration:decl:<64 hex>`, the SHA-256 of its canonical declaration | the same command, which prints both on one line when both apply |
 | Shipped with Orivon | `integration:builtin:<name>`, where `builtin:<name>` is the row's id: `integration:builtin:ipfs-node` | the row's id in Orivon's Integrations page |
 
 A verdict covers the code its identifier names. A site that updates an integration's files has a new

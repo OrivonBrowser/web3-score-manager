@@ -222,12 +222,12 @@ test("a library or an extension is filed under the SHA-256 of its own file", () 
 });
 
 test("a data-only integration is filed under the SHA-256 of its canonical declaration, key order and whitespace aside", () => {
-  const one = integrationIdOf({ type: "search", id: "mine", name: "Mine", url: "https://s.example/?q=%s" }, BUNDLE);
-  const two = integrationIdOf({ url: "https://s.example/?q=%s", name: "Mine", id: "mine", type: "search" }, BUNDLE);
+  const one = integrationIdOf({ type: "search", id: "mine", name: "Mine", url: "https://s.example/?q=%s" }, BUNDLE, false);
+  const two = integrationIdOf({ url: "https://s.example/?q=%s", name: "Mine", id: "mine", type: "search" }, BUNDLE, false);
   assert.match(one, /^integration:decl:[0-9a-f]{64}$/);
   assert.equal(one, two);
-  assert.notEqual(one, integrationIdOf({ type: "search", id: "mine", name: "Mine", url: "https://s.example/?query=%s" }, BUNDLE));
-  assert.throws(() => integrationIdOf({ type: "search", name: "No id" }, BUNDLE), /declares no id/);
+  assert.notEqual(one, integrationIdOf({ type: "search", id: "mine", name: "Mine", url: "https://s.example/?query=%s" }, BUNDLE, false));
+  assert.throws(() => integrationIdOf({ type: "search", name: "No id" }, BUNDLE, false), /declares no id/);
 });
 
 test("ids --integrations lists the identifier of each integration a built static app declares", async () => {
@@ -245,12 +245,17 @@ test("ids --integrations lists the identifier of each integration a built static
   assert.equal(lines.length, 3);
   assert.equal(lines[0], `integration:${HEX}#ledger`);
   assert.equal(lines[1], `sha256:${"cd".repeat(32)}`);
-  assert.match(lines[2]!, /^integration:decl:[0-9a-f]{64}$/);
+  assert.match(lines[2]!, new RegExp(`^integration:${HEX}#mine integration:decl:[0-9a-f]{64}$`));
 
   const listed = await cli("ids", dir, "--integrations");
   assert.equal(listed.code, 0);
   assert.equal(listed.out, `${lines.join("\n")}\n`);
   assert.equal((await cli("ids", dir)).out, `${BUNDLE}\n`);
+
+  const dataOnly = tempDir();
+  writeJson(path.join(dataOnly, ".well-known", "orivon-ddoc.json"), { bundleHash: BUNDLE });
+  writeJson(path.join(dataOnly, ".well-known", "orivon.json"), { orivonApiVersion: 0, integrations: [{ type: "search", id: "mine", name: "Mine", url: "https://s.example/?q=%s" }] });
+  assert.match(integrationIds(dataOnly)[0]!, /^integration:decl:[0-9a-f]{64}$/);
 
   const bare = tempDir();
   writeJson(path.join(bare, ".well-known", "orivon-ddoc.json"), { bundleHash: BUNDLE });

@@ -205,7 +205,7 @@ An integration is identified by what it is, not by the site that offers it:
 |---|---|
 | Brings files and is installed with its site's bundle pinned | `integration:<64 hex>#<declaration id>`: the bundle hash without `sha256:`, and the id its declaration gives it |
 | A library or an extension (one file) | `sha256:<64 hex>`: the hash its declaration names for the file |
-| Only data (a score provider, a catalogue, a search, a link scheme) | `integration:decl:<64 hex>`: the SHA-256 of the declaration's canonical JSON (keys in UTF-16 order, no white space) |
+| Only data (a score provider, a catalogue, a search, a link scheme) | In a site whose bundle is pinned (another integration of it brings a file): `integration:<64 hex>#<declaration id>`, and also `integration:decl:<64 hex>`, the SHA-256 of the declaration's canonical JSON (keys in UTF-16 order, no white space); `ids` prints both on one line, separated by a space. In a site with no file at all: the `decl` form alone |
 | Shipped with Orivon | `integration:builtin:<name>`: the name of its row |
 
 ```

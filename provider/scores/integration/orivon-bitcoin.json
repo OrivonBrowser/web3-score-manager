@@ -6,10 +6,10 @@
   "name": "Orivon Bitcoin",
   "evaluated": "2026-11-05",
   "trustlessity": {
-    "level": 3,
-    "privacy": false
+    "level": 4,
+    "privacy": true
   },
-  "summary": "The Bitcoin Crypto: derives addresses, builds and signs transactions with the Account. Open source. It is 3, not 4: the balances, outputs and fees it builds from come from a public Esplora server whose answers nothing checks, so a lying server can hide funds or set a wrong fee, though it cannot sign. Privacy is not claimed. Judged here by its publisher.",
+  "summary": "The Bitcoin Crypto: derives addresses, builds and signs transactions with the Account. Open source, pure logic that makes no request of its own. The balances, outputs and fees it builds from come from the node it is given, which is judged on its own row (the Esplora node is 3). Judged here by its publisher.",
   "evidence": [
     "https://github.com/OrivonBrowser/orivon-mvp"
   ]
