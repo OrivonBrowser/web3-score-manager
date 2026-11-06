@@ -199,21 +199,42 @@ web3-score ids ../my-app/dist      # prints sha256:<hash> from .well-known/orivo
 The IPFS CID of the same files comes from `ipfs add -r -H --cid-version=1 -Q <dir>`. List both in
 `ids` to cover a site reached by either route.
 
-An integration is identified by what it is, not by the site that offers it:
+An integration is identified by what it is, not by the site that offers it. An installed site pins one bundle for
+all its integrations, so the bundle hash alone gives every integration of the site one verdict, and a new verdict at
+every update of the site. An integration is filed under the identifier of what it is, and under its own declaration:
 
-| The integration | `ids` takes |
+| The integration | Its identifier |
 |---|---|
-| Brings files and is installed with its site's bundle pinned | `integration:<64 hex>#<declaration id>`: the bundle hash without `sha256:`, and the id its declaration gives it |
-| A library or an extension (one file) | `sha256:<64 hex>`: the hash its declaration names for the file |
-| Only data (a score provider, a catalogue, a search, a link scheme) | In a site whose bundle is pinned (another integration of it brings a file): `integration:<64 hex>#<declaration id>`, and also `integration:decl:<64 hex>`, the SHA-256 of the declaration's canonical JSON (keys in UTF-16 order, no white space); `ids` prints both on one line, separated by a space. In a site with no file at all: the `decl` form alone |
-| Shipped with Orivon | `integration:builtin:<name>`: the name of its row |
+| Installed with its site's bundle pinned | `integration:<64 hex>#<declaration id>`: the bundle hash without its `sha256:`, a `#`, and the id its declaration gives it (lower-case letters, digits, `.`, `_` and `-`, at most 64 characters, the first a letter or a digit) |
+| A library or an extension: one file pinned by its own hash | `sha256:<64 hex>`: the SHA-256 of that file |
+| A component or a standard with a file of its own, installed without its site's bundle pinned | `sha256:<64 hex>`: the SHA-256 of that file |
+| Only data (a score provider, a catalogue, a search, a link scheme: no code bundle and no file) | `integration:decl:<64 hex>`: the SHA-256 of its declaration as Orivon's manifest reader returns it (see below), even when its site's bundle was pinned |
+| Shipped with Orivon | `integration:builtin:<name>`: `builtin:` and the name of its row, in the characters of a declaration id |
+
+Which one an integration has is the first of these that fits, in this order: a library or an extension is its file; one
+with no code (data only, no file of its own) is its declaration, even when its site's bundle was pinned, so that its
+identifier does not depend on what else the install held or change at an update of the site; any other integration whose
+site's bundle was pinned is that bundle's, so a component that also names its own file is filed by the bundle, as the
+other integrations of its site are; one with only a file of its own is that file; one with neither is its declaration.
+The hashed declaration is the one Orivon's manifest reader returns for the type: only the keys the type defines, the
+values as read, and no `icon`. Its canonical JSON has the keys of every object in UTF-16 code-unit order and no white
+space. For `{"type":"web3-score","id":"scores","name":"Scores","address":"https://scores.example/score"}` the text is
+`{"address":"https://scores.example/score","id":"scores","name":"Scores","type":"web3-score"}` and the identifier is
+`integration:decl:178575d7ba578c7387236d75704f77c23155252ec0ef19afe20b80db576d3665`. A reformatted declaration keeps its
+identifier, and an edited one has another. The row of a built-in standard is `builtin:std-` and its code in lower case:
+`integration:builtin:std-eth_0_1` for `ETH_0_1`.
 
 ```
-web3-score ids ../my-app/dist --integrations   # one identifier per integration in .well-known/orivon.json
+web3-score ids ../my-app/dist --integrations   # one identifier per line, one for each integration in .well-known/orivon.json
 ```
 
-The tool prints the first form that fits a declaration, in the order the table gives, from the bundle hash in
-`.well-known/orivon-ddoc.json` and the declarations in `.well-known/orivon.json`.
+The tool reads the bundle hash in `.well-known/orivon-ddoc.json` and the declarations in `.well-known/orivon.json`, and
+prints the identifier of the first row that fits, taking the whole site to be installed: the bundle is pinned when
+some declaration brings a file (a page's entry, a component's or a standard's module, a network node's runner, an
+extension's package, a panel) and not every declaration is a library. It refuses what Orivon's manifest reader skips
+or refuses, because such a declaration has no identifier: a type it does not know, a member the type does not define, a
+`hosting` that is not `page`, `component` or `data`, an id that is not lower-case letters, digits and hyphens (at most
+40, the first a letter) or is repeated, a link scheme whose id starts with `links-`, and more than 16 declarations.
 
 ## What a provider learns
 
