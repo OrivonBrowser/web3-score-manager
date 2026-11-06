@@ -1,0 +1,16 @@
+{
+  "subject": "integration",
+  "ids": [
+    "integration:builtin:std-address_list_0_1"
+  ],
+  "name": "Address list standard (ADDRESS_LIST_0_1)",
+  "evaluated": "2026-11-06",
+  "trustlessity": {
+    "level": 4,
+    "privacy": true
+  },
+  "summary": "The row for the ADDRESS_LIST_0_1 standard, which defines what an installed Address list tells the wallet about itself: the path template it derives addresses at, or the addresses it only shows. A standard defines a code without answering it: the row runs nothing, holds no state and makes no connection, and whatever answers the code is judged on its own row. Open source, and the definition is a JSON file in Orivon's source. Judged here by its publisher.",
+  "evidence": [
+    "https://github.com/OrivonBrowser/orivon-mvp"
+  ]
+}

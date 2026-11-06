@@ -170,9 +170,9 @@ weighs it as that. A built-in is filed under its row, `integration:builtin:<name
 provisional: it is the row's name until Orivon's built-ins are published as packages beside the
 others, and then each is filed under its bundle hash like any other.
 
-The built-in rows of standards (`builtin:std-<CODE>`) have no verdict yet: an upper-case code does not fit the
-row form `builtin:<lower-case name>`, so they are judged once Orivon gives a standard's built-in row an
-id, or a form, that does.
+The row of a built-in standard is `builtin:std-` and its code in lower case, so `ETH_0_1` is filed as
+`integration:builtin:std-eth_0_1`. A standard defines a code and answers nothing, so its row is judged as
+a definition: it runs nothing and connects to nothing, and what answers the code is judged on its own row.
 
 ### What a verdict covers
 
@@ -180,10 +180,18 @@ id, or a form, that does.
 
 | The integration | Identifier | How to get it |
 |---|---|---|
-| Brings files of its own (a page, a component, a standard's module) and is installed from a site | `integration:<64 hex of the site's bundle hash>#<declaration id>` | `node src/cli.ts ids <static-dir> --integrations` |
-| A library or an extension: one file pinned by its own hash | `sha256:<64 hex>`, the `hash` its declaration gives | the same command |
-| Only data (a search engine, a catalogue, a Web3 Score provider): no file of its own | In a site whose bundle is pinned, `integration:<64 hex of the bundle hash>#<declaration id>` (list the `decl` form beside it): the data-only integration is filed under the bundle. In a site with no file at all, `integration:decl:<64 hex>`, the SHA-256 of its canonical declaration | the same command, which prints both on one line when both apply |
-| Shipped with Orivon | `integration:builtin:<name>`, where `builtin:<name>` is the row's id: `integration:builtin:ipfs-node` | the row's id in Orivon's Integrations page |
+| Installed with its site's bundle pinned | `integration:<64 hex>#<declaration id>`: the bundle hash without its `sha256:`, a `#`, and the id its declaration gives it (lower-case letters, digits, `.`, `_` and `-`, at most 64 characters, the first a letter or a digit) | `node src/cli.ts ids <static-dir> --integrations` |
+| A library or an extension: one file pinned by its own hash | `sha256:<64 hex>`: the SHA-256 of that file | the same command |
+| A component or a standard with a file of its own, installed without its site's bundle pinned | `sha256:<64 hex>`: the SHA-256 of that file | the file's `hash` in its declaration |
+| Only data (a score provider, a catalogue, a search, a link scheme: no code bundle and no file) | `integration:decl:<64 hex>`: the SHA-256 of its declaration as Orivon's manifest reader returns it (see the repository README), even when its site's bundle was pinned | the same command |
+| Shipped with Orivon | `integration:builtin:<name>`: `builtin:` and the name of its row, in the characters of a declaration id | the row's id in Orivon's Integrations page |
+
+Which one an integration has is the first of these that fits, in this order: a library or an extension is its file; one
+with no code is its declaration, even when its site's bundle was pinned; any other integration whose site's bundle was
+pinned is that bundle's; one with only a file of its own is that file; one with neither is its declaration. The `ids`
+command prints one identifier a line, in the order the site's manifest lists its integrations. A search engine, a
+catalogue or a Web3 Score provider is therefore filed by its declaration alone, whatever else its site brings, and
+keeps its verdict when the site updates.
 
 A verdict covers the code its identifier names. A site that updates an integration's files has a new
 bundle hash and so a new identifier, which is judged when it appears; the old verdict stays on the
@@ -262,7 +270,8 @@ with the person's keys, money or data take the place of a site's files.
 ### How to check an integration
 
 1. **Identify it.** For an installed one, build the site and run `ids <static-dir> --integrations`;
-   for a built-in, take the row's id. File every form that names the same code in one evaluation.
+   for a built-in, take the row's id. File the identifier it prints. A component that Orivon can also
+   reach by its own file may be listed under that file's `sha256:` too.
 2. **Read its declaration and its code.** The declaration says the type, what it uses and what it
    asks for; the code says what it does. Note every address it can reach and every script it can run.
 3. **Run it** in a headless Orivon with the network recorded, and list every request it causes.
@@ -290,5 +299,5 @@ with the person's keys, money or data take the place of a site's files.
   run and nothing checks.
 - **Pure local code with no connection**, such as an address list, an Account that signs on the
   computer or an embedded SQLite, is 4 with privacy.
-- **A standard's row** (`builtin:std-<CODE>`) is not judged: it defines a code and runs nothing,
-  and its row id carries an upper-case code, which no identifier form takes.
+- **A standard's row** (`builtin:std-<code>`) is 4 with privacy: a definition runs nothing and
+  connects to nothing, and what answers the code is judged on its own row.

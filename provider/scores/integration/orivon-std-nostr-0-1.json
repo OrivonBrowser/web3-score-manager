@@ -1,0 +1,16 @@
+{
+  "subject": "integration",
+  "ids": [
+    "integration:builtin:std-nostr_0_1"
+  ],
+  "name": "Nostr standard (NOSTR_0_1)",
+  "evaluated": "2026-11-06",
+  "trustlessity": {
+    "level": 4,
+    "privacy": true
+  },
+  "summary": "The row for the NOSTR_0_1 standard, which defines knowing the person's Nostr public key, signing Nostr events and encrypting private messages. A standard defines a code without answering it: the row runs nothing, holds no state and makes no connection, and whatever answers the code is judged on its own row. Open source, and the definition is a JSON file in Orivon's source. Judged here by its publisher.",
+  "evidence": [
+    "https://github.com/OrivonBrowser/orivon-mvp"
+  ]
+}

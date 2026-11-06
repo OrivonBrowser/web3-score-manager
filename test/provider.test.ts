@@ -54,7 +54,7 @@ test("every integration Attila judges 3 or 4 cites evidence and says why", () =>
 
 test("an integration Orivon ships is judged under its row's identifier and says its publisher judged it", () => {
   const builtins = integrations.filter(({ evaluation }) => evaluation.ids.some((id) => id.startsWith("integration:builtin:")));
-  assert.ok(builtins.length >= 50);
+  assert.ok(builtins.length >= 77);
   for (const { evaluation, file } of builtins) {
     assert.match(evaluation.summary ?? "", /Judged here by its publisher\.$/, file);
   }
@@ -62,6 +62,25 @@ test("an integration Orivon ships is judged under its row's identifier and says 
   for (const row of ["ipfs-node", "swarm-node", "helios", "ens", "nym", "socks5", "load-owner", "load-https", "newtab", "ublock", "attila", "direct-transfer", "uniswap", "orivon-mnemonic", "sqlite3"]) {
     assert.ok(named.has(`integration:builtin:${row}`), `no verdict for the built-in ${row}`);
   }
+});
+
+// The standards Orivon ships a built-in row for, by code: its row is `builtin:std-` and the code in lower case.
+const STANDARD_CODES = [
+  "ACCOUNT_0_1", "ADDRESS_LIST_0_1", "BOLTZ_NET_0_1", "BTC_0_1", "BTC_NET_0_1", "BTC_PRICE_0_1", "CRYPTO_ACCESS_0_1", "CRYPTO_RULES_0_1",
+  "DATA_GATHERING_0_1", "ETH_0_1", "ETH_NET_0_1", "ETH_PRICE_0_1", "FACILITATOR_0_1", "INTEGRATION_LIST_0_1", "IPFS_0_1", "NAMES_0_1",
+  "NOSTR_0_1", "PASSWORD_0_1", "PAY_0_1", "SWARM_0_1", "THORNODE_NET_0_1", "WEB3_SCORE_0_1", "WIDGETS_0_1",
+];
+
+test("every standard Orivon ships a built-in row for is judged under its row's lower-case identifier, as a definition", () => {
+  const byId = new Map(integrations.flatMap(({ evaluation }) => evaluation.ids.map((id) => [id, evaluation] as const)));
+  for (const code of STANDARD_CODES) {
+    const evaluation = byId.get(`integration:builtin:std-${code.toLowerCase()}`);
+    assert.ok(evaluation, `no verdict for the standard ${code}`);
+    assert.deepEqual(evaluation.trustlessity, { level: 4, privacy: true }, code);
+    assert.ok((evaluation.name ?? "").includes(code), code);
+  }
+  const rows = [...byId.keys()].filter((id) => id.startsWith("integration:builtin:std-"));
+  assert.equal(rows.length, STANDARD_CODES.length, "a standard row is judged that Orivon does not ship");
 });
 
 test("an integration is filed under one identifier in one verdict, and no id is filed twice", () => {
