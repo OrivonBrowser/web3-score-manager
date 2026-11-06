@@ -1,4 +1,6 @@
 import assert from "node:assert/strict";
+import { existsSync, readFileSync, readdirSync } from "node:fs";
+import path from "node:path";
 import { test } from "node:test";
 import { compileProvider } from "../src/build.ts";
 import { loadProvider } from "../src/source.ts";
@@ -54,12 +56,12 @@ test("every integration Attila judges 3 or 4 cites evidence and says why", () =>
 
 test("an integration Orivon ships is judged under its row's identifier and says its publisher judged it", () => {
   const builtins = integrations.filter(({ evaluation }) => evaluation.ids.some((id) => id.startsWith("integration:builtin:")));
-  assert.ok(builtins.length >= 77);
+  assert.ok(builtins.length >= 80);
   for (const { evaluation, file } of builtins) {
     assert.match(evaluation.summary ?? "", /Judged here by its publisher\.$/, file);
   }
   const named = new Set(builtins.flatMap(({ evaluation }) => evaluation.ids));
-  for (const row of ["ipfs-node", "swarm-node", "helios", "ens", "nym", "socks5", "load-owner", "load-https", "newtab", "ublock", "attila", "direct-transfer", "uniswap", "orivon-mnemonic", "sqlite3"]) {
+  for (const row of ["ipfs-node", "swarm-node", "helios", "ens", "nym", "socks5", "load-owner", "load-https", "newtab", "ublock", "attila", "direct-transfer", "uniswap", "orivon-mnemonic", "sqlite3", "ethfs", "load-ethfs"]) {
     assert.ok(named.has(`integration:builtin:${row}`), `no verdict for the built-in ${row}`);
   }
 });
@@ -67,8 +69,8 @@ test("an integration Orivon ships is judged under its row's identifier and says 
 // The standards Orivon ships a built-in row for, by code: its row is `builtin:std-` and the code in lower case.
 const STANDARD_CODES = [
   "ACCOUNT_0_1", "ADDRESS_LIST_0_1", "BOLTZ_NET_0_1", "BTC_0_1", "BTC_NET_0_1", "BTC_PRICE_0_1", "CRYPTO_ACCESS_0_1", "CRYPTO_RULES_0_1",
-  "DATA_GATHERING_0_1", "ETH_0_1", "ETH_NET_0_1", "ETH_PRICE_0_1", "FACILITATOR_0_1", "INTEGRATION_LIST_0_1", "IPFS_0_1", "NAMES_0_1",
-  "NOSTR_0_1", "PASSWORD_0_1", "PAY_0_1", "SWARM_0_1", "THORNODE_NET_0_1", "WEB3_SCORE_0_1", "WIDGETS_0_1",
+  "DATA_GATHERING_0_1", "ETH_0_1", "ETH_NET_0_1", "ETH_PRICE_0_1", "ETHFS_0_1", "FACILITATOR_0_1", "INTEGRATION_LIST_0_1", "IPFS_0_1",
+  "NAMES_0_1", "NOSTR_0_1", "PASSWORD_0_1", "PAY_0_1", "SWARM_0_1", "THORNODE_NET_0_1", "WEB3_SCORE_0_1", "WIDGETS_0_1",
 ];
 
 test("every standard Orivon ships a built-in row for is judged under its row's lower-case identifier, as a definition", () => {
@@ -81,6 +83,31 @@ test("every standard Orivon ships a built-in row for is judged under its row's l
   }
   const rows = [...byId.keys()].filter((id) => id.startsWith("integration:builtin:std-"));
   assert.equal(rows.length, STANDARD_CODES.length, "a standard row is judged that Orivon does not ship");
+});
+
+// Every built-in row Orivon declares has a verdict here, read off an Orivon checkout when ORIVON_REPO names one (its root):
+// the standards it defines, the sources of Load sites from, and each row its built-ins source files name.
+const orivon = process.env.ORIVON_REPO;
+const skipOrivon = orivon !== undefined && existsSync(path.join(orivon, "src", "standards", "official")) ? false : "set ORIVON_REPO to an Orivon checkout to read its built-in rows";
+
+test("every built-in row Orivon declares is judged", { skip: skipOrivon }, () => {
+  const root = orivon ?? "";
+  const rows = new Set<string>();
+  const official = path.join(root, "src", "standards", "official");
+  for (const file of readdirSync(official).filter((name) => name.endsWith(".json"))) {
+    rows.add(`builtin:std-${(JSON.parse(readFileSync(path.join(official, file), "utf8")) as { code: string }).code.toLowerCase()}`);
+  }
+  const order = readFileSync(path.join(root, "src", "protocols", "resolution", "load-order.ts"), "utf8");
+  const table = /BUILTIN_ROWS[^=]*= \[([^\]]*)\]/.exec(order)?.[1] ?? "";
+  for (const [, id] of table.matchAll(/id: '([a-z0-9-]+)'/g)) rows.add(`builtin:load-${id}`);
+  const sources = path.join(root, "src", "main", "integrations", "builtins");
+  for (const file of readdirSync(sources).filter((name) => name.endsWith(".ts"))) {
+    // A name that ends in "-" is the start of rows made at run time, and each of those is a row of its own.
+    for (const [, id] of readFileSync(path.join(sources, file), "utf8").matchAll(/'(builtin:[a-z0-9-]*[a-z0-9])'/g)) rows.add(id as string);
+  }
+  assert.ok(rows.size > 70, `read only ${rows.size} rows`);
+  const judged = new Set(integrations.flatMap(({ evaluation }) => evaluation.ids));
+  assert.deepEqual([...rows].filter((row) => !judged.has(`integration:${row}`)).sort(), []);
 });
 
 test("an integration is filed under one identifier in one verdict, and no id is filed twice", () => {

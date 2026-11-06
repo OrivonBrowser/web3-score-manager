@@ -280,6 +280,15 @@ npm run typecheck
 npm test
 ```
 
+Attila reads an evaluation's text and a marks file by Orivon's own rules: `src/mark-values.ts`, `src/reserved-words.ts`,
+`src/confusables.ts` and `src/confusables.json` are copies of Orivon's `src/trust/` files, and `test/fixtures/orivon-reader.json`
+holds cases with the answers Orivon's functions give. With `ORIVON_REPO` set to the root of an Orivon checkout, `npm test` also
+compares the copies with the originals and checks that every built-in row Orivon declares has a verdict here:
+
+```
+ORIVON_REPO=../orivon-mvp npm test
+```
+
 ## License
 
 AGPL-3.0-only. See `LICENSE`.
