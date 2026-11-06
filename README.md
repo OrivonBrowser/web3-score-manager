@@ -143,7 +143,8 @@ kinds of JSON file under it:
 `web3`) it restyles. `check` applies the rules Orivon reads the file with, and refuses what Orivon would leave unused: a
 label with a control, bidirectional or zero-width character or a mix of Latin, Cyrillic and Greek letters, a word Orivon
 draws itself (`web2`, `web25`, `web3`, `web?`, `unprotected`, `warning` and `!`, however it is spelt with look-alike letters; a mark that restyles a grade may carry that grade's own word), a second mark that restyles
-the same grade, and ink that reads below 4.5:1 on its plate in either theme. It also refuses a field Orivon would
+the same grade, and ink that reads below 4.5:1 on its plate in either theme (the tone at a 13% tint over `#e4e4eb` for `light` and
+over `#35294b` for `dark`, the darkest light and the lightest dark surface a mark is drawn on). It also refuses a field Orivon would
 ignore, so a misspelt `restyles` is caught. An evaluation's `mark` must name a mark the file holds, and a file that
 names a mark no evaluation uses is not an error. `build` writes the validated file as `score/marks.json`.
 

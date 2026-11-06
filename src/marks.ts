@@ -10,8 +10,8 @@ import {
   markLabel,
   plainText,
   plateContrast,
-  reservedWordsIn,
 } from "./mark-values.ts";
+import { reservedWordsIn } from "./reserved-words.ts";
 import { STANDARD } from "./types.ts";
 import type { Issue } from "./types.ts";
 

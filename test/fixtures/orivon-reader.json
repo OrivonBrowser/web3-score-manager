@@ -1,0 +1,399 @@
+{
+  "about": "Cases both Orivon's reader and Attila's validator must answer alike. The expected values are what Orivon's own functions (src/trust/mark-values.ts, src/trust/reserved-words.ts) return.",
+  "surfaces": {
+    "light": "#e4e4eb",
+    "dark": "#35294b"
+  },
+  "labels": [
+    [
+      "Web2",
+      [
+        "web2"
+      ]
+    ],
+    [
+      "Web2.5",
+      [
+        "web25"
+      ]
+    ],
+    [
+      "WEB3",
+      [
+        "web3"
+      ]
+    ],
+    [
+      "Web?",
+      [
+        "web?"
+      ]
+    ],
+    [
+      "Unprotected",
+      [
+        "unprotected"
+      ]
+    ],
+    [
+      "Warning",
+      [
+        "warning"
+      ]
+    ],
+    [
+      "Safe!",
+      [
+        "!"
+      ]
+    ],
+    [
+      "Web 3",
+      [
+        "web3"
+      ]
+    ],
+    [
+      "web-3",
+      [
+        "web3"
+      ]
+    ],
+    [
+      "W.E.B 2.5",
+      [
+        "web25"
+      ]
+    ],
+    [
+      "Wéb3",
+      [
+        "web3"
+      ]
+    ],
+    [
+      "Ｗｅｂ３",
+      [
+        "web3"
+      ]
+    ],
+    [
+      "Not unprotected",
+      [
+        "unprotected"
+      ]
+    ],
+    [
+      "Web3 warning",
+      [
+        "web3",
+        "warning"
+      ]
+    ],
+    [
+      "Web2 Web3",
+      [
+        "web2",
+        "web3"
+      ]
+    ],
+    [
+      "ԜЕВ3",
+      [
+        "web3"
+      ]
+    ],
+    [
+      "ԜΕΒ3",
+      [
+        "web3"
+      ]
+    ],
+    [
+      "ᏔᎬᏴ3",
+      [
+        "web3"
+      ]
+    ],
+    [
+      "WebƷ",
+      [
+        "web3"
+      ]
+    ],
+    [
+      "Web‐3",
+      [
+        "web3"
+      ]
+    ],
+    [
+      "Web‑3",
+      [
+        "web3"
+      ]
+    ],
+    [
+      "Web–3",
+      [
+        "web3"
+      ]
+    ],
+    [
+      "Web−3",
+      [
+        "web3"
+      ]
+    ],
+    [
+      "Web/3",
+      [
+        "web3"
+      ]
+    ],
+    [
+      "❗",
+      [
+        "!"
+      ]
+    ],
+    [
+      "ǃ",
+      [
+        "!"
+      ]
+    ],
+    [
+      "ꓪeb3",
+      [
+        "web3"
+      ]
+    ],
+    [
+      "աeb3",
+      [
+        "web3"
+      ]
+    ],
+    [
+      "Web३",
+      [
+        "web3"
+      ]
+    ],
+    [
+      "ꓪꓰꓐ2",
+      [
+        "web2"
+      ]
+    ],
+    [
+      "Safeⵑ",
+      [
+        "!"
+      ]
+    ],
+    [
+      "Unpr0tected",
+      [
+        "unprotected"
+      ]
+    ],
+    [
+      "Սnprotected",
+      [
+        "unprotected"
+      ]
+    ],
+    [
+      "սnprotected",
+      [
+        "unprotected"
+      ]
+    ],
+    [
+      "WARNING",
+      [
+        "warning"
+      ]
+    ],
+    [
+      "Ｗｅｂ３",
+      [
+        "web3"
+      ]
+    ],
+    [
+      "Audited",
+      []
+    ],
+    [
+      "Webby",
+      []
+    ],
+    [
+      "Spider web",
+      []
+    ],
+    [
+      "Trusted",
+      []
+    ],
+    [
+      "Web",
+      []
+    ],
+    [
+      "Wave 2",
+      []
+    ],
+    [
+      "Wave 3",
+      []
+    ],
+    [
+      "Safe",
+      []
+    ],
+    [
+      "Unprotect",
+      []
+    ]
+  ],
+  "contrast": [
+    {
+      "tone": "#22c55e",
+      "ink": "#6a6a6a",
+      "theme": "light",
+      "ratio": 3.91
+    },
+    {
+      "tone": "#22c55e",
+      "ink": "#6a6a6a",
+      "theme": "dark",
+      "ratio": 2.02
+    },
+    {
+      "tone": "#2563eb",
+      "ink": "#1e3a8a",
+      "theme": "light",
+      "ratio": 6.95
+    },
+    {
+      "tone": "#2563eb",
+      "ink": "#bfdbfe",
+      "theme": "dark",
+      "ratio": 8.49
+    },
+    {
+      "tone": "#eab308",
+      "ink": "#000000",
+      "theme": "light",
+      "ratio": 15.62
+    },
+    {
+      "tone": "#ffffff",
+      "ink": "#000000",
+      "theme": "light",
+      "ratio": 17.13
+    },
+    {
+      "tone": "#ffffff",
+      "ink": "#ffffff",
+      "theme": "dark",
+      "ratio": 8.9
+    }
+  ],
+  "plainText": [
+    {
+      "why": "plain ASCII",
+      "text": "A verdict note.",
+      "accepted": "A verdict note."
+    },
+    {
+      "why": "a composed letter",
+      "text": "Café",
+      "accepted": "Café"
+    },
+    {
+      "why": "a decomposed letter, composed on read",
+      "text": "Café",
+      "accepted": "Café"
+    },
+    {
+      "why": "a newline",
+      "text": "line one\nline two",
+      "accepted": null
+    },
+    {
+      "why": "a tab",
+      "text": "a\tb",
+      "accepted": null
+    },
+    {
+      "why": "a NUL",
+      "text": "a\u0000b",
+      "accepted": null
+    },
+    {
+      "why": "a right-to-left override",
+      "text": "a‮b",
+      "accepted": null
+    },
+    {
+      "why": "a zero-width joiner",
+      "text": "a‍b",
+      "accepted": null
+    },
+    {
+      "why": "a ZWJ emoji",
+      "text": "👩‍💻",
+      "accepted": null
+    },
+    {
+      "why": "a zero-width space",
+      "text": "a​b",
+      "accepted": null
+    },
+    {
+      "why": "a no-break space",
+      "text": "a b",
+      "accepted": null
+    },
+    {
+      "why": "a line separator",
+      "text": "a b",
+      "accepted": null
+    },
+    {
+      "why": "a soft hyphen",
+      "text": "a­b",
+      "accepted": null
+    },
+    {
+      "why": "an unassigned code point",
+      "text": "a͸b",
+      "accepted": null
+    },
+    {
+      "why": "a private-use character",
+      "text": "ab",
+      "accepted": null
+    },
+    {
+      "why": "an unpaired surrogate",
+      "text": "a\ud800b",
+      "accepted": null
+    },
+    {
+      "why": "a Hangul filler",
+      "text": "aㅤb",
+      "accepted": null
+    },
+    {
+      "why": "a combining grapheme joiner",
+      "text": "a͏b",
+      "accepted": null
+    }
+  ]
+}

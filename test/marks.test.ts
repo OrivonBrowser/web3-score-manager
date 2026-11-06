@@ -1,7 +1,8 @@
 import assert from "node:assert/strict";
 import { test } from "node:test";
-import { DARK_SURFACE, LIGHT_SURFACE, colourOf, iconPathOf, isMarkId, markLabel, plainText, plateContrast, reservedWordsIn } from "../src/mark-values.ts";
+import { DARK_SURFACE, LIGHT_SURFACE, colourOf, iconPathOf, isMarkId, markLabel, plainText, plateContrast } from "../src/mark-values.ts";
 import { validateMarks } from "../src/marks.ts";
+import { reservedWordsIn } from "../src/reserved-words.ts";
 
 // The strings below are the ones src/trust/tests/mark-values.test.ts and provider-marks.test.ts of Orivon read, so a mark
 // this tool accepts is a mark Orivon draws and one this tool refuses is one Orivon refuses.
@@ -109,6 +110,14 @@ test("reservedWordsIn reads what a label draws as", () => {
     ["Web/3", ["web3"]],
     ["❗", ["!"]],
     ["ǃ", ["!"]],
+    ["ꓪ" + "eb3", ["web3"]],
+    ["ա" + "eb3", ["web3"]],
+    ["Web" + "३", ["web3"]],
+    ["Safe" + "ⵑ", ["!"]],
+    ["Unpr0tected", ["unprotected"]],
+    ["Ս" + "nprotected", ["unprotected"]],
+    ["ս" + "nprotected", ["unprotected"]],
+    ["WARNING", ["warning"]],
   ];
   for (const [label, words] of cases) assert.deepEqual(reservedWordsIn(label), words, label);
   for (const label of ["Audited", "Webby", "Spider web", "Trusted", "Web", "Wave 2"]) assert.deepEqual(reservedWordsIn(label), [], label);
@@ -124,8 +133,8 @@ test("colourOf reads #rrggbb in either case and writes it in lower case", () => 
 test("plateContrast measures the ink on the tone's 13% tint over the surface", () => {
   assert.ok(Math.abs(plateContrast("#ffffff", "#000000", "#ffffff") - 21) < 1e-5);
   assert.ok(Math.abs(plateContrast("#ffffff", "#ffffff", "#ffffff") - 1) < 1e-5);
-  assert.equal(LIGHT_SURFACE, "#ffffff");
-  assert.equal(DARK_SURFACE, "#2b2c31");
+  assert.equal(LIGHT_SURFACE, "#e4e4eb");
+  assert.equal(DARK_SURFACE, "#35294b");
 });
 
 test("iconPathOf writes a path back as commands and numbers, and refuses what Orivon refuses", () => {

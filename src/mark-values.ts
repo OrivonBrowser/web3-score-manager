@@ -1,6 +1,6 @@
 // The typed values a mark is made of, read as the Web3 Score format page (docs/architecture/web3-score-provider.md in the
-// Orivon repository, section `P/marks.json`) says Orivon reads them. Each rule is Orivon's own, so a file that passes here
-// is a file Orivon draws; the tests feed both the same strings. Pure.
+// Orivon repository, section `P/marks.json`) says Orivon reads them. Each rule is Orivon's own (src/trust/mark-values.ts there),
+// so a file that passes here is a file Orivon draws; test/mark-parity.test.ts feeds both the same strings. Pure.
 
 /** A mark's id in marks.json and in an evaluation's `mark`. */
 export const MARK_ID = /^[a-z][a-z0-9-]{0,23}$/;
@@ -11,9 +11,12 @@ export const MAX_ICON_PATH = 1024;
 export const MIN_CONTRAST = 4.5;
 /** The 13% tint of the tone the plate is drawn with over the surface. */
 const PLATE_TINT = 0.13;
-/** The surfaces ink is measured on: white, and the dark theme's raised surface. */
-export const LIGHT_SURFACE = "#ffffff";
-export const DARK_SURFACE = "#2b2c31";
+/**
+ * The surfaces ink is measured on: the darkest light surface a mark is drawn on (the toolbar's) and the lightest dark one
+ * (the address pill in a private window), so a mark that reads on its plate here reads on every other surface.
+ */
+export const LIGHT_SURFACE = "#e4e4eb";
+export const DARK_SURFACE = "#35294b";
 
 /** Control, format (bidirectional, zero-width, tag), surrogate, private-use and unassigned characters, every separator but a plain space, and the blank-looking letters none of those cover. */
 const UNSAFE = /[\p{Cc}\p{Cf}\p{Cs}\p{Co}\p{Cn}\p{Zl}\p{Zp}͏ᅟᅠ឴឵ㅤﾠ]|(?! )\p{Z}/u;
@@ -38,48 +41,6 @@ export function markLabel(value: unknown): string | undefined {
   if (label === undefined || label !== label.trim() || /\p{M}{3,}/u.test(label)) return undefined;
   const scripts = [/\p{Script=Latin}/u, /\p{Script=Cyrillic}/u, /\p{Script=Greek}/u].filter((script) => script.test(label));
   return scripts.length > 1 ? undefined : label;
-}
-
-/** The words Orivon draws itself: the three graded marks, Web?, Unprotected, and the warning and its "!". `web25` is Web2.5 once its dot is gone. */
-const RESERVED = /web25|web2|web3|web\?|unprotected|warning|!/g;
-
-/** Letters that draw as a reserved word's letter, digit or sign, each group written as the characters then what they read as. */
-const LOOKALIKES: ReadonlyArray<readonly [string, string]> = [
-  ["аАαΑᎪᴀ", "a"],
-  ["вВβΒᏴʟʙ", "b"],
-  ["сСϲϹᴄᏟ", "c"],
-  ["ԁԀᎠᴅ", "d"],
-  ["еЕεΕᎬᴇ", "e"],
-  ["ԌᏀɢ", "g"],
-  ["іІιΙɪӀ", "i"],
-  ["пηΗɴᎴ", "n"],
-  ["оОοΟᴏᎾ", "o"],
-  ["рРρΡᴘᏢ", "p"],
-  ["гʀᎡ", "r"],
-  ["тТτΤᴛᎢ", "t"],
-  ["υΥᴜ", "u"],
-  ["ԝԜѡѠωᴡᏔᎳ", "w"],
-  ["Ƨƨ", "2"],
-  ["ƷʒȜȝЗзӠӡҘҙ", "3"],
-  ["Ƽƽ", "5"],
-  ["؟❓❔՞", "?"],
-  ["❗❕ǃ¡❢❣", "!"],
-];
-const SKELETON = new Map<string, string>(
-  LOOKALIKES.flatMap(([chars, reads]) => Array.from(chars).flatMap((char) => [[char, reads] as const, [char.toLowerCase(), reads] as const])),
-);
-
-/**
- * The reserved words a label reads as. The label is folded (compatibility, case, accents), each letter that draws as one
- * of a reserved word's characters is read as it, and everything that is not a letter, a digit, "?" or "!" is dropped, so
- * "Web 3", "WEB-3", "Web/3", "Web3" with an accent, the same word wholly in Cyrillic and "WebƷ" all read as `web3`.
- */
-export function reservedWordsIn(label: string): string[] {
-  const folded = label.normalize("NFKD").replace(/\p{M}+/gu, "").toLowerCase();
-  const skeleton = Array.from(folded, (char) => SKELETON.get(char) ?? char)
-    .join("")
-    .replace(/[^\p{L}\p{N}?!]+/gu, "");
-  return skeleton.match(RESERVED) ?? [];
 }
 
 /** A colour as `#rrggbb` in lower case, or undefined for any other form (a short hex, an alpha, a name, a function). */
