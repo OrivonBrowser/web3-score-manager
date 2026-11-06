@@ -230,11 +230,12 @@ web3-score ids ../my-app/dist --integrations   # one identifier per line, one fo
 
 The tool reads the bundle hash in `.well-known/orivon-ddoc.json` and the declarations in `.well-known/orivon.json`, and
 prints the identifier of the first row that fits, taking the whole site to be installed: the bundle is pinned when
-some declaration brings a file (a page's entry, a component's or a standard's module, a network node's runner, an
-extension's package, a panel) and not every declaration is a library. It refuses what Orivon's manifest reader skips
-or refuses, because such a declaration has no identifier: a type it does not know, a member the type does not define, a
-`hosting` that is not `page`, `component` or `data`, an id that is not lower-case letters, digits and hyphens (at most
-40, the first a letter) or is repeated, a link scheme whose id starts with `links-`, and more than 16 declarations.
+some declaration brings a file (a page's entry, a component's or a standard's module, a network node's runner, a
+panel) and not every declaration is a library; an extension is installed apart and pins nothing. It refuses the shape
+Orivon's manifest reader skips, because such a declaration has no identifier: a type it does not know, a member the type
+does not define, a `hosting` that is not the string `page`, `component` or `data`, a name past 60 characters, an id that is not lower-case letters, digits and hyphens (at most
+40, the first a letter) or is repeated, a link scheme whose id starts with `links-`, and more than 16 declarations. It does not check the values (a hash, an address, a url, code): Orivon rejects the manifest
+for those, and the tool prints an identifier regardless.
 
 ## What a provider learns
 

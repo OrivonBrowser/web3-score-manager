@@ -57,6 +57,8 @@ const HOSTINGS = ["page", "component", "data"];
 /** An id as Orivon's manifest reader takes it, which is narrower than the identifier form: lower-case letters, digits and hyphens, the first a letter. */
 const DECLARED_ID = /^[a-z][a-z0-9-]*$/;
 const MAX_DECLARED_ID = 40;
+/** The longest name Orivon's manifest reader keeps; a longer one skips the declaration. */
+const MAX_NAME = 60;
 /** The start of the id of the row Orivon makes for an app a person chose to take a scheme's links: a manifest's link-scheme entry may not use it. */
 const CHOICE_ROW_ID_PREFIX = "links-";
 /** How many declarations a manifest may make before Orivon ignores the whole field. */
@@ -76,7 +78,10 @@ function asRead(declaration: Fields): Fields {
   if (type === "link-scheme" && label.startsWith(CHOICE_ROW_ID_PREFIX)) {
     throw new UserError(`${label}: Orivon's manifest reader skips a link-scheme whose id starts with "${CHOICE_ROW_ID_PREFIX}", which it keeps for the row of an app the person chose`);
   }
-  if (declaration.hosting !== undefined && !HOSTINGS.includes(String(declaration.hosting))) {
+  if (typeof declaration.name === "string" && declaration.name.length > MAX_NAME) {
+    throw new UserError(`${label}: Orivon's manifest reader skips this declaration: the name is longer than ${MAX_NAME} characters`);
+  }
+  if (declaration.hosting !== undefined && (typeof declaration.hosting !== "string" || !HOSTINGS.includes(declaration.hosting))) {
     throw new UserError(`${label}: Orivon's manifest reader skips this declaration: hosting is ${JSON.stringify(declaration.hosting)}, not one of ${HOSTINGS.join(", ")}`);
   }
   const only = (value: unknown, allowed: readonly string[], where: string): void => {
@@ -119,14 +124,13 @@ function hostingOf(declaration: Fields): string | undefined {
   }
 }
 
-/** Whether a declaration brings a file of the site's bundle, as Orivon counts them: a page entry, a component or standard module, a network node's runner, an extension's package, a panel. */
+/** Whether a declaration brings a file of the site's bundle, as Orivon counts them: a page entry, a component or standard module, a network node's runner, a panel. */
 function bringsFile(declaration: Fields): boolean {
   const hosting = hostingOf(declaration);
   return (
     (hosting === "page" && declaration.entry !== undefined) ||
     (hosting === "component" && declaration.module !== undefined) ||
     (declaration.type === "network-node" && declaration.runner !== undefined) ||
-    (declaration.type === "extension" && declaration.crx !== undefined) ||
     (declaration.type === "standard" && declaration.module !== undefined) ||
     declaration.panel !== undefined
   );
@@ -135,9 +139,10 @@ function bringsFile(declaration: Fields): boolean {
 /** Whether a declaration is only data: hosted as data, with no file of its own that it pins by a hash. */
 const isCodeless = (declaration: Fields): boolean => hostingOf(declaration) === "data" && declaration.hash === undefined;
 
-/** Whether installing the site pins its bundle: some declaration brings a file, and not every one is a library, which is kept by its hash. */
+/** Whether installing the site pins its bundle: some declaration brings a file, and not every one is a library, which is kept by its hash. An extension is installed apart and pins nothing. */
 export function bundlePinned(declarations: readonly Fields[]): boolean {
-  return declarations.some(bringsFile) && declarations.some((declaration) => declaration.type !== "library");
+  const rest = declarations.filter((declaration) => declaration.type !== "extension");
+  return rest.some(bringsFile) && rest.some((declaration) => declaration.type !== "library");
 }
 
 const declarationId = (declaration: Fields): string => {

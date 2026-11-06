@@ -274,12 +274,18 @@ test("a declaration is hashed as Orivon's manifest reader returns it: an icon is
   assert.throws(() => integrationIdOf({ type: "account", id: "a", name: "A", entry: "a.html", descriptors: [{ algorithm: { mode: "x", scheme: "y", capabilities: [], speed: 1 } }] }, BUNDLE), /a descriptor's algorithm has the unrecognised field "speed"/);
 });
 
-test("a panel, a runner and an extension's package count as files, and a site of libraries alone pins nothing", () => {
+test("a panel and a runner count as files, an extension pins nothing, and a site of libraries alone pins nothing", () => {
   const data = { type: "search", id: "mine", name: "Mine", url: "https://s.example/?q=%s" };
   const library = { type: "library", id: "add", name: "Add", library: "lib.add@1.0.0", module: "add.wasm", hash: "cd".repeat(32) };
   assert.equal(bundlePinned([{ ...data, panel: "panel.html" }]), true);
   assert.equal(bundlePinned([{ type: "network-node", id: "n", name: "N", codes: ["BTC_NET_0_1"], runner: "runner.html" }]), true);
-  assert.equal(bundlePinned([{ type: "extension", id: "x", name: "X", crx: "x.crx", hash: "cd".repeat(32) }]), true);
+  const extension = { type: "extension", id: "x", name: "X", crx: "x.crx", hash: "cd".repeat(32) };
+  const dashboard = { type: "dashboard", id: "dash", name: "Dash" };
+  assert.equal(bundlePinned([extension]), false);
+  assert.equal(bundlePinned([extension, dashboard]), false);
+  assert.equal(integrationIdOf(dashboard, BUNDLE, bundlePinned([extension, dashboard])), `integration:decl:${declarationHashOf(dashboard)}`);
+  assert.throws(() => declarationHashOf({ ...dashboard, name: "x".repeat(61) }), /name is longer than 60/);
+  assert.throws(() => declarationHashOf({ ...dashboard, hosting: ["page"] }), /hosting/);
   assert.equal(bundlePinned([{ type: "network-node", id: "n", name: "N", hosting: "data", codes: ["BTC_NET_0_1"] }]), false);
   assert.equal(bundlePinned([library]), false);
   assert.equal(bundlePinned([library, data]), true);
