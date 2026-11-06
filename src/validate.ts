@@ -41,6 +41,7 @@ const MAX_WARNINGS = 8;
 const SECURITY_LEVELS = 4;
 const JUDGES_CONTENT = "allowed only on a website or integration evaluation";
 
+const PLAIN_TEXT = "must be plain text: no control, bidirectional, zero-width or unassigned character, and no separator but a plain space";
 const EVIDENCE_PROTOCOLS = ["http:", "https:", "ipfs:", "ipns:"];
 
 type Obj = Record<string, unknown>;
@@ -63,6 +64,11 @@ class Collector {
       if (!known.includes(key)) this.add(path ? `${path}.${key}` : key, "unknown field");
     }
   }
+  /**
+   * A string a person reads: `min` to `max` characters (code points of its Unicode form C) of plain text, read by the rule
+   * Orivon's reader applies to it (`plainText`), and returned in that form. Orivon drops a whole evaluation for one string
+   * it refuses, so each is refused here.
+   */
   string(obj: Obj, key: string, path: string, min: number, max: number, required: boolean): string | undefined {
     const value = obj[key];
     const at = path ? `${path}.${key}` : key;
@@ -71,19 +77,11 @@ class Collector {
       return undefined;
     }
     if (typeof value !== "string") return void this.add(at, "must be a string");
-    if (value.length < min || value.length > max) {
-      this.add(at, min === max ? `must be ${min} characters` : `must be ${min} to ${max} characters`);
-      return undefined;
+    const text = plainText(value, min, max);
+    if (text === undefined) {
+      const length = Array.from(value.normalize("NFC")).length;
+      this.add(at, length < min || length > max ? (min === max ? `must be ${min} characters` : `must be ${min} to ${max} characters`) : PLAIN_TEXT);
     }
-    return value;
-  }
-  /** Like `string`, for a note a client draws: 0 to `max` characters of plain text, with no control, bidirectional or zero-width character. */
-  plain(obj: Obj, key: string, path: string, max: number): string | undefined {
-    const value = obj[key];
-    const at = path ? `${path}.${key}` : key;
-    if (value === undefined) return undefined;
-    const text = plainText(value, 0, max);
-    if (text === undefined) this.add(at, `must be at most ${max} characters of plain text, with no control, bidirectional or zero-width character`);
     return text;
   }
 }
@@ -175,7 +173,7 @@ function warnings(c: Collector, value: unknown, subject: Subject | undefined): W
     const kind = item.kind;
     const known = WARNING_KINDS.find((each) => each === kind);
     if (known === undefined) return void c.add(`${at}.kind`, `must be one of ${WARNING_KINDS.join(", ")}`);
-    const note = c.plain(item, "note", at, MAX_NOTE);
+    const note = c.string(item, "note", at, 0, MAX_NOTE, false);
     const warning: Warning = { kind: known };
     if (note !== undefined && note !== "") warning.note = note;
     out.push(warning);
@@ -189,7 +187,7 @@ function security(c: Collector, value: unknown, subject: Subject | undefined): S
   if (!isObj(value)) return void c.add("security", "must be an object: { level, note? }");
   c.unknownFields(value, ["level", "note"], "security");
   const level = value.level;
-  const note = c.plain(value, "note", "security", MAX_NOTE);
+  const note = c.string(value, "note", "security", 0, MAX_NOTE, false);
   if (typeof level !== "number" || !Number.isInteger(level) || level < 1 || level > SECURITY_LEVELS) {
     return void c.add("security.level", `must be an integer from 1 to ${SECURITY_LEVELS}`);
   }
@@ -211,17 +209,18 @@ function evidence(c: Collector, value: unknown): string[] | undefined {
   value.slice(0, 10).forEach((item, i) => {
     const at = `evidence[${i}]`;
     if (typeof item !== "string") return void c.add(at, "must be a string");
-    if (item.length > 2048 || /\s/.test(item)) return void c.add(at, "must be one address of at most 2048 characters");
+    const address = plainText(item, 1, 2048);
+    if (address === undefined || /\s/.test(address)) return void c.add(at, "must be one address of at most 2048 plain characters, with no space");
     let url: URL;
     try {
-      url = new URL(item);
+      url = new URL(address);
     } catch {
       return void c.add(at, "must be an absolute http, https, ipfs or ipns address");
     }
     if (!EVIDENCE_PROTOCOLS.includes(url.protocol) || (url.host === "" && url.pathname.replace(/^\/+/, "") === "")) {
       return void c.add(at, "must be an absolute http, https, ipfs or ipns address");
     }
-    out.push(item);
+    out.push(address);
   });
   return out;
 }
