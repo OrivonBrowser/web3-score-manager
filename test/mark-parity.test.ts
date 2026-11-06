@@ -55,7 +55,7 @@ test("a label reads as the reserved words Orivon reads in it, through every look
 
 test("a label whose skeleton is a reserved word only through a character outside a hand list is refused", () => {
   const file = (label: string) => ({ standard: "orivon-web3-score/1", subject: "marks", updated: "2026-11-06", marks: [{ id: "audited", label, tone: "#2563eb", ink: { light: "#1e3a8a", dark: "#bfdbfe" } }] });
-  for (const label of ["սnprotected", "ոnprotected".replace("ո", "ս"), "աeb3", "Web३", "Safeⵑ", "ꓪeb3"]) {
+  for (const label of ["սnprotected", "ꓴnprotected", "աeb3", "Web३", "Safeⵑ", "ꓪeb3"]) {
     assert.deepEqual(validateMarks(file(label), "marks.json").issues.map((i) => i.path), ["marks[0].label"], JSON.stringify(label));
   }
   assert.deepEqual(validateMarks(file("Audited"), "marks.json").issues, []);

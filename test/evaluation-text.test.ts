@@ -37,12 +37,12 @@ test("every string an evaluation or a descriptor holds for a person is read by t
 test("an evidence address or a provider's about address holding what the plain-text rule refuses is refused", () => {
   const evidence = (address: string) => validateSource(website({ evidence: [address] }), "f.json", "website").issues.map((i) => i.path);
   assert.deepEqual(evidence("https://example.org/a"), []);
-  for (const bad of ["https://example.org/a‮b", "https://example.org/a‍b", "https://example.org/a͸b", "https://example.org/a\u0000b"]) {
+  for (const bad of ["https://example.org/a\u202eb", "https://example.org/a\u200db", "https://example.org/a\u0378b", "https://example.org/a\u0000b"]) {
     assert.deepEqual(evidence(bad), ["evidence[0]"], JSON.stringify(bad));
   }
   const about = (address: string) => validateProvider({ standard: "orivon-web3-score/1", bucketHexChars: 2, name: "P", about: address }, "provider.json").issues.map((i) => i.path);
   assert.deepEqual(about("https://example.org/about"), []);
-  for (const bad of ["https://example.org/a‮b", "https://example.org/a‍b", "https://example.org/a͸b"]) {
+  for (const bad of ["https://example.org/a\u202eb", "https://example.org/a\u200db", "https://example.org/a\u0378b"]) {
     assert.deepEqual(about(bad), ["about"], JSON.stringify(bad));
   }
 });
