@@ -37,7 +37,7 @@ install -d -o "$SERVICE_USER" -g "$SERVICE_USER" -m 0700 /var/lib/attila-watch
 install -d -o "$JUDGE_USER" -g "$JUDGE_USER" -m 2770 /var/attila-jobs
 install -d -o root -g "$SERVICE_USER" -m 0750 /etc/attila-watch
 if [ ! -f /etc/attila-watch/secrets.env ]; then
-  printf '%s\n' "TELEGRAM_BOT_TOKEN=" "TELEGRAM_CHAT_ID=" "CLAUDE_CODE_OAUTH_TOKEN=" "GITHUB_TOKEN=" \
+  printf '%s\n' "TELEGRAM_BOT_TOKEN=" "TELEGRAM_CHAT_ID=" "CLAUDE_CODE_OAUTH_TOKEN=" "GITHUB_TOKEN=" "ORIVON_REPO=" \
     | install -o root -g "$SERVICE_USER" -m 0640 /dev/stdin /etc/attila-watch/secrets.env
 fi
 

@@ -142,11 +142,16 @@ kinds of JSON file under it:
 `tone`, light and dark `ink`, an optional one-path `icon` and `note`, and optionally the one grade (`web2`, `web25` or
 `web3`) it restyles. `check` applies the rules Orivon reads the file with, and refuses what Orivon would leave unused: a
 label with a control, bidirectional or zero-width character or a mix of Latin, Cyrillic and Greek letters, a word Orivon
-draws itself (`web2`, `web25`, `web3`, `web?`, `unprotected`, `warning` and `!`, however it is spelt with look-alike letters; a mark that restyles a grade may carry that grade's own word), a second mark that restyles
-the same grade, and ink that reads below 4.5:1 on its plate in either theme (the tone at a 13% tint over `#e4e4eb` for `light` and
-over `#35294b` for `dark`, the darkest light and the lightest dark surface a mark is drawn on). It also refuses a field Orivon would
-ignore, so a misspelt `restyles` is caught. An evaluation's `mark` must name a mark the file holds, and a file that
-names a mark no evaluation uses is not an error. `build` writes the validated file as `score/marks.json`.
+draws itself (`web2`, `web25`, `web3`, `web?`, `unprotected`, `warning` and `!`, however it is spelt: with look-alike
+letters, with two characters that draw as one such as `VVeb3`, `uueb3` and `\/\/eb3`, or with the `rn` of `Warning` run
+together; a mark that restyles a grade may carry that grade's own word, and nothing but that word, so `Web2`, `WEB 2` and
+`Wéb2` restyle `web2` and `Web2 plus` does not), a second mark that restyles the same grade, and ink that reads below 4.5:1
+on its plate in either theme (the tone at a 13% tint over `#e4e4eb` for `light` and over `#35294b` for `dark`, the darkest
+light and the lightest dark surface a mark is drawn on, and again at a 22% tint, which is the plate under the pointer on the
+address bar's button). An icon path is bounded by what is written back: at most 1024 characters with one space between values
+and one command to each group, so a compact path of 1004 characters can be refused. `check` also refuses a field Orivon would
+ignore, so a misspelt `restyles` is caught. An evaluation's `mark` must name a mark the file holds, and a file that names a mark
+no evaluation uses is not an error. `build` writes the validated file as `score/marks.json`.
 
 ## Levels
 
@@ -280,14 +285,32 @@ npm run typecheck
 npm test
 ```
 
-Attila reads an evaluation's text and a marks file by Orivon's own rules: `src/mark-values.ts`, `src/reserved-words.ts`,
-`src/confusables.ts` and `src/confusables.json` are copies of Orivon's `src/trust/` files, and `test/fixtures/orivon-reader.json`
-holds cases with the answers Orivon's functions give. With `ORIVON_REPO` set to the root of an Orivon checkout, `npm test` also
-compares the copies with the originals and checks that every built-in row Orivon declares has a verdict here:
+Attila reads an evaluation's text and a marks file by Orivon's own rules, and these files are copies of Orivon's
+`src/trust/` files, equal to the originals but for their import lines:
+
+| Here | In Orivon |
+|---|---|
+| `src/mark-values.ts` | `src/trust/mark-values.ts` |
+| `src/reserved-words.ts` | `src/trust/reserved-words.ts` |
+| `src/confusables.ts` | `src/trust/confusables.ts` |
+| `src/confusables.json` | `src/trust/confusables.json` |
+| `src/confusables.LICENSE.txt` | `src/trust/confusables.LICENSE.txt` |
+
+A rule is changed in Orivon and copied here, never changed here. To copy again, copy each file over, then set its import
+lines for Node: `./confusables.js` becomes `./confusables.ts` in `reserved-words.ts`, and `confusables.ts` imports
+`./confusables.json` `with { type: 'json' }`. Copy Orivon's `src/trust/tests/mark-reader-cases.json` over
+`test/fixtures/orivon-reader.json` as well: it holds the cases with the answers Orivon's functions give, and under `copies` the
+SHA-256 of each copied file read without its import lines. `npm test` holds the copies to those hashes on every run, and
+Orivon's tests hold its own files to them, so a change on either side fails a test until the other side changes with it.
+
+With `ORIVON_REPO` set to the root of an Orivon checkout, `npm test` also compares each copy with the original and checks that
+every built-in row Orivon declares has a verdict here:
 
 ```
 ORIVON_REPO=../orivon-mvp npm test
 ```
+
+Publishing Attila (`watch/publish.ts`) makes the same comparison first and refuses to run without `ORIVON_REPO`.
 
 ## License
 

@@ -1,6 +1,7 @@
 import { copyFileSync, existsSync, mkdirSync, readFileSync, rmSync } from "node:fs";
 import path from "node:path";
 import { CID } from "multiformats/cid";
+import { assertCopiesCurrent } from "../src/orivon-copies.ts";
 import type { Config } from "./config.ts";
 import { writeFileAtomic } from "./fsutil.ts";
 import { cliArgs } from "./git.ts";
@@ -46,10 +47,12 @@ function isPreviousBuild(dir: string): boolean {
 
 /**
  * Builds Attila from the data clone, mirrors it into the publish directory, adds it to IPFS and
- * moves the IPNS name. The CID file and the summary change only after the name has moved, so a
- * failed publish is simply tried again by the next run.
+ * moves the IPNS name. It refuses to start unless the copies of Orivon's mark and label readers equal
+ * the originals in the checkout `ORIVON_REPO` names. The CID file and the summary change only after the
+ * name has moved, so a failed publish is simply tried again by the next run.
  */
 export async function publish(config: Config, judged: string[], sha7: string, today: string): Promise<PublishResult> {
+  assertCopiesCurrent(config.orivonRepo, config.appDir);
   const dist = path.join(config.stateDir, "dist");
   if (existsSync(dist) && !isPreviousBuild(dist)) rmSync(dist, { recursive: true, force: true });
   const built = await run(config.nodeBin, cliArgs(config, "build", "--out", dist), { cwd: config.repoDir, timeoutMs: 120_000 });

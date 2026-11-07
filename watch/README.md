@@ -26,7 +26,7 @@ sign-in helper (see Install below).
    6. Validates the answer, merges it into the old evaluation, runs `check`, and decides
       (`verdict.ts`, `merge.ts`).
    7. Commits to `main`, or commits to a branch for the owner to review.
-4. Builds Attila, adds it to IPFS and moves its IPNS name, once for the whole run.
+4. Checks the copies of Orivon's mark and label readers against `ORIVON_REPO`, builds Attila, adds it to IPFS and moves its IPNS name, once for the whole run.
 5. Sends one Telegram message per judged site, and one per failure (the first time a build fails,
    and again when the watch gives up on it).
 
@@ -107,6 +107,7 @@ All settings are environment variables, read in `config.ts`.
 | `MAX_SITES_PER_RUN` | `4` | Jobs per run |
 | `MAX_ATTEMPTS` | `3` | Tries before a failing build is left alone |
 | `KEEP_JOBS` | `5` | Job folders kept |
+| `ORIVON_REPO` | unset | The root of an Orivon checkout, kept current. Publishing compares the files Attila copies from Orivon's `src/trust/` with it and refuses to run without it or when one differs (see the README's Development section) |
 | `PUBLISH_DIR` | `/home/ubuntu/orivon-apps/web3-score-attila` | Where the built Attila is mirrored before `ipfs add` |
 | `CID_FILE` | `<PUBLISH_DIR>.cid` | The CID of the last publication; the previous one is kept as `.bak-<date>` |
 | `IPNS_KEY` | `web3-score` | The key that is moved to the new CID |
@@ -132,7 +133,8 @@ folders and `/etc/attila-watch/secrets.env`, copies `src/` and `watch/` to `/opt
 with their dependencies, installs Chromium's headless shell and the systemd service and timer
 (`ENABLE_TIMER=0` installs the timer without starting it). Running it again updates the code.
 
-Then fill in `secrets.env` (`TELEGRAM_BOT_TOKEN`, `TELEGRAM_CHAT_ID`, `GITHUB_TOKEN`) and sign in
+Then fill in `secrets.env` (`TELEGRAM_BOT_TOKEN`, `TELEGRAM_CHAT_ID`, `GITHUB_TOKEN`, and `ORIVON_REPO`: the path of a
+clone of Orivon's repository that is kept current, without which publishing Attila refuses to run) and sign in
 to Claude, in a terminal on the server:
 
 ```

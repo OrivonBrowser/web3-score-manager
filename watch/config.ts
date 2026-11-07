@@ -39,6 +39,8 @@ export interface Config {
   maxAttempts: number;
   keepJobs: number;
   publishDir: string;
+  /** The root of an Orivon checkout, which publishing compares the copies of Orivon's mark and label readers with. */
+  orivonRepo: string | undefined;
   cidFile: string;
   ipnsKey: string;
   summaryFile: string;
@@ -125,6 +127,7 @@ export function loadConfig(env: Env = process.env): Config {
     maxAttempts: integer(env, "MAX_ATTEMPTS", 3),
     keepJobs: integer(env, "KEEP_JOBS", 5),
     publishDir,
+    orivonRepo: optional(env, "ORIVON_REPO"),
     cidFile: text(env, "CID_FILE", `${publishDir}.cid`),
     ipnsKey: text(env, "IPNS_KEY", "web3-score"),
     summaryFile: text(env, "SUMMARY_FILE", "/home/ubuntu/orivon-apps/SUMMARY.md"),
