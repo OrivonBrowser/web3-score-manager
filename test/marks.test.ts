@@ -1,6 +1,6 @@
 import assert from "node:assert/strict";
 import { test } from "node:test";
-import { DARK_SURFACE, LIGHT_SURFACE, colourOf, iconPathOf, isMarkId, markLabel, plainText, plateContrast } from "../src/mark-values.ts";
+import { DARK_SURFACE, LIGHT_SURFACE, MIN_CONTRAST, colourOf, iconPathOf, isMarkId, markLabel, plainText, plateContrast } from "../src/mark-values.ts";
 import { validateMarks } from "../src/marks.ts";
 import { reservedWordsIn } from "../src/reserved-words.ts";
 
@@ -130,9 +130,11 @@ test("colourOf reads #rrggbb in either case and writes it in lower case", () => 
   }
 });
 
-test("plateContrast measures the ink on the tone's 13% tint over the surface", () => {
+test("plateContrast measures the ink on the tone's tint over the surface: 13% at rest unless a tint is given", () => {
   assert.ok(Math.abs(plateContrast("#ffffff", "#000000", "#ffffff") - 21) < 1e-5);
   assert.ok(Math.abs(plateContrast("#ffffff", "#ffffff", "#ffffff") - 1) < 1e-5);
+  assert.ok(Math.abs(plateContrast("#000000", "#4a4a4a", LIGHT_SURFACE) - 5.23) < 0.01);
+  assert.ok(Math.abs(plateContrast("#000000", "#4a4a4a", LIGHT_SURFACE, 0.22) - 4.19) < 0.01);
   assert.equal(LIGHT_SURFACE, "#e4e4eb");
   assert.equal(DARK_SURFACE, "#35294b");
 });
@@ -241,21 +243,34 @@ test("a value Orivon refuses is an error at that value", () => {
   }
 });
 
-test("an icon path of exactly 1 KiB is valid and one more character is not", () => {
-  const fits = `M0 0${" L1 1".repeat(204)}`;
-  assert.ok(fits.length <= 1024);
+test("an icon path whose written form is exactly 1 KiB is valid and one more character is not", () => {
+  // Written back, a group is a command and its values with one space between: 169 of "L1 1" make 1019 characters.
+  const fits = `M0 0${" L10 1".repeat(5)}${" L1 1".repeat(164)}`;
+  assert.equal(iconPathOf(fits)?.length, 1024);
   valid([mark({ icon: { path: fits } })]);
-  const over = `M0 0${" L1 1".repeat(205)}`;
-  assert.ok(over.length > 1024);
+  const over = `${fits} L1 1`;
+  assert.equal(iconPathOf(over), undefined);
   assert.deepEqual(paths([mark({ icon: { path: over } })]), ["marks[0].icon.path"]);
+});
+
+test("a compact path under 1024 characters is refused when it is longer written back, and the message says so", () => {
+  const compact = `M0 0${"l1 1".repeat(250)}`;
+  assert.equal(compact.length, 1004);
+  assert.equal(iconPathOf(compact), undefined);
+  const [issue] = check([mark({ icon: { path: compact } })]).issues;
+  assert.equal(issue?.path, "marks[0].icon.path");
+  assert.match(issue?.message ?? "", /at most 1024 characters as written back/);
+  valid([mark({ icon: { path: `M0 0${"l1 1".repeat(169)}` } })]);
+  assert.equal(iconPathOf(`M0 0${"l1 1".repeat(2000)}`), undefined);
 });
 
 test("two marks with one id, a mark that is not an object, and two restyles of one grade are errors", () => {
   assert.deepEqual(paths([mark(), mark({ label: "Other" })]), ["marks[1].id"]);
   assert.deepEqual(paths([mark(), "audited"]), ["marks[1]"]);
   assert.deepEqual(paths([null]), ["marks[0]"]);
-  assert.deepEqual(paths([mark({ restyles: "web3" }), mark({ id: "other", restyles: "web3" })]), ["marks[1].restyles"]);
-  valid([mark({ restyles: "web3" }), mark({ id: "other", restyles: "web2" })]);
+  const web3 = { id: "look3", label: "Web3", restyles: "web3" };
+  assert.deepEqual(paths([mark(web3), mark({ ...web3, id: "other" })]), ["marks[1].restyles"]);
+  valid([mark(web3), mark({ id: "other", label: "Web2", restyles: "web2" })]);
 });
 
 test("a new mark may not be, or contain, a word Orivon draws itself", () => {
@@ -267,6 +282,11 @@ test("a new mark may not be, or contain, a word Orivon draws itself", () => {
     assert.deepEqual(paths([mark({ label, restyles: "web2" })]), ["marks[0].label"], `${label} restyling web2`);
   }
   assert.deepEqual(paths([mark({ label: "Wеb3" })]), ["marks[0].label"]);
+  const pairs = ["VVeb3", "Vveb3", "uueb3", "\\/\\/eb3", "Waming", "UnprotecteCI", "We|o3", "Uriprotected"];
+  for (const label of pairs) {
+    assert.deepEqual(paths([mark({ label })]), ["marks[0].label"], `${label} added`);
+    assert.deepEqual(paths([mark({ label, restyles: "web2" })]), ["marks[0].label"], `${label} restyling web2`);
+  }
   for (const label of ["Webby", "Spider web", "Trusted", "Verified"]) valid([mark({ label })]);
 });
 
@@ -279,6 +299,18 @@ test("a mark that restyles a grade carries that grade's word and no other", () =
   }
 });
 
+test("a restyle is labelled with its grade's word and nothing more, or Orivon never draws it", () => {
+  for (const label of ["Web2", "WEB 2", "Wéb2", "web-2", "VVeb2"]) valid([mark({ id: "web2", label, restyles: "web2" })]);
+  valid([mark({ id: "web25", label: "Web 2.5", restyles: "web25" })]);
+  valid([mark({ id: "web3", label: "VVeb3", restyles: "web3" })]);
+  for (const label of ["Legacy", "Web2 plus", "Old Web2", "Web 2 beta", "\\/\\/eb2", "★"]) {
+    const [issue] = check([mark({ id: "web2", label, restyles: "web2" })]).issues;
+    assert.equal(issue?.path, "marks[0].label", label);
+  }
+  assert.match(check([mark({ id: "web2", label: "Legacy", restyles: "web2" })]).issues[0]!.message, /must be the word of the grade it restyles \(web2\)/);
+  assert.deepEqual(paths([mark({ id: "web3", label: "\\/\\/eb3", restyles: "web3" })]), ["marks[0].label"]);
+});
+
 test("ink that does not reach 4.5:1 on its plate is an error naming the theme and the ratio", () => {
   const faint = (ink: unknown) => check([mark({ ink })]).issues;
   assert.deepEqual(faint({ light: "#93c5fd", dark: "#bfdbfe" }).map((i) => i.path), ["marks[0].ink.light"]);
@@ -286,6 +318,17 @@ test("ink that does not reach 4.5:1 on its plate is an error naming the theme an
   assert.deepEqual(faint({ light: "#2563eb", dark: "#2563eb" }).map((i) => i.path), ["marks[0].ink.light", "marks[0].ink.dark"]);
   assert.match(faint({ light: "#93c5fd", dark: "#bfdbfe" })[0]!.message, /reaches \d\.\d\d:1 on the plate in the light theme/);
   valid([mark({ tone: "#16a34a", ink: { light: "#14532d", dark: "#bbf7d0" } })]);
+});
+
+test("ink that reads on the plate at rest and not under the pointer is an error, which only the 22% tint shows", () => {
+  const dim = (ink: unknown, tone = "#000000") => check([mark({ tone, ink })]).issues;
+  // 5.23:1 at the 13% tint of black over the toolbar's surface, 4.19:1 at the 22% tint under the pointer.
+  assert.ok(plateContrast("#000000", "#4a4a4a", LIGHT_SURFACE) >= MIN_CONTRAST);
+  assert.ok(plateContrast("#000000", "#4a4a4a", LIGHT_SURFACE, 0.22) < MIN_CONTRAST);
+  assert.deepEqual(dim({ light: "#4a4a4a", dark: "#ffffff" }).map((i) => i.path), ["marks[0].ink.light"]);
+  assert.match(dim({ light: "#4a4a4a", dark: "#ffffff" })[0]!.message, /reaches 4\.19:1 on the plate in the light theme, at rest or under the pointer/);
+  assert.deepEqual(dim({ light: "#000000", dark: "#d0d0d0" }, "#ffffff").map((i) => i.path), ["marks[0].ink.dark"]);
+  assert.deepEqual(dim({ light: "#2a2a2a", dark: "#ffffff" }), []);
 });
 
 test("a field Orivon ignores is refused here, at every level, so a typo does not pass for a setting", () => {

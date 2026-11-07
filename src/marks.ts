@@ -1,17 +1,20 @@
 import {
   DARK_SURFACE,
   LIGHT_SURFACE,
+  MAX_ICON_PATH,
   MAX_LABEL,
   MAX_NOTE,
   MIN_CONTRAST,
+  PLATE_TINTS,
   colourOf,
   iconPathOf,
   isMarkId,
+  isReadable,
   markLabel,
   plainText,
   plateContrast,
 } from "./mark-values.ts";
-import { reservedWordsIn } from "./reserved-words.ts";
+import { drawsAs, reservedWordsIn } from "./reserved-words.ts";
 import { STANDARD } from "./types.ts";
 import type { Issue } from "./types.ts";
 
@@ -29,7 +32,7 @@ const OWN_WORD: Record<Graded, string> = { web2: "web2", web25: "web25", web3: "
 export interface Mark {
   id: string;
   label: string;
-  /** `#rrggbb` in lower case: the dot, and the plate at a 13% tint. */
+  /** `#rrggbb` in lower case: the dot, and the plate at a 13% tint (22% under the pointer on the address bar's button). */
   tone: string;
   ink: { light: string; dark: string };
   icon?: { path: string };
@@ -62,8 +65,8 @@ const isGraded = (value: unknown): value is Graded => (GRADED as readonly unknow
 /**
  * Checks a marks.json source file by the rules Orivon reads it with (docs/architecture/web3-score-provider.md section
  * `P/marks.json`), and returns it in the form Orivon writes values back in. Orivon ignores a field it does not know; a
- * source file is stricter and refuses one, which catches a misspelt `restyles`. Ink that does not read on its plate leaves
- * a mark in Orivon's file and never drawn, so here it is an error.
+ * source file is stricter and refuses one, which catches a misspelt `restyles`. Ink that does not read on its plate, and a
+ * restyle whose label is not the word of its grade, leave a mark in Orivon's file and never drawn, so here each is an error.
  */
 export function validateMarks(value: unknown, file: string): { marks?: MarksFile; issues: Issue[] } {
   const issues: Issue[] = [];
@@ -119,6 +122,8 @@ function readMark(item: unknown, at: string, add: (path: string, message: string
     const words = reservedWordsIn(label).filter((word) => word !== own);
     if (words.length > 0) {
       fail("label", `is, or contains, a word Orivon draws itself (${words.join(", ")}); only a mark that restyles a graded mark carries that mark's own word`);
+    } else if (own !== undefined && !drawsAs(label, own)) {
+      fail("label", `must be the word of the grade it restyles (${own}), whole: spacing, case and accents may differ, anything more and Orivon never draws the mark`);
     }
   }
 
@@ -135,11 +140,11 @@ function readMark(item: unknown, at: string, add: (path: string, message: string
     if (dark === undefined) fail("ink.dark", "must be #rrggbb");
     if (light !== undefined && dark !== undefined) ink = { light, dark };
   }
-  if (tone !== undefined && ink !== undefined) {
+  if (tone !== undefined && ink !== undefined && !isReadable(tone, ink)) {
     for (const [theme, surface] of [["light", LIGHT_SURFACE], ["dark", DARK_SURFACE]] as const) {
-      const ratio = plateContrast(tone, ink[theme], surface);
+      const ratio = Math.min(...PLATE_TINTS.map((tint) => plateContrast(tone, ink[theme], surface, tint)));
       if (ratio < MIN_CONTRAST) {
-        fail(`ink.${theme}`, `reaches ${ratio.toFixed(2)}:1 on the plate in the ${theme} theme; it needs ${MIN_CONTRAST}:1 or Orivon never draws the mark`);
+        fail(`ink.${theme}`, `reaches ${ratio.toFixed(2)}:1 on the plate in the ${theme} theme, at rest or under the pointer; it needs ${MIN_CONTRAST}:1 or Orivon never draws the mark`);
       }
     }
   }
@@ -150,7 +155,7 @@ function readMark(item: unknown, at: string, add: (path: string, message: string
     else {
       for (const key of Object.keys(item.icon)) if (key !== "path") fail(`icon.${key}`, "unknown field");
       const path = iconPathOf(item.icon.path);
-      if (path === undefined) fail("icon.path", "must be one SVG path for a 24 by 24 view box, at most 1024 characters, in the commands M L H V C S Q T A Z with plain decimal numbers none past 100");
+      if (path === undefined) fail("icon.path", `must be one SVG path for a 24 by 24 view box, in the commands M L H V C S Q T A Z with plain decimal numbers none past 100, and at most ${MAX_ICON_PATH} characters as written back (one space between values, one command to each group of them)`);
       else icon = { path };
     }
   }
