@@ -310,6 +310,10 @@ every built-in row Orivon declares has a verdict here:
 ORIVON_REPO=../orivon-mvp npm test
 ```
 
+Run it before republishing by hand: `ORIVON_REPO=<Orivon checkout> npm test`. Line ends are read as LF, so a Windows checkout compares equal.
+
+Two comments inside the copies name things of Orivon's repository, not this one: `reserved-words.ts` points to `src/trust/README.md` (its Design notes) and `confusables.ts` to `scripts/gen-confusables.mjs`.
+
 Publishing Attila (`watch/publish.ts`) makes the same comparison first and refuses to run without `ORIVON_REPO`.
 
 ## License

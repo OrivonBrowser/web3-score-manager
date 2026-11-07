@@ -12,6 +12,7 @@ export const COPIES: readonly string[] = ["confusables.json", "confusables.LICEN
 /** A text without its import lines, the only lines in which a copy may differ from its original: Orivon names a module by its `.js` file and this tool by its `.ts` one, and a JSON import carries its type. */
 export const withoutImports = (text: string): string =>
   text
+    .replaceAll("\r\n", "\n")
     .split("\n")
     .filter((line) => !line.startsWith("import "))
     .join("\n");

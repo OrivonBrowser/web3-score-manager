@@ -40,6 +40,9 @@ if [ ! -f /etc/attila-watch/secrets.env ]; then
   printf '%s\n' "TELEGRAM_BOT_TOKEN=" "TELEGRAM_CHAT_ID=" "CLAUDE_CODE_OAUTH_TOKEN=" "GITHUB_TOKEN=" "ORIVON_REPO=" \
     | install -o root -g "$SERVICE_USER" -m 0640 /dev/stdin /etc/attila-watch/secrets.env
 fi
+grep -q '^ORIVON_REPO=' /etc/attila-watch/secrets.env || echo 'ORIVON_REPO=' >> /etc/attila-watch/secrets.env
+grep -q '^ORIVON_REPO=.' /etc/attila-watch/secrets.env \
+  || echo "ORIVON_REPO is empty in /etc/attila-watch/secrets.env: publishing Attila will refuse to run" >&2
 
 # The code is a copy of this checkout's src/ and watch/; node_modules survive an update.
 rsync -a --delete --exclude node_modules --exclude test "$SRC/src" "$SRC/watch" "$APP/"
