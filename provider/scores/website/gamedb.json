@@ -1,13 +1,14 @@
 {
   "subject": "website",
   "ids": [
-    "cid:bafybeifsbdgsz7ykidhdad5vbngdbl7mll3w7c4cqluejaluwb676okze4"
+    "cid:bafybeifsbdgsz7ykidhdad5vbngdbl7mll3w7c4cqluejaluwb676okze4",
+    "cid:bafybeibx44b5uocje6ecgsnkulkbjjooyt2hfvh3eznglwwelowfoxmnzu"
   ],
   "names": [
     "gamedb.eth"
   ],
   "name": "GameDB",
-  "evaluated": "2026-10-18",
+  "evaluated": "2026-11-08",
   "trustlessity": {
     "level": 2,
     "privacy": false
