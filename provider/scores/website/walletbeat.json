@@ -4,18 +4,19 @@
     "cid:bafybeiecddp4agiwwqbya5qji7tzlfnp3jksf4tbw4jeabrvitzluzljgm",
     "cid:bafybeibv3en2ep4c3lans66h2uqx4ritdlkubel4hwdognn3uf25to4qai",
     "cid:bafybeic44pfpsutoecbl7fujr4gbkjc5h245nu7c4lvf6kvfrs4nncipe4",
-    "cid:bafybeif2aaf26cwnz4gmzuwj5qd5k3sbw7j6sopuqliidbdgjytrzuadwi"
+    "cid:bafybeif2aaf26cwnz4gmzuwj5qd5k3sbw7j6sopuqliidbdgjytrzuadwi",
+    "cid:bafybeiei3uuywhsrkwtjwvxob554e63qqcmvm55qghage353ztxxcn54t4"
   ],
   "names": [
     "beta.walletbeat.eth"
   ],
   "name": "Walletbeat",
-  "evaluated": "2026-10-21",
+  "evaluated": "2026-11-09",
   "trustlessity": {
     "level": 4,
     "privacy": true
   },
-  "summary": "Walletbeat, ratings of Ethereum wallets for security and privacy, open source (MIT). Its data ships inside the site: across 80 of its pages it loads only its own files, runs no third-party code and makes no request beyond the site itself.",
+  "summary": "Walletbeat, ratings of Ethereum wallets for security and privacy, open source (MIT). Its data ships inside the site: across its pages it loads only its own files, runs no third-party code and makes no request beyond the site itself.",
   "operations": [
     {
       "name": "Browse and compare wallet ratings",
