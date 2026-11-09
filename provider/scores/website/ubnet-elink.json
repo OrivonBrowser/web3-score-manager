@@ -1,42 +1,54 @@
 {
   "subject": "website",
   "ids": [
-    "cid:bafybeidj2wofwysjj6oveut5jciu4tjzz3hytczw5m3qiyfvnr5ozjxtna"
+    "cid:bafybeidj2wofwysjj6oveut5jciu4tjzz3hytczw5m3qiyfvnr5ozjxtna",
+    "cid:bafybeiezbkco6frf3afjxnzxvitvjwttqwdddlhqx233gdjzku4uj23mo4"
   ],
   "names": [
     "elink.ubnet.eth"
   ],
-  "name": "elink.ubnet.eth (Ethereum.Linked)",
-  "evaluated": "2026-10-23",
+  "name": "elink.ubnet.eth (Havenly Home)",
+  "evaluated": "2026-11-09",
   "trustlessity": {
-    "level": 3,
-    "privacy": false
+    "level": 4,
+    "privacy": true
   },
-  "summary": "An Ethereum.Linked ENS profile page for elink.ubnet.eth. Its scripts are unminified own files (the ethers library is bundled), so the page is its own public source (no licence file). It loads no third-party script, which is Level 3. It is not Level 4: when it opens it reads Ethereum through the publicnode RPC, the profile from ubnet.work and transactions from Blockscout.",
-  "connections": [
+  "summary": "Havenly Home, a room-decorating browser game. Its HTML, CSS and unminified app.js are served as written, so the page is its own public source (no licence file). It loads no third-party code and makes no request beyond its own files. Scoring, coins and designs run in the page and are saved in localStorage, with no server involved. Nothing it does shows the visitor to another party, so it is Level 4 with privacy.",
+  "operations": [
     {
-      "name": "Ethereum RPC (ethereum-rpc.publicnode.com)",
+      "name": "Place, move and arrange furniture",
       "trustlessity": {
-        "level": 1
+        "level": 4,
+        "privacy": true
       },
-      "note": "Read without a light client when the page opens."
+      "note": "Done in the page; no request is sent."
     },
     {
-      "name": "UBNet API (ubnet.work)",
+      "name": "Score a submitted room design",
       "trustlessity": {
-        "level": 1
+        "level": 4,
+        "privacy": true
       },
-      "note": "Profile, posts and followers fetched when the page opens."
+      "note": "Computed locally in app.js from the pieces placed."
     },
     {
-      "name": "Blockscout API (eth.blockscout.com)",
+      "name": "Buy items and claim the daily bonus",
       "trustlessity": {
-        "level": 1
+        "level": 4,
+        "privacy": true
       },
-      "note": "Transaction history fetched when the page opens."
+      "note": "Game coins only. The balance is kept in localStorage; no payment or server."
+    },
+    {
+      "name": "Save progress",
+      "trustlessity": {
+        "level": 4,
+        "privacy": true
+      },
+      "note": "Written to the browser's localStorage."
     }
   ],
   "evidence": [
-    "ipfs://bafybeidj2wofwysjj6oveut5jciu4tjzz3hytczw5m3qiyfvnr5ozjxtna"
+    "ipfs://bafybeiezbkco6frf3afjxnzxvitvjwttqwdddlhqx233gdjzku4uj23mo4"
   ]
 }
