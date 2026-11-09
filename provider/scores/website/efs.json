@@ -3,13 +3,14 @@
   "ids": [
     "cid:bafybeiehnviixu674bvbazajj27x2kffn7gswn2rfms62juaa6ijywu6pm",
     "cid:bafybeidhx6rcbxhjpqeirqwysvi6uvnm2reuh6lyrbnlbx4q3oyuahlhmu",
-    "cid:bafybeibbguk5fz5pthzmtr4sbq7454tuxrbrvvjnjfsixauspqcbrmz6za"
+    "cid:bafybeibbguk5fz5pthzmtr4sbq7454tuxrbrvvjnjfsixauspqcbrmz6za",
+    "cid:bafybeigqpu4huex67aey7yl6wlr2no2v2dppsc3zxduddvcpawllrr2uoi"
   ],
   "names": [
     "app.efs.eth"
   ],
   "name": "Ethereum File System",
-  "evaluated": "2026-10-27",
+  "evaluated": "2026-11-09",
   "trustlessity": {
     "level": 3,
     "privacy": false
