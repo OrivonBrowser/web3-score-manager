@@ -4,7 +4,9 @@
     "sha256:23497d8bd5ff226764b3101955cf246a30ba252681f68bc022eaa7edcc5a3151",
     "cid:bafybeib3jp5g4roavyvtblnclkigy3bu3lshmrlrmpulc7pyeawqo6djju",
     "cid:bah5acgzamezhtbyembs7az2itfehuzifdthan2ilzradppw3pkmik5gzl2hq",
-    "cid:bafybeidzby3quvr6ziflnnhdped4ksg6t4pz73eudhk6mg6zbbb6zlzina"
+    "sha256:188033cd12d6e497e2757c5b90433566b71a82f17ca5beabd4b5d7cc5dbbd753",
+    "cid:bafybeidzby3quvr6ziflnnhdped4ksg6t4pz73eudhk6mg6zbbb6zlzina",
+    "cid:bah5acgzaadm7pamhmzpduzknkzj6srudzv4mdx53qa7jkcnieegfkykdnumq"
   ],
   "names": [
     "restfox.orivonstack.eth"
