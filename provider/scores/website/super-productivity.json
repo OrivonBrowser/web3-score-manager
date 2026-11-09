@@ -1,24 +1,23 @@
 {
   "subject": "website",
   "ids": [
-    "sha256:37019e2d24854fc0e3937b353a85199b0038e76be6373778796f48b6f06a9579",
-    "cid:bafybeihch73eiwlsiqhdifilh332njwuosiqgcnj7bo5ucl6zf6rnf3qla",
-    "cid:bah5acgzafkcxk5qqwftttncfhyiev6kpvx3ca5vpmrhxae2gvstxinssappa",
     "sha256:1df7b7bd1a5acdfaffa732965fefa307da0e5eed27f95598fd90f1d877361ade",
     "cid:bafybeifypwh37sb4q3nvlirxguofu6zs42kvf5ev3ktvj5772fyjhl44de",
-    "cid:bah5acgzanfxy5d6ih3z3blw2oo6n4sfna3v4vs6qeodntvaceerlujsfbs3q"
+    "cid:bah5acgzanfxy5d6ih3z3blw2oo6n4sfna3v4vs6qeodntvaceerlujsfbs3q",
+    "sha256:0e5adac8e2f7c4710da0ff40e6cdf259dbb0bb5a5b2089f2f8689c098e2df89c",
+    "cid:bafybeighh4axqsrelzfbjntg47pachmxltyyz3ccr3rfkdmbr6y44qv7fq"
   ],
   "names": [
     "superproductivity.orivonstack.eth"
   ],
   "name": "Super Productivity",
-  "version": "20.0.0.1",
+  "version": "20.0.0.3",
   "evaluated": "2026-11-09",
   "trustlessity": {
     "level": 3,
     "privacy": false
   },
-  "summary": "A to-do list and time tracker, built from upstream's open source (MIT), with source maps shipped in the build. Every script, bundled plugins included, ships in its own files, with no analytics: Level 3. Not Level 4: by default it asks api.github.com for the newest release, an unverified connection the user did not start. Tasks stay on this computer; sync, trackers, calendars and the AI plugin connect only once configured. Not private: GitHub sees your IP address.",
+  "summary": "A to-do list and time tracker, built from upstream's open source (MIT) with source maps. Every script, the 25 bundled plugins included, ships in its own files, with no analytics and its source public at the pinned commit: Level 3. A plugin the user adds runs only after the app shows its risk and they confirm. Not Level 4: by default it asks api.github.com for the newest release, unverified and not started by the user. Sync, trackers, calendars, the Todoist import, webhooks and the AI plugin connect only once configured. Not private: GitHub sees your IP address.",
   "operations": [
     {
       "name": "Plan tasks and track time",
@@ -40,6 +39,13 @@
         "level": 2
       },
       "note": "Optional and off until configured. The tracker or calendar server decides what is shown and sees your IP address."
+    },
+    {
+      "name": "Add a community plugin",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Optional and off until the user presses Install or uploads a ZIP. The download comes from the plugin's GitHub release and is checked against the checksum the app lists, but the code is unreviewed third-party code that runs with the app's permissions; the app warns and asks to confirm before it runs."
     },
     {
       "name": "Ask the AI Command plugin to add or change tasks",
@@ -72,6 +78,13 @@
       "note": "GitHub, GitLab, Gitea, Redmine, Trello, ClickUp, Linear, OpenProject, Nextcloud Deck, CalDAV, Azure DevOps and iCal or Google calendars, each only when the user adds it."
     },
     {
+      "name": "Todoist import and automation webhooks",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Only when the user pastes a Todoist API token (sent to api.todoist.com) or enters a webhook address in an automation (it receives the task title, project and tags)."
+    },
+    {
       "name": "AI Command plugin (api.anthropic.com)",
       "trustlessity": {
         "level": 1
@@ -80,7 +93,8 @@
     }
   ],
   "evidence": [
-    "https://github.com/super-productivity/super-productivity/tree/466a426700e7402f8628bc80ce499d3de6160dbb",
+    "https://github.com/super-productivity/super-productivity/tree/4db0e11236bc784d3184a9e252930b4bd53df823",
+    "https://github.com/super-productivity/super-productivity/tree/4db0e11236bc784d3184a9e252930b4bd53df823/packages/plugin-dev",
     "https://github.com/OrivonBrowser/orivon-ports/tree/main/apps/superproductivity"
   ]
 }
