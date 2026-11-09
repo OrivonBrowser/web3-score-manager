@@ -2,14 +2,15 @@
   "subject": "website",
   "ids": [
     "cid:bafybeif23iss64mr4lniordnlmvetce36sglefucbyjm4tkgflpwmtqwq4",
-    "cid:bafybeidfoydcryajw6tx7k6zzvdzbvtmhrttgfcabi7lrzefjkzs2utvkm"
+    "cid:bafybeidfoydcryajw6tx7k6zzvdzbvtmhrttgfcabi7lrzefjkzs2utvkm",
+    "cid:bafybeiawcp4cn4glknhikp4d3ki5q7cfkm5e5vxybup6os5anon4uefszu"
   ],
   "names": [
     "latest.orivonstack.eth"
   ],
   "name": "Orivon latest release",
-  "version": "0.0.9",
-  "evaluated": "2026-10-22",
+  "version": "0.0.12",
+  "evaluated": "2026-11-09",
   "trustlessity": {
     "level": 4,
     "privacy": true
