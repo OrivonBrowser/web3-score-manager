@@ -1,13 +1,14 @@
 {
   "subject": "website",
   "ids": [
-    "cid:bafybeifok2eunxjoacnb4aszboue2pecinryypzh4a6l5jo4a6dluutz6y"
+    "cid:bafybeifok2eunxjoacnb4aszboue2pecinryypzh4a6l5jo4a6dluutz6y",
+    "cid:bafybeicllbgl5mc72rr7gnz4gfrrpwoasljyfq7o3rmbxuhoevyfeocwsu"
   ],
   "names": [
     "armagan.eth"
   ],
   "name": "Armagan Ercan",
-  "evaluated": "2026-10-18",
+  "evaluated": "2026-11-09",
   "trustlessity": {
     "level": 4,
     "privacy": true
