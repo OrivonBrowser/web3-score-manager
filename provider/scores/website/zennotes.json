@@ -1,16 +1,18 @@
 {
   "subject": "website",
   "ids": [
-    "sha256:d2ac361616947bb5f34c6ace846a0a35703a089e699ce67000c61374b76ff29e",
-    "cid:bafybeievmomit3zeokbxuj6av6mkjkqndwisczkmpasfdyujwld333qdhq",
     "sha256:1afea18c76f0c6221976bf0b918287e26da25450f8bda43d9dcab45d4e05acbe",
     "cid:bafybeid3dhws54dwcau2nywkmuezgsfqgulfamhfqmrnypmmowmto5bh5u",
-    "cid:bah5acgzabmpoghmmrw5luqnf2gw7hdtfaag6n6pz46ojds6mimoleffjfdba"
+    "cid:bah5acgzabmpoghmmrw5luqnf2gw7hdtfaag6n6pz46ojds6mimoleffjfdba",
+    "cid:bafybeicnsctzn2skeyn4p7uk2lgvvk2hgng7sytvdi753nh7b57xgoucby",
+    "cid:bah5acgzarww5fcs7xrycztldj67p7bt74ehrmfggasic6mlar36ndvxgrrua",
+    "sha256:8c51f419147cb2881d0aeb30e3693735d650de40a1ae0dd18b2bf3ceda4acb7c",
+    "cid:bafybeiftyoz5j42qaqdp4tz7uejs27kgqwz3emwbobdtqhpflottfpyo3u"
   ],
   "names": ["zennotes.orivonstack.eth"],
   "name": "ZenNotes",
-  "version": "2.74.0.2",
-  "evaluated": "2026-10-27",
+  "version": "2.83.0.2",
+  "evaluated": "2026-11-09",
   "trustlessity": { "level": 4, "privacy": true },
   "summary": "A Markdown notes app that keeps notes as files in a folder, built from upstream's open source (MIT) at a pinned commit. It runs only its own files and asks Orivon for no network access, so it makes no request beyond its own files: Level 4 with privacy. Upstream's cloud, remote server, assistants and update check are not in this build. Libraries inside it name outside hosts (YouTube and Vimeo embeds, Excalidraw collaboration, Typst downloads) but Orivon serves the app with a policy that admits no outside request, image or frame.",
   "operations": [
