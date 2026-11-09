@@ -16,8 +16,9 @@ sign-in helper (see Install below).
    the names that `moved` are the work. Names of one evaluation that moved to the same build are
    one job.
 3. For each job, up to `MAX_SITES_PER_RUN`, skipping builds the state file says to skip:
-   1. Asks the IPFS node for the build's size and refuses a build over `SITE_MAX_BYTES`.
-   2. Fetches the new build, and the build the evaluation judged before, as the judge user.
+   1. Asks the IPFS node for the build's size and type, and refuses a build over `SITE_MAX_BYTES`.
+   2. Fetches the new build, and the build the evaluation judged before, as the judge user. A name
+      whose root is one file, not a folder, is saved as `index.html`, the page a gateway shows.
    3. Computes facts in plain Node: the files added, removed and changed, the origins the files
       name, and the `<script>`, `<link>` and `<iframe>` tags that leave the origin (`facts.ts`).
    4. Opens the build in headless Chromium for 20 seconds with no network at all. Every request is
@@ -36,6 +37,12 @@ loads third-party scripts or frames by itself is held: it goes to a branch named
 `attila-watch/<name>-<build>`, the watch opens a pull request for it when it holds a GitHub token,
 and the message links it. A build that does not
 render is not judged; it is retried on later runs.
+
+When the judge itself cannot be used (the Claude usage limit, an API error, a sign-in problem),
+the run stops at once, the build keeps all its tries, and one message a day says so. The builds
+still waiting are judged on the first run after the judge works again; nothing is given up because
+a limit was hit. Only a failure that belongs to the build (it would not fetch, render or validate)
+uses one of its `MAX_ATTEMPTS`.
 
 ## Security model
 
@@ -101,7 +108,7 @@ All settings are environment variables, read in `config.ts`.
 | `MODEL` | `claude-sonnet-5-5` | The judge's model |
 | `MAX_TURNS`, `JUDGE_TIMEOUT_S` | `80`, `1500` | Limits on one judgement |
 | `FETCH_TIMEOUT_S`, `PREVIOUS_FETCH_TIMEOUT_S`, `STAT_TIMEOUT_S`, `PROBE_TIMEOUT_S` | `900`, `180`, `120`, `120` | Limits on the other steps |
-| `SITE_MAX_BYTES` | `314572800` | Largest build accepted |
+| `SITE_MAX_BYTES` | `1073741824` | Largest build accepted (1 GiB) |
 | `MAX_SITES_PER_RUN` | `4` | Jobs per run |
 | `MAX_ATTEMPTS` | `3` | Tries before a failing build is left alone |
 | `KEEP_JOBS` | `5` | Job folders kept |
@@ -166,7 +173,7 @@ The exit code is 0 when the run completed, even if some sites failed, and 1 when
   can be compared with it when the old one can no longer be fetched.
 - `JOBS_DIR/<date>-<name>/`: `input/` (what the judge read: `site/`, `previous/`, `facts.md`,
   `probe.json`, `screenshot.png`, `rules.md`, `previous-evaluation.json`), `output/`, the two
-  `srt-*.json` settings and `judge-result.json`.
+  `srt-*.json` settings and `judge-raw.json`, the judge's answer as it came, written before it is validated.
 - The log is on stdout, one timestamped line per event; systemd keeps it (`journalctl -u
   attila-watch`). Secrets and site text longer than 200 characters are not logged.
 

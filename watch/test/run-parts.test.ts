@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import { test } from "node:test";
 import { loadConfig, multiaddrOf } from "../config.ts";
-import { judgeCommand, judgeFlags, renderPrompt } from "../judge.ts";
+import { judgeCommand, judgeFailure, judgeFlags, renderPrompt } from "../judge.ts";
 import { parseProbe } from "../probe-result.ts";
 import { DENY_READ, probeCommand, writeSrtSettings } from "../sandbox.ts";
 import type { Job } from "../sandbox.ts";
@@ -68,7 +68,7 @@ test("probe.json is read defensively", () => {
 test("config reads the environment with the spec's defaults", () => {
   const c = loadConfig({});
   assert.equal(c.maxSitesPerRun, 4);
-  assert.equal(c.siteMaxBytes, 300 * 1024 * 1024);
+  assert.equal(c.siteMaxBytes, 1024 * 1024 * 1024);
   assert.equal(c.model, "claude-sonnet-5-5");
   assert.equal(c.ipfsApiMultiaddr, "/ip4/127.0.0.1/tcp/5001");
   assert.equal(c.dryRun, false);
@@ -92,4 +92,22 @@ test("the summary changes the CID inside the Attila section only and appends the
 test("check and build run the installed web3-score command on the clone's provider", () => {
   const config = loadConfig({ APP_DIR: "/app", REPO_DIR: "/state/repo" });
   assert.deepEqual(cliArgs(config, "build", "--out", "/state/dist"), ["/app/src/cli.ts", "build", "--out", "/state/dist", "--dir", "/state/repo/provider"]);
+});
+
+test("an API error, a limit or a sign-in problem is the judge's, not the site's", () => {
+  const api = judgeFailure({ is_error: true, terminal_reason: "api_error" }, 1);
+  assert.deepEqual(api, { error: "the judge is unavailable (api_error)", unavailable: true });
+  const limit = judgeFailure({ is_error: true, subtype: "success", result: "You've hit your weekly limit" }, 1);
+  assert.equal(limit.unavailable, true);
+  assert.match(limit.error, /weekly limit/);
+  assert.equal(judgeFailure({ is_error: true, result: "Not logged in · Please run /login" }, 1).unavailable, true);
+  assert.equal(judgeFailure({ is_error: true, result: "Claude AI usage limit reached" }, 1).unavailable, true);
+});
+
+test("a judge that ran but failed on the site counts against the build", () => {
+  assert.deepEqual(judgeFailure({ is_error: true, subtype: "error_max_turns" }, 1), { error: "the judge gave no structured answer (error_max_turns)", unavailable: false });
+  assert.equal(judgeFailure({ is_error: false }, 0).unavailable, false);
+  assert.equal(judgeFailure({ is_error: false, result: "the usage limit of the site is 5" }, 0).unavailable, false);
+  const long = judgeFailure({ is_error: true, subtype: "error_during_execution", result: "x".repeat(300) }, 1);
+  assert.deepEqual(long, { error: "the judge gave no structured answer (error_during_execution)", unavailable: false });
 });

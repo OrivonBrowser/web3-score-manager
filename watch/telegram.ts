@@ -146,6 +146,14 @@ export function formatRunError(message: string): string {
   return render([{ plain: "The Attila watch run crashed", wrap: (e) => `🛑 <b>${e}</b>`, fixed: true }, text(message)]);
 }
 
+export function formatJudgeUnavailable(message: string): string {
+  return render([
+    { plain: "The Attila watch stopped: the judge is unavailable", wrap: (e) => `⏸ <b>${e}</b>`, fixed: true },
+    text(message),
+    text("No build lost a try; the next run judges the ones still waiting.", true),
+  ]);
+}
+
 export function formatPublishFailure(message: string): string {
   return render([
     { plain: "Attila was judged but not republished", wrap: (e) => `⚠️ <b>${e}</b>`, fixed: true },
