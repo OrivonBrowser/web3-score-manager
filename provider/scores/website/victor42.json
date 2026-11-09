@@ -2,13 +2,14 @@
   "subject": "website",
   "ids": [
     "cid:bafybeigseg4xle6afvtngzldocuni3bwwlfwugvwtnquyyycbwcsoz2xta",
-    "cid:bafybeidzpytsjt7ovmtczzqwkh74e7uf5uvrfgnc4xsqaxz72n6xfl2r6m"
+    "cid:bafybeidzpytsjt7ovmtczzqwkh74e7uf5uvrfgnc4xsqaxz72n6xfl2r6m",
+    "cid:bafybeiap4iasypvda5ovcunr4jrqmo4f5d4e5f6ibu4q6pv6yppzgjdyo4"
   ],
   "names": [
     "victor42.eth"
   ],
   "name": "Victor42",
-  "evaluated": "2026-10-22",
+  "evaluated": "2026-11-09",
   "trustlessity": {
     "level": 2,
     "privacy": false
