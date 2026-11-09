@@ -4,16 +4,42 @@
     "cid:bafybeiferfvitauarelwfrvbfur4jijw5yiqkydy2uiql6kyoyoe6qdmaa",
     "cid:bafybeid4fin7kkzjs63fotwi6vzthxvhltmc2zr7hjwflg2og4krbkxvae",
     "cid:bafybeiciu3rv2foptl4rpiurlz7fdaxi4mp3ubyducabqnb67vydwvj4c4",
-    "cid:bafybeid6wstlql7r2rlnzigjhfavfhbmgfa4k3ejzb67lh5z2ul4qtdzem"
+    "cid:bafybeid6wstlql7r2rlnzigjhfavfhbmgfa4k3ejzb67lh5z2ul4qtdzem",
+    "cid:bafybeih5oksjibiybbsczjbn2pwjwrplboqjjlsjbksbzdrkaabb3njf5u"
   ],
   "names": [
     "dromos.eth"
   ],
   "name": "Dromos Labs",
-  "evaluated": "2026-10-26",
+  "evaluated": "2026-11-09",
   "trustlessity": {
     "level": 2,
     "privacy": false
   },
-  "summary": "The corporate site of Dromos Labs, a Vite build with minified scripts and no source maps. No public repository for the site was found (the organisation publishes only contract repositories), so there is no public source and it stays at Level 2. It makes no request beyond its own files when it opens; its Plausible script is added only on dromos.xyz."
+  "summary": "The corporate site of Dromos Labs, a Vite build with minified scripts and no source maps. No public repository for the site was found (the organisation publishes only contract repositories), so there is no public source and it stays at Level 2. It makes no request beyond its own files when it opens. Its PFP generator now looks up X profile pictures on a Dromos server (Level 1).",
+  "operations": [
+    {
+      "name": "Read the corporate pages",
+      "trustlessity": {
+        "level": 4
+      },
+      "note": "Static pages, images and videos served from the build's own files."
+    },
+    {
+      "name": "Look up an X avatar in the PFP generator",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Sends the typed X handle to dromos-pfp-api.vercel.app and shows the user and avatar it returns. It also runs on load if the address has an ?x= value."
+    }
+  ],
+  "connections": [
+    {
+      "name": "dromos-pfp-api.vercel.app (PFP generator API)",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Backend API on Vercel, used only on the PFP generator page for X handle and avatar lookups. Not contacted when the home page opens."
+    }
+  ]
 }
