@@ -1,25 +1,64 @@
 {
   "subject": "website",
   "ids": [
-    "cid:bafybeicionrv4aqv6mqerizkwwbmcantqinxirdcvwjje6g4mnkxaqw5i4"
+    "cid:bafybeicionrv4aqv6mqerizkwwbmcantqinxirdcvwjje6g4mnkxaqw5i4",
+    "cid:bafybeiasnzr544k5btm6atowtvk5l44dxlpx452fpqlv6yquzk5hzlpaba"
   ],
   "names": [
     "foc-dashboard.eth"
   ],
   "name": "Filecoin Onchain Cloud Dashboard",
-  "evaluated": "2026-10-18",
+  "version": "0.5.0",
+  "evaluated": "2026-11-09",
   "trustlessity": {
-    "level": 2,
+    "level": 3,
     "privacy": false
   },
-  "summary": "Filecoin Onchain Cloud Dashboard, a read-only lookup of datasets and pieces for an FEVM address, open source (MIT) in dgrafe/foc-dashboard. It stays at Level 2 because its script imports viem and its dependencies from esm.sh with no integrity hash, over four hundred requests to a CDN that can change that code at any time.",
-  "connections": [
+  "summary": "Filecoin Onchain Cloud Dashboard, a read-only lookup of datasets and pieces for an FEVM address or ENS name, open source in dgrafe/foc-dashboard. It now bundles all its code and runs no external code, so it reaches Level 3. It is not Level 4 because every lookup relies on Filecoin and Ethereum RPC endpoints, read without a light client.",
+  "operations": [
     {
-      "name": "viem and dependencies from esm.sh",
+      "name": "Look up datasets and pieces for an address",
       "trustlessity": {
         "level": 1
       },
-      "note": "Script modules loaded as code when the page opens, with no integrity hash."
+      "note": "Reads Filecoin chain state through hard-coded RPC endpoints (glif, ankr, drpc), with no light client."
+    },
+    {
+      "name": "Show balances and storage runway",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "FIL and USDFC balances and Filecoin Pay rails come from the same RPC endpoints."
+    },
+    {
+      "name": "Resolve an ENS name",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Resolved on Ethereum mainnet through an RPC endpoint (ethereum.reth.rs), not a light client."
+    }
+  ],
+  "connections": [
+    {
+      "name": "Filecoin RPC endpoints (glif, ankr, drpc)",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Chosen by the site; contacted when the user looks up an address, not when the page opens."
+    },
+    {
+      "name": "Ethereum RPC for ENS (ethereum.reth.rs)",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Contacted only on an ENS lookup."
+    },
+    {
+      "name": "Block explorers and indexers (blockscout, filfox, beryx, etherscan)",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Named in the code as data or link targets; not contacted when the page opens."
     }
   ],
   "evidence": [
