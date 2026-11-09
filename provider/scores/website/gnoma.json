@@ -3,25 +3,42 @@
   "ids": [
     "cid:bafybeiazz5aloc2gxkjcs6kohohpkexn6jewgxyuipfnyboi4f2xi46y3q",
     "cid:bafybeiedl3s5lt2pewxdalsu4kjze2ckjm353fsjktljuwi2w4hpypv5la",
-    "cid:bafybeibik6xtibjgqgabnrudv6j3xs5aoxditlsqdbi7qkc4ontqsdiqvm"
+    "cid:bafybeibik6xtibjgqgabnrudv6j3xs5aoxditlsqdbi7qkc4ontqsdiqvm",
+    "cid:bafybeigr73p3y6vlrbif6rxf2jg3qqgpx5rxexnaeu74i3srwbbzsajuqm"
   ],
   "names": [
     "gnoma.eth"
   ],
   "name": "Gnoma",
-  "evaluated": "2026-10-23",
+  "evaluated": "2026-11-09",
   "trustlessity": {
     "level": 2,
     "privacy": false
   },
-  "summary": "Gnoma, an unofficial explorer for Anoma settlements, the shielded pool and the XAN token. Its bundle is minified with no source map and no public repository was found, so it stays at Level 2. When it opens it also calls an API on a Cloudflare Workers address and loads Google Fonts.",
-  "connections": [
+  "summary": "Gnoma, an unofficial explorer for Anoma settlements, the shielded pool and the XAN token. Its bundle is minified with no source map and no public repository of its own was found, so it stays at Level 2. When it opens it also calls an API at exploreanoma.com and loads Google Fonts, and it relies on that server for its data.",
+  "operations": [
     {
-      "name": "Explorer API (anomapay-explorer.bidurandblog.workers.dev)",
+      "name": "View overview, latest settlements and analytics",
       "trustlessity": {
         "level": 1
       },
-      "note": "Overview data fetched when the page opens."
+      "note": "Data comes from the exploreanoma.com API, a centralised backend."
+    },
+    {
+      "name": "Read chain data through public RPC endpoints",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "RPC URLs are named in the bundle; no light client checks the answers."
+    }
+  ],
+  "connections": [
+    {
+      "name": "Explorer API (exploreanoma.com)",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Overview and recent-transactions data fetched when the page opens, and retried."
     },
     {
       "name": "Public RPC endpoints (1rpc.io, dRPC, PublicNode and others)",
@@ -35,7 +52,7 @@
       "trustlessity": {
         "level": 1
       },
-      "note": "Fetched when the page opens; tells Google the visit."
+      "note": "Fetched when the page opens, with no integrity hash; tells Google the visit."
     }
   ]
 }
