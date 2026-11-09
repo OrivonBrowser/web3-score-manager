@@ -1,13 +1,14 @@
 {
   "subject": "website",
   "ids": [
-    "cid:bafybeigyxdvxmfddtepcjw3xiutpvp5q3w3fjdfz6czoguojqvjhmxhaty"
+    "cid:bafybeigyxdvxmfddtepcjw3xiutpvp5q3w3fjdfz6czoguojqvjhmxhaty",
+    "cid:bafybeico2ijzmgee7eh4sszmicfwnlxyap33knll4ybdzvcyvaakgbvvxa"
   ],
   "names": [
     "teamomega.eth"
   ],
   "name": "Team Omega Audits",
-  "evaluated": "2026-10-18",
+  "evaluated": "2026-11-09",
   "trustlessity": {
     "level": 2,
     "privacy": false
