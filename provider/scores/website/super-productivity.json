@@ -1,18 +1,18 @@
 {
   "subject": "website",
   "ids": [
-    "sha256:1df7b7bd1a5acdfaffa732965fefa307da0e5eed27f95598fd90f1d877361ade",
-    "cid:bafybeifypwh37sb4q3nvlirxguofu6zs42kvf5ev3ktvj5772fyjhl44de",
-    "cid:bah5acgzanfxy5d6ih3z3blw2oo6n4sfna3v4vs6qeodntvaceerlujsfbs3q",
     "sha256:0e5adac8e2f7c4710da0ff40e6cdf259dbb0bb5a5b2089f2f8689c098e2df89c",
     "cid:bafybeighh4axqsrelzfbjntg47pachmxltyyz3ccr3rfkdmbr6y44qv7fq",
-    "cid:bah5acgzaezri6gnl3wo43bwh3pobgdcc3dwrnlurevi6fpt5cfjxvkzwk2kq"
+    "cid:bah5acgzaezri6gnl3wo43bwh3pobgdcc3dwrnlurevi6fpt5cfjxvkzwk2kq",
+    "sha256:0622379220b25ec218a988e328beb8d02bb0dbd10a4c839983e35f274f4522e2",
+    "cid:bafybeiatufwayrnpqv3rr7447e6qpwkpbmszspmt4uad6vt42knkifijli",
+    "cid:bah5acgza72mwgyoytgewrip3nu6cc5b56ybbaxzfcl6rm3lypmmfmkgj22bq"
   ],
   "names": [
     "superproductivity.orivonstack.eth"
   ],
   "name": "Super Productivity",
-  "version": "20.0.0.3",
+  "version": "20.0.0.4",
   "evaluated": "2026-11-09",
   "trustlessity": {
     "level": 3,
