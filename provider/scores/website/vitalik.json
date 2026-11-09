@@ -2,13 +2,14 @@
   "subject": "website",
   "ids": [
     "cid:bafybeigqyo555suvqi3scc2izft3mozskktbtkzs2xghoe2rpxetxbbdiq",
-    "cid:bafybeiesmy6rsaglneqxbzkbdj5degzp2izydfadhl2vu3oyrp7k52fypu"
+    "cid:bafybeiesmy6rsaglneqxbzkbdj5degzp2izydfadhl2vu3oyrp7k52fypu",
+    "cid:bafybeia5eyombgegdwmvfzwisveadaaok2vdjkv5rklfdmcljysjrjc4km"
   ],
   "names": [
     "vitalik.eth"
   ],
   "name": "Vitalik Buterin's blog",
-  "evaluated": "2026-10-10",
+  "evaluated": "2026-11-09",
   "trustlessity": {
     "level": 3,
     "privacy": false
