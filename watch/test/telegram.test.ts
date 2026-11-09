@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import { test } from "node:test";
 import type { SourceEvaluation } from "../../src/types.ts";
-import { MAX_MESSAGE, formatFailure, formatJudged, formatRunError, shortCid, telegramSender } from "../telegram.ts";
+import { MAX_MESSAGE, formatFailure, formatJudged, formatJudgeUnavailable, formatRunError, shortCid, telegramSender } from "../telegram.ts";
 import type { JudgedMessage } from "../telegram.ts";
 import { validateVerdict } from "../verdict.ts";
 import { goodVerdict } from "./support.ts";
@@ -112,6 +112,8 @@ test("failure and run error messages", () => {
   assert.match(retry, /Will retry next run\./);
   assert.match(formatFailure({ name: "x.eth", cid: CID, reason: "r", attempts: 3, givingUp: true }), /Gave up after 3 tries\./);
   assert.ok(formatRunError("boom ".repeat(2000)).length <= MAX_MESSAGE);
+  assert.ok(formatJudgeUnavailable("busy ".repeat(2000)).length <= MAX_MESSAGE);
+  assert.match(formatJudgeUnavailable("the judge is unavailable (api_error)"), /No build lost a try/);
   assert.equal(shortCid("cid:bafy"), "bafy");
 });
 
