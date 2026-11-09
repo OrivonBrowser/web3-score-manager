@@ -1,13 +1,14 @@
 {
   "subject": "website",
   "ids": [
-    "cid:bafybeidfufcplvlrscs5mndo2c62kvex6ai7vyktyobynl6c32q6pe6u7a"
+    "cid:bafybeidfufcplvlrscs5mndo2c62kvex6ai7vyktyobynl6c32q6pe6u7a",
+    "cid:bafybeid6o44bs7njsnewhtouaruxd4fv3wxtwh2k3xa7aiqzawntyeex3a"
   ],
   "names": [
     "ndeto.eth"
   ],
   "name": "Martin Ndeto",
-  "evaluated": "2026-10-18",
+  "evaluated": "2026-11-09",
   "trustlessity": {
     "level": 2,
     "privacy": false
