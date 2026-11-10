@@ -1,0 +1,53 @@
+{
+  "subject": "website",
+  "ids": [
+    "cid:bafybeidz6jzwzg5gnrjv23dep5cqik3lpdhts2mws4kbnqghyeypcpivcq"
+  ],
+  "names": [
+    "stonerrock.ubnet.eth"
+  ],
+  "name": "Stoner Rock Radio",
+  "evaluated": "2026-10-23",
+  "trustlessity": {
+    "level": 2,
+    "privacy": false
+  },
+  "summary": "Stoner Rock Radio, a web radio page with Nostr and wallet features. No public repository was found. It is Level 2: when it opens it runs GoatCounter analytics from gc.zgo.at and about 29 modules from esm.sh (nostr-tools, noble hashes), none with an integrity hash. It also fetches its playlist and images from dbloops.com, Pinata, and a Nostr relay at relay.damus.io.",
+  "connections": [
+    {
+      "name": "GoatCounter analytics (gc.zgo.at, web3audio.goatcounter.com)",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Script and page-view ping sent when the page opens."
+    },
+    {
+      "name": "esm.sh library modules",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Code loaded when the page opens, without integrity hashes."
+    },
+    {
+      "name": "dbloops.com track list and images",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Fetched when the page opens."
+    },
+    {
+      "name": "Pinata gateway (mypinata.cloud)",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Track artwork and audio fetched when the page opens."
+    },
+    {
+      "name": "Nostr relay (relay.damus.io)",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "WebSocket opened when the page opens."
+    }
+  ]
+}

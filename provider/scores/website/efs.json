@@ -1,21 +1,24 @@
 {
   "subject": "website",
   "ids": [
-    "cid:bafybeiehnviixu674bvbazajj27x2kffn7gswn2rfms62juaa6ijywu6pm"
+    "cid:bafybeiehnviixu674bvbazajj27x2kffn7gswn2rfms62juaa6ijywu6pm",
+    "cid:bafybeidhx6rcbxhjpqeirqwysvi6uvnm2reuh6lyrbnlbx4q3oyuahlhmu",
+    "cid:bafybeibbguk5fz5pthzmtr4sbq7454tuxrbrvvjnjfsixauspqcbrmz6za",
+    "cid:bafybeigqpu4huex67aey7yl6wlr2no2v2dppsc3zxduddvcpawllrr2uoi"
   ],
   "names": [
     "app.efs.eth"
   ],
   "name": "Ethereum File System",
-  "evaluated": "2026-10-05",
+  "evaluated": "2026-11-09",
   "trustlessity": {
     "level": 3,
     "privacy": false
   },
-  "summary": "The Ethereum File System app, open source (MIT). It runs no third-party code, which is Level 3. It is not Level 4: when it opens it reads chain data from Alchemy and dRPC endpoints, sends WalletConnect telemetry and loads Google Fonts.",
+  "summary": "The Ethereum File System app, open source (MIT). It runs no third-party code, which is Level 3. It is not Level 4: when it opens it reads chain data from Alchemy, PublicNode, Tenderly and Cloudflare RPC endpoints, sends WalletConnect telemetry and loads Google Fonts.",
   "connections": [
     {
-      "name": "RPC endpoints (Alchemy, sepolia.drpc.org)",
+      "name": "RPC endpoints (Alchemy, PublicNode, Tenderly, Cloudflare)",
       "trustlessity": {
         "level": 1
       },

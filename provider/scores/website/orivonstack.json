@@ -1,7 +1,9 @@
 {
   "subject": "website",
   "ids": [
-    "cid:bafybeibkwwl4osvvuhwoha5qinyjib5dobqoevfd2f2bfxcxzvwgmi5sfy"
+    "cid:bafybeibkwwl4osvvuhwoha5qinyjib5dobqoevfd2f2bfxcxzvwgmi5sfy",
+    "cid:bah5acgzam43prrnjy5unrfshxa77c474hzmpnq6dl7s6chndwqrghpk54v5q",
+    "cid:bafybeihgglauldloebs6wyyhidx5vzskniesozzzt6hrddv4qb62qpqmf4"
   ],
   "names": [
     "www.orivonstack.eth",
@@ -9,12 +11,12 @@
     "download.orivonstack.eth"
   ],
   "name": "Orivon website",
-  "evaluated": "2026-10-22",
+  "evaluated": "2026-11-09",
   "trustlessity": {
     "level": 4,
     "privacy": false
   },
-  "summary": "The Orivon release website, judged here by its own publisher. Its source is public (Apache-2.0) and it is served as written, so it runs only its own code: no analytics, tag manager or embed. As it opens it reads the newest release from latest.orivonstack.eth.limo, which Orivon loads from latest.orivonstack.eth and checks, so nothing it shows rests on a server: Level 4. Not private: that read shows the IPFS nodes serving the release folder the visitor's IP address.",
+  "summary": "The Orivon release website, judged here by its own publisher. Its source is public and it is served as written (the page says AGPL-3.0), so it runs only its own code: no analytics, tag manager or embed. As it opens it reads the newest release from latest.orivonstack.eth.limo, which Orivon loads from latest.orivonstack.eth and checks, so nothing it shows rests on a server: Level 4. Not private: that read shows the IPFS nodes serving the release folder the visitor's IP address.",
   "operations": [
     {
       "name": "Read the project pages and choose a download",
@@ -27,8 +29,7 @@
     {
       "name": "Show the newest release",
       "trustlessity": {
-        "level": 4,
-        "privacy": false
+        "level": 4
       },
       "note": "Read from latest.orivonstack.eth, checked against the name; the page's built-in release stands in when it does not answer."
     }
@@ -37,13 +38,13 @@
     {
       "name": "latest.orivonstack.eth, addressed as latest.orivonstack.eth.limo",
       "trustlessity": {
-        "level": 2,
-        "privacy": false
+        "level": 2
       },
       "note": "Orivon loads the gateway address from the name and checks every block. The nodes that serve it see the visitor's IP address."
     }
   ],
   "evidence": [
-    "https://github.com/OrivonBrowser/orivon-site"
+    "https://github.com/OrivonBrowser/orivon-site",
+    "https://github.com/OrivonBrowser/orivon-mvp"
   ]
 }

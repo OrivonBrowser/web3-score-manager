@@ -1,0 +1,49 @@
+{
+  "subject": "website",
+  "ids": [
+    "cid:bafybeihmetwsvbtn27abngdvz6wdluzkhmq6bskvjdwi2yqfh3zyxwfbdu"
+  ],
+  "names": [
+    "ubnet.eth"
+  ],
+  "name": "UBNet",
+  "evaluated": "2026-10-23",
+  "trustlessity": {
+    "level": 3,
+    "privacy": false
+  },
+  "summary": "The UBNet social and ENS front page. It is served as written (readable scripts plus the vendored ethers library), so the page is its own public source (no licence file), and it runs no third-party code, which is Level 3. It is not Level 4: when it opens it reads its feed from the ubnet.work API, prices from CoinGecko and chain data from publicnode without a light client, and loads avatars from Pinata and euc.li.",
+  "connections": [
+    {
+      "name": "ubnet.work API",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Posts, events and lists are fetched when the page opens; the feed depends on this server."
+    },
+    {
+      "name": "CoinGecko prices",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "ETH and ENS prices are fetched when the page opens."
+    },
+    {
+      "name": "publicnode Ethereum RPC",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Read without a light client when the page opens."
+    },
+    {
+      "name": "Pinata gateway and euc.li avatars",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Images fetched when the page opens; tells the host the visit."
+    }
+  ],
+  "evidence": [
+    "https://ubnet.eth.limo/"
+  ]
+}

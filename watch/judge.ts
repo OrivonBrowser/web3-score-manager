@@ -103,11 +103,41 @@ export interface JudgeRun {
   ok: boolean;
   /** Why it did not produce an answer; never holds the answer. */
   error?: string;
+  /** The judge could not be reached or used (usage limit, API error, sign-in), which says nothing about the site. */
+  unavailable?: boolean;
   stdout: string;
   stderr: string;
   answer?: unknown;
   costUsd?: number;
   turns?: number;
+}
+
+/** The fields of Claude Code's JSON result that the watch reads. */
+export interface JudgeOutput {
+  structured_output?: unknown;
+  is_error?: unknown;
+  subtype?: unknown;
+  terminal_reason?: unknown;
+  result?: unknown;
+  total_cost_usd?: unknown;
+  num_turns?: unknown;
+}
+
+/** Claude Code's own words for a judge that cannot be used right now, whatever the site holds. */
+const UNAVAILABLE_TEXT = /usage limit|rate limit|limit reached|hit your .*limit|out of (credits|usage)|overloaded|not logged in|please run \/login|invalid (api key|bearer|token)|authentication/i;
+
+/**
+ * Why a run without a structured answer failed, and whether the judge itself was at fault: an API
+ * error, a limit or a sign-in problem fails every site the same way and must not use up a build's tries.
+ */
+export function judgeFailure(parsed: JudgeOutput, exitCode: number | null): { error: string; unavailable: boolean } {
+  const reason = [parsed.terminal_reason, parsed.subtype].find((v) => typeof v === "string") as string | undefined;
+  let why = reason?.slice(0, 60) ?? `exit code ${exitCode}`;
+  const message = typeof parsed.result === "string" ? parsed.result : "";
+  // On an error, `result` is Claude Code's own message ("Not logged in"); a long one may quote the site, so only a short one is kept.
+  if (parsed.is_error === true && message !== "" && message.length <= 120) why += `: ${message}`;
+  const unavailable = parsed.is_error === true && (reason === "api_error" || UNAVAILABLE_TEXT.test(message.slice(0, 400)));
+  return unavailable ? { error: `the judge is unavailable (${why})`, unavailable } : { error: `the judge gave no structured answer (${why})`, unavailable };
 }
 
 /** Runs the judge with the prompt on stdin and reads its structured answer from the JSON the CLI prints. */
@@ -127,15 +157,7 @@ export async function runJudge(config: Config, job: JudgePaths, prompt: string):
   if (result.spawnError) return { ok: false, error: "the judge could not be started", ...base };
   if (result.timedOut || result.code === 124) return { ok: false, error: "the judge ran out of time", ...base };
   if (result.stdoutTruncated) return { ok: false, error: "the judge's output was too large", ...base };
-  let parsed: {
-    structured_output?: unknown;
-    is_error?: unknown;
-    subtype?: unknown;
-    terminal_reason?: unknown;
-    result?: unknown;
-    total_cost_usd?: unknown;
-    num_turns?: unknown;
-  };
+  let parsed: JudgeOutput;
   try {
     parsed = JSON.parse(result.stdout);
   } catch {
@@ -144,11 +166,7 @@ export async function runJudge(config: Config, job: JudgePaths, prompt: string):
   const costUsd = typeof parsed.total_cost_usd === "number" ? parsed.total_cost_usd : undefined;
   const turns = typeof parsed.num_turns === "number" ? parsed.num_turns : undefined;
   if (parsed.structured_output === undefined || parsed.is_error === true) {
-    const reason = [parsed.terminal_reason, parsed.subtype].find((v) => typeof v === "string") as string | undefined;
-    let why = reason?.slice(0, 60) ?? `exit code ${result.code}`;
-    // On an error, `result` is Claude Code's own message ("Not logged in"); a long one may quote the site, so only a short one is kept.
-    if (parsed.is_error === true && typeof parsed.result === "string" && parsed.result.length <= 120) why += `: ${parsed.result}`;
-    return { ok: false, error: `the judge gave no structured answer (${why})`, costUsd, turns, ...base };
+    return { ok: false, ...judgeFailure(parsed, result.code), costUsd, turns, ...base };
   }
   return { ok: true, answer: parsed.structured_output, costUsd, turns, ...base };
 }

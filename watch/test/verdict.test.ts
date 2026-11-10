@@ -47,11 +47,32 @@ test("privacy only at website level 4, operation level 4 or 5, connection level 
   assert.ok(issuesOf(goodVerdict({ connections: [{ name: "x", level: 2, privacy: true }] })).length > 0);
 });
 
-test("evidence must be one absolute http, https, ipfs or ipns address", () => {
-  for (const bad of ["github.com/x", "javascript:alert(1)", "https://a b", "ftp://a.example/", "https://", ""]) {
-    assert.ok(issuesOf(goodVerdict({ evidence: [bad] })).length > 0, bad);
+test("evidence keeps absolute http, https, ipfs and ipns addresses and drops the rest with a note", () => {
+  const ok = validateVerdict(goodVerdict({ evidence: ["ipfs://bafy/x", "ipns://example.eth", "http://a.example/", "http://a.example/"] }));
+  assert.deepEqual(ok.verdict?.evidence, ["ipfs://bafy/x", "ipns://example.eth", "http://a.example/"]);
+  assert.equal(ok.verdict?.concerns, "");
+
+  for (const bad of ["github.com/x", "javascript:alert(1)", "ftp://a.example/", "https://", "", "see https://a.example/", "x".repeat(2049)]) {
+    const out = validateVerdict(goodVerdict({ evidence: ["https://github.com/example/example", bad], concerns: "Unsure." }));
+    assert.deepEqual(out.issues, [], bad);
+    assert.deepEqual(out.verdict?.evidence, ["https://github.com/example/example"], bad);
+    assert.equal(out.verdict?.concerns, "Unsure. 1 evidence entry was not a web address and was dropped.", bad);
   }
-  assert.deepEqual(issuesOf(goodVerdict({ evidence: ["ipfs://bafy/x", "ipns://example.eth", "http://a.example/"] })), []);
+
+  const all = validateVerdict(goodVerdict({ evidence: ["one", "two"] }));
+  assert.deepEqual([all.verdict?.evidence, all.verdict?.concerns], [[], "2 evidence entries were not web addresses and were dropped."]);
+  assert.deepEqual(validateVerdict(goodVerdict({ evidence: [42, { url: "https://a.example/" }] })).verdict?.evidence, []);
+});
+
+test("an address followed by words keeps the address", () => {
+  const out = validateVerdict(goodVerdict({ evidence: ["https://github.com/example/example (README)\nmore"] }));
+  assert.deepEqual(out.verdict?.evidence, ["https://github.com/example/example"]);
+  assert.equal(out.verdict?.concerns, "");
+});
+
+test("evidence that is not a list, or has more than ten entries, is still refused", () => {
+  assert.ok(issuesOf(goodVerdict({ evidence: "https://a.example/" })).length > 0);
+  assert.ok(issuesOf(goodVerdict({ evidence: Array.from({ length: 11 }, (_, i) => `https://a.example/${i}`) })).length > 0);
 });
 
 test("findSecrets sees known secrets of 8+ characters and token shapes, never short ones", () => {

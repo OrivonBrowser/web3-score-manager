@@ -1,0 +1,129 @@
+{
+  "subject": "website",
+  "ids": [
+    "sha256:23ed792d297e07e54eaecd1e2bee79b552892e30ffd52b2bb6c3422e0e67a6f4",
+    "cid:bafybeihhfw4j4snzh55ukzvjbujf4bdtz26645uwgp3bwuf4lim6ryiozm",
+    "cid:bah5acgzah37h6nrvualc7bfza5gpeoksuipbgnzkirstgrlfxb2cocvuv7fa",
+    "sha256:a432527086aad214578f335b76e517b64787b3d3e63ad493afc294e3f29de2f9",
+    "cid:bafybeic2tbucs6m2spoqy5mxf7oaw6c74ii6ouza2gwacmhr4ht7iybcy4",
+    "cid:bah5acgza24pf2f3fzzu45ytt77sk5gvihfpzmsi33ougyt6mlmf6jcnrksyq",
+    "sha256:bda49bfcc1793443c8f66be059de7609a8c71846d23a3a1a37c3ebcab347a9a5",
+    "cid:bafybeiciev2azt4vhv3a4ckpdbuhtahvhlh77o2uw3efibeuohkg5tbu5m"
+  ],
+  "names": [
+    "editor.decentrawiki.eth"
+  ],
+  "name": "DecentraWiki editor",
+  "version": "0.1.11",
+  "evaluated": "2026-10-29",
+  "trustlessity": {
+    "level": 4,
+    "privacy": false
+  },
+  "summary": "An editor that publishes TiddlyWiki wikis on IPFS, open source in orivon-ports with unminified scripts; its IPFS node is built from the public OrivonBrowser/orivon-ipfs-node. In Orivon it hosts each published wiki from the person's computer by default. Every address is computed here and every block checked against it; Orivon's relay and free pinning only carry or keep checked data, so it relies on no server: Level 4. Not private: visitors, peers and Orivon's relay see the person's IP address.",
+  "operations": [
+    {
+      "name": "Keep and edit wikis",
+      "trustlessity": {
+        "level": 4,
+        "privacy": true
+      },
+      "note": "Stored in this browser only; nothing is sent while editing."
+    },
+    {
+      "name": "Publish a wiki",
+      "trustlessity": {
+        "level": 4
+      },
+      "note": "The address is computed here. By default the wiki leaves from this computer's own node and Orivon's node reads it from there; a pin is refused unless the service reports that same address. The service sees the person's IP address and the wiki."
+    },
+    {
+      "name": "Host published wikis from this computer",
+      "trustlessity": {
+        "level": 4
+      },
+      "note": "On by default in Orivon; Settings switches it off. The node serves the newest version of each wiki to anyone on IPFS while the editor is open; readers check every block against its address."
+    },
+    {
+      "name": "Point a wiki's address at a new version",
+      "trustlessity": {
+        "level": 4
+      },
+      "note": "The record is signed in this browser with a key kept here. Orivon's node checks the record and keeps it up; the page checks that the kept record is the one sent."
+    },
+    {
+      "name": "Import a wiki by IPFS or IPNS address",
+      "trustlessity": {
+        "level": 4
+      },
+      "note": "IPNS records are accepted only when their signature verifies against the name; content is fetched from gateways and checked block by block against its address. Gateways see what is fetched."
+    },
+    {
+      "name": "Receive a wiki from its pen",
+      "trustlessity": {
+        "level": 4,
+        "privacy": true
+      },
+      "note": "Handed over inside the browser by the page that opened the editor."
+    }
+  ],
+  "connections": [
+    {
+      "name": "The pinning node or service the person chose",
+      "trustlessity": {
+        "level": 2
+      },
+      "note": "Its answer is checked against the address computed here. It sees the person's IP address and receives the wiki they publish."
+    },
+    {
+      "name": "Orivon's free pinning (telemetry.orivonstack.com/decentrawiki), on by default",
+      "trustlessity": {
+        "level": 2
+      },
+      "note": "Orivon's node reads each new version from this computer, or it is uploaded when hosting is off, and keeps it 30 days. Pin answers are checked against the address computed here, records against the name. It sees the person's IP address, the wiki and the name."
+    },
+    {
+      "name": "Public IPFS gateways, on import and name look-up",
+      "trustlessity": {
+        "level": 2
+      },
+      "note": "ipfs.orbitor.dev, ipfs.filebase.io, trustless-gateway.link. Blocks are checked against their CID and records against the name's signature. The gateway sees the person's IP address and what they fetch."
+    },
+    {
+      "name": "The page's own IPFS node, on this computer (127.0.0.1:5180-5189)",
+      "trustlessity": {
+        "level": 2
+      },
+      "note": "Starts when a wiki is published and, with hosting on, when the editor opens with wikis stored. A local program in the build's own files, built from the public OrivonBrowser/orivon-ipfs-node, run under the grants the person accepted."
+    },
+    {
+      "name": "IPFS peers and the DHT, while hosting",
+      "trustlessity": {
+        "level": 2,
+        "privacy": false
+      },
+      "note": "The node accepts connections on ports 4811-4820. What is served and received is checked against its address; the DHT and bootstrap peers only find peers. Peers and visitors see the person's IP address and which wikis it announces."
+    },
+    {
+      "name": "Orivon's relay (152.228.138.30:4003)",
+      "trustlessity": {
+        "level": 2,
+        "privacy": false
+      },
+      "note": "While hosting, the node holds a place on this libp2p relay, shared with Orivon Share, so a computer behind a router can be reached. It passes encrypted traffic and stores nothing; blocks are checked against their address. It sees both sides' IP addresses."
+    },
+    {
+      "name": "Cloudflare DNS (1.1.1.1, 1.0.0.1)",
+      "trustlessity": {
+        "level": 1,
+        "privacy": false
+      },
+      "note": "Resolves only the names of the IPFS network's entry points, which then only find peers. It sees the person's IP address and those names."
+    }
+  ],
+  "evidence": [
+    "https://github.com/OrivonBrowser/orivon-ports/tree/main/apps/decentrawiki",
+    "https://github.com/OrivonBrowser/orivon-ipfs-node",
+    "https://github.com/TiddlyWiki/TiddlyWiki5"
+  ]
+}

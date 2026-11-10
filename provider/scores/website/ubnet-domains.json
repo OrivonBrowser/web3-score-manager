@@ -1,0 +1,39 @@
+{
+  "subject": "website",
+  "ids": [
+    "cid:bafybeiafsysjh37ydo3xnklqnxkvbegvuqmitru2q5kxqg4doho2o4wfsa"
+  ],
+  "names": [
+    "domains.ubnet.eth"
+  ],
+  "name": "Domains.UBNET",
+  "evaluated": "2026-10-23",
+  "trustlessity": {
+    "level": 2,
+    "privacy": false
+  },
+  "summary": "The Domains.UBNET page for claiming a name.ubnet.eth profile. No public source repository was found. It stays at Level 2 because it loads the UBNet SDK, 26 scripts, from ubnet.work with no integrity hash when it opens: code the server can change at any time.",
+  "connections": [
+    {
+      "name": "ubnet.work (UBNet SDK scripts and API)",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "26 scripts and a fetch when the page opens, with no integrity hash."
+    },
+    {
+      "name": "ethereum-rpc.publicnode.com",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Ethereum RPC read without a light client, called when the page opens."
+    },
+    {
+      "name": "Google Fonts",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Stylesheet and font files fetched when the page opens; tells Google the visit."
+    }
+  ]
+}

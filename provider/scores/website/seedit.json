@@ -1,25 +1,50 @@
 {
   "subject": "website",
   "ids": [
-    "cid:bafybeihsu5pjlof2xjrnfc7onqrsf4zjb4tgelcx44qo52uncelgeojeky"
+    "cid:bafybeihsu5pjlof2xjrnfc7onqrsf4zjb4tgelcx44qo52uncelgeojeky",
+    "cid:bafybeib6i6hupdmuvcid3lt6joiisd3lfoay2jsbokqhgs3et7o3dbf6ka"
   ],
   "names": [
     "seedit.eth"
   ],
   "name": "Seedit",
-  "evaluated": "2026-10-05",
+  "version": "0.6.3",
+  "evaluated": "2026-11-08",
   "trustlessity": {
     "level": 3,
     "privacy": false
   },
-  "summary": "Seedit, a peer-to-peer alternative to Reddit on the Plebbit protocol, open source (GPL-3.0). It runs no third-party code, which is Level 3. It is not Level 4: when it opens it reads its default community list from raw.githubusercontent.com, a file GitHub serves and nothing checks.",
-  "connections": [
+  "summary": "Seedit, a peer-to-peer alternative to Reddit on the Plebbit/Bitsocial protocol, open source (GPL-3.0). It runs no third-party code, which is Level 3. It is not Level 4: it reads its default community lists from raw.githubusercontent.com and reads chain state from public Ethereum RPC servers with no light client, and nothing checks either.",
+  "operations": [
     {
-      "name": "Default community list (raw.githubusercontent.com)",
+      "name": "Load default community lists",
       "trustlessity": {
         "level": 1
       },
-      "note": "Fetched when the page opens."
+      "note": "Directory and default-subscription JSON files come from a GitHub-served file that nothing checks."
+    },
+    {
+      "name": "Resolve names and read chain state",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Reads Ethereum state through public RPC endpoints, without a light client."
+    }
+  ],
+  "connections": [
+    {
+      "name": "Default community lists (raw.githubusercontent.com)",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Fetched when the page opens: the defaults list, default subscriptions and ten directory files."
+    },
+    {
+      "name": "Ethereum RPC (publicnode.com, drpc.org, mevblocker.io, 1rpc.io, nodies.app)",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "POST requests start within seconds of opening; the page reads chain state from these servers, with no light client."
     }
   ],
   "evidence": [

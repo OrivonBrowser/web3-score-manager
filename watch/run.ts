@@ -1,4 +1,4 @@
-import { closeSync, copyFileSync, existsSync, lstatSync, mkdirSync, openSync, readFileSync, rmSync, writeFileSync } from "node:fs";
+import { chmodSync, closeSync, copyFileSync, existsSync, lstatSync, mkdirSync, openSync, readFileSync, rmSync, writeFileSync } from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { loadProvider, readJson } from "../src/source.ts";
@@ -25,7 +25,7 @@ import { createJob, fetchCommand, probeCommand, pruneJobs, removeTree, writeSrtS
 import type { Job } from "./sandbox.ts";
 import { loadState, markNotified, recordDone, recordFailure, runErrorDue, saveState, shouldSkip } from "./state.ts";
 import type { State } from "./state.ts";
-import { formatFailure, formatJudged, formatPublishFailure, formatRunError, telegramSender } from "./telegram.ts";
+import { formatFailure, formatJudged, formatJudgeUnavailable, formatPublishFailure, formatRunError, telegramSender } from "./telegram.ts";
 import type { JudgedMessage } from "./telegram.ts";
 import { findSecrets, validateVerdict } from "./verdict.ts";
 
@@ -34,6 +34,9 @@ const CONNECTION_ERROR = /connect|reach|refused|reset|EOF|unreachable|daemon|no 
 
 /** A site that could not be judged this time; the text is for the owner, so it never holds site text or secrets. */
 class JobFailure extends Error {}
+
+/** The judge could not be used (limit, API error, sign-in): every site would fail alike, so the run stops and no build loses a try. */
+class JudgeUnavailable extends JobFailure {}
 
 interface Group {
   file: string;
@@ -61,7 +64,13 @@ async function retryOnce<T>(attempt: () => Promise<T>): Promise<T> {
   }
 }
 
-async function siteSize(config: Config, cid: string): Promise<number> {
+interface SiteStat {
+  size: number;
+  /** `directory` for a site folder; `file` when the name's root is one file, which the gateway serves as the page. */
+  type: string;
+}
+
+async function siteStat(config: Config, cid: string): Promise<SiteStat> {
   const url = `${config.ipfsApi}/api/v0/files/stat?arg=/ipfs/${cid}`;
   let response: Response;
   try {
@@ -71,13 +80,20 @@ async function siteSize(config: Config, cid: string): Promise<number> {
     throw new Error(`the IPFS node could not be reached to size the build: ${cause}`);
   }
   if (!response.ok) throw new JobFailure(`the IPFS node could not size the build (HTTP ${response.status})`);
-  const body = (await response.json()) as { CumulativeSize?: unknown };
+  const body = (await response.json()) as { CumulativeSize?: unknown; Type?: unknown };
   if (typeof body.CumulativeSize !== "number") throw new JobFailure("the IPFS node gave no size for the build");
-  return body.CumulativeSize;
+  return { size: body.CumulativeSize, type: typeof body.Type === "string" ? body.Type : "directory" };
 }
 
-async function fetchBuild(config: Config, cid: string, dest: string, timeoutS: number): Promise<void> {
-  const { command, args } = fetchCommand(config, cid, dest, timeoutS);
+/** Fetches a build into `dest`; a build that is one file lands as `dest/index.html`, the page a gateway would show. */
+async function fetchBuild(config: Config, cid: string, dest: string, timeoutS: number, type = "directory"): Promise<void> {
+  let target = dest;
+  if (type === "file") {
+    mkdirSync(dest, { recursive: true });
+    chmodSync(dest, 0o2770);
+    target = path.join(dest, "index.html");
+  }
+  const { command, args } = fetchCommand(config, cid, target, timeoutS);
   const result = await run(command, args, { timeoutMs: (timeoutS + 30) * 1000, maxStderr: 16 * 1024 });
   if (failed(result)) {
     await removeTree(config, dest);
@@ -118,7 +134,7 @@ async function judgeGroup(config: Config, group: Group, secrets: string[], now: 
   const slug = slugOf(group.file);
   log(`judging ${names}: ${cid}`);
 
-  const size = await retryOnce(() => siteSize(config, cid));
+  const { size, type } = await retryOnce(() => siteStat(config, cid));
   if (size > config.siteMaxBytes) throw new JobFailure(`the build is too large (${Math.round(size / 1e6)} MB, the limit is ${Math.round(config.siteMaxBytes / 1e6)} MB)`);
 
   const job: Job = await createJob(config, slug, now);
@@ -127,7 +143,7 @@ async function judgeGroup(config: Config, group: Group, secrets: string[], now: 
   const previousDir = path.join(job.input, "previous");
 
   try {
-    await retryOnce(() => fetchBuild(config, cid, siteDir, config.fetchTimeoutS));
+    await retryOnce(() => fetchBuild(config, cid, siteDir, config.fetchTimeoutS, type));
   } catch (e) {
     throw new JobFailure(`the new build could not be fetched: ${clip((e as Error).message, 150)}`);
   }
@@ -138,7 +154,8 @@ async function judgeGroup(config: Config, group: Group, secrets: string[], now: 
   let fetchedPrevious = false;
   if (previousCid !== null) {
     try {
-      await fetchBuild(config, previousCid, previousDir, config.previousFetchTimeoutS);
+      const previousType = await siteStat(config, previousCid).then((s) => s.type, () => "directory");
+      await fetchBuild(config, previousCid, previousDir, config.previousFetchTimeoutS, previousType);
       fetchedPrevious = isDirectory(previousDir);
     } catch (e) {
       log(`the previous build could not be fetched: ${clip((e as Error).message, 150)}`);
@@ -185,12 +202,13 @@ async function judgeGroup(config: Config, group: Group, secrets: string[], now: 
   const leaked = findSecrets(judged.stdout, secrets);
   if (!judged.ok || leaked) {
     if (!leaked && judged.stderr !== "" && !findSecrets(judged.stderr, secrets)) log(`judge stderr: ${clip(judged.stderr, 300)}`);
+    if (!leaked && judged.unavailable) throw new JudgeUnavailable(judged.error ?? "the judge is unavailable");
     throw new JobFailure(leaked ? "the answer contained a secret" : (judged.error ?? "the judge failed"));
   }
+  writeFileSync(path.join(job.dir, "judge-raw.json"), `${judged.stdout}\n`);
   const checked = validateVerdict(judged.answer);
   if (!checked.verdict) throw new JobFailure(`the answer did not pass validation: ${checked.issues.slice(0, 3).join("; ")}`);
   const verdict = checked.verdict;
-  writeFileSync(path.join(job.dir, "judge-result.json"), `${judged.stdout}\n`);
 
   const merged = mergeEvaluation(old, verdict, cid, today);
   const target = startsNewFile(old, group.id) ? newEvaluationFile(group.file, existsSync) : group.file;
@@ -326,8 +344,10 @@ async function execute(config: Config, state: State, say: (message: string) => P
   const due = groups.filter((g) => !g.names.every((n) => shouldSkip(state, n, g.id, config.maxAttempts))).slice(0, config.maxSitesPerRun);
   const applied: Extract<Result, { kind: "done" }>[] = [];
   const startedAt = new Date();
+  let unavailable: string | undefined;
 
   for (const group of due) {
+    await pruneJobs(config);
     const now = new Date();
     const names = group.names.join(", ");
     const stamp = now.toISOString();
@@ -338,6 +358,10 @@ async function execute(config: Config, state: State, say: (message: string) => P
     } catch (e) {
       reason = withoutSecrets(e instanceof JobFailure ? e.message : `unexpected error: ${clip((e as Error).message)}`, secrets);
       if (config.dryRun) await resetToOrigin(config).catch(() => {});
+      if (e instanceof JudgeUnavailable) {
+        unavailable = reason;
+        break;
+      }
     }
     if (result?.kind === "rejected") reason = result.reason;
     if (result?.kind === "done") {
@@ -385,6 +409,14 @@ async function execute(config: Config, state: State, say: (message: string) => P
   for (const r of applied) {
     if (publishedCid !== undefined) r.message.publishedCid = publishedCid;
     await say(formatJudged(r.message));
+  }
+  if (unavailable !== undefined) {
+    log(`stopped: ${unavailable}; the builds still waiting keep their tries and are judged on a later run`);
+    const now = new Date();
+    if (runErrorDue(state, now) && (await say(formatJudgeUnavailable(unavailable)))) {
+      state.lastRunError = { at: now.toISOString(), message: unavailable };
+      persist();
+    }
   }
   if (config.dryRun) await resetToOrigin(config).catch(() => {});
 }

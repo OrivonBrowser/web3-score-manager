@@ -1,0 +1,56 @@
+{
+  "subject": "website",
+  "ids": [
+    "cid:bafybeihb3pjukubn7sgnci4mwvu7dnwqruwywgk52ggll53yno2h4txsbe"
+  ],
+  "names": [
+    "vision.ubnet.eth"
+  ],
+  "name": "Vision ENS Domain Marketplace",
+  "evaluated": "2026-10-23",
+  "trustlessity": {
+    "level": 3,
+    "privacy": false
+  },
+  "summary": "Vision, a marketplace for ENS domain sales on UBNet. Its scripts, including the bundled UBNet SDK, are served unminified from its own files, so the page is its own public source (no licence file). It loads no third-party script while opening, which is Level 3; an unused fallback would fetch assets from ubnet.work only if its own files failed. It is not Level 4: it contacts publicnode RPC, ubnet.work, ethfollow and Google Fonts.",
+  "connections": [
+    {
+      "name": "Ethereum RPC (ethereum-rpc.publicnode.com)",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Read without a light client when the page opens."
+    },
+    {
+      "name": "UBNet API (ubnet.work)",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Profile, posts and ENS bindings fetched when the page opens."
+    },
+    {
+      "name": "EFP API (api.ethfollow.xyz)",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Followers and following counts fetched when the page opens."
+    },
+    {
+      "name": "Google Fonts",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Fetched when the page opens; tells Google the visit."
+    },
+    {
+      "name": "UBNet asset fallback (ubnet.work)",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Only used if the page's own files fail to load."
+    }
+  ],
+  "evidence": [
+    "ipfs://bafybeihb3pjukubn7sgnci4mwvu7dnwqruwywgk52ggll53yno2h4txsbe"
+  ]
+}

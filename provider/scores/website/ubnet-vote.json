@@ -1,0 +1,43 @@
+{
+  "subject": "website",
+  "ids": [
+    "cid:bafybeign65t666y3vudtyoloul754ps4gzdiqfj63k2z33wifnebvxwcpe"
+  ],
+  "names": [
+    "vote.ubnet.eth"
+  ],
+  "name": "UBNet Public Vote",
+  "evaluated": "2026-10-23",
+  "trustlessity": {
+    "level": 3,
+    "privacy": false
+  },
+  "summary": "The public vote page of UBNet: a hand-written page with a readable script.js plus the vendored ethers and Spasm SDK (spasm-network/spasm.js, MIT) bundles, served as written (no licence file). It runs no third-party code. It relies on the UBNet server my.eth-ub.net for the vote feed and settings, so it is at most Level 3; it also loads Google Fonts and reads Ethereum from publicnode.",
+  "connections": [
+    {
+      "name": "my.eth-ub.net (UBNet node API)",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Health, settings and the vote feed are read from this server when the page opens; signed votes are submitted to it."
+    },
+    {
+      "name": "ethereum-rpc.publicnode.com",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Ethereum RPC read without a light client, called when the page opens."
+    },
+    {
+      "name": "Google Fonts",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Stylesheet and font files fetched when the page opens; tells Google the visit."
+    }
+  ],
+  "evidence": [
+    "https://vote.ubnet.eth.limo/",
+    "https://github.com/spasm-network/spasm.js"
+  ]
+}

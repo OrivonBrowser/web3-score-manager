@@ -1,0 +1,20 @@
+{
+  "subject": "website",
+  "ids": [
+    "cid:bafybeics2uxwh4athdeirbmx4ujr4to4edgzyfvbjeur44uhpcp6xqbhmu"
+  ],
+  "names": [
+    "jason.ubnet.eth"
+  ],
+  "name": "Advanced Installations",
+  "evaluated": "2026-10-23",
+  "trustlessity": {
+    "level": 4,
+    "privacy": true
+  },
+  "summary": "A static company site for laboratory and workplace installations, several plain HTML pages with one readable script.js and a stylesheet, so it is served as written and is its own public source (no licence file). It loads only its own files, with no fonts, scripts or requests to other hosts, on every page: Level 4 with privacy.",
+  "evidence": [
+    "ipfs://bafybeics2uxwh4athdeirbmx4ujr4to4edgzyfvbjeur44uhpcp6xqbhmu",
+    "https://jason.ubnet.eth.limo/"
+  ]
+}

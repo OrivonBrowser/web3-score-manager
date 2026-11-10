@@ -1,13 +1,14 @@
 {
   "subject": "website",
   "ids": [
-    "cid:bafybeidcxsyha6rotpfauux3d34lzwedrrqu4wjcs5kklrdw3mdfro7v3i"
+    "cid:bafybeidcxsyha6rotpfauux3d34lzwedrrqu4wjcs5kklrdw3mdfro7v3i",
+    "cid:bafybeihumons7ksxpvhriznzecqhtsxj7cb5lffqkeev7mxe2sxa763hny"
   ],
   "names": [
     "dotc.eth"
   ],
   "name": "Swarm dOTC",
-  "evaluated": "2026-10-18",
+  "evaluated": "2026-11-09",
   "trustlessity": {
     "level": 2,
     "privacy": false
@@ -36,11 +37,11 @@
       "note": "Consent script loaded when the page opens."
     },
     {
-      "name": "RPC endpoints (thirdweb)",
+      "name": "RPC endpoints (thirdweb, Alchemy)",
       "trustlessity": {
         "level": 1
       },
-      "note": "Read without a light client."
+      "note": "Read without a light client. The new build also reads plasma-mainnet.g.alchemy.com."
     },
     {
       "name": "Indexer and Swarm API (indexer.hyperindex.xyz, api.app.swarm.com)",

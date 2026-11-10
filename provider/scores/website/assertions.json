@@ -1,13 +1,15 @@
 {
   "subject": "website",
   "ids": [
-    "cid:bafybeibn4bv4mr76z5y4v6x4y33i5wxussak4tyjgmp6qjgcx6r62fe5gi"
+    "cid:bafybeibn4bv4mr76z5y4v6x4y33i5wxussak4tyjgmp6qjgcx6r62fe5gi",
+    "cid:bafybeiggwxitk53ry5ty6dtkhaywops6wrf65ag2rmv42b42lauzipllta",
+    "cid:bafybeie6ixdxjz74dbwvfemsgycpnrutfqs3jynyixvdztppedxfi5j4da"
   ],
   "names": [
     "assertions.eth"
   ],
   "name": "Assertions",
-  "evaluated": "2026-10-18",
+  "evaluated": "2026-11-09",
   "trustlessity": {
     "level": 3,
     "privacy": false

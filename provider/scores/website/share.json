@@ -1,0 +1,142 @@
+{
+  "subject": "website",
+  "ids": [
+    "sha256:94501a118df56fb6c88de1c9bd15ae0c3a0724cd2f7ce27abd19dda15ffa076f",
+    "cid:bafybeidsfsvudxgfigibtrebwimzcppqkwjo2qmkb3gm2ms3xrasihttbq",
+    "cid:bah5acgzarqkvynijezgp7bdsahvjgbrjzhdw5is5d3cwdxzmtk2r2p5kqcka",
+    "sha256:b717d18ea457c0bc921cd3f2d3698800051347680b25723851bf0f28eea614a3",
+    "cid:bafybeihwyvxbmwhwttngycrc2nwdqxqv6rwtjbloavmgcbk5pt33rau7du",
+    "cid:bah5acgzarxjb7gl5bwo27ozc6uemisrz66ekrshl45jynxjassfjkipqs5fa"
+  ],
+  "names": [
+    "share.orivonstack.eth"
+  ],
+  "name": "Orivon Share",
+  "version": "0.1.7",
+  "evaluated": "2026-10-28",
+  "trustlessity": {
+    "level": 4,
+    "privacy": false
+  },
+  "summary": "Shares files, folders and websites from the person's own computer over IPFS, optionally encrypted with age under a password. Open source in orivon-ports, scripts unminified; its IPFS node is built from the public OrivonBrowser/orivon-ipfs-node. Opening it fetches only its own files. Everything received is checked block by block. Trackers, the DHT and Orivon's relay only connect peers, and gateways carry checked blocks, so it relies on no server: Level 4. Not private: trackers, peers, the relay and gateways see the person's IP address.",
+  "operations": [
+    {
+      "name": "Share files, a folder or a website",
+      "trustlessity": {
+        "level": 4,
+        "privacy": false
+      },
+      "note": "The IPFS address is computed on this computer and the files stay in this browser; whoever opens the link fetches them from this computer, directly over WebRTC or through the IPFS network, and checks every block against the address. Trackers, STUN servers and IPFS peers see the person's IP address."
+    },
+    {
+      "name": "Protect a share with a password",
+      "trustlessity": {
+        "level": 4,
+        "privacy": true
+      },
+      "note": "Encrypted on this computer with age (scrypt passphrase) before anything leaves it. The password is never sent; it is in the link only when the person chooses so. Peers, gateways and pinning services see encrypted bytes only."
+    },
+    {
+      "name": "Open a share",
+      "trustlessity": {
+        "level": 4,
+        "privacy": false
+      },
+      "note": "Blocks come from peers or trustless gateways and each is checked against its address; a protected share is decrypted on this computer. Peers, trackers and gateways see the person's IP address and which share they open."
+    },
+    {
+      "name": "Show a protected website",
+      "trustlessity": {
+        "level": 4
+      },
+      "note": "Decrypted on this computer and shown inside the page from a listener on this computer, at an origin of its own, without Share's permissions. What the shown site does is the site's own."
+    },
+    {
+      "name": "Keep shares on this computer, export a CAR file",
+      "trustlessity": {
+        "level": 4,
+        "privacy": true
+      },
+      "note": "Kept only in this browser's storage for the page; nothing is sent."
+    },
+    {
+      "name": "Keep a share online elsewhere (optional)",
+      "trustlessity": {
+        "level": 4,
+        "privacy": false
+      },
+      "note": "Only when the person ticks Orivon's 30-day copy or picks a pinning service or their own node. It counts only when the service reports the address computed here. The service sees the IP address and the files, encrypted ones still encrypted; an unprotected copy on Orivon's server is public."
+    }
+  ],
+  "connections": [
+    {
+      "name": "Browsers that hold or open the share (WebRTC)",
+      "trustlessity": {
+        "level": 2,
+        "privacy": false
+      },
+      "note": "Every block received is checked against its address. Each peer sees the person's IP address."
+    },
+    {
+      "name": "WebTorrent trackers and STUN servers",
+      "trustlessity": {
+        "level": 1,
+        "privacy": false
+      },
+      "note": "tracker.openwebtorrent.com, tracker.webtorrent.dev, tracker.btorrent.xyz, tracker.files.fm; STUN at Cloudflare, Google, Twilio. Used only while a share is served or opened, to find peers: a wrong answer costs time, never integrity. They see the person's IP address and a hash of the share's address."
+    },
+    {
+      "name": "The IPFS network, through the IPFS node the app ships",
+      "trustlessity": {
+        "level": 2,
+        "privacy": false
+      },
+      "note": "A local program in the build's own files, run under the grants the person accepted. Blocks are checked against their address; the DHT and bootstrap peers only find peers. The node announces the shares it serves. Peers see the person's IP address and what is fetched or announced."
+    },
+    {
+      "name": "Orivon's relay (152.228.138.30:4003)",
+      "trustlessity": {
+        "level": 2,
+        "privacy": false
+      },
+      "note": "While Share is open, its IPFS node holds a place on this libp2p relay, so a computer behind a router can be reached by its IPFS address. The relay passes encrypted traffic and stores nothing; every block is checked against its address. It sees both sides' IP addresses and how much passes."
+    },
+    {
+      "name": "Cloudflare DNS (1.1.1.1, 1.0.0.1)",
+      "trustlessity": {
+        "level": 1,
+        "privacy": false
+      },
+      "note": "Resolves only the names of the IPFS network's entry points, which then only find peers. It sees the person's IP address and those names."
+    },
+    {
+      "name": "Trustless IPFS gateways, when no peer answers",
+      "trustlessity": {
+        "level": 2,
+        "privacy": false
+      },
+      "note": "ipfs.filebase.io, trustless-gateway.link, ipfs.orbitor.dev. Every block is checked against its address. The gateway sees the person's IP address and the share's address."
+    },
+    {
+      "name": "Orivon's copy service (telemetry.orivonstack.com/share), when chosen",
+      "trustlessity": {
+        "level": 2,
+        "privacy": false
+      },
+      "note": "Only when the person ticks \"Keep a copy on Orivon's server\": it receives the share's CAR, keeps it 30 days on Orivon's IPFS node and Filebase, and its answer is checked against the address computed here. It sees the person's IP address and the files, encrypted ones still encrypted."
+    },
+    {
+      "name": "The pinning service or IPFS node the person chose",
+      "trustlessity": {
+        "level": 2,
+        "privacy": false
+      },
+      "note": "Filebase, Pinata, a pinning API or a Kubo node. Its answer is checked against the address computed here. It sees the person's IP address and the files they keep there."
+    }
+  ],
+  "evidence": [
+    "https://github.com/OrivonBrowser/orivon-ports/tree/main/apps/share",
+    "https://github.com/OrivonBrowser/orivon-ipfs-node",
+    "https://github.com/FiloSottile/typage"
+  ]
+}

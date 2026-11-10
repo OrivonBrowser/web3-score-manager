@@ -1,0 +1,32 @@
+{
+  "subject": "website",
+  "ids": [
+    "cid:bafybeigejd7udhrgsibhko733gvxfu2zgdshertzkhli57o2kjrkbrpyum"
+  ],
+  "names": [
+    "roots.ubnet.eth"
+  ],
+  "name": "Roots, A Celebration of Life",
+  "evaluated": "2026-10-23",
+  "trustlessity": {
+    "level": 2,
+    "privacy": false
+  },
+  "summary": "A memorial page for Ghislain Roots Racine with music. It ships a minified Vite bundle with no source map, and no public repository was found, so no public source exists and it stays at Level 2. It also loads Google Fonts and streams audio from a Pinata gateway.",
+  "connections": [
+    {
+      "name": "Google Fonts",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Fetched when the page opens; tells Google the visit."
+    },
+    {
+      "name": "Pinata gateway (mypinata.cloud)",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Audio requested when the page opens."
+    }
+  ]
+}

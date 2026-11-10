@@ -1,0 +1,49 @@
+{
+  "subject": "website",
+  "ids": [
+    "cid:bafybeiaxms435muktf6ewkhzadgxqaft6pjjoz5kzsoua3qejphagw6h7m"
+  ],
+  "names": [
+    "jumbo.ubnet.eth"
+  ],
+  "name": "jumbo.ubnet.eth ENS Pizza Cart",
+  "evaluated": "2026-10-23",
+  "trustlessity": {
+    "level": 3,
+    "privacy": false
+  },
+  "summary": "An ENS pizza-ordering storefront built from the UBNet template. It is served as written (readable scripts plus the vendored ethers and Spasm libraries), so the page is its own public source (no licence file), and it runs no third-party code, which is Level 3. It is not Level 4: when it opens it reads chain data from publicnode, its catalog from the my.eth-ub.net server, ETH prices from Coinbase and loads Google Fonts.",
+  "connections": [
+    {
+      "name": "publicnode Ethereum RPC",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Read without a light client when the page opens."
+    },
+    {
+      "name": "my.eth-ub.net API",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "The store's posts and catalog are fetched from this server when the page opens."
+    },
+    {
+      "name": "Coinbase price API",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "ETH spot price fetched when the page opens."
+    },
+    {
+      "name": "Google Fonts",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Fetched when the page opens; tells Google the visit."
+    }
+  ],
+  "evidence": [
+    "https://jumbo.ubnet.eth.limo/"
+  ]
+}

@@ -1,0 +1,42 @@
+{
+  "subject": "website",
+  "ids": [
+    "cid:bafybeidj2wofwysjj6oveut5jciu4tjzz3hytczw5m3qiyfvnr5ozjxtna"
+  ],
+  "names": [
+    "elink.ubnet.eth"
+  ],
+  "name": "elink.ubnet.eth (Ethereum.Linked)",
+  "evaluated": "2026-10-23",
+  "trustlessity": {
+    "level": 3,
+    "privacy": false
+  },
+  "summary": "An Ethereum.Linked ENS profile page for elink.ubnet.eth. Its scripts are unminified own files (the ethers library is bundled), so the page is its own public source (no licence file). It loads no third-party script, which is Level 3. It is not Level 4: when it opens it reads Ethereum through the publicnode RPC, the profile from ubnet.work and transactions from Blockscout.",
+  "connections": [
+    {
+      "name": "Ethereum RPC (ethereum-rpc.publicnode.com)",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Read without a light client when the page opens."
+    },
+    {
+      "name": "UBNet API (ubnet.work)",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Profile, posts and followers fetched when the page opens."
+    },
+    {
+      "name": "Blockscout API (eth.blockscout.com)",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Transaction history fetched when the page opens."
+    }
+  ],
+  "evidence": [
+    "ipfs://bafybeidj2wofwysjj6oveut5jciu4tjzz3hytczw5m3qiyfvnr5ozjxtna"
+  ]
+}

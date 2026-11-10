@@ -1,21 +1,22 @@
 {
   "subject": "website",
   "ids": [
-    "cid:bafybeibzhmtxvo2bmi4e4apjuueb5ri7g5f2xn3wiyfrhjdm6vrpdksw4u"
+    "cid:bafybeibzhmtxvo2bmi4e4apjuueb5ri7g5f2xn3wiyfrhjdm6vrpdksw4u",
+    "cid:bafybeic2y7lrzofzfis4gxf55tslifg7o3majvtyzj53376lsbmf5mph6a"
   ],
   "names": [
     "api3.eth"
   ],
   "name": "API3 DAO",
-  "evaluated": "2026-10-05",
+  "evaluated": "2026-11-06",
   "trustlessity": {
     "level": 2,
     "privacy": false
   },
-  "summary": "The API3 DAO staking and voting dashboard. Its source is public (no licence file). It is not Level 3: when it opens, its wallet library loads WalletConnect's hidden verify frame, third-party code the user has not asked for. It also embeds a YouTube video and loads Google Fonts.",
+  "summary": "The API3 DAO staking and voting dashboard, now with a notice that governance has moved to Snapshot. Its source is public (no licence file). It is not Level 3: when it opens, its wallet library loads the WalletConnect/Web3Modal wallet list, third-party code the user has not asked for. It also embeds a YouTube video and loads Google Fonts.",
   "connections": [
     {
-      "name": "WalletConnect verify frame and wallet list",
+      "name": "Web3Modal wallet list (api.web3modal.com)",
       "trustlessity": {
         "level": 1
       },
@@ -26,7 +27,7 @@
       "trustlessity": {
         "level": 1
       },
-      "note": "A visible player on the page."
+      "note": "A visible player on the page, loaded as the page opens."
     },
     {
       "name": "Google Fonts",

@@ -1,13 +1,14 @@
 {
   "subject": "website",
   "ids": [
-    "cid:bafybeigfj56gyr5u5a3yiljxtrbp5ch7nyt27kttvttpip5ss7vam67bnq"
+    "cid:bafybeigfj56gyr5u5a3yiljxtrbp5ch7nyt27kttvttpip5ss7vam67bnq",
+    "cid:bafybeih555a6sfhr3xzkithy36bmvi2c2c3nsdaqvjrm4if2lsv32hnavy"
   ],
   "names": [
     "stuckfunds.eth"
   ],
   "name": "Stuck Funds Checker",
-  "evaluated": "2026-10-18",
+  "evaluated": "2026-11-09",
   "trustlessity": {
     "level": 2,
     "privacy": false

@@ -102,30 +102,36 @@ function parts(value: unknown, key: string, max: number, privacyAt: number[], is
   return out;
 }
 
-function evidenceUrls(value: unknown, issues: string[]): string[] {
+function isEvidenceAddress(item: string): boolean {
+  if (item.length < 1 || item.length > 2048) return false;
+  let url: URL;
+  try {
+    url = new URL(item);
+  } catch {
+    return false;
+  }
+  return EVIDENCE_PROTOCOLS.includes(url.protocol) && !(url.host === "" && url.pathname.replace(/^\/+/, "") === "");
+}
+
+/**
+ * The addresses among the judge's evidence. An entry that is not one address is dropped, not fatal:
+ * the judgement is still good, and the merge keeps the old evidence when none is left. An address
+ * followed by words ("https://github.com/x (README)") keeps the address.
+ */
+function evidenceUrls(value: unknown, issues: string[]): { urls: string[]; dropped: number } {
   if (!Array.isArray(value)) {
     issues.push("evidence: must be an array");
-    return [];
+    return { urls: [], dropped: 0 };
   }
   if (value.length > 10) issues.push("evidence: at most 10 entries");
-  const out: string[] = [];
-  value.slice(0, 10).forEach((item, i) => {
-    const at = `evidence[${i}]`;
-    if (typeof item !== "string" || item.length < 1 || item.length > 2048 || /\s/.test(item)) {
-      return void issues.push(`${at}: must be one address of at most 2048 characters`);
-    }
-    let url: URL;
-    try {
-      url = new URL(item);
-    } catch {
-      return void issues.push(`${at}: must be an absolute http, https, ipfs or ipns address`);
-    }
-    if (!EVIDENCE_PROTOCOLS.includes(url.protocol) || (url.host === "" && url.pathname.replace(/^\/+/, "") === "")) {
-      return void issues.push(`${at}: must be an absolute http, https, ipfs or ipns address`);
-    }
-    out.push(item);
-  });
-  return out;
+  const urls: string[] = [];
+  let dropped = 0;
+  for (const item of value.slice(0, 10)) {
+    const address = typeof item === "string" ? (item.trim().split(/\s+/)[0] ?? "") : "";
+    if (!isEvidenceAddress(address)) dropped++;
+    else if (!urls.includes(address)) urls.push(address);
+  }
+  return { urls, dropped };
 }
 
 /** Mirrors judge/schema.json exactly, then applies the scale rules of src/validate.ts. */
@@ -147,9 +153,13 @@ export function validateVerdict(value: unknown): { verdict?: Verdict; issues: st
   const summary = str(value, "summary", "", 1, 600, issues);
   const operations = parts(value.operations, "operations", 5, [4, 5], issues);
   const connections = parts(value.connections, "connections", 3, [3], issues);
-  const evidence = evidenceUrls(value.evidence, issues);
+  const { urls: evidence, dropped } = evidenceUrls(value.evidence, issues);
   const changes = str(value, "changes", "", 0, 800, issues);
-  const concerns = str(value, "concerns", "", 0, 800, issues);
+  let concerns = str(value, "concerns", "", 0, 800, issues);
+  if (concerns !== undefined && dropped > 0) {
+    const note = `${dropped} evidence ${dropped === 1 ? "entry was not a web address and was" : "entries were not web addresses and were"} dropped.`;
+    concerns = `${concerns}${concerns === "" ? "" : " "}${note}`.slice(0, 800);
+  }
 
   if (
     issues.length > 0 ||

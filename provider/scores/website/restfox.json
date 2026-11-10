@@ -1,0 +1,72 @@
+{
+  "subject": "website",
+  "ids": [
+    "sha256:23497d8bd5ff226764b3101955cf246a30ba252681f68bc022eaa7edcc5a3151",
+    "cid:bafybeib3jp5g4roavyvtblnclkigy3bu3lshmrlrmpulc7pyeawqo6djju",
+    "cid:bah5acgzamezhtbyembs7az2itfehuzifdthan2ilzradppw3pkmik5gzl2hq",
+    "sha256:188033cd12d6e497e2757c5b90433566b71a82f17ca5beabd4b5d7cc5dbbd753",
+    "cid:bafybeidzby3quvr6ziflnnhdped4ksg6t4pz73eudhk6mg6zbbb6zlzina",
+    "cid:bah5acgzaadm7pamhmzpduzknkzj6srudzv4mdx53qa7jkcnieegfkykdnumq"
+  ],
+  "names": [
+    "restfox.orivonstack.eth"
+  ],
+  "name": "Restfox",
+  "version": "0.42.0.1",
+  "evaluated": "2026-11-07",
+  "trustlessity": {
+    "level": 3,
+    "privacy": false
+  },
+  "summary": "An HTTP and socket testing client, built from upstream's open source (MIT) at a pinned commit. Every script ships in its own files: Level 3. Its page-view ping to the developer's Umami analytics is sent by the app's own bundled code, not external code, so it keeps Level 3 but fails Level 4: with the star-count request to api.github.com it is an unverified connection made when the app opens. Not private: the ping and every request show your IP address.",
+  "operations": [
+    {
+      "name": "Send a request and read the response",
+      "trustlessity": {
+        "level": 2
+      },
+      "note": "The code does what it promises. The server the user names answers, sees your IP address and decides what comes back."
+    },
+    {
+      "name": "Keep workspaces, requests and history",
+      "trustlessity": {
+        "level": 4
+      },
+      "note": "Stored in this site's browser storage on this computer, with no account."
+    },
+    {
+      "name": "Run a plugin the user adds",
+      "trustlessity": {
+        "level": 2
+      },
+      "note": "Plugins are code the user adds, run in a sandbox inside the page. They are not loaded unless the user installs one."
+    }
+  ],
+  "connections": [
+    {
+      "name": "Developer analytics (umami.artelin.dev)",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "A page-view ping sent when the app opens, unless Settings > Advanced > Disable Page View Analytics Tracking is ticked. It carries the screen size, language and app version."
+    },
+    {
+      "name": "GitHub star count (api.github.com)",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Asked when the app opens, with no setting. It only changes a displayed number."
+    },
+    {
+      "name": "Servers the user types as request addresses",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Any public https address, and plain http only for localhost on ten ports. Answers are shown as received."
+    }
+  ],
+  "evidence": [
+    "https://github.com/flawiddsouza/Restfox/tree/e776d9e36857",
+    "https://github.com/OrivonBrowser/orivon-ports/tree/main/apps/restfox"
+  ]
+}

@@ -1,0 +1,46 @@
+{
+  "subject": "website",
+  "ids": [
+    "cid:bafybeicwyhv5hedikmyetskrzrp4xivid5jv6f5cnqgegxfrzai62qi6pe"
+  ],
+  "names": [
+    "ai.ubnet.eth"
+  ],
+  "name": "UBNet AI Agent",
+  "evaluated": "2026-10-23",
+  "trustlessity": {
+    "level": 2,
+    "privacy": false
+  },
+  "summary": "An ENS AI agent profile page on UBNet. Its source is the served page, but it is Level 2: when it opens it loads the UBNet SDK (about 26 scripts) from ubnet.work with no integrity hash, so ubnet.work can change the code that runs. It also loads Google Fonts, reads the publicnode RPC and requests metadata from ipfs.io.",
+  "connections": [
+    {
+      "name": "UBNet SDK scripts (ubnet.work)",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Third-party code loaded when the page opens, without an integrity hash."
+    },
+    {
+      "name": "Ethereum RPC (ethereum-rpc.publicnode.com)",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Read without a light client when the page opens."
+    },
+    {
+      "name": "Google Fonts",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Fetched when the page opens; tells Google the visit."
+    },
+    {
+      "name": "IPFS gateway (ipfs.io)",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Agent metadata requested when the page opens."
+    }
+  ]
+}

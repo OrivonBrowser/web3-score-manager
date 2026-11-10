@@ -2,18 +2,35 @@
   "subject": "website",
   "ids": [
     "cid:bafybeiceuzryxw5iq56vndz4brwust2jtingegy2jpbun6jsf22mt2xlpm",
-    "cid:bafybeia7bj7ioxffwf23kkpb76dz6lxtvddyhilkai47t33d2msidlv3jq"
+    "cid:bafybeia7bj7ioxffwf23kkpb76dz6lxtvddyhilkai47t33d2msidlv3jq",
+    "cid:bafybeidrvxzootkdgpuurpodg6vgw5vtylwcl4wx4kcyekzd5yvnivce5i"
   ],
   "names": [
     "aeroxyz.eth"
   ],
   "name": "Aero Lite",
-  "evaluated": "2026-10-22",
+  "evaluated": "2026-11-09",
   "trustlessity": {
     "level": 2,
     "privacy": false
   },
-  "summary": "Aero Lite, a trading and liquidity app for Aero on Arc. Its bundle is minified and no public source was found, which is why it stays at Level 2. Its bundled code calls api.web3modal.org, pulse.walletconnect.org and an Alchemy Arc RPC when the page opens; these are connections, not third-party code.",
+  "summary": "Aero Lite, a trading, liquidity, staking and launch app for Aero. Its bundle is minified and no public source was found, so it stays at Level 2. When the page opens its own code now reads chain state from dRPC and Alchemy RPC endpoints on several chains, and calls WalletConnect/Reown; these are Level 1 connections, not third-party code.",
+  "operations": [
+    {
+      "name": "Read pool, balance and quote data over hosted RPC",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Chain reads go to hosted RPC endpoints with no light client to check the answers."
+    },
+    {
+      "name": "Trade, add liquidity, stake and allocate through the user's wallet",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Transactions are built from data the site's bundle reads from hosted RPC endpoints and sent to the user's connected wallet."
+    }
+  ],
   "connections": [
     {
       "name": "WalletConnect and Reown (api.web3modal.org, pulse.walletconnect.org)",
@@ -23,11 +40,18 @@
       "note": "Configuration and telemetry requests from the site's own bundled wallet kit when the page opens, before a wallet is connected."
     },
     {
-      "name": "Alchemy Arc RPC (arc-mainnet.g.alchemy.com)",
+      "name": "dRPC (lb.drpc.live)",
       "trustlessity": {
         "level": 1
       },
-      "note": "Chain reads sent to a hosted RPC endpoint from the site's own bundle when the page opens, with no light client to check the answers."
+      "note": "Chain reads for Base, Optimism, Arbitrum, Ethereum, Ink and Robinhood chain sent from the site's own bundle when the page opens, with no light client."
+    },
+    {
+      "name": "Alchemy RPC (arc, base, opt, arb mainnet .g.alchemy.com)",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Chain reads for Arc, Base, Optimism and Arbitrum sent from the site's own bundle when the page opens, with no light client."
     }
   ]
 }

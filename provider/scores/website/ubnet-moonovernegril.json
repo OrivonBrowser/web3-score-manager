@@ -1,0 +1,19 @@
+{
+  "subject": "website",
+  "ids": [
+    "cid:bafybeid32hjgyaijg66rnoitei2mw3igscsnobnhvboloi5au32jmx35ca"
+  ],
+  "names": [
+    "moonovernegril.ubnet.eth"
+  ],
+  "name": "Moon Over Negril",
+  "evaluated": "2026-10-23",
+  "trustlessity": {
+    "level": 4,
+    "privacy": true
+  },
+  "summary": "A retreat sanctuary site in Negril, Jamaica: plain HTML, CSS and a short readable script, served as written, so the page is its own public source (no licence file). It runs no third-party code and loads only its own files on every page, so it makes no request beyond the site itself. Its forms only open a WhatsApp link when the visitor submits, a step the user takes outside the site.",
+  "evidence": [
+    "https://moonovernegril.ubnet.eth.limo/"
+  ]
+}

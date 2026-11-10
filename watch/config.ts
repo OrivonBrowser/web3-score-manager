@@ -122,7 +122,7 @@ export function loadConfig(env: Env = process.env): Config {
     previousFetchTimeoutS: integer(env, "PREVIOUS_FETCH_TIMEOUT_S", 180),
     statTimeoutS: integer(env, "STAT_TIMEOUT_S", 120),
     probeTimeoutS: integer(env, "PROBE_TIMEOUT_S", 120),
-    siteMaxBytes: integer(env, "SITE_MAX_BYTES", 300 * 1024 * 1024),
+    siteMaxBytes: integer(env, "SITE_MAX_BYTES", 1024 * 1024 * 1024),
     maxSitesPerRun: integer(env, "MAX_SITES_PER_RUN", 4),
     maxAttempts: integer(env, "MAX_ATTEMPTS", 3),
     keepJobs: integer(env, "KEEP_JOBS", 5),

@@ -4,13 +4,14 @@
     "cid:bafybeiedkg5xxxysibyzr2bzobzkdap2gizrk7aq2mozjyqv5yk7uuk7uq",
     "cid:bafybeie3icwmemukiamudif27csgpziz3cwtinnma6eahfwduid6yazoq4",
     "cid:bafybeiaexvjsncblykeco4h4zvcqkqwqjn72jhqe2rtx2evusuokvxkhde",
-    "cid:bafybeigges7tdswqgllbl4ilpyd23kmr4wm27fr4kmsu6mha4r2v2cmnpm"
+    "cid:bafybeigges7tdswqgllbl4ilpyd23kmr4wm27fr4kmsu6mha4r2v2cmnpm",
+    "cid:bafybeidpvpccgdjwtsdweyl6hrsbilq5ku2z5y5oramj7ezq33gdihkmkm"
   ],
   "names": [
     "resupply.eth"
   ],
   "name": "Resupply",
-  "evaluated": "2026-10-18",
+  "evaluated": "2026-11-08",
   "trustlessity": {
     "level": 2,
     "privacy": false
