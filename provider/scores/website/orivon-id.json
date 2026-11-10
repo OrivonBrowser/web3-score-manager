@@ -2,14 +2,16 @@
   "subject": "website",
   "ids": [
     "sha256:09dd9199bc09ff17e4424f880a804988fc913c4e1685312346fb6cf7e8bb8ffe",
-    "cid:bafybeidqaglavjb5lmyf3ercgphdpmcah57n5vh2s5mh5ehrghcqeayepi"
+    "cid:bafybeidqaglavjb5lmyf3ercgphdpmcah57n5vh2s5mh5ehrghcqeayepi",
+    "sha256:057cd318e524267f8df724a0d6b823f910afea9d6a7dbd4033e04fc2d6e35768",
+    "cid:bafybeie4boml7h64hwr6ztfvogg6kfky5tiyizv6n5rfv63pqi7rwfl5re"
   ],
   "names": [
     "id.orivonstack.eth",
     "ipns://k51qzi5uqu5dgg58ve0xwfwjn6d1dz86uitecdddjs0uutw7zqcs6cw95yqevr"
   ],
   "name": "Orivon ID",
-  "version": "0.1.1",
+  "version": "0.2.1",
   "evaluated": "2026-11-10",
   "trustlessity": {
     "level": 3,
@@ -47,7 +49,7 @@
         "level": 3,
         "privacy": false
       },
-      "note": "Names and records are read through the light client from the registry, a clone of contracts Sourcify has verified, and the person's own resolver; each change is a transaction the person signs. The node's server sees the addresses and names asked about."
+      "note": "Read through the light client from the registry (a clone of contracts Sourcify has verified) and the person's own resolver; changes are transactions the person signs. The list is IDs this computer remembers, ones typed in and recent registry logs, each checked on chain. The node's server sees them."
     },
     {
       "name": "Sign in to another Web3site with an ID",
@@ -55,7 +57,7 @@
         "level": 3,
         "privacy": false
       },
-      "note": "The page shows which site asked, the person signs one EIP-4361 message in Orivon's wallet, and the answer goes to that site in the address fragment. Ownership is checked on chain through the light client."
+      "note": "The site asking sends the person through its own bridge page, which this page checks the visit came from. It shows which site asked, the person signs one EIP-4361 message in Orivon's wallet, and the answer returns in the address fragment. Ownership is checked on chain through the light client."
     },
     {
       "name": "Read the protocol and the developer pages",
@@ -101,8 +103,8 @@
     }
   ],
   "evidence": [
-    "https://github.com/OrivonBrowser/orivon-ports/tree/94c60dcc058b930630ed039890b80041f920ee41/apps/id",
-    "ipfs://bafybeidqaglavjb5lmyf3ercgphdpmcah57n5vh2s5mh5ehrghcqeayepi",
+    "https://github.com/OrivonBrowser/orivon-ports/tree/ce3b6917d5a60f1ac975a9b7c477e57830f9993b/apps/id",
+    "ipfs://bafybeie4boml7h64hwr6ztfvogg6kfky5tiyizv6n5rfv63pqi7rwfl5re",
     "https://sourcify.dev/server/v2/contract/1/0x27264C6AE4ec65fD14C0FB55C2Dc71eAa8956Cb4",
     "https://sourcify.dev/server/v2/contract/1/0x77510ba162dfeA3d8989E3f0928a691B345730D2"
   ]
