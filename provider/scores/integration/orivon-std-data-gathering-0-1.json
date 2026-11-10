@@ -4,12 +4,12 @@
     "integration:builtin:std-data_gathering_0_1"
   ],
   "name": "Data gathering standard (DATA_GATHERING_0_1)",
-  "evaluated": "2026-11-06",
+  "evaluated": "2026-11-10",
   "trustlessity": {
     "level": 4,
     "privacy": true
   },
-  "summary": "The row for the DATA_GATHERING_0_1 standard, which defines loading the content a record names, one file at a time and checked by its source. A standard defines a code without answering it: the row runs nothing, holds no state and makes no connection, and whatever answers the code is judged on its own row. Open source, and the definition is a JSON file in Orivon's source. Judged here by its publisher.",
+  "summary": "Defines how a record's content is loaded one file at a time and checked against its content id (IPFS, Swarm, Arweave, torrent): a gather group only the browser calls, and a fetch group the browser answers itself through the sources the person ordered. The row names no source and makes no request. The definition lets the browser lower what a source claims about its own checks, never raise it, and says the serving source sees which content is fetched. The browser's answering code is separate from this row. Level 4 with privacy: a pure definition. Judged here by its publisher.",
   "evidence": [
     "https://github.com/OrivonBrowser/orivon-mvp"
   ]

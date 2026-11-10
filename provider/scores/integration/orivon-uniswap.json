@@ -4,14 +4,13 @@
     "integration:builtin:uniswap"
   ],
   "name": "Uniswap",
-  "evaluated": "2026-11-05",
+  "evaluated": "2026-11-10",
   "trustlessity": {
     "level": 3,
     "privacy": false
   },
-  "summary": "Swaps Ether or a pinned token for a pinned token through the pools of Uniswap V3, on the person's own chain. Open source and signed locally; holds nothing for anyone. The price is read in one batched call through the person's Ethereum node. It stays at 3 because the router contract and the pools have not been judged as operations; it rises to 4 when an operation verdict for them says so. Judged here by its publisher.",
+  "summary": "Swaps Ether or a pinned token for a pinned token through Uniswap V3 pools on Ethereum mainnet. The router, quoter and tokens are pinned in Orivon, the price is an eth_call the light client proves, the payee gets the exact amount or the swap reverts (at most 0.5% over the quote), and it is done only on a proven receipt. It holds no funds. The going fee comes from an execution server and nothing checks it; the sheet shows it before Pay. Those servers see the paying address and the swap. Level 3, not 4, because of that fee read. Judged here by its publisher.",
   "evidence": [
-    "https://github.com/OrivonBrowser/orivon-mvp",
-    "https://github.com/Uniswap/universal-router"
+    "https://github.com/OrivonBrowser/orivon-mvp"
   ]
 }

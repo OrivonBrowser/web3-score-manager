@@ -4,14 +4,13 @@
     "integration:builtin:chainlink-prices"
   ],
   "name": "Chainlink prices",
-  "evaluated": "2026-11-05",
+  "evaluated": "2026-11-10",
   "trustlessity": {
     "level": 3,
     "privacy": false
   },
-  "summary": "The node row that answers ETH_PRICE_0_1 and BTC_PRICE_0_1 in dollars from Chainlink's USD feeds, read through the person's Ethereum node, so it is as well proven as that node's answers. It opens no connection of its own. Open source. It is 3, not 4: the chain proves the oracle network posted the value, and nothing proves the value true. Judged here by its publisher.",
+  "summary": "The price node (ETH_PRICE_0_1, BTC_PRICE_0_1): answers the dollar price of ETH and BTC from Chainlink's on-chain feeds, one eth_call through the person's Ethereum node (the built-in light client unless another is put first). It opens no connection itself and refuses a zero, unfinished, carried-over or two-hour-old round. The chain can prove the feed's stored value; nothing checks it is true to the market, so Chainlink's oracle network is trusted. Level 3, not 4. The node's servers see the IP address and that a price is read. Judged here by its publisher.",
   "evidence": [
-    "https://github.com/OrivonBrowser/orivon-mvp",
-    "https://github.com/smartcontractkit/chainlink"
+    "https://github.com/OrivonBrowser/orivon-mvp"
   ]
 }

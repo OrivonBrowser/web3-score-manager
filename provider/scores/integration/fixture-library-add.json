@@ -4,12 +4,12 @@
     "sha256:f61fd62f57c41269c3c23f360eeaf1090b1db9c38651106674d48bc65dba88ba"
   ],
   "name": "Orivon test library: add",
-  "evaluated": "2026-11-05",
+  "evaluated": "2026-11-10",
   "trustlessity": {
     "level": 4,
     "privacy": true
   },
-  "summary": "A fixture of Orivon's own tests (lib.add@1.0.0): a WebAssembly module of 41 bytes, written out byte for byte, with no imports and one export, add(i32, i32). It can reach nothing, holds no state and asks for no grant. Open source, and the bytes are the source. Judged here by its publisher.",
+  "summary": "Test fixture: a 41-byte WebAssembly module with no imports and one export, add(i32, i32) -> i32, the sum of its arguments. Its bytes are written out in full beside it and pinned by this hash, so what runs is what anyone can read. It holds no key and no state, makes no connection and reads nothing an outside party could change. Level 4 with privacy because nothing in it can be lied about or can show the person. Judged here by its publisher.",
   "evidence": [
     "https://github.com/OrivonBrowser/orivon-mvp"
   ]

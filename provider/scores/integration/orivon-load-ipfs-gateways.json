@@ -4,12 +4,12 @@
     "integration:builtin:load-ipfs-gateways"
   ],
   "name": "Load from public IPFS gateways",
-  "evaluated": "2026-11-05",
+  "evaluated": "2026-11-10",
   "trustlessity": {
     "level": 3,
     "privacy": false
   },
-  "summary": "The row of Load sites from that loads ipfs content from public gateways, set to ask first. Orivon checks each block against its CID, so a gateway cannot change a site. It is 3, not 4: loading depends on a few gateway servers, which stop or refuse at will and see this computer's address and the CID asked for. Judged here by its publisher.",
+  "summary": "Loads a name's IPFS record through three public gateways by default (ipfs.orbitor.dev, ipfs.filebase.io, trustless-gateway.link), asking the person first for each load. Blocks are checked against their CID and IPNS records against their signature, so a gateway cannot change a block. It relies on those servers: if they stop or say not found, nothing loads, and each sees the IP address and every CID asked. A DNSLink is read over unauthenticated DNS, and an IPNS record may be older than the newest. Level 3, not 4. Judged here by its publisher.",
   "evidence": [
     "https://github.com/OrivonBrowser/orivon-mvp"
   ]

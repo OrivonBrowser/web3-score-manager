@@ -4,12 +4,12 @@
     "integration:builtin:std-names_0_1"
   ],
   "name": "Names standard (NAMES_0_1)",
-  "evaluated": "2026-11-06",
+  "evaluated": "2026-11-10",
   "trustlessity": {
     "level": 4,
     "privacy": true
   },
-  "summary": "The row for the NAMES_0_1 standard, which defines looking up what a name points to: the owner's default and the other records. A standard defines a code without answering it: the row runs nothing, holds no state and makes no connection, and whatever answers the code is judged on its own row. Open source, and the definition is a JSON file in Orivon's source. Judged here by its publisher.",
+  "summary": "A definition of NAMES_0_1: one resolve function that turns a name such as bisq.eth into the owner's default record and up to 16 others (contentHash, ipfs, bzz, arw, magnet, ethfs, https, http, ddoc), picked by the name's namespace. Whichever resolver answers sees every name asked. The answer says whether it was proven; the definition cannot check that flag, and the browser forces it to unproven for an installed resolver. The row names no resolver, runs nothing and connects to nothing. Level 4 with privacy as a definition. Judged here by its publisher.",
   "evidence": [
     "https://github.com/OrivonBrowser/orivon-mvp"
   ]

@@ -201,6 +201,8 @@ others, and then each is filed under its bundle hash like any other.
 The row of a built-in standard is `builtin:std-` and its code in lower case, so `ETH_0_1` is filed as
 `integration:builtin:std-eth_0_1`. A standard defines a code and answers nothing, so its row is judged as
 a definition: it runs nothing and connects to nothing, and what answers the code is judged on its own row.
+A standard may name a decoder compiled into Orivon that words the confirmation text; that code has no
+connection, so the row is still a definition.
 
 ### What a verdict covers
 
@@ -271,7 +273,7 @@ with the person's keys, money or data take the place of a site's files.
 | Type | Its operations | Its connections |
 |---|---|---|
 | `account` | Where the key lives and who can sign | What it reaches while it signs: a device, a server |
-| `crypto`, `address-list` | Deriving and encoding: pure code | None of its own; the node it reads through is judged on its own |
+| `crypto`, `address-list` | Deriving and encoding: pure code | An address list has none. A Crypto's reads that prepare a transaction (nonce, fees, funding transactions) go through a node that sees the address; that node is judged on its own |
 | `payment` | Building the legs, and where funds are sent | The nodes and services that price and route; the address a swap pays to |
 | `network-node` | Answering a chain or service | The servers it asks, and whether each answer is checked |
 | `tunnel` | Carrying the traffic | The relays and directories; who sees the destination |
@@ -313,9 +315,12 @@ with the person's keys, money or data take the place of a site's files.
 
 - **Orivon's IPFS node** is 4: every block is checked against its CID, so a peer can slow it and
   never change what a site is. It is not private: peers see the address and the CIDs asked for.
-- **The Ethereum light client** is 4: every read is proven against the chain's consensus. Its
-  checkpoint comes from the release, or from two beacon servers only when that one is over 14 days
-  old. The servers it asks see the address.
+- **The Ethereum light client** is 3: balances, code, storage, calls, blocks and receipts are proven
+  against the chain's consensus, but a log query, a fee estimate and a proof are the answering
+  server's word, a log left out of an answer is not noticed, and the sync asks one default beacon
+  server. Its checkpoint comes from the release, or from two beacon servers when that one is over 14
+  days old. The servers it asks see the address. The same holds for the Gnosis Chain light client,
+  which ships no checkpoint.
 - **The public IPFS gateways** are 3: the blocks are checked, but loading depends on a few
   gateway servers, which also see the address and the CID.
 - **The site's own server over HTTPS** is 1: what it sends is not checked against an address.
@@ -329,6 +334,8 @@ with the person's keys, money or data take the place of a site's files.
 - **A Nym tunnel and a user's own SOCKS5 proxy** are 3: both rely on parties the person does not
   run and nothing checks.
 - **Pure local code with no connection**, such as an address list, an Account that signs on the
-  computer or an embedded SQLite, is 4 with privacy.
+  computer or an embedded SQLite, is 4 with privacy. **A Crypto that reads through a node to prepare
+  a transaction** (Ethereum, Bitcoin) is 4 without privacy: the node sees the address.
 - **A standard's row** (`builtin:std-<code>`) is 4 with privacy: a definition runs nothing and
-  connects to nothing, and what answers the code is judged on its own row.
+  connects to nothing (at most it names a decoder compiled into Orivon that words the confirmation
+  text), and what answers the code is judged on its own row.

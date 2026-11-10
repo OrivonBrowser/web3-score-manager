@@ -4,12 +4,12 @@
     "integration:builtin:load-swarm-node"
   ],
   "name": "Load from Orivon's Swarm node",
-  "evaluated": "2026-11-05",
+  "evaluated": "2026-11-10",
   "trustlessity": {
     "level": 4,
     "privacy": false
   },
-  "summary": "The row of Load sites from that loads bzz content through Orivon's Swarm node, on by default. Every chunk is checked against its address and a feed's newest update against its signature. Open source. Not private: peers see this computer's address and the references it asks for. Judged here by its publisher.",
+  "summary": "Loads a name's Swarm record, a reference or a feed, only from Orivon's Swarm node on this computer; no gateway is configured. Orivon checks each chunk against its address, a feed update against its owner's signature, and the file tree against the sizes its parents declare, so the node and its peers can slow a load and never change it. Nothing checks that a feed has no newer update than the one the node finds. Level 4: no server is relied on. Not private: peers see the IP address and the chunks asked. Judged here by its publisher.",
   "evidence": [
     "https://github.com/OrivonBrowser/orivon-mvp"
   ]

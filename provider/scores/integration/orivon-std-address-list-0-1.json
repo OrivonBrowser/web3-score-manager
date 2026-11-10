@@ -4,12 +4,12 @@
     "integration:builtin:std-address_list_0_1"
   ],
   "name": "Address list standard (ADDRESS_LIST_0_1)",
-  "evaluated": "2026-11-06",
+  "evaluated": "2026-11-10",
   "trustlessity": {
     "level": 4,
     "privacy": true
   },
-  "summary": "The row for the ADDRESS_LIST_0_1 standard, which defines what an installed Address list tells the wallet about itself: the path template it derives addresses at, or the addresses it only shows. A standard defines a code without answering it: the row runs nothing, holds no state and makes no connection, and whatever answers the code is judged on its own row. Open source, and the definition is a JSON file in Orivon's source. Judged here by its publisher.",
+  "summary": "Defines what an installed Address list tells the wallet: the path template it derives addresses at, or up to 100 addresses it only shows. Only the browser's wallet calls it. A deriving list never receives a derived address or a key, and both functions are declared with no effect beyond answering. The row runs nothing, connects to nothing and names no list. Nothing here checks that a list that only shows addresses shows ones the person holds; that list is judged on its own row. Level 4 with privacy: a pure definition. Judged here by its publisher.",
   "evidence": [
     "https://github.com/OrivonBrowser/orivon-mvp"
   ]

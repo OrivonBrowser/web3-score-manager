@@ -4,12 +4,12 @@
     "integration:builtin:direct-transfer"
   ],
   "name": "Direct transfer",
-  "evaluated": "2026-11-05",
+  "evaluated": "2026-11-10",
   "trustlessity": {
     "level": 3,
     "privacy": false
   },
-  "summary": "Pays the same asset from the person to the payee with nothing in between: Ether, the pinned tokens and Bitcoin. Open source, holds no one's funds and signs locally. It is 3, not 4: the Ethereum legs read through the light client, but the Bitcoin leg builds its fee and outputs from a public Esplora server whose answers nothing checks. Raised to 4 when that read is checked. Judged here by its publisher.",
+  "summary": "Sends the same coin or pinned token from the person to the payee with nothing between, holding no one's funds. The destination is checked here, signing happens in the person's Account after confirmation, and an Ethereum mainnet payment counts as done only on a receipt the light client proves. A Bitcoin payment is done on one confirmation read from the Bitcoin node (a public Esplora server by default), which nothing checks, as are its coins, fees and broadcast. Level 3, not 4, because of that Bitcoin read. Judged here by its publisher.",
   "evidence": [
     "https://github.com/OrivonBrowser/orivon-mvp"
   ]

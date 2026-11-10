@@ -4,12 +4,12 @@
     "integration:builtin:orivon-ethereum"
   ],
   "name": "Orivon Ethereum",
-  "evaluated": "2026-11-05",
+  "evaluated": "2026-11-10",
   "trustlessity": {
     "level": 4,
-    "privacy": true
+    "privacy": false
   },
-  "summary": "The Ethereum Crypto: derives addresses, builds and encodes transactions and messages, and signs through the Account. Open source, pure logic that makes no request of its own. Its reads go through the Ethereum light client, which is judged on its own row. Judged here by its publisher.",
+  "summary": "The Ethereum Crypto (ETH_0_1): holds no key; turns a site's call into the payload an Account signs and checks the signature recovers to the address. It runs on this computer except the reads for a transaction (chain, nonce, gas, fees) and a typed-data chain id, asked of the person's Ethereum node and taken as answered, unchecked if that node does not prove them. Level 4: it needs no server to derive, encode or check, and what it fills in shows on the sheet, read from the payload bytes, before signing. No privacy: those reads name the person's address. Judged here by its publisher.",
   "evidence": [
     "https://github.com/OrivonBrowser/orivon-mvp"
   ]

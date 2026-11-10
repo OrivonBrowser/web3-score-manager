@@ -4,12 +4,12 @@
     "integration:builtin:std-boltz_net_0_1"
   ],
   "name": "Boltz swaps standard (BOLTZ_NET_0_1)",
-  "evaluated": "2026-11-06",
+  "evaluated": "2026-11-10",
   "trustlessity": {
     "level": 4,
     "privacy": true
   },
-  "summary": "The row for the BOLTZ_NET_0_1 standard, which defines reading the fees of a swap from Bitcoin to a Lightning payment, making one and following it at Boltz; only the browser's own payments ask for it. A standard defines a code without answering it: the row runs nothing, holds no state and makes no connection, and whatever answers the code is judged on its own row. Open source, and the definition is a JSON file in Orivon's source. Judged here by its publisher.",
+  "summary": "Defines the calls the browser's own payments make to read the fees of a Bitcoin-to-Lightning swap, create one and follow it; a site's ask is answered like an unknown code. The row names no host and makes no request. Only for a payment the person confirmed does a provider learn the invoice, the refund key and the lockup address. The definition says none of a provider's answer is trusted and the caller checks the lockup; nothing here does. Whoever answers is judged on its own row. Level 4 with privacy: a pure definition. Judged here by its publisher.",
   "evidence": [
     "https://github.com/OrivonBrowser/orivon-mvp"
   ]

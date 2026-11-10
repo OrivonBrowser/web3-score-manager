@@ -4,14 +4,13 @@
     "integration:builtin:thorchain"
   ],
   "name": "THORChain",
-  "evaluated": "2026-11-05",
+  "evaluated": "2026-11-10",
   "trustlessity": {
     "level": 3,
     "privacy": false
   },
-  "summary": "Swaps Bitcoin for Ether or USDC, and either for Bitcoin, through THORChain's pools with a deposit the person signs. Open source. It is 3, not 4: the vault address a deposit pays to and the quote come from a public THORNode API whose answers nothing here checks beyond comparing the node's memo with its own. Judged here by its publisher.",
+  "summary": "Swaps Bitcoin for Ether or USDC, or back, through THORChain's pools: the person signs a deposit with a memo the browser writes, to a vault two THORNode operators (Nine Realms, Liquify) both name, or to a router pinned in Orivon. The vault and the price are those servers' word; an Ether payout is proven by the light client, a Bitcoin payout is read from the Bitcoin node, which nothing checks. THORChain holds the funds and decides to pay or refund. Level 3, not 4: it relies on THORChain. Judged here by its publisher.",
   "evidence": [
-    "https://github.com/OrivonBrowser/orivon-mvp",
-    "https://gitlab.com/thorchain/thornode"
+    "https://github.com/OrivonBrowser/orivon-mvp"
   ]
 }

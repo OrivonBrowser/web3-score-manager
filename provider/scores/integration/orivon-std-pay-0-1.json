@@ -4,12 +4,12 @@
     "integration:builtin:std-pay_0_1"
   ],
   "name": "Payments standard (PAY_0_1)",
-  "evaluated": "2026-11-06",
+  "evaluated": "2026-11-10",
   "trustlessity": {
     "level": 4,
     "privacy": true
   },
-  "summary": "The row for the PAY_0_1 standard, which defines whether a site may ask the person for a payment; the browser answers it itself, through orivon.pay alone. A standard defines a code without answering it: the row runs nothing, holds no state and makes no connection, and whatever answers the code is judged on its own row. Open source, and the definition is a JSON file in Orivon's source. Judged here by its publisher.",
+  "summary": "A definition of PAY_0_1: one group, request (risk 1), the per-site right to ask the person for a payment. Its one function exists because a module needs one: the definition says the browser registers no provider, so a call is unavailable and no handle is given. Payments go through orivon.pay, which needs a click or key press for each sheet and shows a sheet before anything is sent; that path is not judged here. The row has no code, provider, address or request. Level 4 with privacy as a definition. Judged here by its publisher.",
   "evidence": [
     "https://github.com/OrivonBrowser/orivon-mvp"
   ]

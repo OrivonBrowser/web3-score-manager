@@ -4,14 +4,14 @@
     "integration:builtin:search-web3-explore"
   ],
   "name": "Explore",
-  "evaluated": "2026-11-05",
+  "evaluated": "2026-11-10",
   "trustlessity": {
     "level": 4,
     "privacy": false
   },
-  "summary": "The Web3 search row: a typed query opens Explore, the directory of Web3 sites, at ipfs://explore.orivonstack.eth, a page checked against its address. It takes Explore's level. Not private: the IPFS request names the page asked for and shows this computer's address to the peers that serve it. Judged here by its publisher.",
+  "summary": "A pointer to Explore, a directory of Web3 sites. Typed text opens ipfs://explore.orivonstack.eth/#/search?q=<text>: Orivon resolves the ENS name through the person's Ethereum nodes (the built-in one proves its answers) and checks every file against its address. The text stays in the address fragment, which is never sent; the page runs no outside code, asks for nothing beyond its own files and filters its own catalog. If trust.score is granted, Orivon asks the person's Web3 Score provider about each listed Web3 site, which shows it their IP address, so no privacy. Judged here by its publisher.",
   "evidence": [
     "https://github.com/OrivonBrowser/orivon-mvp",
-    "https://github.com/OrivonBrowser/orivon-ports/tree/main/apps/explore"
+    "https://github.com/OrivonBrowser/orivon-ports"
   ]
 }

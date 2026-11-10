@@ -4,14 +4,13 @@
     "integration:builtin:boltz"
   ],
   "name": "Boltz (api.boltz.exchange)",
-  "evaluated": "2026-11-05",
+  "evaluated": "2026-11-10",
   "trustlessity": {
     "level": 3,
     "privacy": false
   },
-  "summary": "The node row that answers BOLTZ_NET_0_1 from api.boltz.exchange. Open source. It is 3, not 4: the API is one operator's server and nothing here checks its quotes and swap data. It sees this computer's address and what is swapped. Judged here by its publisher.",
+  "summary": "The Lightning node (BOLTZ_NET_0_1), for the browser's own payments: asks api.boltz.exchange for fees, creates a swap and reads its status. The facilitator rebuilds the swap's Taproot lockup from the invoice hash, the person's refund key and Boltz's key, so Boltz cannot spend it without paying, and bounds the amount and refund height. Nothing checks that Boltz pays the invoice or reports status truly; if it does not, the coins return only after the timeout. Level 3, not 4: it relies on one party, which sees the IP address, the invoice and the refund key. Judged here by its publisher.",
   "evidence": [
-    "https://github.com/OrivonBrowser/orivon-mvp",
-    "https://github.com/BoltzExchange/boltz-backend"
+    "https://github.com/OrivonBrowser/orivon-mvp"
   ]
 }

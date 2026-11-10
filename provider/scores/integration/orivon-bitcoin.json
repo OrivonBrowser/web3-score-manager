@@ -4,13 +4,14 @@
     "integration:builtin:orivon-bitcoin"
   ],
   "name": "Orivon Bitcoin",
-  "evaluated": "2026-11-05",
+  "evaluated": "2026-11-10",
   "trustlessity": {
     "level": 4,
-    "privacy": true
+    "privacy": false
   },
-  "summary": "The Bitcoin Crypto: derives addresses, builds and signs transactions with the Account. Open source, pure logic that makes no request of its own. The balances, outputs and fees it builds from come from the node it is given, which is judged on its own row (the Esplora node is 3). Judged here by its publisher.",
+  "summary": "The Bitcoin Crypto (BTC_0_1): turns public keys into SegWit and Taproot addresses, builds payments from coins a site lists, prepares what the Account signs. It holds no key and opens no connection itself; its libraries are pinned. For SegWit inputs it asks the person's Bitcoin node for funding transactions, hashed against the outpoint, and the signer refuses an input without that proof. Nothing checks that listed coins exist. Level 4, no privacy: those reads show a node's servers the IP address and the transactions spent. Judged here by its publisher.",
   "evidence": [
-    "https://github.com/OrivonBrowser/orivon-mvp"
+    "https://github.com/OrivonBrowser/orivon-mvp",
+    "https://github.com/paulmillr/scure-btc-signer"
   ]
 }

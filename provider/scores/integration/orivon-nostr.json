@@ -4,12 +4,12 @@
     "integration:builtin:orivon-nostr"
   ],
   "name": "Orivon Nostr",
-  "evaluated": "2026-11-05",
+  "evaluated": "2026-11-10",
   "trustlessity": {
     "level": 4,
     "privacy": true
   },
-  "summary": "The Nostr Crypto: derives keys at the NIP-06 path and signs events through the Account. Open source, pure logic with no request of its own; relays are reached by sites, not by this code. Judged here by its publisher.",
+  "summary": "Built-in Crypto for NOSTR_0_1: pure local code that names the npub of a key, writes the one event an Account signs, checks the returned signature against it, and shapes NIP-44 requests. It holds no key, declares no network use and opens no connection; the relays a site publishes to are the site's. The confirmation describes the event it signs. Level 4 with privacy; it would drop if it read a server or kept a key. Judged here by its publisher.",
   "evidence": [
     "https://github.com/OrivonBrowser/orivon-mvp"
   ]

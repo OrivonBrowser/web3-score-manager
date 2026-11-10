@@ -4,12 +4,12 @@
     "integration:builtin:attila"
   ],
   "name": "Attila",
-  "evaluated": "2026-11-05",
+  "evaluated": "2026-11-10",
   "trustlessity": {
-    "level": 4,
+    "level": 3,
     "privacy": false
   },
-  "summary": "The built-in Web3 Score provider row, which reads Attila at ipfs://attila.orivonstack.eth/score: a static site on IPFS under an ENS name, so every file is checked against its address and the name by the light client. Open source. A lookup names one hash bucket and no site, but the IPFS request shows the bucket and this computer's address to the peers that serve it. The provider judging this row is the one judged here, and says so. Judged here by its publisher.",
+  "summary": "Only an address: the browser reads Attila's published score files (levels, a block list, marks) from ipfs://attila.orivonstack.eth/score. The name is proven by the Ethereum light client and every block is checked against its content address, so a peer or relay cannot alter them. Nothing checks the judgements themselves: they are one publisher's word, and its name's key can change them for everyone. A lookup shows a hash bucket and the person's address to IPFS peers and name servers. Level 3, not 4: it relies on a party whose answers nothing verifies. Judged here by its publisher.",
   "evidence": [
     "https://github.com/OrivonBrowser/orivon-mvp"
   ]

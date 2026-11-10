@@ -4,12 +4,12 @@
     "integration:builtin:payment-sheet"
   ],
   "name": "Orivon payment sheet",
-  "evaluated": "2026-11-05",
+  "evaluated": "2026-11-10",
   "trustlessity": {
-    "level": 4,
-    "privacy": true
+    "level": 3,
+    "privacy": false
   },
-  "summary": "The row that opens Orivon's own payment sheet for bitcoin: links, in place of asking which app should. Open source, and the sheet itself makes no connection: the legs it draws are priced and sent by the payment rows, judged on their own, and nothing is signed without the person's confirmation. Judged here by its publisher.",
+  "summary": "The browser's own payment sheet, opened by a bitcoin: link and by a page's payment request. The address comes from the link, not the page; routes are ranked and graded by their weakest leg, and the person signs each leg. The holdings, fees and quotes it shows come from nodes and facilitators judged on their own rows (Esplora, THORNode, Boltz), and the grades from the person's Web3 Score providers; nothing here checks them. Level 3, not 4: what it shows rests on data nothing checks. Judged here by its publisher.",
   "evidence": [
     "https://github.com/OrivonBrowser/orivon-mvp"
   ]

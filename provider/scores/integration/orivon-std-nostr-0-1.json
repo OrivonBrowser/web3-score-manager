@@ -4,12 +4,12 @@
     "integration:builtin:std-nostr_0_1"
   ],
   "name": "Nostr standard (NOSTR_0_1)",
-  "evaluated": "2026-11-06",
+  "evaluated": "2026-11-10",
   "trustlessity": {
     "level": 4,
     "privacy": true
   },
-  "summary": "The row for the NOSTR_0_1 standard, which defines knowing the person's Nostr public key, signing Nostr events and encrypting private messages. A standard defines a code without answering it: the row runs nothing, holds no state and makes no connection, and whatever answers the code is judged on its own row. Open source, and the definition is a JSON file in Orivon's source. Judged here by its publisher.",
+  "summary": "A definition of NOSTR_0_1: reading a Nostr key derived for the site, signEvent (NIP-01 events, BIP-340 signature) and nip44Encrypt and nip44Decrypt, in three groups (risk 3, 8, 8). The definition says every signature and every encrypted message is confirmed by the person, and names a built-in decoder that only writes the confirmation text. The row holds no key and runs no signer; whichever Crypto answers holds the key, and nothing here checks that. Level 4 with privacy: the row connects to nothing. Judged here by its publisher.",
   "evidence": [
     "https://github.com/OrivonBrowser/orivon-mvp"
   ]

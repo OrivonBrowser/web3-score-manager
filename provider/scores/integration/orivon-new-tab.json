@@ -4,12 +4,12 @@
     "integration:builtin:newtab"
   ],
   "name": "Orivon new tab",
-  "evaluated": "2026-11-05",
+  "evaluated": "2026-11-10",
   "trustlessity": {
     "level": 4,
     "privacy": true
   },
-  "summary": "Orivon's own new-tab page, the dashboard a new tab opens with: the Featured apps, the bookmarks and the widgets the person added. Open source and pinned with the browser. The person's own dashboard can take its place. Widgets and the search it hands a query to are other integrations, judged on their own. Judged here by its publisher.",
+  "summary": "Orivon's own new tab: one bundled page with a search box, the Featured tiles, bookmarks and the widgets the person added. Its policy allows no network request (connect-src none) and images only from its own bundle, data URLs or the picture the person chose; it talks only to the browser's bridge, which answers this page alone. A search, tile or bookmark is the person's own navigation. Widgets are other sites the person added, judged on their own. Level 4 with privacy: it runs only pinned code and makes no connection of its own. Judged here by its publisher.",
   "evidence": [
     "https://github.com/OrivonBrowser/orivon-mvp"
   ]

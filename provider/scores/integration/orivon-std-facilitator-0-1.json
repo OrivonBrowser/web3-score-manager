@@ -4,12 +4,12 @@
     "integration:builtin:std-facilitator_0_1"
   ],
   "name": "Payment facilitator standard (FACILITATOR_0_1)",
-  "evaluated": "2026-11-06",
+  "evaluated": "2026-11-10",
   "trustlessity": {
     "level": 4,
     "privacy": true
   },
-  "summary": "The row for the FACILITATOR_0_1 standard, which defines the legs of a payment route that an installed facilitator offers, prepares and follows; only the browser's own payments call it. A standard defines a code without answering it: the row runs nothing, holds no state and makes no connection, and whatever answers the code is judged on its own row. Open source, and the definition is a JSON file in Orivon's source. Judged here by its publisher.",
+  "summary": "Defines the calls the browser's own payments make to an installed facilitator: quote legs between two assets, prepare one after the person has paid, and follow it; a site's ask is answered like an unknown code. The browser bounds every answer against the quote and its own node, and counts a leg done only when that node shows the quoted amount reach the destination. Who holds the funds and who can stop them is the facilitator's own statement; nothing here checks it. The row runs nothing and connects to nothing. Level 4 with privacy: a pure definition. Judged here by its publisher.",
   "evidence": [
     "https://github.com/OrivonBrowser/orivon-mvp"
   ]
