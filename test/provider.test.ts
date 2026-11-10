@@ -69,8 +69,9 @@ test("an integration Orivon ships is judged under its row's identifier and says 
 // The standards Orivon ships a built-in row for, by code: its row is `builtin:std-` and the code in lower case.
 const STANDARD_CODES = [
   "ACCOUNT_0_1", "ADDRESS_LIST_0_1", "BOLTZ_NET_0_1", "BTC_0_1", "BTC_NET_0_1", "BTC_PRICE_0_1", "CRYPTO_ACCESS_0_1", "CRYPTO_RULES_0_1",
-  "DATA_GATHERING_0_1", "ETH_0_1", "ETH_NET_0_1", "ETH_PRICE_0_1", "ETHFS_0_1", "FACILITATOR_0_1", "INTEGRATION_LIST_0_1", "IPFS_0_1",
-  "NAMES_0_1", "NOSTR_0_1", "PASSWORD_0_1", "PAY_0_1", "SWARM_0_1", "THORNODE_NET_0_1", "WEB3_SCORE_0_1", "WIDGETS_0_1",
+  "DATA_GATHERING_0_1", "ETH_0_1", "ETH_NET_0_1", "ETH_PRICE_0_1", "ETHFS_0_1", "FACILITATOR_0_1", "GNOSIS_NET_0_1", "INTEGRATION_LIST_0_1",
+  "IPFS_0_1", "IPFS_0_2", "LLM_0_1", "NAMES_0_1", "NAMES_0_2", "NOSTR_0_1", "PASSWORD_0_1", "PAY_0_1", "SWARM_0_1", "SWARM_0_2",
+  "THORNODE_NET_0_1", "WEB_FETCH_0_1", "WEB3_SCORE_0_1", "WIDGETS_0_1",
 ];
 
 test("every standard Orivon ships a built-in row for is judged under its row's lower-case identifier, as a definition", () => {
