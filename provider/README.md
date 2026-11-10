@@ -52,6 +52,30 @@ These are the definitions every website judgement applies:
   is reasonably privacy preserving, and the user is made aware of the privacy risk of a specific
   risky action.
 
+## The operation and connection levels
+
+A website evaluation lists what the site does (its operations) and what it talks to (its
+connections), and each one has its own level. Level 4 of the site is built from them: Level 4
+operations and Level 2 connections. Judge every operation and every connection on these scales,
+not on the website levels above.
+
+Operations, Levels 1 to 5:
+
+- **Level 1:** the code is unavailable or unverifiable.
+- **Level 2:** the code is available and does what it promises.
+- **Level 3:** it relies only on trustless networks.
+- **Level 4:** no untrusted party can act against the user.
+- **Level 5:** it is immutable and completely trustless.
+
+Connections, Levels 1 to 3:
+
+- **Level 1:** it relies on centralized parties.
+- **Level 2:** the received data can be verified.
+- **Level 3:** it is completely decentralized.
+
+Privacy is set on an operation only at Level 4 or 5, and on a connection only at Level 3, by the
+rules in How Attila applies Level 4 + privacy.
+
 ## How Attila applies Level 3
 
 - **Open source** means the source of the site root is public, so anyone can read what runs. A

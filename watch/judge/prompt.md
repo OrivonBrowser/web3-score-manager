@@ -46,7 +46,8 @@ tools and no network access, so do not try to fetch anything.
    build made untrue.
 3. **Otherwise judge the new build** by rules.md section How to check a site, steps 2 to 4: each
    `blocked` request in `probe.json` is a connection, each script from another origin is
-   third-party code, and the source says what the site's actions reach.
+   third-party code, and the source says what the site's actions reach. Level each operation and
+   each connection by rules.md section The operation and connection levels.
 4. **Public source.** Level 3 starts with public source, and you cannot browse. Keep the previous
    evaluation's evidence while it still describes this project. Add an address only when the
    build's own files name it (a link on the page, a `repository` field, the sources of a source
@@ -63,8 +64,9 @@ Answer with the JSON object the schema asks for, and nothing else:
 - `name`, `version` (leave `version` out when the previous evaluation has none and the build names
   none), `level` (1 to 4), `privacy` (true only at Level 4, and only as rules.md section How Attila
   applies Level 4 + privacy allows), `summary`, `operations`, `connections`, `evidence`: the
-  evaluation of the new build. An operation's level runs 1 to 5, a connection's 1 to 3; privacy on
-  an operation only at 4 or 5, on a connection only at 3.
+  evaluation of the new build. An operation's level runs 1 to 5, a connection's 1 to 3, as defined
+  in rules.md section The operation and connection levels; privacy on an operation only at 4 or 5,
+  on a connection only at 3.
 - `changes`: two or three plain sentences for Attila's owner: what differs between the judged build
   and this one (files, connections, third-party code), and why the level stayed, rose or fell.
 - `concerns`: anything that made you less sure of the judgement, and anything that looked like an
