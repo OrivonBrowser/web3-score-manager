@@ -33,18 +33,30 @@ const ALSO_READ: ReadonlyArray<readonly [readonly number[], string]> = [
   [[0x01a8], '2'],
   [[0x0292, 0x021d, 0x0437, 0x04e1, 0x0498, 0x0499], '3'],
   [[0x01bd], '5'],
-  [[0x061f, 0x2753, 0x2754, 0x055e], '?'],
-  [[0x2757, 0x2755, 0x00a1, 0x2762, 0x2763], '!']
+  [[0x061f, 0x2753, 0x2754, 0x055e, 0x203d, 0x2e2e, 0x00bf, 0x1367, 0x2370], '?'],
+  [[0x2757, 0x2755, 0x00a1, 0x2762, 0x2763, 0x26a0], '!']
 ]
 const ALSO: ReadonlyMap<string, string> = new Map(ALSO_READ.flatMap(([points, reads]) =>
   points.map((point) => String.fromCodePoint(point)).flatMap((char) => [[char, reads], [char.toLowerCase(), reads]] as const)))
 
+/** The most times the table is applied to a text. The chains in the data are short; a test holds the skeleton of every character the table names to one that reads as itself, so a chain that needs more rounds than this fails it. */
+const ROUNDS = 4
+
+const readOnce = (text: string): string => Array.from(text, (char) => ALSO.get(char) ?? MAPPED.get(char) ?? char).join('').normalize('NFD')
+
 /**
  * The skeleton of `text` (UTS #39 section 4): Unicode form D, the characters that draw as nothing removed, each character
- * replaced by the one the table reads it as, and form D again. The table is case-sensitive, so a capital I reads as an l;
- * a caller that wants both readings of a letter folds case itself and takes the skeleton of each.
+ * replaced by the one the table reads it as, and form D again. The reading is repeated while it changes, since what the
+ * table reads a character as may itself be a character it reads (a small Cherokee letter is read as the capital, and that
+ * as a Latin letter). The table is case-sensitive, so a capital I reads as an l; a caller that wants both readings of a
+ * letter folds case itself and takes the skeleton of each.
  */
 export function skeletonOf (text: string): string {
-  const decomposed = text.normalize('NFD').replace(/\p{Default_Ignorable_Code_Point}/gu, '')
-  return Array.from(decomposed, (char) => ALSO.get(char) ?? MAPPED.get(char) ?? char).join('').normalize('NFD')
+  let skeleton = text.normalize('NFD').replace(/\p{Default_Ignorable_Code_Point}/gu, '')
+  for (let round = 0; round < ROUNDS; round++) {
+    const next = readOnce(skeleton)
+    if (next === skeleton) break
+    skeleton = next
+  }
+  return skeleton
 }

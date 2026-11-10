@@ -114,7 +114,7 @@ All settings are environment variables, read in `config.ts`.
 | `MAX_SITES_PER_RUN` | `4` | Jobs per run |
 | `MAX_ATTEMPTS` | `3` | Tries before a failing build is left alone |
 | `KEEP_JOBS` | `5` | Job folders kept |
-| `ORIVON_REPO` | unset | The root of an Orivon checkout, kept current. Publishing compares the files Attila copies from Orivon's `src/trust/` with it and refuses to run without it or when one differs (see the README's Development section) |
+| `ORIVON_REPO` | unset | The root of an Orivon checkout, kept current. Publishing compares the files Attila copies from Orivon's `src/trust/` and `src/protocols/resolution/` with it and refuses to run without it or when one differs (see the README's Development section) |
 | `PUBLISH_DIR` | `/home/ubuntu/orivon-apps/web3-score-attila` | Where the built Attila is mirrored before `ipfs add` |
 | `CID_FILE` | `<PUBLISH_DIR>.cid` | The CID of the last publication; the previous one is kept as `.bak-<date>` |
 | `IPNS_KEY` | `web3-score` | The key that is moved to the new CID |

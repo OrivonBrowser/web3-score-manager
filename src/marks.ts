@@ -14,7 +14,7 @@ import {
   plainText,
   plateContrast,
 } from "./mark-values.ts";
-import { drawsAs, reservedWordsIn } from "./reserved-words.ts";
+import { reservedWordsIn } from "./reserved-words.ts";
 import { STANDARD } from "./types.ts";
 import type { Issue } from "./types.ts";
 
@@ -26,7 +26,7 @@ export const MAX_MARKS = 16;
 export const GRADED = ["web2", "web25", "web3"] as const;
 export type Graded = (typeof GRADED)[number];
 
-/** The word a label may carry for the graded mark it restyles, and no other reserved word. */
+/** The one reserved word a restyle's label may hold: its own grade's. Whatever else the label says is the provider's. */
 const OWN_WORD: Record<Graded, string> = { web2: "web2", web25: "web25", web3: "web3" };
 
 export interface Mark {
@@ -65,8 +65,8 @@ const isGraded = (value: unknown): value is Graded => (GRADED as readonly unknow
 /**
  * Checks a marks.json source file by the rules Orivon reads it with (docs/architecture/web3-score-provider.md section
  * `P/marks.json`), and returns it in the form Orivon writes values back in. Orivon ignores a field it does not know; a
- * source file is stricter and refuses one, which catches a misspelt `restyles`. Ink that does not read on its plate, and a
- * restyle whose label is not the word of its grade, leave a mark in Orivon's file and never drawn, so here each is an error.
+ * source file is stricter and refuses one, which catches a misspelt `restyles`. Ink that does not read on its plate leaves a
+ * mark in Orivon's file and never drawn, so here it is an error.
  */
 export function validateMarks(value: unknown, file: string): { marks?: MarksFile; issues: Issue[] } {
   const issues: Issue[] = [];
@@ -121,9 +121,7 @@ function readMark(item: unknown, at: string, add: (path: string, message: string
   } else {
     const words = reservedWordsIn(label).filter((word) => word !== own);
     if (words.length > 0) {
-      fail("label", `is, or contains, a word Orivon draws itself (${words.join(", ")}); only a mark that restyles a graded mark carries that mark's own word`);
-    } else if (own !== undefined && !drawsAs(label, own)) {
-      fail("label", `must be the word of the grade it restyles (${own}), whole: spacing, case and accents may differ, anything more and Orivon never draws the mark`);
+      fail("label", `is, or contains, a word Orivon draws itself (${words.join(", ")}); only a mark that restyles a graded mark may hold that mark's own word`);
     }
   }
 

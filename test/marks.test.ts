@@ -290,7 +290,7 @@ test("a new mark may not be, or contain, a word Orivon draws itself", () => {
   for (const label of ["Webby", "Spider web", "Trusted", "Verified"]) valid([mark({ label })]);
 });
 
-test("a mark that restyles a grade carries that grade's word and no other", () => {
+test("a mark that restyles a grade may hold that grade's word and no other", () => {
   valid([mark({ id: "web3", label: "Web3", restyles: "web3" })]);
   valid([mark({ id: "web25", label: "Web2.5", restyles: "web25" })]);
   valid([mark({ id: "web2", label: "Web2", restyles: "web2" })]);
@@ -299,16 +299,29 @@ test("a mark that restyles a grade carries that grade's word and no other", () =
   }
 });
 
-test("a restyle is labelled with its grade's word and nothing more, or Orivon never draws it", () => {
-  for (const label of ["Web2", "WEB 2", "Wéb2", "web-2", "VVeb2"]) valid([mark({ id: "web2", label, restyles: "web2" })]);
-  valid([mark({ id: "web25", label: "Web 2.5", restyles: "web25" })]);
-  valid([mark({ id: "web3", label: "VVeb3", restyles: "web3" })]);
-  for (const label of ["Legacy", "Web2 plus", "Old Web2", "Web 2 beta", "\\/\\/eb2", "★"]) {
-    const [issue] = check([mark({ id: "web2", label, restyles: "web2" })]).issues;
-    assert.equal(issue?.path, "marks[0].label", label);
+test("a restyle names its grade in the provider's own words, with its grade's word in any form or none", () => {
+  for (const label of ["Legacy", "Classic", "Old school", "\u{1F9D3}", "Web2 plus", "Old Web2", "Web 2 beta", "Web2", "WEB 2", "Wéb2", "VVeb2", "\\/\\/eb2", "★"]) {
+    valid([mark({ id: "web2", label, restyles: "web2" })]);
   }
-  assert.match(check([mark({ id: "web2", label: "Legacy", restyles: "web2" })]).issues[0]!.message, /must be the word of the grade it restyles \(web2\)/);
-  assert.deepEqual(paths([mark({ id: "web3", label: "\\/\\/eb3", restyles: "web3" })]), ["marks[0].label"]);
+  valid([mark({ id: "web25", label: "Web 2.5", restyles: "web25" }), mark({ id: "web3", label: "Web3 ok", restyles: "web3" })]);
+  for (const label of ["Web Lite", "Web Link", "Weblink", "Cobweb Lily"]) valid([mark({ id: "web3", label, restyles: "web3" })]);
+});
+
+test("a restyle carrying a word Orivon draws itself, other than its grade's, is refused whole", () => {
+  const cases: [string, string][] = [
+    ["Web3 Legacy", "web2"], ["Legacy Web3", "web2"], ["Web2 or Web3", "web2"], ["Web2 Web3", "web2"], ["Web2", "web3"], ["Web2.5", "web3"],
+    ["Web?", "web2"], ["Web ?", "web25"], ["Unprotected", "web2"], ["Un protected", "web3"], ["Warning", "web2"], ["Legacy!", "web2"], ["!", "web3"],
+    ["VVeb3", "web2"], ["\\/\\/eb3", "web2"], ["VVeb2", "web3"], ["Web III", "web2"], ["Web\u2778", "web2"], ["Web\u203D", "web2"], ["\u26A0", "web3"],
+  ];
+  for (const [label, restyles] of cases) {
+    const [issue] = check([mark({ id: restyles, label, restyles })]).issues;
+    assert.equal(issue?.path, "marks[0].label", `${label} restyling ${restyles}`);
+    assert.match(issue?.message ?? "", /word Orivon draws itself/, `${label} restyling ${restyles}`);
+  }
+});
+
+test("a look-alike outside the table of Unicode's, in a restyle, is drawn: the rule's limit", () => {
+  for (const label of ["\u15EFeb3", "\u2C72eb3", "Web\u025C", "Web Three", "Web Two", "Webthree"]) valid([mark({ id: "web2", label, restyles: "web2" })]);
 });
 
 test("ink that does not reach 4.5:1 on its plate is an error naming the theme and the ratio", () => {

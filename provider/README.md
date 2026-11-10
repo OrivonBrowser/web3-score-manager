@@ -269,9 +269,10 @@ with the person's keys, money or data take the place of a site's files.
   no evaluation sets `mark`. `examples/orivon-test-provider/marks.json` shows the file: one mark of
   the provider's own, restyling nothing. A label may never be or contain a word Orivon draws itself
   (`web2`, `web25`, `web3`, `web?`, `unprotected`, `warning`, `!`), also when spelt with look-alike letters or with a
-  two-character pair that draws as one letter (`VVeb3`, `uueb3`, `\/\/eb3`, `Waming`); a restyle's label must be exactly its
-  grade's word. `check` measures the ink against the plate in both themes, at the 13% and the 22% tint, and an icon path
-  is at most 1024 characters as written back. Before republishing by hand, run `ORIVON_REPO=<Orivon checkout> npm test`.
+  two-character pair that draws as one letter (`VVeb3`, `uueb3`, `\/\/eb3`, `Waming`). A mark that restyles a graded mark names
+  that grade in the provider's own words (`Legacy`, `Web2 plus`): its label may hold that grade's own word, read the same way,
+  and no other word Orivon draws itself. `check` measures the ink against the plate in both themes, at the 13% and the 22% tint,
+  and an icon path is at most 1024 characters as written back. Before republishing by hand, run `ORIVON_REPO=<Orivon checkout> npm test`.
 
 ### How to check an integration
 

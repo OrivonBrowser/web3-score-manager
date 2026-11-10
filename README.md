@@ -292,18 +292,18 @@ npm test
 ```
 
 Attila reads an evaluation's text and a marks file by Orivon's own rules, and these files are copies of Orivon's
-`src/trust/` files, equal to the originals but for their import lines:
+`src/trust/` and `src/protocols/resolution/` files, equal to the originals but for their import lines:
 
 | Here | In Orivon |
 |---|---|
 | `src/mark-values.ts` | `src/trust/mark-values.ts` |
 | `src/reserved-words.ts` | `src/trust/reserved-words.ts` |
-| `src/confusables.ts` | `src/trust/confusables.ts` |
-| `src/confusables.json` | `src/trust/confusables.json` |
-| `src/confusables.LICENSE.txt` | `src/trust/confusables.LICENSE.txt` |
+| `src/confusables.ts` | `src/protocols/resolution/confusables.ts` |
+| `src/confusables.json` | `src/protocols/resolution/confusables.json` |
+| `src/confusables.LICENSE.txt` | `src/protocols/resolution/confusables.LICENSE.txt` |
 
 A rule is changed in Orivon and copied here, never changed here. To copy again, copy each file over, then set its import
-lines for Node: `./confusables.js` becomes `./confusables.ts` in `reserved-words.ts`, and `confusables.ts` imports
+lines for Node: `../protocols/resolution/confusables.js` becomes `./confusables.ts` in `reserved-words.ts`, and `confusables.ts` imports
 `./confusables.json` `with { type: 'json' }`. Copy Orivon's `src/trust/tests/mark-reader-cases.json` over
 `test/fixtures/orivon-reader.json` as well: it holds the cases with the answers Orivon's functions give, and under `copies` the
 SHA-256 of each copied file read without its import lines. `npm test` holds the copies to those hashes on every run, and

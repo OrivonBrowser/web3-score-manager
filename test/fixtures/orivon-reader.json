@@ -1,5 +1,5 @@
 {
-  "about": "Cases both Orivon's reader and Attila's validator must answer alike. The expected values are what Orivon's own functions (src/trust/mark-values.ts, src/trust/reserved-words.ts) return. `copies` holds the SHA-256 of each file Attila copies from src/trust/, read as UTF-8 with every line that starts with `import ` left out: Orivon's tests hold its files to these hashes and Attila's tests hold its copies to them, so a change to either file fails both until the copy and this file change together.",
+  "about": "Cases both Orivon's reader and Attila's validator must answer alike. The expected values are what Orivon's own functions (src/trust/mark-values.ts, src/trust/reserved-words.ts) return. `copies` holds the SHA-256 of each file Attila copies from src/trust/ (the confusables.* files from src/protocols/resolution/), read as UTF-8 with every line that starts with `import ` left out: Orivon's tests hold its files to these hashes and Attila's tests hold its copies to them, so a change to either file fails both until the copy and this file change together.",
   "surfaces": {
     "light": "#e4e4eb",
     "dark": "#35294b"
@@ -226,6 +226,233 @@
     [
       "Audited",
       []
+    ],
+    [
+      "Webꝫ",
+      [
+        "web3"
+      ]
+    ],
+    [
+      "Webⳅ",
+      [
+        "web3"
+      ]
+    ],
+    [
+      "⍵eb3",
+      [
+        "web3"
+      ]
+    ],
+    [
+      "Weᏼ3",
+      [
+        "web3"
+      ]
+    ],
+    [
+      "Webϩ",
+      [
+        "web2"
+      ]
+    ],
+    [
+      "WAR𝚴ING",
+      [
+        "warning"
+      ]
+    ],
+    [
+      "WARⲚING",
+      [
+        "warning"
+      ]
+    ],
+    [
+      "WᎪRNING",
+      [
+        "warning"
+      ]
+    ],
+    [
+      "Wꭺrning",
+      [
+        "warning"
+      ]
+    ],
+    [
+      "WARNING",
+      [
+        "warning"
+      ]
+    ],
+    [
+      "UΝϷROTECTED",
+      [
+        "unprotected"
+      ]
+    ],
+    [
+      "WebⅢ",
+      [
+        "web3"
+      ]
+    ],
+    [
+      "Web III",
+      [
+        "web3"
+      ]
+    ],
+    [
+      "Web II",
+      [
+        "web2"
+      ]
+    ],
+    [
+      "Web❸",
+      [
+        "web3"
+      ]
+    ],
+    [
+      "Web⓶",
+      [
+        "web2"
+      ]
+    ],
+    [
+      "Web Ⅱ.Ⅴ",
+      [
+        "web25"
+      ]
+    ],
+    [
+      "Web‽",
+      [
+        "web?"
+      ]
+    ],
+    [
+      "Web⸮",
+      [
+        "web?"
+      ]
+    ],
+    [
+      "Web¿",
+      [
+        "web?"
+      ]
+    ],
+    [
+      "Web፧",
+      [
+        "web?"
+      ]
+    ],
+    [
+      "Web⍰",
+      [
+        "web?"
+      ]
+    ],
+    [
+      "⚠",
+      [
+        "!"
+      ]
+    ],
+    [
+      "Web Three",
+      []
+    ],
+    [
+      "Web Two",
+      []
+    ],
+    [
+      "Web Ill",
+      [
+        "web3"
+      ]
+    ],
+    [
+      "Weblll",
+      [
+        "web3"
+      ]
+    ],
+    [
+      "Web III Legacy",
+      [
+        "web3"
+      ]
+    ],
+    [
+      "Web Ⅱ.Ⅴ",
+      [
+        "web25"
+      ]
+    ],
+    [
+      "Web Lite",
+      []
+    ],
+    [
+      "Web Link",
+      []
+    ],
+    [
+      "Web Light",
+      []
+    ],
+    [
+      "Weblink",
+      []
+    ],
+    [
+      "Web Linux",
+      []
+    ],
+    [
+      "Web Life",
+      []
+    ],
+    [
+      "Web Live",
+      []
+    ],
+    [
+      "Web Illusion",
+      []
+    ],
+    [
+      "Cobweb Lily",
+      []
+    ],
+    [
+      "Legacy",
+      []
+    ],
+    [
+      "Classic",
+      []
+    ],
+    [
+      "Web3 Legacy",
+      [
+        "web3"
+      ]
+    ],
+    [
+      "Web2 Web3",
+      [
+        "web2",
+        "web3"
+      ]
     ],
     [
       "Webby",
@@ -645,153 +872,6 @@
       "accepted": null
     }
   ],
-  "drawsAs": [
-    [
-      "Web2",
-      "web2",
-      true
-    ],
-    [
-      "WEB 2",
-      "web2",
-      true
-    ],
-    [
-      "Wéb2",
-      "web2",
-      true
-    ],
-    [
-      "web-2",
-      "web2",
-      true
-    ],
-    [
-      "VVeb2",
-      "web2",
-      true
-    ],
-    [
-      "Vveb2",
-      "web2",
-      true
-    ],
-    [
-      "uueb2",
-      "web2",
-      true
-    ],
-    [
-      "Web2 ✓",
-      "web2",
-      true
-    ],
-    [
-      "Web2.5",
-      "web25",
-      true
-    ],
-    [
-      "Web 2.5",
-      "web25",
-      true
-    ],
-    [
-      "WEB-2.5",
-      "web25",
-      true
-    ],
-    [
-      "Web3",
-      "web3",
-      true
-    ],
-    [
-      "VVeb3",
-      "web3",
-      true
-    ],
-    [
-      "Wéb3",
-      "web3",
-      true
-    ],
-    [
-      "Legacy",
-      "web2",
-      false
-    ],
-    [
-      "Web2 plus",
-      "web2",
-      false
-    ],
-    [
-      "Web2!",
-      "web2",
-      false
-    ],
-    [
-      "Web2.5",
-      "web2",
-      false
-    ],
-    [
-      "Web3",
-      "web2",
-      false
-    ],
-    [
-      "Web2",
-      "web3",
-      false
-    ],
-    [
-      "Web2",
-      "web25",
-      false
-    ],
-    [
-      "Web25 ok",
-      "web25",
-      false
-    ],
-    [
-      "\\/\\/eb2",
-      "web2",
-      false
-    ],
-    [
-      "\\/\\/eb3",
-      "web3",
-      false
-    ],
-    [
-      "",
-      "web2",
-      false
-    ],
-    [
-      "★",
-      "web2",
-      false
-    ],
-    [
-      "ᗯeb3",
-      "web3",
-      false
-    ],
-    [
-      "Ⱳeb3",
-      "web3",
-      false
-    ],
-    [
-      "Webɜ",
-      "web3",
-      false
-    ]
-  ],
   "readable": [
     {
       "why": "ink that reads at rest and not under the pointer, in the light theme",
@@ -904,8 +984,8 @@
   "copies": {
     "confusables.json": "ff39d1cc9a2b920736da3a591c86a6b470ba88a01b02448d879d6e859947cba1",
     "confusables.LICENSE.txt": "e1a67090945c3197db90b0bcd0267c405a4add91b5c1d21c24b778d6759ac08f",
-    "confusables.ts": "054f35a5a2aff9c2c1e8d0119cb5b0a7110d6390864f613025165eb31f51332b",
+    "confusables.ts": "0ab9d12d0e620baa237aade441abddbeb373b697b99c032c61a6397a9308161b",
     "mark-values.ts": "c7dc56ac71dc75f484b5d027817637d89865ee7facbe0a6a2d12d9bfad45987e",
-    "reserved-words.ts": "8490cefb296c0b45ae7bc4925435024d41ccc8391f53d3125495c4f94cf0ea98"
+    "reserved-words.ts": "c05f20d1805f97526d60a72a7715a7fddf9907363fedc81975652144ad67b6fd"
   }
 }

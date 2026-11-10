@@ -13,11 +13,12 @@ import {
   PLATE_TINTS,
   iconPathOf,
   isReadable,
+  markLabel,
   plateContrast,
 } from "../src/mark-values.ts";
 import { validateMarks } from "../src/marks.ts";
-import { COPIES, differingCopies, digestOf } from "../src/orivon-copies.ts";
-import { drawsAs, reservedWordsIn } from "../src/reserved-words.ts";
+import { COPIES, differingCopies, digestOf, originalOf } from "../src/orivon-copies.ts";
+import { reservedWordsIn } from "../src/reserved-words.ts";
 
 // Attila reads a marks file the way Orivon's reader does, so a file that passes here is a file Orivon uses whole. The cases
 // are in one JSON file whose expected values are what Orivon's own functions return (src/trust/mark-values.ts and
@@ -28,7 +29,6 @@ interface Fixture {
   surfaces: { light: string; dark: string };
   labels: [string, string[]][];
   contrast: { tone: string; ink: string; theme: "light" | "dark"; tint?: number; ratio: number }[];
-  drawsAs: [string, string, boolean][];
   readable: { why: string; tone: string; ink: { light: string; dark: string }; readable: boolean }[];
   icons: { why: string; path: string; written: string | null }[];
   copies: Record<string, string>;
@@ -81,15 +81,22 @@ test("a label reads as the reserved words Orivon reads in it, through every look
   for (const [label, words] of fixture.labels) assert.deepEqual(reservedWordsIn(label), words, JSON.stringify(label));
 });
 
-test("a label is the whole of a reserved word as Orivon reads it, and a restyle carrying anything else is refused", () => {
-  assert.ok(fixture.drawsAs.length > 20);
-  for (const [label, word, whole] of fixture.drawsAs) assert.equal(drawsAs(label, word), whole, `${JSON.stringify(label)} as ${word}`);
-  const graded = ["web2", "web25", "web3"];
-  for (const [label, word, whole] of fixture.drawsAs) {
-    if (!graded.includes(word) || reservedWordsIn(label).some((held) => held !== word)) continue;
-    const issues = validateMarks(marksFile({ ...plain, id: "look", label, restyles: word }), "marks.json").issues;
-    assert.equal(issues.length === 0, whole, `${JSON.stringify(label)} restyling ${word}`);
+test("a restyle's label is refused for every reserved word Orivon reads in it but its own grade's, and an added mark's for any", () => {
+  const graded = ["web2", "web25", "web3"] as const;
+  let held = 0;
+  let free = 0;
+  for (const [label, words] of fixture.labels) {
+    if (markLabel(label) === undefined) continue;
+    const refused = (restyles?: string): string[] => validateMarks(marksFile({ ...plain, id: "look", label, restyles }), "marks.json").issues.map((i) => i.path);
+    assert.deepEqual(refused(), words.length === 0 ? [] : ["marks[0].label"], `${JSON.stringify(label)} added`);
+    for (const grade of graded) {
+      const wanted = words.every((word) => word === grade);
+      assert.deepEqual(refused(grade), wanted ? [] : ["marks[0].label"], `${JSON.stringify(label)} restyling ${grade}`);
+      if (words.includes(grade)) held++;
+      else if (words.length === 0) free++;
+    }
   }
+  assert.ok(held > 20 && free > 20, `${held} labels hold their grade's word and ${free} hold none`);
 });
 
 test("a label whose skeleton is a reserved word, by a character outside a hand list or by a pair that draws as a letter, is refused", () => {
@@ -163,7 +170,7 @@ test("the numbers every mark is bounded by are Orivon's", () => {
 test("every file copied from Orivon is the text the fixture holds the hash of, and the fixture names no other", () => {
   assert.deepEqual(Object.keys(fixture.copies).sort(), [...COPIES].sort());
   for (const name of COPIES) {
-    assert.equal(digestOf(readFileSync(path.join(root, "src", name), "utf8")), fixture.copies[name], `${name} is not the text Orivon's fixture hashes: copy it again from Orivon's src/trust/`);
+    assert.equal(digestOf(readFileSync(path.join(root, "src", name), "utf8")), fixture.copies[name], `${name} is not the text Orivon's fixture hashes: copy it again from Orivon`);
   }
 });
 
@@ -175,6 +182,6 @@ const skip = orivon !== undefined && existsSync(path.join(orivon, "src", "trust"
 test("the copies are Orivon's files, and the fixture holds their hashes", { skip }, () => {
   assert.deepEqual(differingCopies(orivon ?? "", root), []);
   for (const name of COPIES) {
-    assert.equal(digestOf(readFileSync(path.join(orivon ?? "", "src", "trust", name), "utf8")), fixture.copies[name], `${name}: the fixture's hash is not Orivon's file`);
+    assert.equal(digestOf(readFileSync(originalOf(orivon ?? "", name), "utf8")), fixture.copies[name], `${name}: the fixture's hash is not Orivon's file`);
   }
 });
