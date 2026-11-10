@@ -1,21 +1,21 @@
 {
   "subject": "website",
   "ids": [
-    "sha256:eacb4d69b9b6b5b9fe67fde8044475e1a0e5f6ef8ef7c5e7b11a485afc457190",
-    "cid:bafybeidlx7whfqrbd4yccdxljwamwle6xyrnf6n3laz5oozc7vfqurhtk4",
     "sha256:7a0ac52e58c02d0451ec55bc62ec03cbb3f176bcf9a39e603bca73e5cedce460",
     "cid:bafybeifjdzcrj6nb7igqgxs7k3kphp5ktwsqqsifmwuzq254tlgkg7zxca",
     "cid:bah5acgzausqxvcy65fcunsovc5dpoefb4judr7ahprbtepogoscf6qe7hyra",
     "sha256:cc5bceb9526bc8b139943a8408b723455159fa3184fd6759c026077f2555ba7a",
     "cid:bafybeiditatxc3pgjl3u5vgkmnvjq4ld43xjclwlxezdfcxrut7wvnjqsq",
-    "cid:bah5acgzaiopnb5vnj4h6sbck2blbkuqafuutr4lvdm2dwt7smh4hq62k3iqa"
+    "cid:bah5acgzaiopnb5vnj4h6sbck2blbkuqafuutr4lvdm2dwt7smh4hq62k3iqa",
+    "sha256:6b5c52b33b9886efad36fdcfec28bcbb267997d2e2b5e98664004b932db57c24",
+    "cid:bafybeidg7so7r3vddfbsnotulxswiiur4t5nzyg7qphau4myptwcvyvnnm"
   ],
   "names": [
     "status.orivonstack.eth"
   ],
   "name": "Orivon Status",
-  "version": "0.1.5",
-  "evaluated": "2026-10-27",
+  "version": "0.1.6",
+  "evaluated": "2026-11-10",
   "trustlessity": {
     "level": 3,
     "privacy": false
