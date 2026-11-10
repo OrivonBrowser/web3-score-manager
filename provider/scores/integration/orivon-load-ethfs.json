@@ -6,10 +6,10 @@
   "name": "Load from EthFS files on Ethereum",
   "evaluated": "2026-11-10",
   "trustlessity": {
-    "level": 3,
-    "privacy": false
+    "level": 4,
+    "privacy": true
   },
-  "summary": "The EthFS row of the load order: loads the file a .eth name's record names as eth://0x<pointer>, reading its chunks through the Ethereum nodes the person ordered, one block per node, and holding every byte against the CREATE2 address. A node that lies is skipped, a withholding node passes the read on, and only a proving node can end it. Not Level 4: loading depends on those nodes, by default Helios and a few public servers, which also see the file asked for; a File part no address commits to is served only by a proving node. Judged here by its publisher.",
+  "summary": "A source for names whose content is an EthFS file (an eth:// pointer). It reads the chunks through the Ethereum nodes the person ordered (answers from the code the person chose, judged on its own row) and holds each whole chunk against the address that names it before a byte is used; a part no address commits to is taken only from a node that proves its answers. Unpacking is size-bounded. It opens no connection, holds no key and runs nothing itself; the page it serves is judged as that site. Level 4. Judged here by its publisher.",
   "evidence": [
     "https://github.com/OrivonBrowser/orivon-mvp"
   ]

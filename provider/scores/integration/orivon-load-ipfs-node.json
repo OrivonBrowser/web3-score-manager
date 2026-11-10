@@ -9,7 +9,7 @@
     "level": 3,
     "privacy": false
   },
-  "summary": "Loads a name's IPFS record through Orivon's node on this computer. Every block is checked against its CID; an IPNS record against its key's signature and the newest sequence seen. Nothing checks that a record is the newest: a lookup service (name.web3.storage) can answer with an older signed one, and the first valid answer wins. A DNS name's DNSLink is read over unauthenticated DNS-over-HTTPS (Cloudflare, Google). Level 3, not 4, because of those two reads. Not private: those servers see the IPNS key or DNS name. Judged here by its publisher.",
+  "summary": "Loads a site's IPFS records through the node on this computer: blocks and IPNS records are read from its loopback address and every block is hashed against its content id, so the node is trusted for availability only. It asks no standard code. Beyond the node it reads DNSLink TXT records over DNS-over-HTTPS from public resolvers, which nothing authenticates, and by default asks a public name service for IPNS records, taking any signed one not older than one already seen. Not 4 for those reads, which also show the resolvers and the service what is looked up. Judged here by its publisher.",
   "evidence": [
     "https://github.com/OrivonBrowser/orivon-mvp"
   ]

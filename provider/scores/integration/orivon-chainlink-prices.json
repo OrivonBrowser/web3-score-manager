@@ -9,7 +9,7 @@
     "level": 3,
     "privacy": false
   },
-  "summary": "The price node (ETH_PRICE_0_1, BTC_PRICE_0_1): answers the dollar price of ETH and BTC from Chainlink's on-chain feeds, one eth_call through the person's Ethereum node (the built-in light client unless another is put first). It opens no connection itself and refuses a zero, unfinished, carried-over or two-hour-old round. The chain can prove the feed's stored value; nothing checks it is true to the market, so Chainlink's oracle network is trusted. Level 3, not 4. The node's servers see the IP address and that a price is read. Judged here by its publisher.",
+  "summary": "Answers ETH and BTC prices in dollars from Chainlink's two USD feed proxies at fixed mainnet addresses, with one latestRoundData call through the Ethereum code the person chose (answers from that provider, judged on its own row). It refuses a malformed, non-positive, incomplete, two-hour-old or future-dated round. Nothing checks that the price is true: it rests on Chainlink's oracle network, the aggregator behind each proxy can be replaced, and the page is told it has one source. Level 3, not 4, for that. Judged here by its publisher.",
   "evidence": [
     "https://github.com/OrivonBrowser/orivon-mvp"
   ]

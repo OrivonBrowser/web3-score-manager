@@ -9,7 +9,7 @@
     "level": 3,
     "privacy": false
   },
-  "summary": "Swaps Bitcoin for Ether or USDC, or back, through THORChain's pools: the person signs a deposit with a memo the browser writes, to a vault two THORNode operators (Nine Realms, Liquify) both name, or to a router pinned in Orivon. The vault and the price are those servers' word; an Ether payout is proven by the light client, a Bitcoin payout is read from the Bitcoin node, which nothing checks. THORChain holds the funds and decides to pay or refund. Level 3, not 4: it relies on THORChain. Judged here by its publisher.",
+  "summary": "The built-in swap of Bitcoin and Ether or USDC through THORChain's pools. It writes the memo itself, limit 1% under the quote, pays only a vault two or more operators name or the pinned router, and ends only when the destination chain shows the payout or refund. THORNode and chain reads go through the codes to the provider the person chose, judged on its own row. Not level 4: once deposited, THORChain's network alone decides to pay or refund and the person cannot recover alone. Receipts and payee code come from the built-in light client, whose servers see them. Judged here by its publisher.",
   "evidence": [
     "https://github.com/OrivonBrowser/orivon-mvp"
   ]

@@ -9,7 +9,7 @@
     "level": 3,
     "privacy": false
   },
-  "summary": "Orivon's ENS resolver: reads a .eth name's contenthash and records through ENS's Universal Resolver over the Ethereum nodes the person ordered, Helios first, at the newest verified block. Only a proving node's answer counts as proof; another node's still resolves, marked unproven. An offchain resolver sends the browser to a gateway its contract names; only that contract's check stands behind the data. Not Level 4: it works only through the person's Ethereum node, and by default one beacon server's outage stops every name. Nodes and gateways see the name. Judged here by its publisher.",
+  "summary": "Resolves .eth names: contenthash and text records through ENS's Universal Resolver, answers coming from the Ethereum code the person chose (judged on its own row). It holds no key; a record change is signed by the wallet and its bytes are checked against the plan before broadcast. When a name's resolver names an offchain gateway, this code fetches that server itself, which sees the lookup, and only the resolver contract's check stands behind the reply: a contract that trusts the server's signature lets it omit or falsify records. Level 3, not 4, for that. Judged here by its publisher.",
   "evidence": [
     "https://github.com/OrivonBrowser/orivon-mvp"
   ]

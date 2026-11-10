@@ -6,10 +6,10 @@
   "name": "Orivon's EthFS node",
   "evaluated": "2026-11-10",
   "trustlessity": {
-    "level": 3,
-    "privacy": false
+    "level": 4,
+    "privacy": true
   },
-  "summary": "ETHFS_0_1 for pages: reads a file from EthFS's FileStore with every byte held against the CREATE2 address that names it, and plans upload transactions the Orivon Ethereum Crypto signs after one sheet; the series is sent through the person's Ethereum node. It opens no connection of its own. The step from a filename to its address is the answering node's word, and it does not check that the node proves it. Not Level 4: it depends on that node, by default Helios and its one beacon server. The node sees the file and address. Judged here by its publisher.",
+  "summary": "Reads and stores EthFS files on Ethereum. A read finds the File in the FileStore at its fixed address and holds every chunk against the address that names it, so a wrong byte is refused; chain answers come from the Ethereum code the person chose (judged on its own row). A store is signed by the wallet after a sheet that says the files are public for ever, then sent in order as the wallet returned it. It opens no connection, holds no key and runs no outside code. Level 4. Judged here by its publisher.",
   "evidence": [
     "https://github.com/OrivonBrowser/orivon-mvp"
   ]

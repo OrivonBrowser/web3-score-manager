@@ -6,10 +6,10 @@
   "name": "Direct transfer",
   "evaluated": "2026-11-10",
   "trustlessity": {
-    "level": 3,
-    "privacy": false
+    "level": 4,
+    "privacy": true
   },
-  "summary": "Sends the same coin or pinned token from the person to the payee with nothing between, holding no one's funds. The destination is checked here, signing happens in the person's Account after confirmation, and an Ethereum mainnet payment counts as done only on a receipt the light client proves. A Bitcoin payment is done on one confirmation read from the Bitcoin node (a public Esplora server by default), which nothing checks, as are its coins, fees and broadcast. Level 3, not 4, because of that Bitcoin read. Judged here by its publisher.",
+  "summary": "The built-in payment of the same coin or pinned token from the person to the payee. It builds the transfer itself, reads back the signed bytes or Bitcoin PSBT and refuses any that pay another amount, payee or fee, and ends only when a block shows it. Balances, fees, receipts and sends come through the Ethereum and Bitcoin codes, or the built-in light client, from the provider the person chose, judged on its own row. It reaches no server of its own and holds no funds or keys. A test-network receipt is unchecked only with the developer test-network option on. Judged here by its publisher.",
   "evidence": [
     "https://github.com/OrivonBrowser/orivon-mvp"
   ]

@@ -7,9 +7,9 @@
   "evaluated": "2026-11-10",
   "trustlessity": {
     "level": 4,
-    "privacy": false
+    "privacy": true
   },
-  "summary": "A pointer to Explore, a directory of Web3 sites. Typed text opens ipfs://explore.orivonstack.eth/#/search?q=<text>: Orivon resolves the ENS name through the person's Ethereum nodes (the built-in one proves its answers) and checks every file against its address. The text stays in the address fragment, which is never sent; the page runs no outside code, asks for nothing beyond its own files and filters its own catalog. If trust.score is granted, Orivon asks the person's Web3 Score provider about each listed Web3 site, which shows it their IP address, so no privacy. Judged here by its publisher.",
+  "summary": "A search row that opens Orivon Explore, a static directory of Web3 sites with their Web3 Scores, at explore.orivonstack.eth, with the typed words after the # of the address so they stay on this computer. The page asks no other party for anything and loads no outside code, image or font. It reads a Web3 Score through the browser only when the visitor grants it, from the provider the person chose, judged on its own row, and acts only on a 3 or 4 for a site it observed at 2. Its listings and Orivon-app marks are its publisher's own data, which nothing checks. Judged here by its publisher.",
   "evidence": [
     "https://github.com/OrivonBrowser/orivon-mvp",
     "https://github.com/OrivonBrowser/orivon-ports"

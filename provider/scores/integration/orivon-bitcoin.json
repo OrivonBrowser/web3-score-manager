@@ -7,11 +7,10 @@
   "evaluated": "2026-11-10",
   "trustlessity": {
     "level": 4,
-    "privacy": false
+    "privacy": true
   },
-  "summary": "The Bitcoin Crypto (BTC_0_1): turns public keys into SegWit and Taproot addresses, builds payments from coins a site lists, prepares what the Account signs. It holds no key and opens no connection itself; its libraries are pinned. For SegWit inputs it asks the person's Bitcoin node for funding transactions, hashed against the outpoint, and the signer refuses an input without that proof. Nothing checks that listed coins exist. Level 4, no privacy: those reads show a node's servers the IP address and the transactions spent. Judged here by its publisher.",
+  "summary": "The Bitcoin Crypto (BTC_0_1). It turns a public key into a segwit or taproot address, builds payments from coins at the person's own addresses, and prepares PSBT, message and swap-refund signing for the Account. It may read a funding transaction through the Bitcoin read code the person chose (judged on its own row) and attaches it only when its hash is the input's outpoint and its output matches the claim. It holds no key, opens no connection and runs no outside code. Level 4. Judged here by its publisher.",
   "evidence": [
-    "https://github.com/OrivonBrowser/orivon-mvp",
-    "https://github.com/paulmillr/scure-btc-signer"
+    "https://github.com/OrivonBrowser/orivon-mvp"
   ]
 }

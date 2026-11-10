@@ -267,14 +267,22 @@ with the person's keys, money or data take the place of a site's files.
 - **A key the integration holds** is judged by where it is kept and who can use it. An Account that
   keeps the keys on the computer and signs there is Level 4; one that sends the key or the
   signing to a server is 1 or 2, whatever its source.
+- **A code an integration uses is not its own.** Judge every integration as if each standard code it
+  uses (its `uses`) were answered by a provider that is Web3 with privacy: proven answers, nothing
+  it relies on can fail or lie, and nobody it contacts learns who the person is. That provider is
+  judged on its own row, and the person's choice of provider changes nothing here. What counts
+  against the integration is what its own code does beyond its codes: a direct fetch, a server or
+  party it names itself, data no code supplies, the keys and funds it holds, what it runs, and what
+  it does with an answer. A built-in node that a row reads directly is a provider of the code too.
+  A row that provides a code is a provider and is judged on its own.
 
 ### What to look at, by type
 
 | Type | Its operations | Its connections |
 |---|---|---|
 | `account` | Where the key lives and who can sign | What it reaches while it signs: a device, a server |
-| `crypto`, `address-list` | Deriving and encoding: pure code | An address list has none. A Crypto's reads that prepare a transaction (nonce, fees, funding transactions) go through a node that sees the address; that node is judged on its own |
-| `payment` | Building the legs, and where funds are sent | The nodes and services that price and route; the address a swap pays to |
+| `crypto`, `address-list` | Deriving and encoding: pure code | None of its own; the node it asks through a code is judged on its own |
+| `payment` | Building the legs, and where funds are sent | The services that price and route and what a counterparty must still do before the person is paid; the address a swap pays to. A node answering a code is judged on its own |
 | `network-node` | Answering a chain or service | The servers it asks, and whether each answer is checked |
 | `tunnel` | Carrying the traffic | The relays and directories; who sees the destination |
 | `name-resolution`, `data-gathering` | Turning a name or record into bytes | Whether the bytes are checked against an address, and by whom |
@@ -334,8 +342,8 @@ with the person's keys, money or data take the place of a site's files.
 - **A Nym tunnel and a user's own SOCKS5 proxy** are 3: both rely on parties the person does not
   run and nothing checks.
 - **Pure local code with no connection**, such as an address list, an Account that signs on the
-  computer or an embedded SQLite, is 4 with privacy. **A Crypto that reads through a node to prepare
-  a transaction** (Ethereum, Bitcoin) is 4 without privacy: the node sees the address.
+  computer or an embedded SQLite, is 4 with privacy. So is a Crypto that asks a node through a code
+  to prepare a transaction (Ethereum, Bitcoin): the node is judged on its own row.
 - **A standard's row** (`builtin:std-<code>`) is 4 with privacy: a definition runs nothing and
   connects to nothing (at most it names a decoder compiled into Orivon that words the confirmation
   text), and what answers the code is judged on its own row.

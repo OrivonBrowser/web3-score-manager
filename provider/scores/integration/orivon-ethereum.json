@@ -7,9 +7,9 @@
   "evaluated": "2026-11-10",
   "trustlessity": {
     "level": 4,
-    "privacy": false
+    "privacy": true
   },
-  "summary": "The Ethereum Crypto (ETH_0_1): holds no key; turns a site's call into the payload an Account signs and checks the signature recovers to the address. It runs on this computer except the reads for a transaction (chain, nonce, gas, fees) and a typed-data chain id, asked of the person's Ethereum node and taken as answered, unchecked if that node does not prove them. Level 4: it needs no server to derive, encode or check, and what it fills in shows on the sheet, read from the payload bytes, before signing. No privacy: those reads name the person's address. Judged here by its publisher.",
+  "summary": "The Ethereum Crypto (ETH_0_1). It derives addresses from keys the Account gives, turns a site's message, typed-data or transaction call into the payload the Account signs, filling chain id, nonce, gas and fees from reads through the Ethereum code the person chose (judged on its own row), and checks the returned signature recovers to the address before using it. It holds no key, opens no connection and runs no outside code; the facts the person confirms are read from the payload bytes, not supplied by this code. Level 4. Judged here by its publisher.",
   "evidence": [
     "https://github.com/OrivonBrowser/orivon-mvp"
   ]

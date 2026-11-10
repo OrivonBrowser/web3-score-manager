@@ -9,7 +9,7 @@
     "level": 3,
     "privacy": false
   },
-  "summary": "The browser's own payment sheet, opened by a bitcoin: link and by a page's payment request. The address comes from the link, not the page; routes are ranked and graded by their weakest leg, and the person signs each leg. The holdings, fees and quotes it shows come from nodes and facilitators judged on their own rows (Esplora, THORNode, Boltz), and the grades from the person's Web3 Score providers; nothing here checks them. Level 3, not 4: what it shows rests on data nothing checks. Judged here by its publisher.",
+  "summary": "The browser's own payment sheet, opened by a page's payment request or a bitcoin: link. It plans routes over the facilitators the person has on, drops mismatched quotes, holds each signature to the quote's bounds, has the person confirm each, and ends a leg only on what the chain shows; it holds no funds or keys. Not level 4: it ranks routes by Web3 Scores nothing checks, asked of the person's score providers; payee code comes from the built-in light client. Quotes and reads come through the codes from the provider the person chose, judged on its own row. Judged here by its publisher.",
   "evidence": [
     "https://github.com/OrivonBrowser/orivon-mvp"
   ]

@@ -9,7 +9,7 @@
     "level": 3,
     "privacy": false
   },
-  "summary": "A switch, on or off, that lets a load follow the record the site's owner set on its name (an ENS contenthash, or a DNSLink value of a DNS name) and hands it to the source rows of its type. It runs and connects to nothing itself and checks nothing. The record may have been proven by the light client, or read from DNS, an installed name resolver or an Ethereum node that proves nothing, and the row does not tell them apart. Level 3, not 4: it accepts data nothing checks. Not private: the sources it hands the record to connect for it. Judged here by its publisher.",
+  "summary": "A load-order switch. On, the contenthash a name's owner published is tried through the rows of its type, in the person's order; Off, it is skipped. It asks no standard code, runs nothing and connects to nothing: the record comes from the name's resolver and each row that loads it is judged on its own row. It calls a load unchecked only for a web server without a DDOC record or a record a node or resolver did not prove; a contenthash naming a DNS name (read over an unauthenticated DNSLink) or an IPNS name (newest record unproven) still counts as checked, so not 4. Judged here by its publisher.",
   "evidence": [
     "https://github.com/OrivonBrowser/orivon-mvp"
   ]

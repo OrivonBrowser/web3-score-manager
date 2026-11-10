@@ -6,10 +6,10 @@
   "name": "Orivon AI agent",
   "evaluated": "2026-11-10",
   "trustlessity": {
-    "level": 3,
-    "privacy": false
+    "level": 4,
+    "privacy": true
   },
-  "summary": "The assistant panel and its loop run as pinned code in a sealed session with no network of its own. It asks the AI model the person connects (hosted, a plan sign-in, or on their computer) and uses only the codes the person allowed: read a web page, look up or point a name (confirmed in the browser's own sheet), keep or publish files. Builds run offline in WebAssembly. Nothing checks the model's answers, and a hosted model sees what the person writes and what its tools read. Level 3, not 4: it relies on a party that can be wrong or stop. Judged here by its publisher.",
+  "summary": "The built-in AI agent: a hidden page and a panel in one pinned bundle, served from a session that cancels any request outside its own origin. Its scripts name no network call (a test fails the build otherwise) and site builds run in a WebAssembly worker with none. It asks LLM_0_1 and, only if allowed, WEB_FETCH_0_1, NAMES_0_2, IPFS_0_2 and SWARM_0_2; each answer comes from the provider the person chose, judged on its own row. It wraps every tool result as untrusted data and checks arguments before any call; the browser, not this page, asks before a write. Judged here by its publisher.",
   "evidence": [
     "https://github.com/OrivonBrowser/orivon-mvp"
   ]

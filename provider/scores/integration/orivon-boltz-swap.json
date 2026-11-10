@@ -9,7 +9,7 @@
     "level": 3,
     "privacy": false
   },
-  "summary": "Pays a Lightning invoice from on-chain Bitcoin through Boltz's public API (api.boltz.exchange). The browser rebuilds the swap's scripts and address from its own keys and refuses a mismatch, so Boltz can only claim by revealing the invoice's preimage, and the person can refund alone after at most 1152 blocks. Nothing checks that Boltz pays, its quoted fees, or the Bitcoin node it reads the chain from (a public Esplora server by default). After Pay Boltz sees the invoice and refund key. Level 3, not 4: it relies on Boltz. Judged here by its publisher.",
+  "summary": "The built-in Bitcoin-to-Lightning payment through Boltz. It reads the invoice itself, rebuilds the swap's Taproot scripts and address from its own keys and refuses any that differ, keeps it before coins are locked, and ends paid only when the preimage is on chain. Chain and Boltz reads go through the codes to the provider the person chose, judged on its own row. Not level 4: the payment depends on Boltz choosing to pay the invoice; if it does not, the person's own refund key takes the coins back after up to about 8 days. Boltz sees the invoice, so not private. Judged here by its publisher.",
   "evidence": [
     "https://github.com/OrivonBrowser/orivon-mvp"
   ]
