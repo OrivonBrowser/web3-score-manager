@@ -5,13 +5,15 @@
     "cid:bafybeid4fin7kkzjs63fotwi6vzthxvhltmc2zr7hjwflg2og4krbkxvae",
     "cid:bafybeiciu3rv2foptl4rpiurlz7fdaxi4mp3ubyducabqnb67vydwvj4c4",
     "cid:bafybeid6wstlql7r2rlnzigjhfavfhbmgfa4k3ejzb67lh5z2ul4qtdzem",
-    "cid:bafybeih5oksjibiybbsczjbn2pwjwrplboqjjlsjbksbzdrkaabb3njf5u"
+    "cid:bafybeih5oksjibiybbsczjbn2pwjwrplboqjjlsjbksbzdrkaabb3njf5u",
+    "cid:bafybeidthbjilss237oogcsqpaffqr32wxvpszuz3i4gcw4qqotvvcg6za"
   ],
   "names": [
     "dromos.eth"
   ],
   "name": "Dromos Labs",
-  "evaluated": "2026-11-09",
+  "version": "v0.0.30",
+  "evaluated": "2026-11-10",
   "trustlessity": {
     "level": 2,
     "privacy": false
