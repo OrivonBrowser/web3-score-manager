@@ -1,0 +1,17 @@
+{
+  "subject": "integration",
+  "ids": [
+    "integration:builtin:gnosis-light-client"
+  ],
+  "name": "Gnosis Chain light client",
+  "evaluated": "2026-11-10",
+  "trustlessity": {
+    "level": 4,
+    "privacy": false
+  },
+  "summary": "Gnosis Chain's light client, Orivon's own build of Helios, on this computer. Open source. It proves what it reads against the chain's consensus, so the RPC servers it asks cannot lie without being caught; a log left out of an answer is not noticed. A Gnosis checkpoint is too old within about 10 hours, so none is shipped: each start takes the root two beacon servers agree on, or the one the person's own consensus server gives. Not private: the servers it asks see this computer's address and what it reads. Judged here by its publisher.",
+  "evidence": [
+    "https://github.com/OrivonBrowser/orivon-mvp",
+    "https://github.com/a16z/helios"
+  ]
+}

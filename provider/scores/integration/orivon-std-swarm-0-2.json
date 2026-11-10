@@ -1,0 +1,16 @@
+{
+  "subject": "integration",
+  "ids": [
+    "integration:builtin:std-swarm_0_2"
+  ],
+  "name": "Swarm standard (SWARM_0_2)",
+  "evaluated": "2026-11-10",
+  "trustlessity": {
+    "level": 4,
+    "privacy": true
+  },
+  "summary": "The row for the SWARM_0_2 standard, which defines reading files from Swarm, publishing a folder kept on this computer to Swarm with the storage the person bought, and keeping a lasting address for it that only this browser can update. A standard defines a code without answering it: the row runs nothing, holds no state and makes no connection, and whatever answers the code is judged on its own row. Open source, and the definition is a JSON file in Orivon's source. Judged here by its publisher.",
+  "evidence": [
+    "https://github.com/OrivonBrowser/orivon-mvp"
+  ]
+}
