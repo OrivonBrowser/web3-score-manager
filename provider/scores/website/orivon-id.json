@@ -1,0 +1,109 @@
+{
+  "subject": "website",
+  "ids": [
+    "sha256:09dd9199bc09ff17e4424f880a804988fc913c4e1685312346fb6cf7e8bb8ffe",
+    "cid:bafybeidqaglavjb5lmyf3ercgphdpmcah57n5vh2s5mh5ehrghcqeayepi"
+  ],
+  "names": [
+    "id.orivonstack.eth",
+    "ipns://k51qzi5uqu5dgg58ve0xwfwjn6d1dz86uitecdddjs0uutw7zqcs6cw95yqevr"
+  ],
+  "name": "Orivon ID",
+  "version": "0.1.1",
+  "evaluated": "2026-11-10",
+  "trustlessity": {
+    "level": 3,
+    "privacy": false
+  },
+  "summary": "Orivon's page for buying a username under v1.orivonid.eth, seeing the usernames an address holds and signing in to Web3sites with them. Open source (AGPL-3.0-only) in orivon-ports, served as written, and it runs only its own files. Ethereum is read through the person's light client. It stays at 3, not 4, because the source of the registrar that sells the names is not published and Sourcify has no match for it, so what a purchase does cannot be checked. Not private: the node's server sees the person's IP address and what the page asks about.",
+  "operations": [
+    {
+      "name": "Search a username and see its price",
+      "trustlessity": {
+        "level": 1,
+        "privacy": false
+      },
+      "note": "Typing asks nothing; the button asks the light client who holds the name (a name of 3 or 4 letters among 7 decoys) and whether sales are open. The price shown is the page's own copy of the registrar's rule, which cannot be checked against source that is not published."
+    },
+    {
+      "name": "Register a username",
+      "trustlessity": {
+        "level": 1,
+        "privacy": false
+      },
+      "note": "Five transactions (commit, DAI approval, the person's own resolver, register, records), signed in the Orivon wallet. The registrar that takes the DAI has no published source and no Sourcify match, so what it does with a purchase cannot be checked."
+    },
+    {
+      "name": "Send the register transaction privately (optional, Web2)",
+      "trustlessity": {
+        "level": 1,
+        "privacy": false
+      },
+      "note": "Off by default; the person turns it on and is asked to allow rpc.flashbots.net. Flashbots Protect sees the transaction and the person's IP address before it is public. The page wears a Web2 mark and sends publicly when it is off or fails."
+    },
+    {
+      "name": "See, edit and move your IDs, and end all sign-ins",
+      "trustlessity": {
+        "level": 3,
+        "privacy": false
+      },
+      "note": "Names and records are read through the light client from the registry, a clone of contracts Sourcify has verified, and the person's own resolver; each change is a transaction the person signs. The node's server sees the addresses and names asked about."
+    },
+    {
+      "name": "Sign in to another Web3site with an ID",
+      "trustlessity": {
+        "level": 3,
+        "privacy": false
+      },
+      "note": "The page shows which site asked, the person signs one EIP-4361 message in Orivon's wallet, and the answer goes to that site in the address fragment. Ownership is checked on chain through the light client."
+    },
+    {
+      "name": "Read the protocol and the developer pages",
+      "trustlessity": {
+        "level": 4,
+        "privacy": true
+      },
+      "note": "Text and code in the page's own files. Nothing is sent."
+    },
+    {
+      "name": "Resolve .orv names (an integration, only after the person adds it)",
+      "trustlessity": {
+        "level": 3,
+        "privacy": false
+      },
+      "note": "A hidden page of the site reads the registry and the name's resolver through the light client and nothing else."
+    }
+  ],
+  "connections": [
+    {
+      "name": "Ethereum, read through the person's light client",
+      "trustlessity": {
+        "level": 2,
+        "privacy": false
+      },
+      "note": "Every answer is checked against the chain's consensus on this computer. The execution server behind the light client sees the person's IP address and the addresses, contracts and names asked about."
+    },
+    {
+      "name": "Signed transactions sent through the person's own node",
+      "trustlessity": {
+        "level": 2,
+        "privacy": false
+      },
+      "note": "The transaction is signed on this computer and cannot be changed on the way. The node sees it and the address it comes from."
+    },
+    {
+      "name": "Flashbots Protect (rpc.flashbots.net), optional",
+      "trustlessity": {
+        "level": 1,
+        "privacy": false
+      },
+      "note": "Only after the person turns on Send privately and allows the host. Nothing else in the page relies on it, and Send publicly is offered when it fails."
+    }
+  ],
+  "evidence": [
+    "https://github.com/OrivonBrowser/orivon-ports/tree/94c60dcc058b930630ed039890b80041f920ee41/apps/id",
+    "ipfs://bafybeidqaglavjb5lmyf3ercgphdpmcah57n5vh2s5mh5ehrghcqeayepi",
+    "https://sourcify.dev/server/v2/contract/1/0x27264C6AE4ec65fD14C0FB55C2Dc71eAa8956Cb4",
+    "https://sourcify.dev/server/v2/contract/1/0x77510ba162dfeA3d8989E3f0928a691B345730D2"
+  ]
+}
