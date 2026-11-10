@@ -1,0 +1,16 @@
+{
+  "subject": "integration",
+  "ids": [
+    "integration:builtin:std-web_fetch_0_1"
+  ],
+  "name": "Web page reading standard (WEB_FETCH_0_1)",
+  "evaluated": "2026-11-10",
+  "trustlessity": {
+    "level": 4,
+    "privacy": true
+  },
+  "summary": "The row for the WEB_FETCH_0_1 standard, which defines reading a public web page as text, from an address the person was asked about. A standard defines a code without answering it: the row runs nothing, holds no state and makes no connection. The browser answers this code itself and no integration provides it, so no other row judges the reading; the code marks every answer untrusted, since whoever controls a page may have written it for the reader. Open source, and the definition is a JSON file in Orivon's source. Judged here by its publisher.",
+  "evidence": [
+    "https://github.com/OrivonBrowser/orivon-mvp"
+  ]
+}

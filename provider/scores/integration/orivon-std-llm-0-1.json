@@ -1,0 +1,16 @@
+{
+  "subject": "integration",
+  "ids": [
+    "integration:builtin:std-llm_0_1"
+  ],
+  "name": "AI model standard (LLM_0_1)",
+  "evaluated": "2026-11-10",
+  "trustlessity": {
+    "level": 4,
+    "privacy": true
+  },
+  "summary": "The row for the LLM_0_1 standard, which defines asking a language model the person has connected to answer a conversation, and reading the answer as it is written. A standard defines a code without answering it: the row runs nothing, holds no state and makes no connection, and whatever answers the code, each model connection the person makes, is judged on its own row. Open source, and the definition is a JSON file in Orivon's source. Judged here by its publisher.",
+  "evidence": [
+    "https://github.com/OrivonBrowser/orivon-mvp"
+  ]
+}
