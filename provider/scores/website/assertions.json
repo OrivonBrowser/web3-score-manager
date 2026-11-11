@@ -3,13 +3,14 @@
   "ids": [
     "cid:bafybeibn4bv4mr76z5y4v6x4y33i5wxussak4tyjgmp6qjgcx6r62fe5gi",
     "cid:bafybeiggwxitk53ry5ty6dtkhaywops6wrf65ag2rmv42b42lauzipllta",
-    "cid:bafybeie6ixdxjz74dbwvfemsgycpnrutfqs3jynyixvdztppedxfi5j4da"
+    "cid:bafybeie6ixdxjz74dbwvfemsgycpnrutfqs3jynyixvdztppedxfi5j4da",
+    "cid:bafybeidbmfajqorzbyc4wtlpabeftrgt5zmbuezmjj5d33mj5febxaymkm"
   ],
   "names": [
     "assertions.eth"
   ],
   "name": "Assertions",
-  "evaluated": "2026-11-09",
+  "evaluated": "2026-11-11",
   "trustlessity": {
     "level": 3,
     "privacy": false
