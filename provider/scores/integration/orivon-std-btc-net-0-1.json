@@ -4,12 +4,12 @@
     "integration:builtin:std-btc_net_0_1"
   ],
   "name": "Bitcoin network standard (BTC_NET_0_1)",
-  "evaluated": "2026-11-06",
+  "evaluated": "2026-11-10",
   "trustlessity": {
     "level": 4,
     "privacy": true
   },
-  "summary": "The row for the BTC_NET_0_1 standard, which defines reading the Bitcoin chain and sending a transaction already signed. A standard defines a code without answering it: the row runs nothing, holds no state and makes no connection, and whatever answers the code is judged on its own row. Open source, and the definition is a JSON file in Orivon's source. Judged here by its publisher.",
+  "summary": "Defines reads of the Bitcoin chain (coins, transactions, address history, fees, height, spends, activity) and broadcasting an already signed transaction, with a READONLY profile that keeps only the reads. The row runs nothing and names no server. A node that answers learns every address asked about, and a broadcast shows the transaction. The definition asks for no proof of any answer, so a provider could lie about balances or fees and nothing here would show it; each provider is judged on its own row. Level 4 with privacy: a pure definition. Judged here by its publisher.",
   "evidence": [
     "https://github.com/OrivonBrowser/orivon-mvp"
   ]

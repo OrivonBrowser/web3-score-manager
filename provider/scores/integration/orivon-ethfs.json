@@ -4,12 +4,12 @@
     "integration:builtin:ethfs"
   ],
   "name": "Orivon's EthFS node",
-  "evaluated": "2026-11-06",
+  "evaluated": "2026-11-10",
   "trustlessity": {
     "level": 4,
-    "privacy": false
+    "privacy": true
   },
-  "summary": "The node Orivon runs to read files kept on Ethereum in EthFS and to store them for a site that is allowed to. Open source. It holds no key and opens no connection: reads go through the Ethereum nodes the person chose, and every byte is held against the address that names it, so a node can withhold a file and cannot change it. A filename becomes an address by a contract read: proven by the light client, the node's word if one that proves nothing is used. A store is one sheet, signed only on confirm. Not private: the node that answers sees which files are read. Judged here by its publisher.",
+  "summary": "Reads and stores EthFS files on Ethereum. A read finds the File in the FileStore at its fixed address and holds every chunk against the address that names it, so a wrong byte is refused; chain answers come from the Ethereum code the person chose (judged on its own row). A store is signed by the wallet after a sheet that says the files are public for ever, then sent in order as the wallet returned it. It opens no connection, holds no key and runs no outside code. Level 4. Judged here by its publisher.",
   "evidence": [
     "https://github.com/OrivonBrowser/orivon-mvp"
   ]

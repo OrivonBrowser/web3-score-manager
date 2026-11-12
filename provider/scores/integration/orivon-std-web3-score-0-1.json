@@ -4,12 +4,12 @@
     "integration:builtin:std-web3_score_0_1"
   ],
   "name": "Web3 Score standard (WEB3_SCORE_0_1)",
-  "evaluated": "2026-11-06",
+  "evaluated": "2026-11-10",
   "trustlessity": {
     "level": 4,
     "privacy": true
   },
-  "summary": "The row for the WEB3_SCORE_0_1 standard, which defines asking the Web3 Score providers the person has what they say about other sites. A standard defines a code without answering it: the row runs nothing, holds no state and makes no connection, and whatever answers the code is judged on its own row. Open source, and the definition is a JSON file in Orivon's source. Judged here by its publisher.",
+  "summary": "A definition of WEB3_SCORE_0_1: one read function, websiteScore, that takes the address a page would open (ipfs://, a .eth name or a bare name) and answers a provider's name and a Website level from 1 to 4, or null. The address goes to the Web3 Score providers the person has on, and a name is resolved first. The definition says a 3 or 4 is answered only for a name the evaluation lists or the content's own address, and null when a provider is down; it cannot check that a level is right. The row names no provider. Level 4 with privacy as a definition. Judged here by its publisher.",
   "evidence": [
     "https://github.com/OrivonBrowser/orivon-mvp"
   ]

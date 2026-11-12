@@ -4,12 +4,12 @@
     "integration:builtin:direct-transfer"
   ],
   "name": "Direct transfer",
-  "evaluated": "2026-11-05",
+  "evaluated": "2026-11-10",
   "trustlessity": {
-    "level": 3,
-    "privacy": false
+    "level": 4,
+    "privacy": true
   },
-  "summary": "Pays the same asset from the person to the payee with nothing in between: Ether, the pinned tokens and Bitcoin. Open source, holds no one's funds and signs locally. It is 3, not 4: the Ethereum legs read through the light client, but the Bitcoin leg builds its fee and outputs from a public Esplora server whose answers nothing checks. Raised to 4 when that read is checked. Judged here by its publisher.",
+  "summary": "The built-in payment of the same coin or pinned token from the person to the payee. It builds the transfer itself, reads back the signed bytes or Bitcoin PSBT and refuses any that pay another amount, payee or fee, and ends only when a block shows it. Balances, fees, receipts and sends come through the Ethereum and Bitcoin codes, or the built-in light client, from the provider the person chose, judged on its own row. It reaches no server of its own and holds no funds or keys. A test-network receipt is unchecked only with the developer test-network option on. Judged here by its publisher.",
   "evidence": [
     "https://github.com/OrivonBrowser/orivon-mvp"
   ]

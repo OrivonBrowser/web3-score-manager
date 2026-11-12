@@ -4,12 +4,12 @@
     "integration:builtin:std-thornode_net_0_1"
   ],
   "name": "THORChain network standard (THORNODE_NET_0_1)",
-  "evaluated": "2026-11-06",
+  "evaluated": "2026-11-10",
   "trustlessity": {
     "level": 4,
     "privacy": true
   },
-  "summary": "The row for the THORNODE_NET_0_1 standard, which defines quoting a swap, reading the vaults and following a deposit on THORChain; only the browser's own payments ask for it. A standard defines a code without answering it: the row runs nothing, holds no state and makes no connection, and whatever answers the code is judged on its own row. Open source, and the definition is a JSON file in Orivon's source. Judged here by its publisher.",
+  "summary": "A definition of THORNODE_NET_0_1, marked browser-only: a site's ask is answered as for an unknown code. Groups quote and status (risk 2) give the browser's own payments a swap quote (amount out, fees, the vault and router to send to), the vault of each chain and a deposit's status. The definition calls a deposit's status the node's word, to be checked on the destination chain; it cannot check a quote or a vault address, which is where a swap is paid to. The row names no node or address. Level 4 with privacy as a definition. Judged here by its publisher.",
   "evidence": [
     "https://github.com/OrivonBrowser/orivon-mvp"
   ]

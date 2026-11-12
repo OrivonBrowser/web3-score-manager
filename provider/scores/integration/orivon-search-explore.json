@@ -4,14 +4,14 @@
     "integration:builtin:search-web3-explore"
   ],
   "name": "Explore",
-  "evaluated": "2026-11-05",
+  "evaluated": "2026-11-10",
   "trustlessity": {
     "level": 4,
-    "privacy": false
+    "privacy": true
   },
-  "summary": "The Web3 search row: a typed query opens Explore, the directory of Web3 sites, at ipfs://explore.orivonstack.eth, a page checked against its address. It takes Explore's level. Not private: the IPFS request names the page asked for and shows this computer's address to the peers that serve it. Judged here by its publisher.",
+  "summary": "A search row that opens Orivon Explore, a static directory of Web3 sites with their Web3 Scores, at explore.orivonstack.eth, with the typed words after the # of the address so they stay on this computer. The page asks no other party for anything and loads no outside code, image or font. It reads a Web3 Score through the browser only when the visitor grants it, from the provider the person chose, judged on its own row, and acts only on a 3 or 4 for a site it observed at 2. Its listings and Orivon-app marks are its publisher's own data, which nothing checks. Judged here by its publisher.",
   "evidence": [
     "https://github.com/OrivonBrowser/orivon-mvp",
-    "https://github.com/OrivonBrowser/orivon-ports/tree/main/apps/explore"
+    "https://github.com/OrivonBrowser/orivon-ports"
   ]
 }

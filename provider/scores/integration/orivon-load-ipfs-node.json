@@ -4,12 +4,12 @@
     "integration:builtin:load-ipfs-node"
   ],
   "name": "Load from Orivon's IPFS node",
-  "evaluated": "2026-11-05",
+  "evaluated": "2026-11-10",
   "trustlessity": {
-    "level": 4,
+    "level": 3,
     "privacy": false
   },
-  "summary": "The row of Load sites from that loads ipfs content through Orivon's IPFS node, on by default. Every block is checked against its CID, so the peers that send it can slow a load and never change the site. Open source. Not private: peers see this computer's address and the CIDs it asks for. Judged here by its publisher.",
+  "summary": "Loads a site's IPFS records through the node on this computer: blocks and IPNS records are read from its loopback address and every block is hashed against its content id, so the node is trusted for availability only. It asks no standard code. Beyond the node it reads DNSLink TXT records over DNS-over-HTTPS from public resolvers, which nothing authenticates, and by default asks a public name service for IPNS records, taking any signed one not older than one already seen. Not 4 for those reads, which also show the resolvers and the service what is looked up. Judged here by its publisher.",
   "evidence": [
     "https://github.com/OrivonBrowser/orivon-mvp"
   ]

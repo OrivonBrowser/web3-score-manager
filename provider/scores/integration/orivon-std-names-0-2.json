@@ -9,7 +9,7 @@
     "level": 4,
     "privacy": true
   },
-  "summary": "The row for the NAMES_0_2 standard, which defines looking up what a name points to, and changing where the person's own names point. A standard defines a code without answering it: the row runs nothing, holds no state and makes no connection, and whatever answers the code is judged on its own row. Open source, and the definition is a JSON file in Orivon's source. Judged here by its publisher.",
+  "summary": "A definition of NAMES_0_2: resolve as in NAMES_0_1, plus a manage group (risk 8) with setRecord, which asks to point a name's contenthash at an ipfs://, ipns:// or bzz:// address. The definition says the person confirms each change in the wallet's own sheet and the site never sees a key or signature; it cannot make a resolver do so. A resolver sees the names asked, and its proven flag is its own word. The row names no resolver and holds no key, code or address. Level 4 with privacy as a definition. Judged here by its publisher.",
   "evidence": [
     "https://github.com/OrivonBrowser/orivon-mvp"
   ]

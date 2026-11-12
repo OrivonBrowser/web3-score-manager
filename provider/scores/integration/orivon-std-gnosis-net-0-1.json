@@ -9,7 +9,7 @@
     "level": 4,
     "privacy": true
   },
-  "summary": "The row for the GNOSIS_NET_0_1 standard, which defines reading Gnosis Chain and sending a transaction already signed. A standard defines a code without answering it: the row runs nothing, holds no state and makes no connection, and whatever answers the code is judged on its own row. Open source, and the definition is a JSON file in Orivon's source. Judged here by its publisher.",
+  "summary": "Defines 8 reads of Gnosis Chain (id 100, xDAI as hexadecimal wei) and broadcasting a signed transaction, with a READONLY profile. A call follows no CCIP-Read, so a revert asking for an offchain lookup is answered as a revert. The row runs nothing and names no node. It says a verified node proves each log against its block's receipt but not that the list is complete, and cannot prove a block older than 8191 blocks; whether a node proves anything is its own row's matter. Level 4 with privacy: a pure definition. Judged here by its publisher.",
   "evidence": [
     "https://github.com/OrivonBrowser/orivon-mvp"
   ]
