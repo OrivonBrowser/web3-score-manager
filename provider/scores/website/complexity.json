@@ -1,25 +1,33 @@
 {
   "subject": "website",
   "ids": [
-    "cid:bafybeiedtlxiqby25jh4j5x64cgij6ym6eaacr6entjmz2lc4dklgzk5mm"
+    "cid:bafybeiedtlxiqby25jh4j5x64cgij6ym6eaacr6entjmz2lc4dklgzk5mm",
+    "cid:bafybeig3zbgrjubi5o4cxjcjyxxttht72maanrd62rdzatdrfz6nsm7cja"
   ],
   "names": [
     "complexity.eth"
   ],
   "name": "Feng Ling",
-  "evaluated": "2026-10-18",
+  "evaluated": "2026-11-08",
   "trustlessity": {
-    "level": 3,
-    "privacy": false
+    "level": 4,
+    "privacy": true
   },
-  "summary": "Feng Ling's academic site, one hand-written page served as written, so its source is public (no licence file). It runs no third-party code, which is Level 3. It is not Level 4: when it opens it loads its fonts from Google Fonts.",
-  "connections": [
+  "summary": "Feng Ling's academic site: hand-written HTML pages served as written, so the source is public (no licence file). It runs no third-party code and, when it opens, reaches only its own files (fonts and KaTeX styles are now bundled). It has no server-backed actions. External links only open when clicked. Level 4 with privacy.",
+  "operations": [
     {
-      "name": "Google Fonts",
+      "name": "Read papers and figures",
       "trustlessity": {
-        "level": 1
+        "level": 5
       },
-      "note": "Fetched when the page opens; tells Google the visit."
+      "note": "Static pages, images and local scripts for diagrams; nothing is fetched from elsewhere."
+    },
+    {
+      "name": "Play the training video",
+      "trustlessity": {
+        "level": 5
+      },
+      "note": "Video is a local file, loaded only when the reader presses play."
     }
   ],
   "evidence": [
