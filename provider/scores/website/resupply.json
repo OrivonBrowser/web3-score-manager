@@ -5,32 +5,40 @@
     "cid:bafybeie3icwmemukiamudif27csgpziz3cwtinnma6eahfwduid6yazoq4",
     "cid:bafybeiaexvjsncblykeco4h4zvcqkqwqjn72jhqe2rtx2evusuokvxkhde",
     "cid:bafybeigges7tdswqgllbl4ilpyd23kmr4wm27fr4kmsu6mha4r2v2cmnpm",
-    "cid:bafybeidpvpccgdjwtsdweyl6hrsbilq5ku2z5y5oramj7ezq33gdihkmkm"
+    "cid:bafybeidpvpccgdjwtsdweyl6hrsbilq5ku2z5y5oramj7ezq33gdihkmkm",
+    "cid:bafybeia2p4224i6ii7uj3x5dwo7iusptxl6v5vahm2rcgjdamlsma5ctha"
   ],
   "names": [
     "resupply.eth"
   ],
   "name": "Resupply",
-  "evaluated": "2026-11-08",
+  "evaluated": "2026-11-12",
   "trustlessity": {
     "level": 2,
     "privacy": false
   },
-  "summary": "Resupply's stablecoin app. No public source was found for this frontend: the project's public repository holds its smart contracts only, so it stays at Level 2. When it opens it reads chain data from a dRPC endpoint, prices from DefiLlama and Curve's API, and contacts WalletConnect's servers. What it reaches after a wallet connects was not checked.",
+  "summary": "Resupply's stablecoin app. No public source was found for this frontend: the project's public repository holds its smart contracts only, so it stays at Level 2. When it opens it reads chain data from a dRPC endpoint and contacts WalletConnect's servers. The liquidity pools page also reads yields from Yearn's Kong API and price data from DefiLlama and Curve. What it reaches after a wallet connects was not checked.",
   "connections": [
     {
-      "name": "RPC endpoint (dRPC: lb.drpc.org, lb.drpc.live)",
+      "name": "RPC endpoint (dRPC: lb.drpc.live)",
       "trustlessity": {
         "level": 1
       },
-      "note": "Read without a light client."
+      "note": "Read without a light client. Polled about once a second from page open."
     },
     {
       "name": "Price APIs (DefiLlama's coins.llama.fi, api.curve.finance)",
       "trustlessity": {
         "level": 1
       },
-      "note": "Centralised sources, read when the page opens."
+      "note": "Centralised sources named in the build's code; not requested in the 20-second open this time."
+    },
+    {
+      "name": "Yearn Kong API (kong.yearn.fi)",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "New in this build. The liquidity pools page fetches vault yield data from it. Data only, no code. Not requested at page open."
     },
     {
       "name": "WalletConnect's servers (pulse.walletconnect.org, api.web3modal.org)",
