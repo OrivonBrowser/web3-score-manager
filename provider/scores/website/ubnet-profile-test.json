@@ -1,25 +1,27 @@
 {
   "subject": "website",
   "ids": [
-    "cid:bafkreiacshbgj264qfhnctakvrvi423zyt4bntmjd5zjjfpkxxrb5uo3d4"
+    "cid:bafkreiacshbgj264qfhnctakvrvi423zyt4bntmjd5zjjfpkxxrb5uo3d4",
+    "cid:bafybeicrp54abqe3lyydr3ihhijvflelnvv3n556jshuqfyqyp23tnxkoi"
   ],
   "names": [
     "123test.ubnet.eth"
   ],
-  "name": "UBNet profile page (test template)",
-  "evaluated": "2026-10-23",
+  "name": "SEOskills agent discovery test page",
+  "evaluated": "2026-11-09",
   "trustlessity": {
-    "level": 2,
-    "privacy": false
+    "level": 4,
+    "privacy": true
   },
-  "summary": "A UBNet profile page whose root is a short loader. As it opens it fetches a pointer from ubnet.work, then fetches the template that pointer names from a host the loader does not fix, and runs that template's scripts, so the code that draws the profile is chosen by ubnet.work each time and cannot be read from this build. No public source for that template was found. Level 2: third-party code runs on its own, with no consent, and the page cannot be checked beyond the loader itself.",
-  "connections": [
+  "summary": "A static page of plain HTML and CSS with no scripts, no external addresses and no network request beyond its own files. Plain HTML served as written is its own public source, and it runs no external code. Nothing it does relies on a server, and it shows the visitor to no one, so it is Level 4 with privacy. Text meant for AI agents was ignored.",
+  "operations": [
     {
-      "name": "ubnet.work template pointer and template",
+      "name": "Read the static page text",
       "trustlessity": {
-        "level": 1
+        "level": 4,
+        "privacy": true
       },
-      "note": "Fetched as the page opens; the answer chooses the code that runs, and ubnet.work sees the visitor's IP address."
+      "note": "The page only displays text and links to three markdown files in the same build. It has no scripts, forms or buttons that act."
     }
   ]
 }
