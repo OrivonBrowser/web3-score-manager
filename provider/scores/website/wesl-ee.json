@@ -1,13 +1,14 @@
 {
   "subject": "website",
   "ids": [
-    "cid:bafybeidu6pohujkjx3kbgzkonugipfhe57hxyedt5pbyiy52oxxddefqgm"
+    "cid:bafybeidu6pohujkjx3kbgzkonugipfhe57hxyedt5pbyiy52oxxddefqgm",
+    "cid:bafybeid32bixfoda36kj33uwb6w72ojto5njv3pmzhi77xndxktbwrsfxe"
   ],
   "names": [
     "wesl-ee.eth"
   ],
   "name": "wesl-ee wiki",
-  "evaluated": "2026-10-18",
+  "evaluated": "2026-11-16",
   "trustlessity": {
     "level": 2,
     "privacy": false
