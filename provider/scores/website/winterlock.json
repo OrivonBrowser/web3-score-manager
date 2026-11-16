@@ -2,13 +2,14 @@
   "subject": "website",
   "ids": [
     "cid:bafybeiabk3zuqfiwdnisnghngeic7ifsaoythm2mmbmgdytblpnazbgd6m",
-    "cid:bafybeifsqwxynglyqjaybl4dk3do5sotqdxpcaf7nwgc23fnfkytg5nniq"
+    "cid:bafybeifsqwxynglyqjaybl4dk3do5sotqdxpcaf7nwgc23fnfkytg5nniq",
+    "cid:bafybeihmdhupbupfyqro4j5lvn4lkbsd2vrog7w5mekek6bjdoovnchun4"
   ],
   "names": [
     "winterlock.eth"
   ],
   "name": "Winterlock",
-  "evaluated": "2026-11-06",
+  "evaluated": "2026-11-16",
   "trustlessity": {
     "level": 4,
     "privacy": true
