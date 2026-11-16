@@ -3,7 +3,8 @@
   "ids": [
     "cid:bafybeiabk3zuqfiwdnisnghngeic7ifsaoythm2mmbmgdytblpnazbgd6m",
     "cid:bafybeifsqwxynglyqjaybl4dk3do5sotqdxpcaf7nwgc23fnfkytg5nniq",
-    "cid:bafybeihmdhupbupfyqro4j5lvn4lkbsd2vrog7w5mekek6bjdoovnchun4"
+    "cid:bafybeihmdhupbupfyqro4j5lvn4lkbsd2vrog7w5mekek6bjdoovnchun4",
+    "cid:bafybeicillwjovwtq2e5cykwavlnlmhtf4j4zqepuq4yqdy2buxj3mcpxy"
   ],
   "names": [
     "winterlock.eth"
@@ -11,11 +12,51 @@
   "name": "Winterlock",
   "evaluated": "2026-11-16",
   "trustlessity": {
-    "level": 4,
-    "privacy": true
+    "level": 3,
+    "privacy": false
   },
-  "summary": "Winterlock, a landing page for hash-based owners of Safe accounts: one static HTML file with two self-hosted fonts and an in-browser hash-chain demo, open source in johba37/winterlock.eth (no licence file). It runs no third-party code and loads only its own files; the forum, GitHub, X, Safe app and Etherscan links are ordinary links.",
+  "summary": "Winterlock, a landing page for hash-based owners of Safe accounts, now with a Safe exposure check at /check/. Open source in johba37/winterlock.eth (no licence file seen); runs no third-party code and loads only its own files. It is not Level 4: the check sends the Safe address to RPC endpoints and Safe's Transaction Service, and nothing verifies their answers.",
+  "operations": [
+    {
+      "name": "Landing page and hash-chain demo",
+      "trustlessity": {
+        "level": 4
+      },
+      "note": "Static HTML with self-hosted fonts and images; the demo runs in the browser and makes no request."
+    },
+    {
+      "name": "Safe exposure check: read owners, threshold, modules, balances",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Reads chain state through a plain JSON-RPC endpoint with no light client, so the data is not verified."
+    },
+    {
+      "name": "Safe exposure check: read confirmations from Transaction Service",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Reads signature history from Safe's backend API; the answer is trusted, not checked."
+    }
+  ],
+  "connections": [
+    {
+      "name": "Public JSON-RPC endpoints (publicnode, Base, Arbitrum, OP, Gnosis)",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Only after the user presses Check. The user can change the endpoint. The endpoint sees the Safe address and the visitor's IP."
+    },
+    {
+      "name": "api.safe.global Transaction Service",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Only after the user presses Check, when an owner is a key with no transactions. A centralised API that sees the Safe address and IP."
+    }
+  ],
   "evidence": [
-    "https://github.com/johba37/winterlock.eth"
+    "https://github.com/johba37/winterlock.eth",
+    "https://github.com/johba37/winterlock.eth/tree/main/exposure"
   ]
 }
