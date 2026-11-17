@@ -3,13 +3,14 @@
   "ids": [
     "cid:bafybeidfufcplvlrscs5mndo2c62kvex6ai7vyktyobynl6c32q6pe6u7a",
     "cid:bafybeid6o44bs7njsnewhtouaruxd4fv3wxtwh2k3xa7aiqzawntyeex3a",
-    "cid:bafybeihopriubb2rw7hxpfecbsxgzjmwlql556itofn3mdxw2uwu25pjfq"
+    "cid:bafybeihopriubb2rw7hxpfecbsxgzjmwlql556itofn3mdxw2uwu25pjfq",
+    "cid:bafybeifziiwc3xvlucsqqhvlhn2xorg6lkatluqwqvqd3mrlqxm3qhx26y"
   ],
   "names": [
     "ndeto.eth"
   ],
   "name": "Martin Ndeto",
-  "evaluated": "2026-11-16",
+  "evaluated": "2026-11-17",
   "trustlessity": {
     "level": 2,
     "privacy": false
