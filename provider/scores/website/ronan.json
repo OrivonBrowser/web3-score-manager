@@ -3,13 +3,14 @@
   "ids": [
     "cid:bafybeicdp4k4ygepdb3se65nc3dccpi3kj5wsjf22f23z56qfi3untvnma",
     "cid:bafybeihh3yeubki552vt2oulksd25m6v6wkzy6zahuxrmweibfdgs6z4py",
-    "cid:bafybeic4drugqnxqlfhjfgb6vly3h4d4h75ccqjca3pq3tzjpallqzirui"
+    "cid:bafybeic4drugqnxqlfhjfgb6vly3h4d4h75ccqjca3pq3tzjpallqzirui",
+    "cid:bafybeihxr7lrfh5l444nxzmavxyt7m73bhlyu577tdyknhw5ij4ezsh77q"
   ],
   "names": [
     "ronan.eth"
   ],
   "name": "Ronan Sandford",
-  "evaluated": "2026-10-27",
+  "evaluated": "2026-11-17",
   "trustlessity": {
     "level": 4,
     "privacy": true
