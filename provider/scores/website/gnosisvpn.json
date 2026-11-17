@@ -1,13 +1,14 @@
 {
   "subject": "website",
   "ids": [
-    "cid:bafybeih5gihptqlszwq2mdfuih3mllbwhu4a3gsvp57ywtmiexbjlemsvy"
+    "cid:bafybeih5gihptqlszwq2mdfuih3mllbwhu4a3gsvp57ywtmiexbjlemsvy",
+    "cid:bafybeihfbb5c624r25mjodwwacewxmq5mgxofvpslan32t6tcmnze6kb6a"
   ],
   "names": [
     "docs.vpn.gnosis.eth"
   ],
   "name": "Gnosis VPN documentation",
-  "evaluated": "2026-10-05",
+  "evaluated": "2026-11-17",
   "trustlessity": {
     "level": 3,
     "privacy": false
