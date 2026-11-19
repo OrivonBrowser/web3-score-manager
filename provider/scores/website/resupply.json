@@ -7,13 +7,14 @@
     "cid:bafybeigges7tdswqgllbl4ilpyd23kmr4wm27fr4kmsu6mha4r2v2cmnpm",
     "cid:bafybeidpvpccgdjwtsdweyl6hrsbilq5ku2z5y5oramj7ezq33gdihkmkm",
     "cid:bafybeia2p4224i6ii7uj3x5dwo7iusptxl6v5vahm2rcgjdamlsma5ctha",
-    "cid:bafybeid72kht7jp64noe45u2iu7pxbuamzfcqka6nqnjn7hlzv6xqlpage"
+    "cid:bafybeid72kht7jp64noe45u2iu7pxbuamzfcqka6nqnjn7hlzv6xqlpage",
+    "cid:bafybeieo3ds5a47d7zd4uyndavu3smjfi5o2nx2xrcqafi2bgv7xadsrwe"
   ],
   "names": [
     "resupply.eth"
   ],
   "name": "Resupply",
-  "evaluated": "2026-11-18",
+  "evaluated": "2026-11-19",
   "trustlessity": {
     "level": 2,
     "privacy": false
@@ -32,7 +33,7 @@
       "trustlessity": {
         "level": 1
       },
-      "note": "Centralised sources named in the build's code. The liquidity pools page fetches Curve Lend market data from prices.curve.finance (new in this build); not requested in the 20-second open."
+      "note": "Centralised sources named in the build's code. The liquidity pools page fetches Curve Lend market data from prices.curve.finance; not requested in the 20-second open."
     },
     {
       "name": "Yearn Kong API (kong.yearn.fi)",
