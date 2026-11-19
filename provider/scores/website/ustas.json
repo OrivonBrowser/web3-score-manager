@@ -1,16 +1,35 @@
 {
   "subject": "website",
   "ids": [
-    "cid:bafybeidunuaxw2igocrxcfzg7x4ubuffbdvvyukynqc3icb5nxdq2ufkdm"
+    "cid:bafybeidunuaxw2igocrxcfzg7x4ubuffbdvvyukynqc3icb5nxdq2ufkdm",
+    "cid:bafybeihfje5z26opttew73nzertbbo246myu3542cbbkfiex4jjanzaafq"
   ],
   "names": [
     "ustas.eth"
   ],
   "name": "ustas",
-  "evaluated": "2026-10-18",
+  "evaluated": "2026-11-19",
   "trustlessity": {
     "level": 2,
     "privacy": false
   },
-  "summary": "ustas, a personal notebook built with Hugo. Its home page loads only the site's own files, but its three scripts are minified with no source map and no public repository for the site was found, so public source is not established and it stays at Level 2."
+  "summary": "ustas, a personal notebook built with Hugo. Its home page loads only the site's own files, but its three scripts are minified with no source map and no public repository for the site was found, so public source is not established and it stays at Level 2.",
+  "operations": [
+    {
+      "name": "Read the notebook, posts and games",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Static pages and minified scripts (site, neighbours, labyrinth) served from the build's own files. No public source for the site root, so the code is unverifiable."
+    }
+  ],
+  "connections": [
+    {
+      "name": "Own files by CID",
+      "trustlessity": {
+        "level": 2
+      },
+      "note": "Every request in the 20-second probe was served from the build's own files; nothing was blocked."
+    }
+  ]
 }
