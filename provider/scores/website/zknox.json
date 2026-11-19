@@ -1,13 +1,14 @@
 {
   "subject": "website",
   "ids": [
-    "cid:bafybeielcklsdqcqp2echlwrbzgev6lbuvzueqtdcjwqoldbw4pfup2mfe"
+    "cid:bafybeielcklsdqcqp2echlwrbzgev6lbuvzueqtdcjwqoldbw4pfup2mfe",
+    "cid:bafybeicisrmzqmnin7u4lxlyds54jwybo2yyznn3glfbp6jypbtpiry6x4"
   ],
   "names": [
     "zknox.eth"
   ],
   "name": "ZKNox Blog",
-  "evaluated": "2026-10-18",
+  "evaluated": "2026-11-19",
   "trustlessity": {
     "level": 3,
     "privacy": false
