@@ -5,13 +5,14 @@
     "cid:bafybeiedl3s5lt2pewxdalsu4kjze2ckjm353fsjktljuwi2w4hpypv5la",
     "cid:bafybeibik6xtibjgqgabnrudv6j3xs5aoxditlsqdbi7qkc4ontqsdiqvm",
     "cid:bafybeigr73p3y6vlrbif6rxf2jg3qqgpx5rxexnaeu74i3srwbbzsajuqm",
-    "cid:bafybeich7gixw7f2uzqp5qg5mw7aehavqjhep3w6gsota7mdig4qfjxgdq"
+    "cid:bafybeich7gixw7f2uzqp5qg5mw7aehavqjhep3w6gsota7mdig4qfjxgdq",
+    "cid:bafybeifyuy3ctewfyodpib7rjl5ldni2ui75a4ggyi3ks3cl5zqo2qpvua"
   ],
   "names": [
     "gnoma.eth"
   ],
   "name": "Gnoma",
-  "evaluated": "2026-11-10",
+  "evaluated": "2026-11-20",
   "trustlessity": {
     "level": 2,
     "privacy": false
@@ -39,7 +40,7 @@
       "trustlessity": {
         "level": 1
       },
-      "note": "Overview and recent-transactions data fetched when the page opens, and retried."
+      "note": "Overview, recent-transactions and name data fetched when the page opens, and retried."
     },
     {
       "name": "Public RPC endpoints (1rpc.io, dRPC, PublicNode and others)",
