@@ -2,13 +2,14 @@
   "subject": "website",
   "ids": [
     "cid:bafybeidunuaxw2igocrxcfzg7x4ubuffbdvvyukynqc3icb5nxdq2ufkdm",
-    "cid:bafybeihfje5z26opttew73nzertbbo246myu3542cbbkfiex4jjanzaafq"
+    "cid:bafybeihfje5z26opttew73nzertbbo246myu3542cbbkfiex4jjanzaafq",
+    "cid:bafybeietu32rvryuwhkht3u2vozhyzkj3xzlqcoduefqkx4wrdozhz3hmi"
   ],
   "names": [
     "ustas.eth"
   ],
   "name": "ustas",
-  "evaluated": "2026-11-19",
+  "evaluated": "2026-11-20",
   "trustlessity": {
     "level": 2,
     "privacy": false
