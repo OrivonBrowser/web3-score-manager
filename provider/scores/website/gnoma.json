@@ -7,13 +7,14 @@
     "cid:bafybeigr73p3y6vlrbif6rxf2jg3qqgpx5rxexnaeu74i3srwbbzsajuqm",
     "cid:bafybeich7gixw7f2uzqp5qg5mw7aehavqjhep3w6gsota7mdig4qfjxgdq",
     "cid:bafybeifyuy3ctewfyodpib7rjl5ldni2ui75a4ggyi3ks3cl5zqo2qpvua",
-    "cid:bafybeiajk63qyyldjpbaakcb3qr2bx6xyzj2szcidhk7dpprqpbetqxr3q"
+    "cid:bafybeiajk63qyyldjpbaakcb3qr2bx6xyzj2szcidhk7dpprqpbetqxr3q",
+    "cid:bafybeibpqndnxazj4vyt6cm7ojx3szmwxbqb6ywl6djwbwfsvgrmyqewg4"
   ],
   "names": [
     "gnoma.eth"
   ],
   "name": "Gnoma",
-  "evaluated": "2026-11-20",
+  "evaluated": "2026-11-21",
   "trustlessity": {
     "level": 2,
     "privacy": false
