@@ -1,18 +1,42 @@
 {
   "subject": "website",
   "ids": [
-    "cid:bafybeiakr4pr4yhamlq2wn7ogzefy7pg27wv75iqgzo7dbpjjpatjmpnlm"
+    "cid:bafybeiakr4pr4yhamlq2wn7ogzefy7pg27wv75iqgzo7dbpjjpatjmpnlm",
+    "cid:bafybeiesdwxkwepkfe55egwf6sfxkspoidgrrpuz6gzhpv5qmzi74mjbmy"
   ],
   "names": [
     "yieldbasis.eth"
   ],
   "name": "Yield Basis",
-  "evaluated": "2026-10-18",
+  "evaluated": "2026-11-21",
   "trustlessity": {
     "level": 2,
     "privacy": false
   },
-  "summary": "The Yield Basis app for depositing BTC or ETH into leveraged Curve liquidity positions. Its bundle is minified with no source map, and the project's public repositories hold contracts and research, not this app, so it stays at Level 2. When it opens it also reads Ethereum through Ankr, prices from DefiLlama and token images from CoinGecko, and loads Google Fonts.",
+  "summary": "The Yield Basis app for depositing BTC or ETH into leveraged Curve liquidity positions. Its bundle is minified with no source map, and no public repository of this app is named in its files, so it stays at Level 2. When it opens it reads Ethereum through Ankr and dRPC and loads Google Fonts; prices, market data and token images come from other servers when used.",
+  "operations": [
+    {
+      "name": "Browse markets and protocol metrics",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Market data comes from api.yieldbasis.com and the chain through RPC servers, with no light client or check."
+    },
+    {
+      "name": "Read token prices",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Prices come from DefiLlama (coins.llama.fi) and Curve (prices.curve.finance), which nothing checks."
+    },
+    {
+      "name": "Deposit, lock, vote and govern through a connected wallet",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Transactions are built by a minified bundle with no public source for this app."
+    }
+  ],
   "connections": [
     {
       "name": "Ankr RPC (rpc.ankr.com)",
@@ -22,25 +46,11 @@
       "note": "Chain reads when the page opens, without a light client."
     },
     {
-      "name": "DefiLlama prices (coins.llama.fi)",
+      "name": "dRPC (lb.drpc.org)",
       "trustlessity": {
         "level": 1
       },
-      "note": "Price lookup when the page opens."
-    },
-    {
-      "name": "CoinGecko token images (assets.coingecko.com)",
-      "trustlessity": {
-        "level": 1
-      },
-      "note": "Fetched when the page opens."
-    },
-    {
-      "name": "Yield Basis API and indexer (api.yieldbasis.com, indexer.hyperindex.xyz)",
-      "trustlessity": {
-        "level": 1
-      },
-      "note": "Named in the bundle for market data."
+      "note": "Second Ethereum RPC endpoint, called alongside Ankr when the page opens."
     },
     {
       "name": "Google Fonts",
@@ -48,6 +58,27 @@
         "level": 1
       },
       "note": "Fetched when the page opens; tells Google the visit."
+    },
+    {
+      "name": "Yield Basis API (api.yieldbasis.com)",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Named in the bundle for market data."
+    },
+    {
+      "name": "DefiLlama and Curve prices (coins.llama.fi, prices.curve.finance)",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Named in the bundle for price lookups; not seen in the first 20 seconds."
+    },
+    {
+      "name": "CoinGecko token images (assets.coingecko.com)",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Named in the bundle; not seen in the first 20 seconds."
     }
   ]
 }
