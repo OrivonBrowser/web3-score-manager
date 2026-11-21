@@ -4,12 +4,12 @@
     "integration:builtin:swarm-node"
   ],
   "name": "Orivon's Swarm node",
-  "evaluated": "2026-11-05",
+  "evaluated": "2026-11-10",
   "trustlessity": {
     "level": 4,
     "privacy": false
   },
-  "summary": "The Swarm node Orivon runs on this computer, the default source of bzz:// content and of .eth names that point at Swarm. Open source. Every chunk is checked against its address and a feed's newest update against its signature, so a peer cannot change what a site is. Not private: the Swarm network sees this computer's address and the references it asks for, unless the tunnel for nodes is on. Judged here by its publisher.",
+  "summary": "Orivon's WebAssembly build of the Ant Swarm light node (Apache-2.0), run on this computer with 250 peers found through Swarm's bootnodes. Orivon checks every chunk it returns against its address, so a peer can slow it and never change content. Its own key is sealed by the secret store, and a gate lets it send only a purchase of storage the person confirmed, to the postage contract. Nothing checks that the network keeps every chunk uploaded. Level 4: no server is relied on. Not private: peers see the IP address and the chunks asked. Judged here by its publisher.",
   "evidence": [
     "https://github.com/OrivonBrowser/orivon-mvp"
   ]

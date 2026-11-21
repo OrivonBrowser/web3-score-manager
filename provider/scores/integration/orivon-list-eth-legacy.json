@@ -4,12 +4,12 @@
     "integration:builtin:eth-legacy"
   ],
   "name": "Legacy path",
-  "evaluated": "2026-11-05",
+  "evaluated": "2026-11-10",
   "trustlessity": {
     "level": 4,
     "privacy": true
   },
-  "summary": "The Ethereum address list for m/44'/60'/0'/{i}: a derivation template that names the paths addresses are taken from and holds no address and no key. Open source and pure data, with no connection and no state of its own. Judged here by its publisher.",
+  "summary": "Address list for Ethereum, the legacy path: the template m/44'/60'/0'/{i}, nothing else. It holds no key and runs nothing that reaches a network: the Account's key and the Crypto's EIP-55 spelling make each address from a public key alone, with no read. Balances are read through the person's nodes, each judged on its own row. Level 4 with privacy because the list causes no connection and relies on no server or party. Judged here by its publisher.",
   "evidence": [
     "https://github.com/OrivonBrowser/orivon-mvp"
   ]

@@ -4,12 +4,12 @@
     "integration:builtin:std-eth_price_0_1"
   ],
   "name": "Ether price standard (ETH_PRICE_0_1)",
-  "evaluated": "2026-11-06",
+  "evaluated": "2026-11-10",
   "trustlessity": {
     "level": 4,
     "privacy": true
   },
-  "summary": "The row for the ETH_PRICE_0_1 standard, which defines the price of ether in a fiat currency. A standard defines a code without answering it: the row runs nothing, holds no state and makes no connection, and whatever answers the code is judged on its own row. Open source, and the definition is a JSON file in Orivon's source. Judged here by its publisher.",
+  "summary": "Defines one read: the price of ether in a fiat currency, answered as a decimal string with the time taken and how many independent sources agreed. A provider with several sources moves on after 5 seconds and takes the median; a single on-chain feed answers as 1 source and refuses an update over 2 hours old. The call carries only the currency. Nothing here checks the price or the source count, and the limits are marked provisional. The row connects to nothing. Level 4 with privacy: a pure definition. Judged here by its publisher.",
   "evidence": [
     "https://github.com/OrivonBrowser/orivon-mvp"
   ]

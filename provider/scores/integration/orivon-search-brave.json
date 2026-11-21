@@ -4,12 +4,12 @@
     "integration:builtin:search-brave"
   ],
   "name": "Brave Search",
-  "evaluated": "2026-11-05",
+  "evaluated": "2026-11-10",
   "trustlessity": {
     "level": 1,
     "privacy": false
   },
-  "summary": "The address-bar search row that sends each query to Brave Search's servers and opens the page they return. The page is Brave Search's, not pinned or checked by anything here, so what the person sees is whatever the service sends: Level 1, and not private, since Brave Search sees this computer's address and the query. Judged here by its publisher.",
+  "summary": "A pointer to Brave Search, a Web2 search service. Text typed in the address bar opens https://search.brave.com/search?q=<text> in the tab, so Brave's own servers and code answer and see the text and the connection's IP address; nothing checks the results. It has no suggestion address, so nothing leaves before Enter. Level 1, not 2: what it shows is Brave's pages, not content Orivon pins. Judged here by its publisher.",
   "evidence": [
     "https://github.com/OrivonBrowser/orivon-mvp"
   ]

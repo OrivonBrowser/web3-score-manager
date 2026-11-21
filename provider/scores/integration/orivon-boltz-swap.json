@@ -4,14 +4,13 @@
     "integration:builtin:boltz-swap"
   ],
   "name": "Boltz",
-  "evaluated": "2026-11-05",
+  "evaluated": "2026-11-10",
   "trustlessity": {
     "level": 3,
     "privacy": false
   },
-  "summary": "Pays a Lightning invoice from Bitcoin on chain through the Boltz service. Open source and signed locally. It is 3, not 4: the quote, the swap data and the address funds go to come from Boltz's server, which can refuse, go offline or state a wrong price, so the person relies on that party until the refund path has run. Judged here by its publisher.",
+  "summary": "The built-in Bitcoin-to-Lightning payment through Boltz. It reads the invoice itself, rebuilds the swap's Taproot scripts and address from its own keys and refuses any that differ, keeps it before coins are locked, and ends paid only when the preimage is on chain. Chain and Boltz reads go through the codes to the provider the person chose, judged on its own row. Not level 4: the payment depends on Boltz choosing to pay the invoice; if it does not, the person's own refund key takes the coins back after up to about 8 days. Boltz sees the invoice, so not private. Judged here by its publisher.",
   "evidence": [
-    "https://github.com/OrivonBrowser/orivon-mvp",
-    "https://github.com/BoltzExchange/boltz-backend"
+    "https://github.com/OrivonBrowser/orivon-mvp"
   ]
 }

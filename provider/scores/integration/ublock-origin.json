@@ -4,12 +4,12 @@
     "integration:builtin:ublock"
   ],
   "name": "uBlock Origin",
-  "evaluated": "2026-11-05",
+  "evaluated": "2026-11-10",
   "trustlessity": {
     "level": 3,
     "privacy": false
   },
-  "summary": "uBlock Origin, the content blocker Orivon installs into a new profile, pinned to one release. Open source (GPL-3.0) and it runs only its pinned code. It is 3, not 4: it acts on every page, and it downloads filter lists from servers nothing checks, so what it blocks follows lists others publish, and those servers see this computer's address. Judged here by its publisher.",
+  "summary": "uBlock Origin 1.75.0, a Chrome extension installed from its developer-signed release file, pinned by sha256 and never updated by Orivon. It blocks requests and changes pages it is allowed to see. It downloads filter lists from the hosts they name, which nothing here checks, so a list's host sees each request and its rules steer what is blocked or hidden. Level 3, not 4: that download relies on servers whose data nothing verifies. Judged here by its publisher.",
   "evidence": [
     "https://github.com/OrivonBrowser/orivon-mvp",
     "https://github.com/gorhill/uBlock"

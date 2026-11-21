@@ -4,12 +4,12 @@
     "integration:builtin:ask-magnet"
   ],
   "name": "Ask each time (magnet:)",
-  "evaluated": "2026-11-05",
+  "evaluated": "2026-11-10",
   "trustlessity": {
     "level": 4,
     "privacy": true
   },
-  "summary": "The row for magnet: links when the person has chosen no app for them: Orivon asks which app opens the link. Open source, and it makes no connection and sends the link nowhere until the person picks an app. Judged here by its publisher.",
+  "summary": "Built-in row for magnet: links while no app is chosen. It has no handler and connects to nothing: the browser's link gate refuses a link outside a strict magnet grammar, then asks the person, naming the page and the link, whether to hand it to an app that lists the scheme and holds a grant, or to the system's default app. What that app then does is the person's step outside Orivon and is not part of this row. Level 4 with privacy; it would drop if a link left unasked. Judged here by its publisher.",
   "evidence": [
     "https://github.com/OrivonBrowser/orivon-mvp"
   ]

@@ -4,12 +4,12 @@
     "integration:builtin:load-ethfs"
   ],
   "name": "Load from EthFS files on Ethereum",
-  "evaluated": "2026-11-06",
+  "evaluated": "2026-11-10",
   "trustlessity": {
     "level": 4,
-    "privacy": false
+    "privacy": true
   },
-  "summary": "The row of Load sites from that loads an ethfs record (an eth:// address, an eth:// contenthash or a content.ethfs record) through the Ethereum nodes the person chose, on by default. The address names the file by a pointer that commits to its bytes, and every chunk is hashed against it before any of it is shown, so an Ethereum node can withhold the file and cannot change it. Open source. Not private: the Ethereum node that answers sees which file is opened. Judged here by its publisher.",
+  "summary": "A source for names whose content is an EthFS file (an eth:// pointer). It reads the chunks through the Ethereum nodes the person ordered (answers from the code the person chose, judged on its own row) and holds each whole chunk against the address that names it before a byte is used; a part no address commits to is taken only from a node that proves its answers. Unpacking is size-bounded. It opens no connection, holds no key and runs nothing itself; the page it serves is judged as that site. Level 4. Judged here by its publisher.",
   "evidence": [
     "https://github.com/OrivonBrowser/orivon-mvp"
   ]

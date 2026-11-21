@@ -4,12 +4,12 @@
     "integration:builtin:ask-bitcoin"
   ],
   "name": "Ask each time (bitcoin:)",
-  "evaluated": "2026-11-05",
+  "evaluated": "2026-11-10",
   "trustlessity": {
     "level": 4,
     "privacy": true
   },
-  "summary": "The row for bitcoin: links when the person has chosen no app for them: Orivon asks which app opens the link. Open source, and it makes no connection and sends the link nowhere until the person picks an app. Judged here by its publisher.",
+  "summary": "Built-in row that, when chosen, makes bitcoin: links ask instead of opening the payment sheet. It has no handler and connects to nothing: the link gate refuses a link that is not a well-formed bitcoin: link or that hides a blank character in a value, then asks the person, naming the page and the link, whether to hand it to an app that lists the scheme or to the system's app. It reads no node or price. The app's own work is the person's step outside Orivon. Level 4 with privacy; it would drop if a link left unasked. Judged here by its publisher.",
   "evidence": [
     "https://github.com/OrivonBrowser/orivon-mvp"
   ]
