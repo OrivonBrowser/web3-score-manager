@@ -1,25 +1,49 @@
 {
   "subject": "website",
   "ids": [
-    "cid:bafkreiacshbgj264qfhnctakvrvi423zyt4bntmjd5zjjfpkxxrb5uo3d4"
+    "cid:bafkreiacshbgj264qfhnctakvrvi423zyt4bntmjd5zjjfpkxxrb5uo3d4",
+    "cid:bafybeiegavn5gome3bnrjkurdpfj55shwfq67sswdsptzoiqlwrgrq775e"
   ],
   "names": [
     "123test.ubnet.eth"
   ],
-  "name": "UBNet profile page (test template)",
-  "evaluated": "2026-10-23",
+  "name": "The OG Is Back (Linagee .og registrar)",
+  "evaluated": "2026-11-16",
   "trustlessity": {
-    "level": 2,
+    "level": 3,
     "privacy": false
   },
-  "summary": "A UBNet profile page whose root is a short loader. As it opens it fetches a pointer from ubnet.work, then fetches the template that pointer names from a host the loader does not fix, and runs that template's scripts, so the code that draws the profile is chosen by ubnet.work each time and cannot be read from this build. No public source for that template was found. Level 2: third-party code runs on its own, with no consent, and the page cannot be checked beyond the loader itself.",
-  "connections": [
+  "summary": "A React page to search and register .og names on the original Linagee contract on Ethereum. All code is its own, shipped with a source map that carries the sources, and it loads no external code. Level 3, not 4: it checks name availability through the public RPC ethereum-rpc.publicnode.com, with no light client, so a lying server could show false data.",
+  "operations": [
     {
-      "name": "ubnet.work template pointer and template",
+      "name": "Search a .og name and check if it is taken",
       "trustlessity": {
         "level": 1
       },
-      "note": "Fetched as the page opens; the answer chooses the code that runs, and ubnet.work sees the visitor's IP address."
+      "note": "Calls owner() on the Linagee contract through ethereum-rpc.publicnode.com; nothing checks the answer."
+    },
+    {
+      "name": "Connect a wallet and register a name",
+      "trustlessity": {
+        "level": 3
+      },
+      "note": "Sends reserve() to the Linagee contract at 0x5564886ca2C518d1964E5FCea4f423b41Db9F561 through the user's own wallet; the user confirms the transaction."
+    },
+    {
+      "name": "Show the page and its fonts",
+      "trustlessity": {
+        "level": 2
+      },
+      "note": "All scripts, styles and fonts are the build's own files, with source in the source map."
+    }
+  ],
+  "connections": [
+    {
+      "name": "ethereum-rpc.publicnode.com (Ethereum RPC)",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Public RPC server read without a light client; it sees the visitor's IP address and the names searched."
     }
   ]
 }
