@@ -2,25 +2,49 @@
   "subject": "website",
   "ids": [
     "cid:bafybeih5gihptqlszwq2mdfuih3mllbwhu4a3gsvp57ywtmiexbjlemsvy",
-    "cid:bafybeihfbb5c624r25mjodwwacewxmq5mgxofvpslan32t6tcmnze6kb6a"
+    "cid:bafybeihfbb5c624r25mjodwwacewxmq5mgxofvpslan32t6tcmnze6kb6a",
+    "cid:bafybeidyp3v4gllaamjcbouwpkzw4ynlkcpy7dgsbf67bwmzjg4346yubq"
   ],
   "names": [
     "docs.vpn.gnosis.eth"
   ],
   "name": "Gnosis VPN documentation",
-  "evaluated": "2026-11-17",
+  "evaluated": "2026-11-24",
   "trustlessity": {
     "level": 3,
     "privacy": false
   },
-  "summary": "The Gnosis VPN documentation. Its source is public (no licence file) and it runs no third-party code, which is Level 3. It is not Level 4: when it opens it loads an icon font from jsDelivr.",
+  "summary": "The Gnosis VPN documentation. Its source is public (no licence file) and it runs no third-party code of its own, which is Level 3. It is not Level 4: when it opens it loads an icon font from jsDelivr, and its search sends each query to Algolia, a centralized service.",
+  "operations": [
+    {
+      "name": "Read the documentation pages",
+      "trustlessity": {
+        "level": 3
+      },
+      "note": "Static pages served from the build's own files."
+    },
+    {
+      "name": "Search the documentation",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "The bundled DocSearch code sends the typed query to Algolia and shows what it returns; nothing checks the results."
+    }
+  ],
   "connections": [
     {
       "name": "Tabler icon font (cdn.jsdelivr.net)",
       "trustlessity": {
         "level": 1
       },
-      "note": "Fetched when the page opens."
+      "note": "Fetched when the page opens, with no integrity hash."
+    },
+    {
+      "name": "Algolia search (p6p7itp8ln-dsn.algolia.net)",
+      "trustlessity": {
+        "level": 1
+      },
+      "note": "Only preconnected at load; queries go there when the visitor searches. Centralized, and it sees the visitor's IP address and queries."
     }
   ],
   "evidence": [
