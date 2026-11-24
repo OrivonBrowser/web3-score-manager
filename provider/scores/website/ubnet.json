@@ -2,13 +2,14 @@
   "subject": "website",
   "ids": [
     "cid:bafybeihmetwsvbtn27abngdvz6wdluzkhmq6bskvjdwi2yqfh3zyxwfbdu",
-    "cid:bafybeibsru2upzru65ijtqdyca7mqi4ql66zb5ihjw6evdvvqkvnhqy2ni"
+    "cid:bafybeibsru2upzru65ijtqdyca7mqi4ql66zb5ihjw6evdvvqkvnhqy2ni",
+    "cid:bafybeiad64ftahfwxvrhvy3k6zxw22ohmlg5aoqe7tpyargpdiq5eohzra"
   ],
   "names": [
     "ubnet.eth"
   ],
   "name": "UBNet",
-  "evaluated": "2026-11-23",
+  "evaluated": "2026-11-24",
   "trustlessity": {
     "level": 3,
     "privacy": false
