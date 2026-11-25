@@ -1,13 +1,14 @@
 {
   "subject": "website",
   "ids": [
-    "cid:bafybeifegdvmd64g5f6gmqx236ca47u4uh62jfufcf74hlwqmczt5bgssi"
+    "cid:bafybeifegdvmd64g5f6gmqx236ca47u4uh62jfufcf74hlwqmczt5bgssi",
+    "cid:bafybeic4sogxak53vh37u6zzwjvvbuz6rugsf5xptu4w4ue42wvqppirxy"
   ],
   "names": [
     "merklejapan.eth"
   ],
   "name": "Merkle Japan",
-  "evaluated": "2026-10-18",
+  "evaluated": "2026-11-25",
   "trustlessity": {
     "level": 2,
     "privacy": false
