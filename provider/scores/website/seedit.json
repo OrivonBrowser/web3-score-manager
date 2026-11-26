@@ -3,14 +3,15 @@
   "ids": [
     "cid:bafybeihsu5pjlof2xjrnfc7onqrsf4zjb4tgelcx44qo52uncelgeojeky",
     "cid:bafybeib6i6hupdmuvcid3lt6joiisd3lfoay2jsbokqhgs3et7o3dbf6ka",
-    "cid:bafybeid2qeypmjxqspyc272qpmx6idzv23ebbp7ralcv7xj3zfxypobgzu"
+    "cid:bafybeid2qeypmjxqspyc272qpmx6idzv23ebbp7ralcv7xj3zfxypobgzu",
+    "cid:bafybeih22q3mjqjpcsxzbixbjdp5fejmfzmmsrneg7gfqqxlq4v637xo3a"
   ],
   "names": [
     "seedit.eth"
   ],
   "name": "Seedit",
-  "version": "0.7.0",
-  "evaluated": "2026-11-20",
+  "version": "0.7.1",
+  "evaluated": "2026-11-26",
   "trustlessity": {
     "level": 3,
     "privacy": false
