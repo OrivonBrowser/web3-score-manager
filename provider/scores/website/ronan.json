@@ -7,13 +7,14 @@
     "cid:bafybeihxr7lrfh5l444nxzmavxyt7m73bhlyu577tdyknhw5ij4ezsh77q",
     "cid:bafybeiesfoijnsimaih25owuwdewaz2ix6msmtilxl3jnsunbsjl3hr63u",
     "cid:bafybeibtcwneztqqfs5e7gkrssb7umzhu22nk27xy3jr6rolythrgfpdu4",
-    "cid:bafybeibbksvx7omlf3hbtybqmrbt436z64u24hp4dyp6oq7hvrmqpoep2m"
+    "cid:bafybeibbksvx7omlf3hbtybqmrbt436z64u24hp4dyp6oq7hvrmqpoep2m",
+    "cid:bafybeighx5r74tftqtv2gdam4ygzfpz6ttgwvxsoexcxhfimg6kws76ufm"
   ],
   "names": [
     "ronan.eth"
   ],
   "name": "Ronan Sandford",
-  "evaluated": "2026-11-21",
+  "evaluated": "2026-11-26",
   "trustlessity": {
     "level": 4,
     "privacy": true
