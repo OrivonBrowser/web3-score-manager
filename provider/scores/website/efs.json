@@ -5,21 +5,22 @@
     "cid:bafybeidhx6rcbxhjpqeirqwysvi6uvnm2reuh6lyrbnlbx4q3oyuahlhmu",
     "cid:bafybeibbguk5fz5pthzmtr4sbq7454tuxrbrvvjnjfsixauspqcbrmz6za",
     "cid:bafybeigqpu4huex67aey7yl6wlr2no2v2dppsc3zxduddvcpawllrr2uoi",
-    "cid:bafybeig5bbpgrsq57bsbwre4e3bwygut2docn6wubtflsbqpson7o6leqe"
+    "cid:bafybeig5bbpgrsq57bsbwre4e3bwygut2docn6wubtflsbqpson7o6leqe",
+    "cid:bafybeihc2lyr7gpi5jymjap7ufanbubsjkv4nyf2dtw27vd6v6vioiwxpe"
   ],
   "names": [
     "app.efs.eth"
   ],
   "name": "Ethereum File System",
-  "evaluated": "2026-11-25",
+  "evaluated": "2026-11-26",
   "trustlessity": {
     "level": 3,
     "privacy": false
   },
-  "summary": "The Ethereum File System app, open source (MIT). It runs no third-party code, which is Level 3. It is not Level 4: when it opens it reads chain data from the project's devnet RPC server, Alchemy and Cloudflare RPC endpoints without a light client, sends WalletConnect telemetry and loads Google Fonts.",
+  "summary": "The Ethereum File System app, open source (MIT). It runs no third-party code, which is Level 3. It is not Level 4: when it opens it reads chain data from Alchemy, publicnode, Tenderly and Cloudflare RPC endpoints (and the project's devnet server) without a light client, sends WalletConnect telemetry and loads Google Fonts.",
   "connections": [
     {
-      "name": "RPC endpoints (devnet nip.io server, Alchemy, Cloudflare)",
+      "name": "RPC endpoints (Alchemy, publicnode, Tenderly, Cloudflare, devnet nip.io server)",
       "trustlessity": {
         "level": 1
       },
