@@ -3,13 +3,14 @@
   "ids": [
     "cid:bafybeigqyo555suvqi3scc2izft3mozskktbtkzs2xghoe2rpxetxbbdiq",
     "cid:bafybeiesmy6rsaglneqxbzkbdj5degzp2izydfadhl2vu3oyrp7k52fypu",
-    "cid:bafybeia5eyombgegdwmvfzwisveadaaok2vdjkv5rklfdmcljysjrjc4km"
+    "cid:bafybeia5eyombgegdwmvfzwisveadaaok2vdjkv5rklfdmcljysjrjc4km",
+    "cid:bafybeig7u6nlhkewup3l653jfzo54snjq5keezeydeiep6t6cxhpl2rc3m"
   ],
   "names": [
     "vitalik.eth"
   ],
   "name": "Vitalik Buterin's blog",
-  "evaluated": "2026-11-09",
+  "evaluated": "2026-11-26",
   "trustlessity": {
     "level": 3,
     "privacy": false
