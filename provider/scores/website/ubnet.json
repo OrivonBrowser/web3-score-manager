@@ -6,13 +6,14 @@
     "cid:bafybeiad64ftahfwxvrhvy3k6zxw22ohmlg5aoqe7tpyargpdiq5eohzra",
     "cid:bafybeib55r5vm6wul73h4smbgqaeuaiuhqfpf4y7us53dugbc6ritew2oq",
     "cid:bafybeia2e3mzgi4273pguk4xiuyb57lxzhdaeufvk6p4q7s2kow57bunxy",
-    "cid:bafybeih3k2w3z7y43wk4ufokgwlcxjm7xqvztylystaeol3j2hp6ahn3wi"
+    "cid:bafybeih3k2w3z7y43wk4ufokgwlcxjm7xqvztylystaeol3j2hp6ahn3wi",
+    "cid:bafybeig5ekk7ia7dfimdw7xf5cvzfhrqdj3zqosyor42cmth77nm4xl6om"
   ],
   "names": [
     "ubnet.eth"
   ],
   "name": "UBNet",
-  "evaluated": "2026-11-25",
+  "evaluated": "2026-11-28",
   "trustlessity": {
     "level": 3,
     "privacy": false
