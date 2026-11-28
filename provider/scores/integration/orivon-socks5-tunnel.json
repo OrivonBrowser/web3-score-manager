@@ -4,12 +4,12 @@
     "integration:builtin:socks5"
   ],
   "name": "Your own SOCKS5 address",
-  "evaluated": "2026-11-05",
+  "evaluated": "2026-11-10",
   "trustlessity": {
     "level": 3,
     "privacy": false
   },
-  "summary": "Sends traffic through the SOCKS5 address the person types (Tor on 127.0.0.1:9050, say). Orivon's part is open source and sends nothing else. It is 3, not 4: everything now depends on a proxy the person chose and nothing checks, which sees where the traffic goes and, without TLS, the traffic. What the tunnel is worth is the proxy's; privacy is not claimed. Judged here by its publisher.",
+  "summary": "Sends an app's or tab's traffic through a SOCKS5 server at an address the person types (none is set by default), over a plain TCP link. Whatever runs at that address sees this computer's address and every destination, and can read or change traffic that is not encrypted; nothing checks what it does. A proxy that cannot be reached refuses and never goes direct. Level 3, not 4: it relies on a party Orivon does not choose or check, and shows the person to it. Judged here by its publisher.",
   "evidence": [
     "https://github.com/OrivonBrowser/orivon-mvp"
   ]

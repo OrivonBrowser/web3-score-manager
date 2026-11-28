@@ -4,13 +4,14 @@
     "sha256:562e74cfe438e3b2691f397619f87ca76d9f22f558e4f9eb3f81f606238f7d31"
   ],
   "name": "Orivon test library: hash",
-  "evaluated": "2026-11-05",
+  "evaluated": "2026-11-10",
   "trustlessity": {
     "level": 4,
     "privacy": true
   },
-  "summary": "A fixture of Orivon's own tests (lib.hash@0.1.0): a SHA-256 component that imports no interface, so it can reach nothing, holds no state and asks for no grant. It is built from open source kept in Orivon's ports checkout. Judged here by its publisher.",
+  "summary": "Test fixture: a 5,972-byte WebAssembly component exporting sha256(bytes) -> 32 bytes, built from a small no_std Rust crate over sha2 0.10.9. Its core module has no import section, so it reaches nothing and holds nothing, and the file is pinned by this hash. Pure local code with no connection. Judged here by its publisher.",
   "evidence": [
-    "https://github.com/OrivonBrowser/orivon-mvp"
+    "https://github.com/OrivonBrowser/orivon-mvp",
+    "https://github.com/RustCrypto/hashes"
   ]
 }

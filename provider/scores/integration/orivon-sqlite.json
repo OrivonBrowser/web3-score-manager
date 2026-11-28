@@ -5,12 +5,12 @@
     "sha256:2ee8f3dab694532afc8840e07703127287662d08b74e6ff50491ce63f00d5752"
   ],
   "name": "SQLite (sqlite3.wasm)",
-  "evaluated": "2026-11-05",
+  "evaluated": "2026-11-10",
   "trustlessity": {
     "level": 4,
     "privacy": true
   },
-  "summary": "The SQLite engine (sqlite3.wasm, version 3.53.4) that Orivon keeps once for every site that declares it by its hash; the copy is served only when the site's own file hashes to the same value, which is why the file's SHA-256 is filed too. Public-domain source, pure logic with no imports that reach a network, and no state or grant of its own. Judged here by its publisher.",
+  "summary": "SQLite engine as sqlite3.wasm from @sqlite.org/sqlite-wasm 3.53.4-build1 (Apache-2.0 wrapper, SQLite public domain), pinned by exact version, lockfile integrity and this SHA-256; a site is served the copy only when its own file hashes to it. A library has no state and no grants, and the module imports file, clock, environment and memory calls only, no socket call, so it reaches no network and shows the person to no one. Level 4 with privacy; nothing here rebuilds the binary from SQLite's source. Judged here by its publisher.",
   "evidence": [
     "https://github.com/OrivonBrowser/orivon-mvp",
     "https://github.com/sqlite/sqlite-wasm"

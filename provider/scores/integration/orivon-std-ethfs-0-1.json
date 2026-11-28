@@ -4,12 +4,12 @@
     "integration:builtin:std-ethfs_0_1"
   ],
   "name": "EthFS standard (ETHFS_0_1)",
-  "evaluated": "2026-11-06",
+  "evaluated": "2026-11-10",
   "trustlessity": {
     "level": 4,
     "privacy": true
   },
-  "summary": "The row for the ETHFS_0_1 standard, which defines reading files kept on Ethereum in EthFS and storing files there with transactions the person signs. A standard defines a code without answering it: the row runs nothing, holds no state and makes no connection, and whatever answers the code is judged on its own row. Open source, and the definition is a JSON file in Orivon's source. Judged here by its publisher.",
+  "summary": "Defines reading files kept on Ethereum in EthFS and storing them with transactions the person signs. Reads check every byte against the address naming it; only which address a filename maps to rests on the answering node, and nothing here checks that. A write plans the transactions, asks the person once for the whole series and shows the sending address on the chain for good. The row runs nothing and connects to nothing; the node that answers is judged on its own row. Level 4 with privacy: a pure definition. Judged here by its publisher.",
   "evidence": [
     "https://github.com/OrivonBrowser/orivon-mvp"
   ]

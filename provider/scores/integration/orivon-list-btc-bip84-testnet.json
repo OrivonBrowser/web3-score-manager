@@ -4,12 +4,12 @@
     "integration:builtin:btc-bip84-testnet"
   ],
   "name": "Bitcoin Testnet Native SegWit (tb1q)",
-  "evaluated": "2026-11-05",
+  "evaluated": "2026-11-10",
   "trustlessity": {
     "level": 4,
     "privacy": true
   },
-  "summary": "The Bitcoin address list for BIP-84 on testnet: a derivation template that names the paths addresses are taken from and holds no address and no key. Open source and pure data, with no connection and no state of its own. Judged here by its publisher.",
+  "summary": "Address list for Bitcoin testnet native SegWit (tb1q): the path template m/84'/1'/0'/0/{i} and a format word, nothing else; it starts off until the person turns it on. It holds no key and runs nothing that reaches a network: the Account's key and the Crypto's encoding make each address, spelled from a public key alone with no chain read. Balances and coins are read through the person's nodes, each judged on its own row. Level 4 with privacy because the list causes no connection and relies on no server or party. Judged here by its publisher.",
   "evidence": [
     "https://github.com/OrivonBrowser/orivon-mvp"
   ]

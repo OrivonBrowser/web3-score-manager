@@ -4,12 +4,12 @@
     "integration:builtin:load-owner"
   ],
   "name": "Load from the site owner's record",
-  "evaluated": "2026-11-05",
+  "evaluated": "2026-11-10",
   "trustlessity": {
-    "level": 4,
+    "level": 3,
     "privacy": false
   },
-  "summary": "The row of Load sites from that follows the record a name's owner set. The record is read through the Ethereum light client, which proves it, and the row loads nothing itself: it names the content that the IPFS or Swarm rows then fetch and check against its address. Open source. Not private, for the reason the light client is not. Judged here by its publisher.",
+  "summary": "A load-order switch. On, the contenthash a name's owner published is tried through the rows of its type, in the person's order; Off, it is skipped. It asks no standard code, runs nothing and connects to nothing: the record comes from the name's resolver and each row that loads it is judged on its own row. It calls a load unchecked only for a web server without a DDOC record or a record a node or resolver did not prove; a contenthash naming a DNS name (read over an unauthenticated DNSLink) or an IPNS name (newest record unproven) still counts as checked, so not 4. Judged here by its publisher.",
   "evidence": [
     "https://github.com/OrivonBrowser/orivon-mvp"
   ]

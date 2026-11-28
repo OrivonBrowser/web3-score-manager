@@ -4,12 +4,12 @@
     "integration:builtin:std-swarm_0_1"
   ],
   "name": "Swarm standard (SWARM_0_1)",
-  "evaluated": "2026-11-06",
+  "evaluated": "2026-11-10",
   "trustlessity": {
     "level": 4,
     "privacy": true
   },
-  "summary": "The row for the SWARM_0_1 standard, which defines reading files from Swarm. A standard defines a code without answering it: the row runs nothing, holds no state and makes no connection, and whatever answers the code is judged on its own row. Open source, and the definition is a JSON file in Orivon's source. Judged here by its publisher.",
+  "summary": "A definition of SWARM_0_1: one read group (risk 2) and one function, get, that gives the bytes of a Swarm reference and an optional path, up to 4 MiB; a larger file is refused. Whoever answers learns which content is asked for, and peers can see it fetched. The definition says every chunk is checked against the reference; it cannot make a node do so, and its only test vector is a malformed reference. The row names no node or address. Level 4 with privacy: it runs and connects to nothing. Judged here by its publisher.",
   "evidence": [
     "https://github.com/OrivonBrowser/orivon-mvp"
   ]

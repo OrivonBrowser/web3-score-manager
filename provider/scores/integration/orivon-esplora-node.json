@@ -4,14 +4,13 @@
     "integration:builtin:esplora"
   ],
   "name": "Esplora servers (Bitcoin)",
-  "evaluated": "2026-11-05",
+  "evaluated": "2026-11-10",
   "trustlessity": {
     "level": 3,
     "privacy": false
   },
-  "summary": "The Bitcoin node row that answers BTC_NET_0_1 from the public Esplora servers Orivon asks (mempool.space first, blockstream.info when the first cannot answer). Open source. It is 3, not 4: the servers are public and nothing checks what they return, so a lying server shows false balances and fees. They also see this computer's address and the addresses and transactions asked about. Judged here by its publisher.",
+  "summary": "The Bitcoin network node (BTC_NET_0_1): answers coins, balances, history, fees, block height, transactions and broadcasts by asking mempool.space, then blockstream.info. Its code is pinned, but nothing checks what the servers say: a false or withheld coin list, balance or fee is believed, and if both stop it has nothing to answer with. Only a transaction's bytes are checked later, by the Bitcoin Crypto, against the outpoint. Level 3, not 4: it relies on public servers, which see the IP address and every address and transaction asked about. Judged here by its publisher.",
   "evidence": [
-    "https://github.com/OrivonBrowser/orivon-mvp",
-    "https://github.com/mempool/mempool"
+    "https://github.com/OrivonBrowser/orivon-mvp"
   ]
 }

@@ -4,12 +4,12 @@
     "integration:builtin:load-http"
   ],
   "name": "Load from the site's server over HTTP",
-  "evaluated": "2026-11-05",
+  "evaluated": "2026-11-10",
   "trustlessity": {
     "level": 1,
     "privacy": false
   },
-  "summary": "The row of Load sites from that loads a name's site from the server its record names, over plain HTTP, off by default. Without a DDOC record nothing checks what arrives, and anyone on the path can read and change it: part of what runs comes from outside what was pinned. Judged here by its publisher.",
+  "summary": "Loads a site's files from the web server a name's record names, over plain HTTP, only at an address Orivon checked. With a DDOC record each file is checked against its hash tree; without one nothing checks the bytes, and anything on the path can change them. Those pages and scripts then run in the browser. It relies on that one server, which sees each visit. Level 1, not higher: part of what runs comes from outside what Orivon pinned. Off by default. Judged here by its publisher.",
   "evidence": [
     "https://github.com/OrivonBrowser/orivon-mvp"
   ]

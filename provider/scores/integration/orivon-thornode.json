@@ -4,14 +4,13 @@
     "integration:builtin:thornode"
   ],
   "name": "THORNode (ninerealms)",
-  "evaluated": "2026-11-05",
+  "evaluated": "2026-11-10",
   "trustlessity": {
     "level": 3,
     "privacy": false
   },
-  "summary": "The node row that answers THORNODE_NET_0_1 from the public THORNode API at ninerealms. Open source. It is 3, not 4: the API is a public server and its answers (quotes, vault addresses) are not checked, so it is relied on for what a swap pays to. It sees this computer's address. Judged here by its publisher.",
+  "summary": "The THORChain node (THORNODE_NET_0_1), for the browser's own swaps: asks Nine Realms and Liquify for quotes, vault addresses and deposit status. A vault is named only when both list the same address and router; a quote and a status come from the first that answers, and the facilitator checks a quote against that vault and the person's destination. Nothing proves any answer against THORChain itself, so two agreeing or lying operators are believed. Level 3, not 4: it relies on two public servers, which see the pair, amounts and later the destination. Judged here by its publisher.",
   "evidence": [
-    "https://github.com/OrivonBrowser/orivon-mvp",
-    "https://gitlab.com/thorchain/thornode"
+    "https://github.com/OrivonBrowser/orivon-mvp"
   ]
 }

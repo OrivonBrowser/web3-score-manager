@@ -4,12 +4,12 @@
     "integration:builtin:std-widgets_0_1"
   ],
   "name": "Widgets standard (WIDGETS_0_1)",
-  "evaluated": "2026-11-06",
+  "evaluated": "2026-11-10",
   "trustlessity": {
     "level": 4,
     "privacy": true
   },
-  "summary": "The row for the WIDGETS_0_1 standard, which defines the widgets the person added to the browser, and showing them inside the page that asks. A standard defines a code without answering it: the row runs nothing, holds no state and makes no connection, and whatever answers the code is judged on its own row. Open source, and the definition is a JSON file in Orivon's source. Judged here by its publisher.",
+  "summary": "A definition of WIDGETS_0_1: groups list (risk 3) and place (risk 4) with list, place, move and remove, which let a page see the widgets the person added and show them inside itself, at most eight at once, never over the browser's controls. The definition says the browser answers every function itself, and that a widget runs as its own site, cannot navigate or open windows and is handed nothing of the page. The list shows what the person uses. Nothing here checks a widget's own behaviour. The row has no code or request. Level 4 with privacy as a definition. Judged here by its publisher.",
   "evidence": [
     "https://github.com/OrivonBrowser/orivon-mvp"
   ]

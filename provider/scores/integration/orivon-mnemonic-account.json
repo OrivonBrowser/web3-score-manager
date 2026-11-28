@@ -4,12 +4,12 @@
     "integration:builtin:orivon-mnemonic"
   ],
   "name": "Main account (this computer)",
-  "evaluated": "2026-11-05",
+  "evaluated": "2026-11-10",
   "trustlessity": {
     "level": 4,
     "privacy": true
   },
-  "summary": "The Account the wallet makes at a profile's first start: a recovery phrase of twelve words kept in the profile folder, sealed by the system keyring, which signs here after the person confirms. Open source. It declares no connection, so no server can sign for the person or learn that they did. The phrase is the person's to back up: losing it loses the account, which is the cost of holding the key. Judged here by its publisher.",
+  "summary": "Built-in Account: the recovery phrase is kept sealed by the OS keyring on this computer, and every key, signature and private-message call runs in a separate process whose imports and runtime are sealed against network use. It connects to nothing and relies on no server or party. The wallet's network reads are other rows. Level 4 with privacy; it would drop if a phrase or a signing step left the computer, or the signer gained a connection. Judged here by its publisher.",
   "evidence": [
     "https://github.com/OrivonBrowser/orivon-mvp"
   ]

@@ -9,7 +9,7 @@
     "level": 4,
     "privacy": true
   },
-  "summary": "The row for the WEB_FETCH_0_1 standard, which defines reading a public web page as text, from an address the person was asked about. A standard defines a code without answering it: the row runs nothing, holds no state and makes no connection. The browser answers this code itself and no integration provides it, so no other row judges the reading; the code marks every answer untrusted, since whoever controls a page may have written it for the reader. Open source, and the definition is a JSON file in Orivon's source. Judged here by its publisher.",
+  "summary": "A definition of WEB_FETCH_0_1: fetchText makes one https GET and answers the page as text (at most 100,000 characters), marked untrusted, with no cookie or header of the caller's. The definition says the browser answers it itself, asks the person before the first read from each website and refuses local-network addresses. The page's server sees the full address and, with no tunnel, this computer's network address. The row has no code or request; the reader that answers it has no row, so none of it is judged here. Level 4 with privacy as a definition only. Judged here by its publisher.",
   "evidence": [
     "https://github.com/OrivonBrowser/orivon-mvp"
   ]

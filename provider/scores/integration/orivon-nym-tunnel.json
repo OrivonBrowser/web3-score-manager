@@ -4,12 +4,12 @@
     "integration:builtin:nym"
   ],
   "name": "Nym mixnet",
-  "evaluated": "2026-11-05",
+  "evaluated": "2026-11-10",
   "trustlessity": {
     "level": 3,
     "privacy": false
   },
-  "summary": "The Nym mixnet tunnel Orivon offers for a tab, an app or the whole browser. Open source, as is Nym's client. It is 3, not 4: it relies on the gateways and mix nodes of Nym's network, run by parties the person does not choose and nothing here checks. It hides this computer's address from the sites visited, not from the gateway it enters through. Privacy is not claimed for that reason. Judged here by its publisher.",
+  "summary": "Nym's mixnet client, built as WebAssembly from Nym's public source with Orivon's patches and pinned by hash, carries an app's or tab's traffic. It relies on Nym's servers: the module names validator.nymtech.net and rpc.nymtech.net for its directory, plus gateways and an exit, and nothing here checks them. Gateways and the directory see this computer's address; the exit sees destinations. A tunnel that cannot run refuses and never goes direct. Level 3, not 4: it relies on parties nothing checks and shows the person to them. Judged here by its publisher.",
   "evidence": [
     "https://github.com/OrivonBrowser/orivon-mvp",
     "https://github.com/nymtech/nym"
